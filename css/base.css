@@ -1,0 +1,57 @@
+/* ============================================
+   PIZZERIA AVALON — Reset & Base
+   ============================================ */
+
+/* Reset moderno */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%; /* Per evitare ridimensionamenti indesiderati su mobile orizzontale */
+  text-size-adjust: 100%;
+}
+
+/* --- Body --- */
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--color-brown);
+  background-color: var(--color-bg2);        /* crema fuori dal wrapper */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;        /* Firefox su Mac */
+  padding-bottom: 70px;
+}
+
+/* --- Contenitore pagina --- */
+.page-wrapper {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+  background-color: var(--color-bg);         /* bianco dentro il contenuto */
+}
+
+/* --- Immagini --- */
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* --- Link --- */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* --- Tipografia base --- */
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  line-height: 1.2;
+}
+
+p {
+  line-height: 1.6;
+}
