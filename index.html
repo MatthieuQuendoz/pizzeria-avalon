@@ -50,7 +50,6 @@
     
     
     <section class="hero">
-
         <!-- Immagine di sfondo -->
         <img 
           src="assets/images/hero.png" 
@@ -76,8 +75,82 @@
             <a href="menu.html" class="btn btn-secondary">Scopri il Menu</a>
           </div>
         </div>
-
     </section>  
+
+    <section class="orari">
+      <div class="orari__content">
+        <div class="orari__header">
+          <i class="clock-icon" data-lucide="clock"></i>
+          <h2>ORARIO</h2>
+          <p class="ora">18:00 - 23:00</p>
+        </div>
+
+        <div class="orari__stato">
+          <!-- qui va la riga dinamica aperti/chiusi -->
+        </div>
+
+      <p class="orari__riga"><i class="icon-red" data-lucide="check"></i> Aperti dal giovedì al lunedì</p>
+      <p class="orari__riga red"><i class="icon-red" data-lucide="circle-x"></i> Chiusi martedì e mercoledì</p>
+      </div>
+
+      <div class="orari__azioni">
+          <a href="tel:+390165250300" class="btn btn-primary">
+            <i data-lucide="phone"></i> Chiamaci
+          </a>
+          <a href="https://wa.me/393514226610" class="btn btn-verde">
+            <i data-lucide="message-square-more"></i> WhatsApp
+          </a>
+      </div>
+    </section>
+
+<section class="location">
+  <div class="location__img-wrapper">
+    <img
+      src="assets/images/avalonDaFuori.jpg"
+      alt="Vista esterna della Pizzeria Avalon a Jovençan"
+      class="location__img"
+    >
+    <div class="location__img-overlay" aria-hidden="true"></div>
+  </div>
+
+  <div class="location__content">
+    <div class="location__header">
+      <i class="location__icon" data-lucide="map-pin"></i>
+      <p class="location__label">Dove siamo</p>
+    </div>
+
+    <h2 class="location__title">Fraz. Etral 7, Jovençan</h2>
+    <p class="location__subtitle">Ci troviamo a 10 minuti da Aosta.</p>
+
+    
+     <a href="https://maps.google.com/?q=Etral+8+Jovençan+Valle+d'Aosta"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="btn location__btn"
+    >
+      <i data-lucide="navigation"></i>
+      Apri in Google Maps
+    </a>
+  </div>
+</section>
+
+<section class="impasto">
+  <div class="impasto__img-wrapper">
+    <img
+      src="assets/images/impasto.png"
+      alt="Vista esterna della Pizzeria Avalon a Jovençan"
+      class="impasto__img"
+    >
+    <div class="impasto__img-overlay" aria-hidden="true"></div>
+  </div>
+
+    <div class="impasto__content">
+      <h2 class="impasto__title">Scopri il nostro impasto</h2>
+      <p class="impasto__hint">
+      <i data-lucide="refresh-cw"></i> Tocca per scoprire
+      </p>    
+    </div>
+</section>
 
   <footer class="footer">
     <!-- footer -->

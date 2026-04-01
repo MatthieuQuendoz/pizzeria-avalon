@@ -20,7 +20,7 @@ body {
   font-family: var(--font-body);
   font-size: var(--text-base);
   color: var(--color-brown);
-  background-color: var(--color-bg2);        /* crema fuori dal wrapper */
+  background-color: var(--color-bg);        /* crema fuori dal wrapper */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;        /* Firefox su Mac */
   padding-bottom: 70px;
@@ -48,8 +48,9 @@ a {
 
 /* --- Tipografia base --- */
 h1, h2, h3 {
-  font-family: var(--font-heading);
+
   line-height: 1.2;
+  margin: 0;
 }
 
 p {
