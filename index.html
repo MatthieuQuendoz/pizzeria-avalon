@@ -19,6 +19,9 @@
   <!-- lucide icon -->
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
+  <!--COOKIES-->
+  <script type="text/javascript" src="https://embeds.iubenda.com/widgets/1e3d3707-fe99-4f69-9752-2f4ad9fa1655.js"></script>
+
 </head>
 
 <body>
@@ -152,9 +155,74 @@
     </div>
 </section>
 
-  <footer class="footer">
-    <!-- footer -->
-  </footer>
+ <footer class="footer">
+    <div class="footer__overlay" aria-hidden="true"></div>
+
+  <div class="footer__content">
+    <h2 class="footer__title">Pizzeria Avalon</h2>
+    
+    <address class="footer__address">
+      <div class="footer__contact-row">
+        <i data-lucide="map-pin"></i>
+        <p>Fraz. Etral 7, Jovençan (AO)</p>
+      </div>
+      <div class="footer__contact-row">
+        <i data-lucide="phone"></i>
+        <a href="tel:+390165250300">+39 0165 250300</a>
+      </div>
+      <div class="footer__contact-row">
+        <i data-lucide="mail"></i>
+        <a href="mailto:avalon.jovencan@gmail.com">avalon.jovencan@gmail.com</a>
+      </div>
+      <div class="footer__contact-row">
+        <i data-lucide="clock"></i>
+        <p>Gio–Lun 18:00–23:00</p>
+      </div>
+    </address>
+  </div>
+
+  <div class="footer__social">
+    <a href="https://www.facebook.com/pizzeriaavalon" 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       class="footer__social-link"
+       aria-label="Facebook di Pizzeria Avalon">
+      <i data-lucide="circle-fading-plus"></i> Facebook
+    </a>
+    <a href="https://www.instagram.com/pizzeriaavalon/" 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       class="footer__social-link"
+       aria-label="Instagram di Pizzeria Avalon">
+      <i data-lucide="camera"> </i> Instagram
+    </a>
+  </div>
+
+
+  <div class="footer__legal">
+    <a href="https://www.iubenda.com/privacy-policy/66195849" 
+       class="iubenda-white iubenda-noiframe iubenda-embed" 
+       title="Privacy Policy">Privacy Policy</a>
+    <a href="https://www.iubenda.com/privacy-policy/66195849/cookie-policy" 
+       class="iubenda-white iubenda-noiframe iubenda-embed" 
+       title="Cookie Policy">Cookie Policy</a>
+    <script type="text/javascript">
+      (function (w,d) {
+        var loader = function () {
+          var s = d.createElement("script"), 
+              tag = d.getElementsByTagName("script")[0]; 
+          s.src="https://cdn.iubenda.com/iubenda.js"; 
+          tag.parentNode.insertBefore(s,tag);
+        }; 
+        if(w.addEventListener){w.addEventListener("load", loader, false);}
+        else if(w.attachEvent){w.attachEvent("onload", loader);}
+        else{w.onload = loader;}
+      })(window, document);
+    </script>
+  </div>
+
+  <p class="footer__text">© 1994–2025 Pizzeria Avalon. Tutti i diritti riservati.</p>
+</footer>
 
   <!-- JS -->
   <script src="js/nav.js"></script>
