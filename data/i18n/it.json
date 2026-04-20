@@ -1,0 +1,36 @@
+{
+  "navbar": {
+    "home": "Home",
+    "menu": "Menu",
+    "prenota": "Prenota",
+    "gioca": "Gioca",
+    "storia": "La Storia"
+  },
+  "home": {
+    "eyebrow": "Dal 1994 a Jovençan",
+    "titolo": "Pizzeria",
+    "sottotitolo": "Pizza leggera, digeribile e dal gusto unico.",
+    "cta_prenota": "Prenota Ora →",
+    "cta_menu": "Scopri il Menu",
+
+    "orari_titolo": "Orario",
+    "orari_ore": "18:00 - 23:00",
+    "orari_aperti": "Aperti dal giovedì al lunedì",
+    "orari_chiusi": "Chiusi martedì e mercoledì",
+    "orari_chiamaci": "Chiamaci",
+    "orari_whatsapp": "WhatsApp",
+
+    "location_label": "Dove siamo",
+    "location_titolo": "Fraz. Etral 7, Jovençan",
+    "location_sottotitolo": "Ci troviamo a 10 minuti da Aosta.",
+    "location_maps": "Apri in Google Maps",
+
+    "impasto_titolo": "Scopri il nostro impasto",
+    "impasto_hint": "Tocca per scoprire"
+  },
+  "footer": {
+    "indirizzo": "Fraz. Etral 7, Jovençan (AO)",
+    "orari": "Gio–Lun 18:00–23:00",
+    "copyright": "© 1994–2025 Pizzeria Avalon. Tutti i diritti riservati."
+  }
+}

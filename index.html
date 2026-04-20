@@ -25,27 +25,41 @@
 </head>
 
 <body>
+
+  <div class="lang-switcher" id="lang-switcher">
+    <button class="lang-switcher__toggle" id="lang-toggle" aria-label="Cambia lingua">
+      <span id="lang-current-flag">🇮🇹</span>
+      <span id="lang-current-code">IT</span>
+      <span class="lang-switcher__chevron">▾</span>
+    </button>
+    <div class="lang-switcher__dropdown" id="lang-dropdown">
+      <button class="lang-option" data-lang="it">🇮🇹 Italiano</button>
+      <button class="lang-option" data-lang="fr">🇫🇷 Français</button>
+      <button class="lang-option" data-lang="en">🇬🇧 English</button>
+    </div>
+  </div>
+
   <header class="navbar">
     <nav aria-label="Navigazione principale" class="nav-links">
       <a href="index.html" class="active">
         <i data-lucide="house"></i>
-        Home
+        <span data-i18n="navbar.home">Home</span>
       </a>
       <a href="menu.html">
         <i data-lucide="book-open"></i>
-        Menu
+        <span data-i18n="navbar.menu">Menu</span>
       </a>
       <a href="prenota.html">
         <i data-lucide="calendar"></i>
-        Prenota
+        <span data-i18n="navbar.prenota">Prenota</span>
       </a>
       <a href="gioca.html">
         <i data-lucide="gamepad-2"></i>
-        Gioca
+        <span data-i18n="navbar.gioca">Gioca</span>
       </a>
       <a href="la-storia.html">
         <i data-lucide="clock"></i>
-        Storia
+        <span data-i18n="navbar.storia">La Storia</span>
       </a>
     </nav>
   </header>
@@ -65,17 +79,17 @@
 
         <!-- Contenuto testuale -->
         <div class="hero__content">
-          <p class="hero__eyebrow">Dal 1994 a Jovençan</p>
+          <p class="hero__eyebrow" data-i18n="home.eyebrow">Dal 1994 a Jovençan</p>
           <h1 class="hero__title">
-            Pizzeria <em>Avalon</em>
+            <span data-i18n="home.titolo"> Pizzeria </span> <em>Avalon</em>
           </h1>
-          <p class="hero__subtitle">
-            Impasti a lunga maturazione con ingredienti selezionati: una pizza leggera, digeribile e dal gusto unico.
+          <p class="hero__subtitle" data-i18n="home.sottotitolo"  >
+            Pizza leggera, digeribile e dal gusto unico.
           </p>
 
           <div class="hero__actions">
-            <a href="prenota.html" class="btn btn-primary">Prenota Ora →</a>
-            <a href="menu.html" class="btn btn-secondary">Scopri il Menu</a>
+            <a href="prenota.html" class="btn btn-primary" data-i18n="home.cta_prenota">Prenota Ora →</a>
+            <a href="menu.html" class="btn btn-secondary" data-i18n="home.cta_menu">Scopri il Menu</a>
           </div>
         </div>
     </section>  
@@ -84,24 +98,20 @@
       <div class="orari__content">
         <div class="orari__header">
           <i class="clock-icon" data-lucide="clock"></i>
-          <h2>ORARIO</h2>
-          <p class="ora">18:00 - 23:00</p>
+          <h2 data-i18n="home.orari_titolo">ORARIO</h2>
+          <p class="ora" data-i18n="home.orari_ore">18:00 - 23:00</p>
         </div>
 
-        <div class="orari__stato">
-          <!-- qui va la riga dinamica aperti/chiusi -->
-        </div>
-
-      <p class="orari__riga"><i class="icon-red" data-lucide="check"></i> Aperti dal giovedì al lunedì</p>
-      <p class="orari__riga red"><i class="icon-red" data-lucide="circle-x"></i> Chiusi martedì e mercoledì</p>
+      <p class="orari__riga" ><i class="icon-red" data-lucide="check"></i>  <span data-i18n="home.orari_aperti"> Aperti dal giovedì al lunedì </span></p>
+      <p class="orari__riga red"><i class="icon-red" data-lucide="circle-x"></i> <span data-i18n="home.orari_chiusi"> Chiusi martedì e mercoledì </span> </p>
       </div>
 
       <div class="orari__azioni">
           <a href="tel:+390165250300" class="btn btn-primary">
-            <i data-lucide="phone"></i> Chiamaci
+            <i data-lucide="phone"></i> <span data-i18n="home.orari_chiamaci">Chiamaci</span>
           </a>
           <a href="https://wa.me/393514226610" class="btn btn-verde">
-            <i data-lucide="message-square-more"></i> WhatsApp
+            <i data-lucide="message-square-more"></i> <span data-i18n="home.orari_whatsapp">WhatsApp </span>
           </a>
       </div>
     </section>
@@ -119,11 +129,11 @@
   <div class="location__content">
     <div class="location__header">
       <i class="location__icon" data-lucide="map-pin"></i>
-      <p class="location__label">Dove siamo</p>
+      <p class="location__label" data-i18n="home.location_label">Dove siamo</p>
     </div>
 
-    <h2 class="location__title">Fraz. Etral 7, Jovençan</h2>
-    <p class="location__subtitle">Ci troviamo a 10 minuti da Aosta.</p>
+    <h2 class="location__title" data-i18n="home.location_titolo">Fraz. Etral 7, Jovençan</h2>
+    <p class="location__subtitle" data-i18n="home.location_sottotitolo">Ci troviamo a 10 minuti da Aosta.</p>
 
     
      <a href="https://maps.google.com/?q=Etral+8+Jovençan+Valle+d'Aosta"
@@ -132,7 +142,7 @@
       class="btn location__btn"
     >
       <i data-lucide="navigation"></i>
-      Apri in Google Maps
+      <span data-i18n="home.location_maps">Apri in Google Maps</span>
     </a>
   </div>
 </section>
@@ -148,9 +158,9 @@
   </div>
 
     <div class="impasto__content">
-      <h2 class="impasto__title">Scopri il nostro impasto</h2>
+      <h2 class="impasto__title" data-i18n="home.impasto_titolo">Scopri il nostro impasto</h2>
       <p class="impasto__hint">
-      <i data-lucide="refresh-cw"></i> Tocca per scoprire
+      <i data-lucide="refresh-cw"></i> <span data-i18n="home.impasto_hint">  Tocca per scoprire </span>
       </p>    
     </div>
 </section>
@@ -164,11 +174,11 @@
     <address class="footer__address">
       <div class="footer__contact-row">
         <i data-lucide="map-pin"></i>
-        <p>Fraz. Etral 7, Jovençan (AO)</p>
+        <p data-i18n="footer.indirizzo">Fraz. Etral 7, Jovençan (AO)</p>
       </div>
       <div class="footer__contact-row">
         <i data-lucide="phone"></i>
-        <a href="tel:+390165250300">+39 0165 250300</a>
+        <a href="tel:+390165250300"> +39 0165 250300</a>
       </div>
       <div class="footer__contact-row">
         <i data-lucide="mail"></i>
@@ -176,7 +186,7 @@
       </div>
       <div class="footer__contact-row">
         <i data-lucide="clock"></i>
-        <p>Gio–Lun 18:00–23:00</p>
+        <p data-i18n="footer.orari">Gio–Lun 18:00–23:00</p>
       </div>
     </address>
   </div>
@@ -221,10 +231,11 @@
     </script>
   </div>
 
-  <p class="footer__text">© 1994–2025 Pizzeria Avalon. Tutti i diritti riservati.</p>
+  <p class="footer__text" data-i18n="footer.copyright">© 1994–2025 Pizzeria Avalon. Tutti i diritti riservati.</p>
 </footer>
 
   <!-- JS -->
+  <script src="js/i18n.js"></script>
   <script src="js/nav.js"></script>
   <script src="js/home.js"></script>
 
@@ -232,4 +243,3 @@
   <script>lucide.createIcons();</script>
 
 </body>
-
