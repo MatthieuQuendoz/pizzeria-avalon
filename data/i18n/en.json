@@ -28,6 +28,10 @@
     "impasto_titolo": "Discover our dough",
     "impasto_hint": "Tap to find out more"
   },
+  "menu": {
+    "titolo": "Our",
+    "description": "Long-fermented doughs made with carefully selected ingredients."
+  },
   "footer": {
     "indirizzo": "Fraz. Etral 7, Jovençan (AO)",
     "orari": "Thu–Mon 6:00 PM–11:00 PM",

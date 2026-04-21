@@ -28,6 +28,10 @@
     "impasto_titolo": "Scopri il nostro impasto",
     "impasto_hint": "Tocca per scoprire"
   },
+  "menu": {
+    "titolo": "Il nostro",
+    "description": "Impasti a lunga maturazione con ingredienti selezionati."
+  },
   "footer": {
     "indirizzo": "Fraz. Etral 7, Jovençan (AO)",
     "orari": "Gio–Lun 18:00–23:00",

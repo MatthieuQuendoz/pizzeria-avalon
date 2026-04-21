@@ -28,6 +28,10 @@
     "impasto_titolo": "Découvrez notre pâte",
     "impasto_hint": "Touchez pour en savoir plus"
   },
+  "menu": {
+    "titolo": "Notre",
+    "description": "Pâtes à longue maturation avec des ingrédients soigneusement sélectionnés."
+  },
   "footer": {
     "indirizzo": "Fraz. Etral 7, Jovençan (AO)",
     "orari": "Jeu–Lun 18h00–23h00",

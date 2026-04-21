@@ -62,6 +62,8 @@ function aggiornaSwitcher(lingua) {
 
 function chiudiDropdown() {
   document.getElementById('lang-switcher')?.classList.remove('lang-switcher--open');
+  //                                      ↑
+  //                         "se esiste, continua — altrimenti fermati"
 }
 
 async function cambiaLingua(lingua) {
@@ -73,6 +75,9 @@ async function cambiaLingua(lingua) {
   localStorage.setItem('lingua', lingua);
   aggiornaSwitcher(lingua);
   chiudiDropdown();
+
+  document.dispatchEvent(new CustomEvent('linguaCambiata', { detail: { lingua } }));
+
 }
 
 async function init() {

@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="it" id="html-root">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Pizzeria Avalon di Jovençan. Vieni a trovarci! Siamo aperti Dal giovedì al lunedì a cena. Ti aspettiamo!">
 
-  <title>Pizzeria Avalon</title>
+  <title>Menu - Pizzeria Avalon</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,7 +15,7 @@
   <!-- CSS -->
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/menu.css">
 
   <!-- lucide icon -->
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
@@ -24,9 +25,9 @@
 
 </head>
 
-<body>
 
-  <div class="lang-switcher" id="lang-switcher">
+<body>
+    <div class="lang-switcher" id="lang-switcher">
     <button class="lang-switcher__toggle" id="lang-toggle" aria-label="Cambia lingua">
       <span id="lang-current-flag">🇮🇹</span>
       <span id="lang-current-code">IT</span>
@@ -64,108 +65,31 @@
     </nav>
   </header>
 
-    
-    
-    <section class="hero">
-        <!-- Immagine di sfondo -->
-        <img 
-          src="assets/images/hero.png" 
-          alt="Pizza dal forno a legna della Pizzeria Avalon"
-          class="hero__img"
-        >
 
-        <!-- Gradiente overlay -->
-        <div class="hero__overlay" aria-hidden="true"></div>
-
-        <!-- Contenuto testuale -->
-        <div class="hero__content">
-          <p class="hero__eyebrow" data-i18n="home.eyebrow">Dal 1994 a Jovençan</p>
-          <h1 class="hero__title">
-            <span data-i18n="home.titolo"> Pizzeria </span> <em>Avalon</em>
-          </h1>
-          <p class="hero__subtitle" data-i18n="home.sottotitolo"  >
-            Pizza leggera, digeribile e dal gusto unico.
-          </p>
-
-          <div class="hero__actions">
-            <a href="prenota.html" class="btn btn-primary" data-i18n="home.cta_prenota">Prenota Ora →</a>
-            <a href="menu.html" class="btn btn-secondary" data-i18n="home.cta_menu">Scopri il Menu</a>
-          </div>
-        </div>
-    </section>  
-
-    <section class="orari">
-      <div class="orari__content">
-        <div class="orari__header">
-          <i class="clock-icon" data-lucide="clock"></i>
-          <h2 data-i18n="home.orari_titolo">ORARIO</h2>
-          <p class="ora" data-i18n="home.orari_ore">18:00 - 23:00</p>
-        </div>
-
-      <p class="orari__riga" ><i class="icon-red" data-lucide="check"></i>  <span data-i18n="home.orari_aperti"> Aperti dal giovedì al lunedì </span></p>
-      <p class="orari__riga red"><i class="icon-red" data-lucide="circle-x"></i> <span data-i18n="home.orari_chiusi"> Chiusi martedì e mercoledì </span> </p>
-      </div>
-
-      <div class="orari__azioni">
-          <a href="tel:+390165250300" class="btn btn-primary">
-            <i data-lucide="phone"></i> <span data-i18n="home.orari_chiamaci">Chiamaci</span>
-          </a>
-          <a href="https://wa.me/393514226610" class="btn btn-verde">
-            <i data-lucide="message-square-more"></i> <span data-i18n="home.orari_whatsapp">WhatsApp </span>
-          </a>
-      </div>
-    </section>
-
-<section class="location">
-  <div class="location__img-wrapper">
-    <img
-      src="assets/images/avalonDaFuori.jpg"
-      alt="Vista esterna della Pizzeria Avalon a Jovençan"
-      class="location__img"
-    >
-    <div class="location__img-overlay" aria-hidden="true"></div>
-  </div>
-
-  <div class="location__content">
-    <div class="location__header">
-      <i class="location__icon" data-lucide="map-pin"></i>
-      <p class="location__label" data-i18n="home.location_label">Dove siamo</p>
+    <main class="page-wrapper">
+  
+  <section class="menu-header">
+    <div class="menu-header__content">
+        <h1 class="menu-header__title">
+        <span data-i18n="menu.titolo">Il nostro</span>
+        <em>Menu</em>
+        </h1>
+        <p class="menu-header__description" data-i18n="menu.description">
+            Impasti a lunga maturazione con ingredienti selezionati.</p>
     </div>
+  </section>
 
-    <h2 class="location__title" data-i18n="home.location_titolo">Fraz. Etral 7, Jovençan</h2>
-    <p class="location__subtitle" data-i18n="home.location_sottotitolo">Ci troviamo a 10 minuti da Aosta.</p>
-
-    
-     <a href="https://maps.google.com/?q=Etral+8+Jovençan+Valle+d'Aosta"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="btn location__btn"
-    >
-      <i data-lucide="navigation"></i>
-      <span data-i18n="home.location_maps">Apri in Google Maps</span>
-    </a>
-  </div>
-</section>
-
-<section class="impasto">
-  <div class="impasto__img-wrapper">
-    <img
-      src="assets/images/impasto.png"
-      alt="Vista esterna della Pizzeria Avalon a Jovençan"
-      class="impasto__img"
-    >
-    <div class="impasto__img-overlay" aria-hidden="true"></div>
+  <div class="menu-tabs" id="menu-tabs">
+    <!-- i tab delle categorie — generati da JS -->
   </div>
 
-    <div class="impasto__content">
-      <h2 class="impasto__title" data-i18n="home.impasto_titolo">Scopri il nostro impasto</h2>
-      <p class="impasto__hint">
-      <i data-lucide="refresh-cw"></i> <span data-i18n="home.impasto_hint">  Tocca per scoprire </span>
-      </p>    
-    </div>
-</section>
+  <div class="menu-lista" id="menu-lista">
+    <!-- le card delle pizze — generate da JS -->
+  </div>
 
- <footer class="footer">
+</main>
+
+<footer class="footer">
     <div class="footer__overlay" aria-hidden="true"></div>
 
   <div class="footer__content">
@@ -208,7 +132,6 @@
     </a>
   </div>
 
-
   <div class="footer__legal">
     <a href="https://www.iubenda.com/privacy-policy/66195849" 
        class="iubenda-white iubenda-noiframe iubenda-embed" 
@@ -237,7 +160,7 @@
   <!-- JS -->
   <script src="js/i18n.js"></script>
   <script src="js/nav.js"></script>
-  <script src="js/home.js"></script>
+  <script src="js/menu.js"></script>
 
   
   <script>lucide.createIcons();</script>
