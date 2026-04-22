@@ -1,0 +1,1165 @@
+{
+    "categorie": [
+        {
+            "id": "birre-spina",
+            "nome": {
+                "it": "Birre alla Spina",
+                "fr": "Bières à la Pression",
+                "en": "Draft Beers"
+            },
+            "items": [
+                {
+                    "nome": "Forst",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Birra chiara alla spina",
+                        "fr": "Bière blonde à la pression",
+                        "en": "Draft lager"
+                    },
+                    "prezzi": {
+                        "piccola (20cl)": 2.50,
+                        "media (40cl)": 4.00,
+                        "caraffa (1L)": 8.00
+                    },
+                    "tag": []
+                },
+                {
+                    "nome": "Weiss",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Birra di frumento alla spina",
+                        "fr": "Bière de blé à la pression",
+                        "en": "Wheat beer on draft"
+                    },
+                    "prezzi": {
+                        "piccola (20cl)": 2.50,
+                        "media (40cl)": 4.00,
+                        "caraffa (1L)": 8.00
+                    },
+                    "tag": []
+                }
+            ]
+        },
+        {
+            "id": "birre-stronza",
+            "nome": {
+                "it": "Birra Stronza",
+                "fr": "Birra Stronza",
+                "en": "Birra Stronza"
+            },
+            "items": [
+                {
+                    "nome": "Stronza Audace",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Birra dal gusto deciso e prorompente, proprio come la ragazza che avete conosciuto su Tinder.",
+                        "fr": "Bière au goût décidé et puissant, tout comme la fille que vous avez rencontrée sur Tinder.",
+                        "en": "A bold and assertive beer, just like the girl you met on Tinder."
+                    },
+                    "prezzo": 4.00,
+                    "note": "33cl",
+                    "tag": []
+                },
+                {
+                    "nome": "Stronza Ti amo",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Birra dalla schiuma persistente, dal colore intenso con note speziate di pepe grazie all'aggiunta del 10% di riso vercellese.",
+                        "fr": "Bière à la mousse persistante, de couleur intense avec des notes épicées de poivre grâce à l'ajout de 10% de riz de Vercelli.",
+                        "en": "Beer with persistent foam, intense color and spiced notes of pepper thanks to 10% Vercelli rice."
+                    },
+                    "prezzo": 4.00,
+                    "note": "33cl",
+                    "tag": []
+                },
+                {
+                    "nome": "Stronza Pungente",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Birra che lascia un retrogusto di amaro e uno stuzzicante pizzicore.",
+                        "fr": "Bière qui laisse un arrière-goût amer et un picotement alléchant.",
+                        "en": "Beer that leaves a bitter aftertaste and a tantalizing tingle."
+                    },
+                    "prezzo": 4.00,
+                    "note": "33cl",
+                    "tag": []
+                },
+                {
+                    "nome": "Stronza Lunatica",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Birra chiara a bassa fermentazione, super beverina con 8,5% di alcol. Poca amarezza, adatta a qualsiasi momento.",
+                        "fr": "Bière blonde à basse fermentation, très facile à boire avec 8,5% d'alcool. Peu d'amertume, parfaite pour toute occasion.",
+                        "en": "Light lager, super drinkable at 8.5% alcohol. Low bitterness, perfect for any occasion."
+                    },
+                    "prezzo": 4.00,
+                    "note": "33cl",
+                    "tag": []
+                }
+            ]
+        },
+        {
+            "id": "birre-weihenstephaner",
+            "nome": {
+                "it": "Weihenstephaner",
+                "fr": "Weihenstephaner",
+                "en": "Weihenstephaner"
+            },
+            "items": [
+                {
+                    "nome": "Bionda Kronen",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Birra bionda classica",
+                        "fr": "Bière blonde classique",
+                        "en": "Classic blonde beer"
+                    },
+                    "prezzi": {
+                        "30cl": 4.00,
+                        "50cl": 6.00,
+                        "1L": 10.00
+                    },
+                    "tag": []
+                },
+                {
+                    "nome": "Rossa Sixtus",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Birra rossa",
+                        "fr": "Bière rouge",
+                        "en": "Red beer"
+                    },
+                    "prezzi": {
+                        "30cl": 4.00,
+                        "50cl": 6.00,
+                        "1L": 10.00
+                    },
+                    "tag": []
+                },
+                {
+                    "nome": "Double IPA",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Double IPA ad alta luppolatura",
+                        "fr": "Double IPA très houblonnée",
+                        "en": "Highly hopped Double IPA"
+                    },
+                    "prezzi": {
+                        "30cl": 5.00,
+                        "50cl": 7.00,
+                        "1L": 12.00
+                    },
+                    "tag": []
+                },
+                {
+                    "nome": "Senza Glutine",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Birra senza glutine",
+                        "fr": "Bière sans gluten",
+                        "en": "Gluten-free beer"
+                    },
+                    "prezzi": {
+                        "30cl": 4.50,
+                        "50cl": 6.50,
+                        "1L": 11.00
+                    },
+                    "tag": [
+                        "senza glutine"
+                    ]
+                },
+                {
+                    "nome": "Strong Lager",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Lager forte e corposa",
+                        "fr": "Lager forte et corsée",
+                        "en": "Strong and full-bodied lager"
+                    },
+                    "prezzi": {
+                        "30cl": 5.00,
+                        "50cl": 7.00,
+                        "1L": 12.00
+                    },
+                    "tag": []
+                }
+            ]
+        },
+        {
+            "id": "birre-leoni",
+            "nome": {
+                "it": "Agri Birrificio Leoni",
+                "fr": "Agri Birrificio Leoni",
+                "en": "Agri Birrificio Leoni"
+            },
+            "items": [
+                {
+                    "nome": "Émine",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Di segale. Omaggia il Pane Nero valdostano con note croccanti, acidità e aromi di malti di segale e orzo.",
+                        "fr": "De seigle. Hommage au Pain Noir valdôtain avec des notes croustillantes, acidité et arômes de malts de seigle et d'orge.",
+                        "en": "Rye beer. A tribute to Valdostan Black Bread with crunchy notes, acidity and aromas of rye and barley malts."
+                    },
+                    "prezzo": 5.00,
+                    "note": "33cl",
+                    "tag": []
+                },
+                {
+                    "nome": "Irondella",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Saison ambrata e leggermente amara con note di frutta matura, scorza d'arancia e pepe.",
+                        "fr": "Saison ambrée et légèrement amère avec des notes de fruits mûrs, zeste d'orange et poivre.",
+                        "en": "Amber Saison, slightly bitter with notes of ripe fruit, orange peel and pepper."
+                    },
+                    "prezzo": 5.00,
+                    "note": "33cl",
+                    "tag": []
+                },
+                {
+                    "nome": "LaDorée",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Pilsner raffinata che unisce sentori di miele, cereali e luppoli tedeschi.",
+                        "fr": "Pilsner raffinée qui unit des senteurs de miel, céréales et houblons allemands.",
+                        "en": "Refined Pilsner combining honey, grain and German hop aromas."
+                    },
+                    "prezzo": 5.00,
+                    "note": "33cl",
+                    "tag": []
+                }
+            ]
+        },
+        {
+            "id": "birre-baladin",
+            "nome": {
+                "it": "Birre Baladin",
+                "fr": "Bières Baladin",
+                "en": "Baladin Beers"
+            },
+            "items": [
+                {
+                    "nome": "Isaac",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Blanche giallo paglierino con note agrumate e speziate. Armonia di cereali e agrumi al palato.",
+                        "fr": "Blanche jaune paille avec des notes agrumées et épicées. Harmonie de céréales et agrumes en bouche.",
+                        "en": "Straw yellow blanche with citrus and spiced notes. Harmony of cereals and citrus on the palate."
+                    },
+                    "prezzo": 6.00,
+                    "note": "33cl",
+                    "tag": []
+                },
+                {
+                    "nome": "Nazionale",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Birra dal colore giallo intenso con profumi bilanciati di frutta, erbe e malto. Note di camomilla e agrumi.",
+                        "fr": "Bière de couleur jaune intense avec des arômes équilibrés de fruits, herbes et malt. Notes de camomille et agrumes.",
+                        "en": "Intense yellow beer with balanced aromas of fruit, herbs and malt. Chamomile and citrus notes."
+                    },
+                    "prezzo": 6.00,
+                    "note": "33cl",
+                    "tag": []
+                },
+                {
+                    "nome": "Nazionale Senza Glutine",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Birra gialla intensa senza glutine. Sottile nota secca dal riso, equilibrata con amaro del luppolo italiano.",
+                        "fr": "Bière jaune intense sans gluten. Légère note sèche du riz, équilibrée avec l'amertume du houblon italien.",
+                        "en": "Intense yellow gluten-free beer. Subtle dry note from rice, balanced with Italian hop bitterness."
+                    },
+                    "prezzo": 6.50,
+                    "note": "33cl",
+                    "tag": [
+                        "senza glutine"
+                    ]
+                },
+                {
+                    "nome": "Wayan",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Saison giallo carico con profumi complessi di fiori, timo, rosmarino e pepe.",
+                        "fr": "Saison jaune chargé avec des arômes complexes de fleurs, thym, romarin et poivre.",
+                        "en": "Deep yellow Saison with complex aromas of flowers, thyme, rosemary and pepper."
+                    },
+                    "prezzo": 6.00,
+                    "note": "33cl",
+                    "tag": []
+                },
+                {
+                    "nome": "Rock 'N' Roll",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Birra giallo carico con profumi pepati e speziati. Il cereale domina con un sottofondo di pepe e luppoli.",
+                        "fr": "Bière jaune chargé avec des arômes poivrés et épicés. La céréale domine avec un fond de poivre et houblons.",
+                        "en": "Deep yellow beer with peppery and spiced aromas. Grain dominates with a background of pepper and hops."
+                    },
+                    "prezzo": 6.00,
+                    "note": "33cl",
+                    "tag": []
+                },
+                {
+                    "nome": "Super",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Birra ambrata con profumi di frutta cotta, vaniglia, toffee e arancia. Note di biscotto e mandorla.",
+                        "fr": "Bière ambrée avec des arômes de fruits cuits, vanille, toffee et orange. Notes de biscuit et amande.",
+                        "en": "Amber beer with cooked fruit, vanilla, toffee and orange aromas. Biscuit and almond notes."
+                    },
+                    "prezzo": 6.00,
+                    "note": "33cl",
+                    "tag": []
+                },
+                {
+                    "nome": "Super Bitter",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Birra ambrata con profumi fruttati e caldi, note erbacee e agrumate. Luppolo evidente nel finale.",
+                        "fr": "Bière ambrée avec des arômes fruités et chauds, notes herbacées et agrumées. Houblon évident en finale.",
+                        "en": "Amber beer with fruity and warm aromas, herbal and citrus notes. Evident hop finish."
+                    },
+                    "prezzo": 6.00,
+                    "note": "33cl",
+                    "tag": []
+                },
+                {
+                    "nome": "Elixir",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Birra ambrata con profumi di cereale, biscotto e agrumi. Note di frutta secca, biscotto e vaniglia.",
+                        "fr": "Bière ambrée avec des arômes de céréale, biscuit et agrumes. Notes de fruits secs, biscuit et vanille.",
+                        "en": "Amber beer with cereal, biscuit and citrus aromas. Dried fruit, biscuit and vanilla notes."
+                    },
+                    "prezzo": 6.00,
+                    "note": "33cl",
+                    "tag": []
+                },
+                {
+                    "nome": "Nora",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Birra oro carico con profumi fruttati, resinosi e di incenso. Finale fresco di zenzero e agrumi.",
+                        "fr": "Bière or chargé avec des arômes fruités, résineux et d'encens. Finale fraîche de gingembre et agrumes.",
+                        "en": "Deep gold beer with fruity, resinous and incense aromas. Fresh ginger and citrus finish."
+                    },
+                    "prezzi": {
+                        "33cl": 6.00,
+                        "75cl": 14.00
+                    },
+                    "tag": []
+                },
+                {
+                    "nome": "Leon",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Birra marrone con profumo fruttato e di caffè, note legnose e di cioccolato. Corposa e complessa.",
+                        "fr": "Bière brune avec un arôme fruité et de café, notes boisées et de chocolat. Corsée et complexe.",
+                        "en": "Brown beer with fruity and coffee aroma, woody and chocolate notes. Full-bodied and complex."
+                    },
+                    "prezzi": {
+                        "75cl": 14.00,
+                        "150cl": 26.00
+                    },
+                    "tag": []
+                }
+            ]
+        },
+        {
+            "id": "birra-analcolica",
+            "nome": {
+                "it": "Birra Analcolica",
+                "fr": "Bière Sans Alcool",
+                "en": "Non-Alcoholic Beer"
+            },
+            "items": [
+                {
+                    "nome": "Morei",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Devi guidare? La nostra birra analcolica.",
+                        "fr": "Tu dois conduire? Notre bière sans alcool.",
+                        "en": "Need to drive? Our non-alcoholic beer."
+                    },
+                    "prezzo": 3.50,
+                    "note": "33cl",
+                    "tag": [
+                        "analcolica"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "vini-rossi",
+            "nome": {
+                "it": "Vini Rossi",
+                "fr": "Vins Rouges",
+                "en": "Red Wines"
+            },
+            "items": [
+                {
+                    "nome": "Nebbiolo",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Dante Rivei. Uve nebbiolo delle colline Bricco di Neive, 12 mesi in botti di rovere. Prugna, frutti rossi e spezie dolci.",
+                        "fr": "Dante Rivei. Raisins nebbiolo des collines Bricco di Neive, 12 mois en fûts de chêne. Prune, fruits rouges et épices douces.",
+                        "en": "Dante Rivei. Nebbiolo grapes from Bricco di Neive hills, 12 months in oak barrels. Plum, red fruits and sweet spices."
+                    },
+                    "prezzo": 22.00,
+                    "tag": []
+                },
+                {
+                    "nome": "Valpolicella Egle",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Albino Armani. Corvina, rondinella e corvinone. Note di frutta rossa, susina, ciclamino e lieve nota balsamica.",
+                        "fr": "Albino Armani. Corvina, rondinella et corvinone. Notes de fruits rouges, prune, cyclamen et légère note balsamique.",
+                        "en": "Albino Armani. Corvina, rondinella and corvinone. Red fruit, plum, cyclamen and light balsamic notes."
+                    },
+                    "prezzo": 22.00,
+                    "tag": []
+                },
+                {
+                    "nome": "Cornalin Le Clocher",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Vino originario di Jovençan. Rosso rubino con note di tanno, capolino, pepe nero e chiodi di garofano.",
+                        "fr": "Vin originaire de Jovençan. Rouge rubis avec des notes de tanin, pepe nero et clou de girofle.",
+                        "en": "Wine from Jovençan. Ruby red with tannin, black pepper and clove notes."
+                    },
+                    "prezzo": 22.00,
+                    "tag": [
+                        "locale"
+                    ]
+                },
+                {
+                    "nome": "Pinot Nero Les Crêtes",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "100% Pinot Nero. Fragola e frutti di bosco, tannini vellutati, finale fresco e minerale.",
+                        "fr": "100% Pinot Noir. Fraise et fruits des bois, tannins veloutés, finale fraîche et minérale.",
+                        "en": "100% Pinot Noir. Strawberry and wild berries, velvety tannins, fresh and mineral finish."
+                    },
+                    "prezzo": 28.00,
+                    "tag": []
+                },
+                {
+                    "nome": "La Sabla Les Crêtes",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Blend di varietà a bacca nera. Rosso fresco con tannini morbidi, lampone e viola. Finale intenso e persistente.",
+                        "fr": "Blend de variétés à baie noire. Rouge frais avec tannins doux, framboise et violette. Finale intense et persistante.",
+                        "en": "Blend of black grape varieties. Fresh red with soft tannins, raspberry and violet. Intense and persistent finish."
+                    },
+                    "prezzo": 25.00,
+                    "tag": []
+                },
+                {
+                    "nome": "Pinot Nero Le Clocher",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Bouquet ricco di susine e lamponi con note di cioccolato bianco. Acidità e tannini morbidi.",
+                        "fr": "Bouquet riche de prunes et framboises avec des notes de chocolat blanc. Acidité et tannins doux.",
+                        "en": "Rich bouquet of plums and raspberries with white chocolate notes. Acidity and soft tannins."
+                    },
+                    "prezzi": {
+                        "bottiglia": 18.00,
+                        "calice": 3.50
+                    },
+                    "tag": []
+                },
+                {
+                    "nome": "Torrette Le Clocher",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Petit Rouge valdostano. Rosso rubino con profumi freschi di frutti rossi e note speziate. Fresco e vivace.",
+                        "fr": "Petit Rouge valdôtain. Rouge rubis avec des arômes frais de fruits rouges et notes épicées. Frais et vif.",
+                        "en": "Valdostan Petit Rouge. Ruby red with fresh red fruit aromas and spiced notes. Fresh and lively."
+                    },
+                    "prezzi": {
+                        "bottiglia": 18.00,
+                        "calice": 3.50
+                    },
+                    "tag": [
+                        "locale"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "vini-bianchi",
+            "nome": {
+                "it": "Vini Bianchi",
+                "fr": "Vins Blancs",
+                "en": "White Wines"
+            },
+            "items": [
+                {
+                    "nome": "Chardonnay Les Crêtes",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "100% Chardonnay. Profilo morbido, sapido e minerale con note di banana e susina.",
+                        "fr": "100% Chardonnay. Profil doux, savoureux et minéral avec des notes de banane et prune.",
+                        "en": "100% Chardonnay. Soft, savory and mineral profile with banana and plum notes."
+                    },
+                    "prezzo": 26.00,
+                    "tag": []
+                },
+                {
+                    "nome": "Petite Arvine Les Crêtes",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "100% Petite Arvine. Verticalità, freschezza e bouquet agrumato con note di gelsomino, peonia e cedro.",
+                        "fr": "100% Petite Arvine. Verticalité, fraîcheur et bouquet agrumé avec des notes de jasmin, pivoine et cèdre.",
+                        "en": "100% Petite Arvine. Verticality, freshness and citrus bouquet with jasmine, peony and cedar notes."
+                    },
+                    "prezzo": 26.00,
+                    "tag": [
+                        "locale"
+                    ]
+                },
+                {
+                    "nome": "Verdicchio Origini",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Fattoria Nannì. 100% Verdicchio. Sentori di frutta, fiori e agrumi. Fresco con sapidità piacevole.",
+                        "fr": "Fattoria Nannì. 100% Verdicchio. Senteurs de fruits, fleurs et agrumes. Frais avec une agréable saveur.",
+                        "en": "Fattoria Nannì. 100% Verdicchio. Fruit, flower and citrus aromas. Fresh with pleasant savory taste."
+                    },
+                    "prezzo": 27.00,
+                    "tag": []
+                },
+                {
+                    "nome": "Langhe Arneis",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Conte Marrone. 100% Arneis. Acacia, agrumi, mela verde e minerali. Fresco e sapido.",
+                        "fr": "Conte Marrone. 100% Arneis. Acacia, agrumes, pomme verte et minéraux. Frais et savoureux.",
+                        "en": "Conte Marrone. 100% Arneis. Acacia, citrus, green apple and minerals. Fresh and savory."
+                    },
+                    "prezzo": 25.00,
+                    "tag": []
+                },
+                {
+                    "nome": "Pinot Grigio Le Clocher",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "100% Pinot Grigio. Frutti gialli maturi, note floreali delicate. Piacevole acidità e sapidità.",
+                        "fr": "100% Pinot Grigio. Fruits jaunes mûrs, notes florales délicates. Acidité et saveur agréables.",
+                        "en": "100% Pinot Grigio. Ripe yellow fruits, delicate floral notes. Pleasant acidity and savory taste."
+                    },
+                    "prezzo": 18.00,
+                    "tag": []
+                },
+                {
+                    "nome": "Gewurztraminer Le Clocher",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Note fruttate e floreali nitide, aromi di banane mature, pesche, fiori di acacia e sambuco.",
+                        "fr": "Notes fruitées et florales nettes, arômes de bananes mûres, pêches, fleurs d'acacia et sureau.",
+                        "en": "Clear fruity and floral notes, aromas of ripe bananas, peaches, acacia flowers and elderberry."
+                    },
+                    "prezzi": {
+                        "bottiglia": 18.00,
+                        "calice": 3.50
+                    },
+                    "tag": []
+                },
+                {
+                    "nome": "Petit Arvine Le Clocher",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Il Bianco delle Alpi. Frutta esotica, frutti gialli maturi, fiori di sambuco e iris bianco. Mineralità e sapidità.",
+                        "fr": "Le Blanc des Alpes. Fruits exotiques, fruits jaunes mûrs, fleurs de sureau et iris blanc. Minéralité et saveur.",
+                        "en": "The White of the Alps. Exotic fruit, ripe yellow fruits, elderflower and white iris. Minerality and savory taste."
+                    },
+                    "prezzo": 20.00,
+                    "tag": [
+                        "locale"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "bollicine",
+            "nome": {
+                "it": "Bollicine",
+                "fr": "Bulles",
+                "en": "Sparkling Wines"
+            },
+            "items": [
+                {
+                    "nome": "Terre Ducco Saten",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Franciacorta. 100% Chardonnay. Giallo brillante, frutta a polpa bianca e note floreali. Perlage fine e persistente.",
+                        "fr": "Franciacorta. 100% Chardonnay. Jaune brillant, fruits à chair blanche et notes florales. Perlage fin et persistant.",
+                        "en": "Franciacorta. 100% Chardonnay. Brilliant yellow, white pulp fruit and floral notes. Fine and persistent perlage."
+                    },
+                    "prezzo": 30.00,
+                    "tag": []
+                },
+                {
+                    "nome": "Conti Ducco",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Franciacorta Blanc de Blancs, 100% Chardonnay. Note di agrumi canditi, frutta a polpa bianca e vaniglia.",
+                        "fr": "Franciacorta Blanc de Blancs, 100% Chardonnay. Notes d'agrumes confits, fruits à chair blanche et vanille.",
+                        "en": "Franciacorta Blanc de Blancs, 100% Chardonnay. Candied citrus, white pulp fruit and vanilla notes."
+                    },
+                    "prezzo": 32.00,
+                    "tag": []
+                },
+                {
+                    "nome": "Terre Ducco Rosé",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Franciacorta, 100% Pinot Nero. Rosa quarzo antico, profumo complesso e intensamente fruttato.",
+                        "fr": "Franciacorta, 100% Pinot Noir. Rose quartz ancien, parfum complexe et intensément fruité.",
+                        "en": "Franciacorta, 100% Pinot Noir. Ancient rose quartz color, complex and intensely fruity aroma."
+                    },
+                    "prezzo": 32.00,
+                    "tag": []
+                },
+                {
+                    "nome": "Neblù Brut Nature Les Crêtes",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Blend di varietà internazionale e autoctona. Elegante e sapido con note di ciliegia e piccoli frutti rossi.",
+                        "fr": "Blend de variétés internationale et autochtone. Élégant et savoureux avec des notes de cerise et petits fruits rouges.",
+                        "en": "Blend of international and native varieties. Elegant and savory with cherry and small red fruit notes."
+                    },
+                    "prezzo": 32.00,
+                    "tag": [
+                        "locale"
+                    ]
+                },
+                {
+                    "nome": "Prosecco Fantinel",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Giallo paglierino con perlage sottile, delicate essenze floreali. Morbido e vellutato al palato.",
+                        "fr": "Jaune paille avec perlage fin, délicates essences florales. Doux et velouté en bouche.",
+                        "en": "Straw yellow with fine perlage, delicate floral essences. Soft and velvety on the palate."
+                    },
+                    "prezzi": {
+                        "bottiglia": 18.00,
+                        "calice": 3.50
+                    },
+                    "tag": []
+                }
+            ]
+        },
+        {
+            "id": "vini-rose",
+            "nome": {
+                "it": "Vini Rosé",
+                "fr": "Vins Rosé",
+                "en": "Rosé Wines"
+            },
+            "items": [
+                {
+                    "nome": "Rosé Les Crêtes",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "100% Petit Rouge. Profilo delicato e floreale con aromi di fragola, ribes, melone e pesca bianca.",
+                        "fr": "100% Petit Rouge. Profil délicat et floral avec des arômes de fraise, cassis, melon et pêche blanche.",
+                        "en": "100% Petit Rouge. Delicate and floral profile with strawberry, blackcurrant, melon and white peach aromas."
+                    },
+                    "prezzo": 22.00,
+                    "tag": [
+                        "locale"
+                    ]
+                },
+                {
+                    "nome": "Chanì Le Clocher",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "100% Cornalin. Fresco e beverino con note fruttate e floreali. Ben equilibrato.",
+                        "fr": "100% Cornalin. Frais et facile à boire avec des notes fruitées et florales. Bien équilibré.",
+                        "en": "100% Cornalin. Fresh and easy-drinking with fruity and floral notes. Well balanced."
+                    },
+                    "prezzo": 20.00,
+                    "tag": [
+                        "locale"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "vini-passito",
+            "nome": {
+                "it": "Vini Passito",
+                "fr": "Vins Passito",
+                "en": "Passito Wines"
+            },
+            "items": [
+                {
+                    "nome": "Moscato Duchessa Lia",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Ottimo per accompagnare dolci e dessert. Giallo paglierino, naturalmente dolce, fruttato e armonioso.",
+                        "fr": "Excellent pour accompagner desserts et sucreries. Jaune paille, naturellement doux, fruité et harmonieux.",
+                        "en": "Excellent with sweets and desserts. Straw yellow, naturally sweet, fruity and harmonious."
+                    },
+                    "prezzo": 18.00,
+                    "tag": []
+                },
+                {
+                    "nome": "Ben Rye Donnafugata",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Passito di Pantelleria DOC 0,375L. Ambra brillante con sentori di albicocche fresche e arance candite.",
+                        "fr": "Passito di Pantelleria DOC 0,375L. Ambre brillant avec des senteurs d'abricots frais et d'oranges confites.",
+                        "en": "Passito di Pantelleria DOC 0.375L. Brilliant amber with fresh apricot and candied orange aromas."
+                    },
+                    "prezzo": 28.00,
+                    "tag": []
+                }
+            ]
+        },
+        {
+            "id": "vini-sfusi",
+            "nome": {
+                "it": "Vini Sfusi",
+                "fr": "Vins en Carafe",
+                "en": "House Wines"
+            },
+            "items": [
+                {
+                    "nome": "Barbera Rosso",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Vino rosso della casa",
+                        "fr": "Vin rouge de la maison",
+                        "en": "House red wine"
+                    },
+                    "prezzi": {
+                        "0.25L": 3.00,
+                        "0.5L": 5.00,
+                        "1L": 9.00
+                    },
+                    "tag": []
+                },
+                {
+                    "nome": "Chardonnay Bianco",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Vino bianco della casa",
+                        "fr": "Vin blanc de la maison",
+                        "en": "House white wine"
+                    },
+                    "prezzi": {
+                        "0.25L": 3.00,
+                        "0.5L": 5.00,
+                        "1L": 9.00
+                    },
+                    "tag": []
+                }
+            ]
+        },
+        {
+            "id": "bibite",
+            "nome": {
+                "it": "Bibite",
+                "fr": "Boissons",
+                "en": "Soft Drinks"
+            },
+            "items": [
+                {
+                    "nome": "Coca Cola",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Lattina 33cl",
+                        "fr": "Canette 33cl",
+                        "en": "Can 33cl"
+                    },
+                    "prezzo": 3.00,
+                    "tag": []
+                },
+                {
+                    "nome": "Coca Cola Zero",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Lattina 33cl",
+                        "fr": "Canette 33cl",
+                        "en": "Can 33cl"
+                    },
+                    "prezzo": 3.00,
+                    "tag": []
+                },
+                {
+                    "nome": "Fanta",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Lattina 33cl",
+                        "fr": "Canette 33cl",
+                        "en": "Can 33cl"
+                    },
+                    "prezzo": 3.00,
+                    "tag": []
+                },
+                {
+                    "nome": "Sprite",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Lattina 33cl",
+                        "fr": "Canette 33cl",
+                        "en": "Can 33cl"
+                    },
+                    "prezzo": 3.00,
+                    "tag": []
+                },
+                {
+                    "nome": "The alla pesca",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Lattina 33cl",
+                        "fr": "Canette 33cl",
+                        "en": "Can 33cl"
+                    },
+                    "prezzo": 3.00,
+                    "tag": []
+                },
+                {
+                    "nome": "The al limone",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Lattina 33cl",
+                        "fr": "Canette 33cl",
+                        "en": "Can 33cl"
+                    },
+                    "prezzo": 3.00,
+                    "tag": []
+                },
+                {
+                    "nome": "Chinotto",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Lattina 33cl",
+                        "fr": "Canette 33cl",
+                        "en": "Can 33cl"
+                    },
+                    "prezzo": 3.00,
+                    "tag": []
+                },
+                {
+                    "nome": "Lemonsoda",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Lattina 33cl",
+                        "fr": "Canette 33cl",
+                        "en": "Can 33cl"
+                    },
+                    "prezzo": 3.00,
+                    "tag": []
+                },
+                {
+                    "nome": "Acqua Tonica",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Lattina 33cl",
+                        "fr": "Canette 33cl",
+                        "en": "Can 33cl"
+                    },
+                    "prezzo": 3.00,
+                    "tag": []
+                },
+                {
+                    "nome": "Acqua Naturale",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Panna 75cl",
+                        "fr": "Panna 75cl",
+                        "en": "Panna 75cl"
+                    },
+                    "prezzo": 3.00,
+                    "tag": []
+                },
+                {
+                    "nome": "Acqua Frizzante",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "San Pellegrino 75cl",
+                        "fr": "San Pellegrino 75cl",
+                        "en": "San Pellegrino 75cl"
+                    },
+                    "prezzo": 3.00,
+                    "tag": []
+                },
+                {
+                    "nome": "Coca Cola bottiglia",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Bottiglia in vetro 1L",
+                        "fr": "Bouteille en verre 1L",
+                        "en": "Glass bottle 1L"
+                    },
+                    "prezzo": 6.50,
+                    "tag": []
+                }
+            ]
+        },
+        {
+            "id": "succhi",
+            "nome": {
+                "it": "Succhi",
+                "fr": "Jus de Fruits",
+                "en": "Fruit Juices"
+            },
+            "items": [
+                {
+                    "nome": "Succo Ace",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "20cl",
+                        "fr": "20cl",
+                        "en": "20cl"
+                    },
+                    "prezzo": 2.50,
+                    "tag": []
+                },
+                {
+                    "nome": "Succo Pesca",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "20cl",
+                        "fr": "20cl",
+                        "en": "20cl"
+                    },
+                    "prezzo": 2.50,
+                    "tag": []
+                },
+                {
+                    "nome": "Succo Pera",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "20cl",
+                        "fr": "20cl",
+                        "en": "20cl"
+                    },
+                    "prezzo": 2.50,
+                    "tag": []
+                },
+                {
+                    "nome": "Succo Arancia",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "20cl",
+                        "fr": "20cl",
+                        "en": "20cl"
+                    },
+                    "prezzo": 2.50,
+                    "tag": []
+                },
+                {
+                    "nome": "Succo Albicocca",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "20cl",
+                        "fr": "20cl",
+                        "en": "20cl"
+                    },
+                    "prezzo": 2.50,
+                    "tag": []
+                },
+                {
+                    "nome": "Succo Mela Valle d'Aosta",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "33cl — prodotto locale",
+                        "fr": "33cl — produit local",
+                        "en": "33cl — local product"
+                    },
+                    "prezzo": 3.00,
+                    "tag": [
+                        "locale"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "aperitivi",
+            "nome": {
+                "it": "Aperitivi & Caffè",
+                "fr": "Apéritifs & Café",
+                "en": "Aperitifs & Coffee"
+            },
+            "items": [
+                {
+                    "nome": "Crodino",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Aperitivo analcolico",
+                        "fr": "Apéritif sans alcool",
+                        "en": "Non-alcoholic aperitif"
+                    },
+                    "prezzo": 3.00,
+                    "tag": [
+                        "analcolica"
+                    ]
+                },
+                {
+                    "nome": "San Bitter Rosso",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Aperitivo analcolico",
+                        "fr": "Apéritif sans alcool",
+                        "en": "Non-alcoholic aperitif"
+                    },
+                    "prezzo": 3.00,
+                    "tag": [
+                        "analcolica"
+                    ]
+                },
+                {
+                    "nome": "San Bitter Bianco",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Aperitivo analcolico",
+                        "fr": "Apéritif sans alcool",
+                        "en": "Non-alcoholic aperitif"
+                    },
+                    "prezzo": 3.00,
+                    "tag": [
+                        "analcolica"
+                    ]
+                },
+                {
+                    "nome": "Calice di Prosecco",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Calice",
+                        "fr": "Verre",
+                        "en": "Glass"
+                    },
+                    "prezzo": 3.50,
+                    "tag": []
+                },
+                {
+                    "nome": "Aperol Spritz",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Aperol, Prosecco e soda",
+                        "fr": "Aperol, Prosecco et soda",
+                        "en": "Aperol, Prosecco and soda"
+                    },
+                    "prezzo": 6.00,
+                    "tag": []
+                },
+                {
+                    "nome": "Campari Spritz",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Campari, Prosecco e soda",
+                        "fr": "Campari, Prosecco et soda",
+                        "en": "Campari, Prosecco and soda"
+                    },
+                    "prezzo": 6.00,
+                    "tag": []
+                },
+                {
+                    "nome": "Hugo",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Prosecco, sciroppo di sambuco, menta e soda",
+                        "fr": "Prosecco, sirop de sureau, menthe et soda",
+                        "en": "Prosecco, elderflower syrup, mint and soda"
+                    },
+                    "prezzo": 6.00,
+                    "tag": []
+                },
+                {
+                    "nome": "Caffè",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Espresso",
+                        "fr": "Café espresso",
+                        "en": "Espresso"
+                    },
+                    "prezzo": 1.50,
+                    "tag": []
+                },
+                {
+                    "nome": "Caffè decaffeinato",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Espresso decaffeinato",
+                        "fr": "Café décaféiné",
+                        "en": "Decaf espresso"
+                    },
+                    "prezzo": 1.50,
+                    "tag": []
+                },
+                {
+                    "nome": "Caffè d'orzo",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Caffè d'orzo",
+                        "fr": "Café d'orge",
+                        "en": "Barley coffee"
+                    },
+                    "prezzo": 1.50,
+                    "tag": []
+                },
+                {
+                    "nome": "Caffè Ginseng",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Caffè al ginseng",
+                        "fr": "Café au ginseng",
+                        "en": "Ginseng coffee"
+                    },
+                    "prezzo": 2.00,
+                    "tag": []
+                },
+                {
+                    "nome": "Caffè corretto",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Espresso con liquore a scelta",
+                        "fr": "Café avec liqueur au choix",
+                        "en": "Espresso with liqueur of choice"
+                    },
+                    "prezzo": 2.50,
+                    "tag": []
+                },
+                {
+                    "nome": "Cappuccino",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Cappuccino",
+                        "fr": "Cappuccino",
+                        "en": "Cappuccino"
+                    },
+                    "prezzo": 2.00,
+                    "tag": []
+                },
+                {
+                    "nome": "Thé",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Thé caldo",
+                        "fr": "Thé chaud",
+                        "en": "Hot tea"
+                    },
+                    "prezzo": 2.00,
+                    "tag": []
+                },
+                {
+                    "nome": "Tisane",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Tisana a scelta",
+                        "fr": "Tisane au choix",
+                        "en": "Herbal tea of choice"
+                    },
+                    "prezzo": 2.00,
+                    "tag": []
+                }
+            ]
+        }
+    ]
+}

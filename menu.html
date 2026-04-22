@@ -4,14 +4,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Pizzeria Avalon di Jovençan. Vieni a trovarci! Siamo aperti Dal giovedì al lunedì a cena. Ti aspettiamo!">
+  <meta name="description"
+    content="Pizzeria Avalon di Jovençan. Vieni a trovarci! Siamo aperti Dal giovedì al lunedì a cena. Ti aspettiamo!">
 
   <title>Menu - Pizzeria Avalon</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,100..900;1,100..900&family=Epilogue:ital,wght@0,100..900;1,100..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,100..900;1,100..900&family=Epilogue:ital,wght@0,100..900;1,100..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap"
+    rel="stylesheet">
   <!-- CSS -->
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
@@ -21,13 +24,14 @@
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
   <!--COOKIES-->
-  <script type="text/javascript" src="https://embeds.iubenda.com/widgets/1e3d3707-fe99-4f69-9752-2f4ad9fa1655.js"></script>
+  <script type="text/javascript"
+    src="https://embeds.iubenda.com/widgets/1e3d3707-fe99-4f69-9752-2f4ad9fa1655.js"></script>
 
 </head>
 
 
 <body>
-    <div class="lang-switcher" id="lang-switcher">
+  <div class="lang-switcher" id="lang-switcher">
     <button class="lang-switcher__toggle" id="lang-toggle" aria-label="Cambia lingua">
       <span id="lang-current-flag">🇮🇹</span>
       <span id="lang-current-code">IT</span>
@@ -66,103 +70,107 @@
   </header>
 
 
-    <main class="page-wrapper">
-  
-  <section class="menu-header">
-    <div class="menu-header__content">
+  <main class="page-wrapper">
+
+    <section class="menu-header">
+      <div class="menu-header__content">
         <h1 class="menu-header__title">
-        <span data-i18n="menu.titolo">Il nostro</span>
-        <em>Menu</em>
+          <span data-i18n="menu.titolo">Il nostro</span>
+          <em>Menu</em>
         </h1>
         <p class="menu-header__description" data-i18n="menu.description">
-            Impasti a lunga maturazione con ingredienti selezionati.</p>
+          Impasti a lunga maturazione con ingredienti selezionati.</p>
+      </div>
+    </section>
+
+
+    <p class="menu-guida" data-i18n="menu.guida">Cosa vuoi ordinare?</p>
+    <div class="menu-macrogruppi" id="menu-macrogruppi">
+      <button class="macrogruppo active" data-file="menu-cibo.json">
+        🍕<span data-i18n="menu.cibo">Cibo</span></button>
+      <button class="macrogruppo" data-file="menu-bevande.json">
+        🍷<span data-i18n="menu.bevande">Bevande</span></button>
+      <button class="macrogruppo" data-file="menu-dolci.json">
+        🍰<span data-i18n="menu.dolci">Dessert</span>
+      </button>
     </div>
-  </section>
 
-  <div class="menu-tabs" id="menu-tabs">
-    <!-- i tab delle categorie — generati da JS -->
-  </div>
+    <div class="menu-tabs" id="menu-tabs">
+      <!-- i tab delle categorie — generati da JS -->
+    </div>
 
-  <div class="menu-lista" id="menu-lista">
-    <!-- le card delle pizze — generate da JS -->
-  </div>
+    <div class="menu-lista" id="menu-lista">
+      <!-- le card delle pizze — generate da JS -->
+    </div>
 
-</main>
+  </main>
 
-<footer class="footer">
+  <footer class="footer">
     <div class="footer__overlay" aria-hidden="true"></div>
 
-  <div class="footer__content">
-    <h2 class="footer__title">Pizzeria Avalon</h2>
-    
-    <address class="footer__address">
-      <div class="footer__contact-row">
-        <i data-lucide="map-pin"></i>
-        <p data-i18n="footer.indirizzo">Fraz. Etral 7, Jovençan (AO)</p>
-      </div>
-      <div class="footer__contact-row">
-        <i data-lucide="phone"></i>
-        <a href="tel:+390165250300"> +39 0165 250300</a>
-      </div>
-      <div class="footer__contact-row">
-        <i data-lucide="mail"></i>
-        <a href="mailto:avalon.jovencan@gmail.com">avalon.jovencan@gmail.com</a>
-      </div>
-      <div class="footer__contact-row">
-        <i data-lucide="clock"></i>
-        <p data-i18n="footer.orari">Gio–Lun 18:00–23:00</p>
-      </div>
-    </address>
-  </div>
+    <div class="footer__content">
+      <h2 class="footer__title">Pizzeria Avalon</h2>
 
-  <div class="footer__social">
-    <a href="https://www.facebook.com/pizzeriaavalon" 
-       target="_blank" 
-       rel="noopener noreferrer" 
-       class="footer__social-link"
-       aria-label="Facebook di Pizzeria Avalon">
-      <i data-lucide="circle-fading-plus"></i> Facebook
-    </a>
-    <a href="https://www.instagram.com/pizzeriaavalon/" 
-       target="_blank" 
-       rel="noopener noreferrer" 
-       class="footer__social-link"
-       aria-label="Instagram di Pizzeria Avalon">
-      <i data-lucide="camera"> </i> Instagram
-    </a>
-  </div>
+      <address class="footer__address">
+        <div class="footer__contact-row">
+          <i data-lucide="map-pin"></i>
+          <p data-i18n="footer.indirizzo">Fraz. Etral 7, Jovençan (AO)</p>
+        </div>
+        <div class="footer__contact-row">
+          <i data-lucide="phone"></i>
+          <a href="tel:+390165250300"> +39 0165 250300</a>
+        </div>
+        <div class="footer__contact-row">
+          <i data-lucide="mail"></i>
+          <a href="mailto:avalon.jovencan@gmail.com">avalon.jovencan@gmail.com</a>
+        </div>
+        <div class="footer__contact-row">
+          <i data-lucide="clock"></i>
+          <p data-i18n="footer.orari">Gio–Lun 18:00–23:00</p>
+        </div>
+      </address>
+    </div>
 
-  <div class="footer__legal">
-    <a href="https://www.iubenda.com/privacy-policy/66195849" 
-       class="iubenda-white iubenda-noiframe iubenda-embed" 
-       title="Privacy Policy">Privacy Policy</a>
-    <a href="https://www.iubenda.com/privacy-policy/66195849/cookie-policy" 
-       class="iubenda-white iubenda-noiframe iubenda-embed" 
-       title="Cookie Policy">Cookie Policy</a>
-    <script type="text/javascript">
-      (function (w,d) {
-        var loader = function () {
-          var s = d.createElement("script"), 
-              tag = d.getElementsByTagName("script")[0]; 
-          s.src="https://cdn.iubenda.com/iubenda.js"; 
-          tag.parentNode.insertBefore(s,tag);
-        }; 
-        if(w.addEventListener){w.addEventListener("load", loader, false);}
-        else if(w.attachEvent){w.attachEvent("onload", loader);}
-        else{w.onload = loader;}
-      })(window, document);
-    </script>
-  </div>
+    <div class="footer__social">
+      <a href="https://www.facebook.com/pizzeriaavalon" target="_blank" rel="noopener noreferrer"
+        class="footer__social-link" aria-label="Facebook di Pizzeria Avalon">
+        <i data-lucide="circle-fading-plus"></i> Facebook
+      </a>
+      <a href="https://www.instagram.com/pizzeriaavalon/" target="_blank" rel="noopener noreferrer"
+        class="footer__social-link" aria-label="Instagram di Pizzeria Avalon">
+        <i data-lucide="camera"> </i> Instagram
+      </a>
+    </div>
 
-  <p class="footer__text" data-i18n="footer.copyright">© 1994–2025 Pizzeria Avalon. Tutti i diritti riservati.</p>
-</footer>
+    <div class="footer__legal">
+      <a href="https://www.iubenda.com/privacy-policy/66195849" class="iubenda-white iubenda-noiframe iubenda-embed"
+        title="Privacy Policy">Privacy Policy</a>
+      <a href="https://www.iubenda.com/privacy-policy/66195849/cookie-policy"
+        class="iubenda-white iubenda-noiframe iubenda-embed" title="Cookie Policy">Cookie Policy</a>
+      <script type="text/javascript">
+        (function (w, d) {
+          var loader = function () {
+            var s = d.createElement("script"),
+              tag = d.getElementsByTagName("script")[0];
+            s.src = "https://cdn.iubenda.com/iubenda.js";
+            tag.parentNode.insertBefore(s, tag);
+          };
+          if (w.addEventListener) { w.addEventListener("load", loader, false); }
+          else if (w.attachEvent) { w.attachEvent("onload", loader); }
+          else { w.onload = loader; }
+        })(window, document);
+      </script>
+    </div>
+
+    <p class="footer__text" data-i18n="footer.copyright">© 1994–2025 Pizzeria Avalon. Tutti i diritti riservati.</p>
+  </footer>
 
   <!-- JS -->
   <script src="js/i18n.js"></script>
   <script src="js/nav.js"></script>
   <script src="js/menu.js"></script>
 
-  
+
   <script>lucide.createIcons();</script>
 
 </body>

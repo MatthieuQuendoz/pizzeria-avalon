@@ -1,0 +1,371 @@
+{
+    "categorie": [
+        {
+            "id": "pizze-dolci",
+            "nome": {
+                "it": "Pizze Dolci",
+                "fr": "Pizzas Sucrées",
+                "en": "Sweet Pizzas"
+            },
+            "items": [
+                {
+                    "nome": "Nutella",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Pizza alla nutella con zucchero a velo e panna al centro",
+                        "fr": "Pizza à la nutella avec sucre glace et crème chantilly au centre",
+                        "en": "Nutella pizza with powdered sugar and whipped cream in the center"
+                    },
+                    "prezzo": 8.00,
+                    "tag": [
+                        "vegetariana"
+                    ],
+                    "note": {
+                        "it": "Aggiunte: Panna montata +€1 · Riso soffiato +€1 · Cocco +€1",
+                        "fr": "Suppléments: Crème chantilly +€1 · Riz soufflé +€1 · Noix de coco +€1",
+                        "en": "Extras: Whipped cream +€1 · Puffed rice +€1 · Coconut +€1"
+                    }
+                },
+                {
+                    "nome": "Mele",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Pizza con fette di mele e amaretto con zucchero a velo e panna al centro",
+                        "fr": "Pizza aux tranches de pommes et amaretto avec sucre glace et crème au centre",
+                        "en": "Pizza with apple slices and amaretto with powdered sugar and cream in the center"
+                    },
+                    "prezzo": 10.00,
+                    "tag": [
+                        "vegetariana"
+                    ]
+                },
+                {
+                    "nome": "Mele e cannella",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Pizza con fette di mele, amaretto e cannella con zucchero a velo e panna al centro",
+                        "fr": "Pizza aux tranches de pommes, amaretto et cannelle avec sucre glace et crème au centre",
+                        "en": "Pizza with apple slices, amaretto and cinnamon with powdered sugar and cream in the center"
+                    },
+                    "prezzo": 10.00,
+                    "tag": [
+                        "vegetariana"
+                    ]
+                },
+                {
+                    "nome": "Pere e cioccolato",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Pizza alle pere con scaglie di cioccolato fondente, maraschino, zucchero a velo e panna montata al centro",
+                        "fr": "Pizza aux poires avec copeaux de chocolat noir, marasquin, sucre glace et crème chantilly au centre",
+                        "en": "Pizza with pears and dark chocolate shavings, maraschino, powdered sugar and whipped cream in the center"
+                    },
+                    "prezzo": 10.00,
+                    "tag": [
+                        "vegetariana"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "fagottini",
+            "nome": {
+                "it": "Fagottini",
+                "fr": "Fagottini",
+                "en": "Fagottini"
+            },
+            "items": [
+                {
+                    "nome": "Nutella",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "2 piccoli calzoni ripieni di nutella con zucchero a velo",
+                        "fr": "2 petits calzones farcis de nutella avec sucre glace",
+                        "en": "2 small calzones filled with nutella and powdered sugar"
+                    },
+                    "prezzo": 9.00,
+                    "tag": [
+                        "vegetariana"
+                    ]
+                },
+                {
+                    "nome": "Nutella e mascarpone",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "2 piccoli calzoni ripieni di nutella e mascarpone con zucchero a velo",
+                        "fr": "2 petits calzones farcis de nutella et mascarpone avec sucre glace",
+                        "en": "2 small calzones filled with nutella and mascarpone with powdered sugar"
+                    },
+                    "prezzo": 10.00,
+                    "tag": [
+                        "vegetariana"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "affogati",
+            "nome": {
+                "it": "Affogati",
+                "fr": "Affogati",
+                "en": "Affogati"
+            },
+            "items": [
+                {
+                    "nome": "Affogato al caffè",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Gelato alle creme con caffè",
+                        "fr": "Glace à la crème avec café",
+                        "en": "Cream ice cream with coffee"
+                    },
+                    "prezzi": {
+                        "normale (5 palline)": 7.50,
+                        "piccolo (3 palline)": 4.50
+                    },
+                    "tag": [
+                        "vegetariana"
+                    ]
+                },
+                {
+                    "nome": "Affogato al liquore",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Gelato alle creme con Gran Marnier o Baileys",
+                        "fr": "Glace à la crème avec Grand Marnier ou Baileys",
+                        "en": "Cream ice cream with Grand Marnier or Baileys"
+                    },
+                    "prezzi": {
+                        "normale (5 palline)": 7.50,
+                        "piccolo (3 palline)": 4.50
+                    },
+                    "tag": [
+                        "vegetariana"
+                    ]
+                },
+                {
+                    "nome": "Affogato alla cioccolata calda",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Gelato alle creme con cioccolata calda",
+                        "fr": "Glace à la crème avec chocolat chaud",
+                        "en": "Cream ice cream with hot chocolate"
+                    },
+                    "prezzi": {
+                        "normale (5 palline)": 7.50,
+                        "piccolo (3 palline)": 4.50
+                    },
+                    "tag": [
+                        "vegetariana"
+                    ]
+                },
+                {
+                    "nome": "Caffè con gelato",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Una coccola senza esagerare",
+                        "fr": "Un plaisir sans excès",
+                        "en": "A little treat without overdoing it"
+                    },
+                    "prezzo": 2.50,
+                    "tag": [
+                        "vegetariana"
+                    ]
+                },
+                {
+                    "nome": "Caffè con panna",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Una coccola senza esagerare",
+                        "fr": "Un plaisir sans excès",
+                        "en": "A little treat without overdoing it"
+                    },
+                    "prezzo": 2.50,
+                    "tag": [
+                        "vegetariana"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "coppe-gelato",
+            "nome": {
+                "it": "Coppe di Gelato",
+                "fr": "Coupes de Glace",
+                "en": "Ice Cream Cups"
+            },
+            "items": [
+                {
+                    "nome": "Banana Split",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Banana, gelato alle creme e panna montata",
+                        "fr": "Banane, glace à la crème et crème chantilly",
+                        "en": "Banana, cream ice cream and whipped cream"
+                    },
+                    "prezzo": 7.00,
+                    "tag": [
+                        "vegetariana"
+                    ]
+                },
+                {
+                    "nome": "Coppa Yogurt",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Gelato allo yogurt con frutti di bosco e panna montata",
+                        "fr": "Glace au yaourt avec fruits des bois et crème chantilly",
+                        "en": "Yogurt ice cream with wild berries and whipped cream"
+                    },
+                    "prezzo": 7.00,
+                    "tag": [
+                        "vegetariana"
+                    ]
+                },
+                {
+                    "nome": "Coppa Stracciatella",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Gelato alla stracciatella con cubetti e copertura di cioccolato",
+                        "fr": "Glace stracciatella avec cubes et couverture de chocolat",
+                        "en": "Stracciatella ice cream with chocolate chunks and coating"
+                    },
+                    "prezzo": 6.50,
+                    "tag": [
+                        "vegetariana"
+                    ]
+                },
+                {
+                    "nome": "Coppa alla Nocciola",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Gelato alla nocciola con nocciole intere, granella di nocciole e panna montata",
+                        "fr": "Glace à la noisette avec noisettes entières, éclats de noisettes et crème chantilly",
+                        "en": "Hazelnut ice cream with whole hazelnuts, hazelnut pieces and whipped cream"
+                    },
+                    "prezzo": 7.00,
+                    "tag": [
+                        "vegetariana"
+                    ]
+                },
+                {
+                    "nome": "Coppa Amarene",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Gelato al fior di latte, amarene e panna montata",
+                        "fr": "Glace au fior di latte, cerises et crème chantilly",
+                        "en": "Fior di latte ice cream, sour cherries and whipped cream"
+                    },
+                    "prezzo": 7.00,
+                    "tag": [
+                        "vegetariana"
+                    ]
+                },
+                {
+                    "nome": "Coppa del Nonno",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Gelato al cioccolato e nocciola con uvetta e rhum",
+                        "fr": "Glace au chocolat et noisette avec raisins secs et rhum",
+                        "en": "Chocolate and hazelnut ice cream with raisins and rum"
+                    },
+                    "prezzo": 7.00,
+                    "tag": [
+                        "vegetariana"
+                    ]
+                },
+                {
+                    "nome": "Coppa Bombardino",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Gelato allo zabaione con vov caldo e panna montata",
+                        "fr": "Glace au zabaione avec vov chaud et crème chantilly",
+                        "en": "Zabaione ice cream with warm vov and whipped cream"
+                    },
+                    "prezzo": 7.00,
+                    "tag": [
+                        "vegetariana"
+                    ]
+                },
+                {
+                    "nome": "Coppa Babà",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Gelato alle creme e Babà",
+                        "fr": "Glace à la crème et Babà",
+                        "en": "Cream ice cream and Babà"
+                    },
+                    "prezzo": 6.50,
+                    "tag": [
+                        "vegetariana"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "gelati",
+            "nome": {
+                "it": "Gelati",
+                "fr": "Glaces",
+                "en": "Ice Creams"
+            },
+            "items": [
+                {
+                    "nome": "Coppa grande",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Quattro gusti a scelta — gelato di nostra produzione",
+                        "fr": "Quatre parfums au choix — glace de notre production",
+                        "en": "Four flavors of your choice — homemade ice cream"
+                    },
+                    "prezzo": 5.50,
+                    "tag": [
+                        "vegetariana"
+                    ]
+                },
+                {
+                    "nome": "Coppa piccola",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Due gusti a scelta — gelato di nostra produzione",
+                        "fr": "Deux parfums au choix — glace de notre production",
+                        "en": "Two flavors of your choice — homemade ice cream"
+                    },
+                    "prezzo": 3.50,
+                    "tag": [
+                        "vegetariana"
+                    ]
+                },
+                {
+                    "nome": "Coppa mini",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Un gusto a scelta — gelato di nostra produzione",
+                        "fr": "Un parfum au choix — glace de notre production",
+                        "en": "One flavor of your choice — homemade ice cream"
+                    },
+                    "prezzo": 2.00,
+                    "tag": [
+                        "vegetariana"
+                    ]
+                },
+                {
+                    "nome": "Sorbetto al limone",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Sorbetto al limone — con limoncello o vodka +€1",
+                        "fr": "Sorbet au citron — avec limoncello ou vodka +€1",
+                        "en": "Lemon sorbet — with limoncello or vodka +€1"
+                    },
+                    "prezzi": {
+                        "normale": 4.00,
+                        "mini": 2.50
+                    },
+                    "tag": [
+                        "vegetariana",
+                        "senza glutine"
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -106,73 +106,238 @@
 .nav-links {
   display: flex;
   width: 100%;
-  justify-content: space-around; /* distribuisce lo spazio disponibile */
+  justify-content: space-around;
+  /* distribuisce lo spazio disponibile */
   font-size: var(--text-sm);
   font-weight: var(--weight-medium);
 }
 
 .nav-links a {
-  color: var(--color-lightBrown);  /* colore di default per link non attivi */
+  color: var(--color-lightBrown);
+  /* colore di default per link non attivi */
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.1rem; /* spazio tra icona e testo */
-  
+  gap: 0.1rem;
+  /* spazio tra icona e testo */
+
 }
 
 
 .nav-links a.active {
-  color: var(--color-red);    /* icona e testo diventano rossi */
+  color: var(--color-red);
+  /* icona e testo diventano rossi */
 }
 
 /* solo gli svg dentro nav-links */
 .nav-links svg {
-    width: 1.2rem;
-    height: 1.2rem;
-    stroke-width: 1.5px; /* linee più sottili */
-  }
+  width: 1.2rem;
+  height: 1.2rem;
+  stroke-width: 1.5px;
+  /* linee più sottili */
+}
 
 
-  /* -------- MENU HEADER ----------- */
+/* -------- MENU HEADER ----------- */
 .menu-header {
-    margin-top: var(--space-12);
-    margin-bottom: var(--space-12);
+  margin-top: var(--space-12);
+  margin-bottom: var(--space-12);
 }
 
 .menu-header__content {
-    background-image: url("../assets/images/menu-header.png");
-    background-size: cover;
-    padding: var(--space-12) var(--space-8);
-    text-align: left;
-    width: 100%;
-    height: 306px;
+  background-image: url("../assets/images/menu-header.png");
+  background-size: cover;
+  padding: var(--space-12) var(--space-8);
+  text-align: left;
+  width: 100%;
+  height: 306px;
 }
 
 .menu-header__title {
-    font-family: var(--font-heading);
-    font-size: var(--text-4xl);
-    font-weight: var(--weight-bold);
-    color: var(--color-brown);
-    line-height: 1;
-    margin: 0;
+  font-family: var(--font-heading);
+  font-size: var(--text-4xl);
+  font-weight: var(--weight-bold);
+  color: var(--color-brown);
+  line-height: 1;
+  margin: 0;
 }
 
 .menu-header__title em {
-    font-family: var(--font-heading);
-    font-size: var(--text-5xl);
-    font-weight: var(--weight-bold);
-    color: var(--color-red);
-    margin: 0;
-    display: block;
+  font-family: var(--font-heading);
+  font-size: var(--text-5xl);
+  font-weight: var(--weight-bold);
+  color: var(--color-red);
+  margin: 0;
+  display: block;
 }
 
 .menu-header__description {
-    font-size: var(--text-base);
-    font-weight: var(--weight-medium);
-    color: var(--color-brown);
-    text-align: left;
+  font-size: var(--text-base);
+  font-weight: var(--weight-medium);
+  color: var(--color-brown);
+  text-align: left;
 }
 
+
+/* --- SCELTA DEL MENU (CIBO/BEVANDE/DOLCI) --- */
+
+.menu-guida {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--color-lightBrown);
+  text-align: center;
+  margin-bottom: var(--space-3);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.menu-macrogruppi {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-8);
+  padding: 0 1rem;
+}
+
+.macrogruppo {
+  flex: 1;
+  /*occupa spazio equamente*/
+  max-width: 220px;
+  border-radius: var(--radius-full);
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-lightRed);
+  color: var(--color-lightBrown);
+  border: none;
+  font-size: var(--text-lg);
+  font-weight: var(--weight-medium);
+  font-family: var(--font-heading);
+  cursor: pointer;
+  transition: var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+}
+
+.macrogruppo:hover {
+  background: var(--color-lightBrown);
+  color: var(--color-crema);
+  box-shadow: var(--shadow-md);
+}
+
+.macrogruppo.active {
+  background: var(--color-crema);
+  color: var(--color-brown);
+  box-shadow: var(--shadow-md);
+}
+
+
+/* --------MENU CATEGORIE ----------*/
+.menu-tabs {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+  padding: var(--space-2) var(--space-5);
+  /* ← respiro laterale */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.menu-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.menu-tab {
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  background-color: var(--color-lightRed);
+  border: none;
+  color: var(--color-lightBrown);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+}
+
+.menu-tab.active {
+  color: var(--color-red);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+}
+
+
+/* ------ CARDS CATEGORIE ----------*/
+/* ------ CARDS ----------*/
+.menu-lista {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding-bottom: var(--space-8);
+}
+
+.item-card {
+  background-color: var(--color-bg3);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+
+}
+
+.item-card:nth-child(even) {
+  background-color: var(--color-bg3);
+}
+
+.item-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-2);
+}
+
+.img-placeholder {
+  background: linear-gradient(135deg,
+      var(--color-lightRed) 0%,
+      var(--color-bg2) 100%);
+  /* nasconde il broken icon */
+  color: var(--color-brown);
+  font-size: 0;
+}
+
+
+.item-card h3 {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+  color: var(--color-brown);
+  margin: 0;
+}
+
+.item-card p {
+  font-size: var(--text-sm);
+  color: var(--color-lightBrown);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.item-card span {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+  color: var(--color-red);
+  margin-top: var(--space-2);
+}
+
+/* tab attivo */
+.menu-tab.active {
+  background-color: var(--color-red);
+  color: var(--color-bg);
+}
+
+.menu-tab {
+  cursor: pointer;
+  flex-shrink: 0;
+  /* evita che si restringano nello scroll */
+}
 
 /* -------- FOOTER ----------- */
 .footer {
@@ -201,7 +366,8 @@
   gap: var(--space-2);
 
 }
-.footer__contact-row{
+
+.footer__contact-row {
   display: flex;
   gap: var(--space-4);
   font-size: var(--text-sm);
@@ -214,7 +380,7 @@
   gap: var(--space-6);
   margin-top: var(--space-2);
   margin-bottom: var(--space-2);
-  
+
 }
 
 .footer__social-link {
@@ -236,4 +402,3 @@
   color: var(--color-crema);
   margin-top: var(--space-2);
 }
-

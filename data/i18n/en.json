@@ -12,25 +12,26 @@
     "sottotitolo": "Light, digestible pizza with a unique flavour.",
     "cta_prenota": "Book Now →",
     "cta_menu": "Discover the Menu",
-
     "orari_titolo": "Opening Hours",
     "orari_ore": "6:00 PM - 11:00 PM",
     "orari_aperti": "Open Thursday to Monday",
     "orari_chiusi": "Closed Tuesday and Wednesday",
     "orari_chiamaci": "Call Us",
     "orari_whatsapp": "WhatsApp",
-
     "location_label": "Where to find us",
     "location_titolo": "Fraz. Etral 7, Jovençan",
     "location_sottotitolo": "10 minutes from Aosta.",
     "location_maps": "Open in Google Maps",
-
     "impasto_titolo": "Discover our dough",
     "impasto_hint": "Tap to find out more"
   },
   "menu": {
     "titolo": "Our",
-    "description": "Long-fermented doughs made with carefully selected ingredients."
+    "description": "Long-fermented doughs made with carefully selected ingredients.",
+    "guida": "What do you want to order?",
+    "cibo": "Food",
+    "bevande": "Drinks",
+    "dolci": "Desserts"
   },
   "footer": {
     "indirizzo": "Fraz. Etral 7, Jovençan (AO)",

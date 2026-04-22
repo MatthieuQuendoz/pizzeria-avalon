@@ -1,0 +1,1744 @@
+{
+  "categorie": [
+    {
+      "id": "pizze-rosse",
+      "nome": {
+        "it": "Pizze Rosse",
+        "fr": "Pizzas Rouges",
+        "en": "Red Pizzas"
+      },
+      "items": [
+        {
+          "nome": "Margherita",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro e mozzarella",
+            "fr": "Sauce tomate et mozzarella",
+            "en": "Tomato sauce and mozzarella"
+          },
+          "prezzo": 7.00,
+          "tag": []
+        },
+        {
+          "nome": "Marinara",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro e aglio",
+            "fr": "Sauce tomate et ail",
+            "en": "Tomato sauce and garlic"
+          },
+          "prezzo": 7.00,
+          "tag": [
+            "vegan"
+          ]
+        },
+        {
+          "nome": "Tonno",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella e tonno",
+            "fr": "Sauce tomate, mozzarella et thon",
+            "en": "Tomato sauce, mozzarella and tuna"
+          },
+          "prezzo": 9.00,
+          "tag": []
+        },
+        {
+          "nome": "Cipolla",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella e cipolla",
+            "fr": "Sauce tomate, mozzarella et oignon",
+            "en": "Tomato sauce, mozzarella and onion"
+          },
+          "prezzo": 9.00,
+          "tag": [
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "Würstel",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella e würstel",
+            "fr": "Sauce tomate, mozzarella et saucisse",
+            "en": "Tomato sauce, mozzarella and sausage"
+          },
+          "prezzo": 9.00,
+          "tag": []
+        },
+        {
+          "nome": "Romana",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella e acciughe",
+            "fr": "Sauce tomate, mozzarella et anchois",
+            "en": "Tomato sauce, mozzarella and anchovies"
+          },
+          "prezzo": 9.00,
+          "tag": []
+        },
+        {
+          "nome": "Indiana",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, capperi e aglio",
+            "fr": "Sauce tomate, câpres et ail",
+            "en": "Tomato sauce, capers and garlic"
+          },
+          "prezzo": 8.50,
+          "tag": [
+            "vegan"
+          ]
+        },
+        {
+          "nome": "Diavola",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella e salamino piccante",
+            "fr": "Sauce tomate, mozzarella et salami épicé",
+            "en": "Tomato sauce, mozzarella and spicy salami"
+          },
+          "prezzo": 9.00,
+          "tag": [
+            "piccante"
+          ]
+        },
+        {
+          "nome": "Olive",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella e olive",
+            "fr": "Sauce tomate, mozzarella et olives",
+            "en": "Tomato sauce, mozzarella and olives"
+          },
+          "prezzo": 9.00,
+          "tag": [
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "Funghi",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella e funghi",
+            "fr": "Sauce tomate, mozzarella et champignons",
+            "en": "Tomato sauce, mozzarella and mushrooms"
+          },
+          "prezzo": 9.00,
+          "tag": [
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "Prosciutto",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella e prosciutto cotto",
+            "fr": "Sauce tomate, mozzarella et jambon cuit",
+            "en": "Tomato sauce, mozzarella and cooked ham"
+          },
+          "prezzo": 9.00,
+          "tag": []
+        },
+        {
+          "nome": "Melanzane",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella e melanzane",
+            "fr": "Sauce tomate, mozzarella et aubergines",
+            "en": "Tomato sauce, mozzarella and eggplant"
+          },
+          "prezzo": 9.00,
+          "tag": [
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "San Marzano",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, pomodoro fresco e basilico",
+            "fr": "Sauce tomate, mozzarella, tomate fraîche et basilic",
+            "en": "Tomato sauce, mozzarella, fresh tomato and basil"
+          },
+          "prezzo": 10.00,
+          "tag": [
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "Napoletana",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, capperi e acciughe",
+            "fr": "Sauce tomate, mozzarella, câpres et anchois",
+            "en": "Tomato sauce, mozzarella, capers and anchovies"
+          },
+          "prezzo": 10.00,
+          "tag": []
+        },
+        {
+          "nome": "Prosciutto e funghi",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, prosciutto e funghi",
+            "fr": "Sauce tomate, mozzarella, jambon et champignons",
+            "en": "Tomato sauce, mozzarella, ham and mushrooms"
+          },
+          "prezzo": 10.00,
+          "tag": []
+        },
+        {
+          "nome": "Zucchine",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, zucchine e parmigiano",
+            "fr": "Sauce tomate, mozzarella, courgettes et parmesan",
+            "en": "Tomato sauce, mozzarella, zucchini and parmesan"
+          },
+          "prezzo": 10.00,
+          "tag": [
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "Stracchino e rucola",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, stracchino e rucola",
+            "fr": "Sauce tomate, mozzarella, stracchino et roquette",
+            "en": "Tomato sauce, mozzarella, stracchino and rocket"
+          },
+          "prezzo": 10.00,
+          "tag": [
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "Patate e wurstel",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, patate lesse e würstel",
+            "fr": "Sauce tomate, mozzarella, pommes de terre et saucisse",
+            "en": "Tomato sauce, mozzarella, boiled potatoes and sausage"
+          },
+          "prezzo": 10.00,
+          "tag": []
+        },
+        {
+          "nome": "Ricotta e spinaci",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, ricotta e spinaci",
+            "fr": "Sauce tomate, mozzarella, ricotta et épinards",
+            "en": "Tomato sauce, mozzarella, ricotta and spinach"
+          },
+          "prezzo": 10.00,
+          "tag": [
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "Pere e gorgonzola",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, pere e gorgonzola",
+            "fr": "Sauce tomate, mozzarella, poires et gorgonzola",
+            "en": "Tomato sauce, mozzarella, pears and gorgonzola"
+          },
+          "prezzo": 10.00,
+          "tag": [
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "Valdostana",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, prosciutto cotto e fontina",
+            "fr": "Sauce tomate, mozzarella, jambon cuit et fontina",
+            "en": "Tomato sauce, mozzarella, cooked ham and fontina"
+          },
+          "prezzo": 10.00,
+          "tag": []
+        },
+        {
+          "nome": "Gorgo e speck",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, gorgonzola e speck",
+            "fr": "Sauce tomate, mozzarella, gorgonzola et speck",
+            "en": "Tomato sauce, mozzarella, gorgonzola and speck"
+          },
+          "prezzo": 10.00,
+          "tag": []
+        },
+        {
+          "nome": "Quattro stagioni",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, prosciutto, funghi, carciofi e asparagi",
+            "fr": "Sauce tomate, mozzarella, jambon, champignons, artichauts et asperges",
+            "en": "Tomato sauce, mozzarella, ham, mushrooms, artichokes and asparagus"
+          },
+          "prezzo": 11.00,
+          "tag": []
+        },
+        {
+          "nome": "J & P",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, prosciutto cotto, funghi, olive, peperoni e carciofi",
+            "fr": "Sauce tomate, mozzarella, jambon, champignons, olives, poivrons et artichauts",
+            "en": "Tomato sauce, mozzarella, ham, mushrooms, olives, peppers and artichokes"
+          },
+          "prezzo": 11.00,
+          "tag": []
+        },
+        {
+          "nome": "Tropicale",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, prosciutto cotto, peperoni e ananas",
+            "fr": "Sauce tomate, mozzarella, jambon, poivrons et ananas",
+            "en": "Tomato sauce, mozzarella, ham, peppers and pineapple"
+          },
+          "prezzo": 11.00,
+          "tag": []
+        },
+        {
+          "nome": "Elisa",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, tonno, sedano, acciughe e peperoni",
+            "fr": "Sauce tomate, mozzarella, thon, céleri, anchois et poivrons",
+            "en": "Tomato sauce, mozzarella, tuna, celery, anchovies and peppers"
+          },
+          "prezzo": 10.00,
+          "tag": []
+        },
+        {
+          "nome": "Misto Bosco",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella e funghi misti",
+            "fr": "Sauce tomate, mozzarella et champignons mélangés",
+            "en": "Tomato sauce, mozzarella and mixed mushrooms"
+          },
+          "prezzo": 10.00,
+          "tag": [
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "Contadina",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, funghi, salsiccetta, fontina dop e pomodoro fresco",
+            "fr": "Sauce tomate, mozzarella, champignons, saucisse, fontina dop et tomate fraîche",
+            "en": "Tomato sauce, mozzarella, mushrooms, sausage, fontina dop and fresh tomato"
+          },
+          "prezzo": 11.00,
+          "tag": []
+        },
+        {
+          "nome": "Crudo",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella e prosciutto crudo",
+            "fr": "Sauce tomate, mozzarella et jambon cru",
+            "en": "Tomato sauce, mozzarella and cured ham"
+          },
+          "prezzo": 10.00,
+          "tag": []
+        },
+        {
+          "nome": "Nettuno",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, tonno, acciughe, olive e pomodoro fresco",
+            "fr": "Sauce tomate, mozzarella, thon, anchois, olives et tomate fraîche",
+            "en": "Tomato sauce, mozzarella, tuna, anchovies, olives and fresh tomato"
+          },
+          "prezzo": 11.00,
+          "tag": []
+        },
+        {
+          "nome": "Greundza",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, stracchino, radicchio, parmigiano e noci",
+            "fr": "Sauce tomate, mozzarella, stracchino, radicchio, parmesan et noix",
+            "en": "Tomato sauce, mozzarella, stracchino, radicchio, parmesan and walnuts"
+          },
+          "prezzo": 11.00,
+          "tag": [
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "Avalon",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, melanzane, gorgonzola, salsiccetta e funghi Champignon crudi",
+            "fr": "Sauce tomate, mozzarella, aubergines, gorgonzola, saucisse et champignons crus",
+            "en": "Tomato sauce, mozzarella, eggplant, gorgonzola, sausage and raw champignon mushrooms"
+          },
+          "prezzo": 11.00,
+          "tag": []
+        },
+        {
+          "nome": "Formaggi",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, gorgonzola, stracchino e fontina",
+            "fr": "Sauce tomate, mozzarella, gorgonzola, stracchino et fontina",
+            "en": "Tomato sauce, mozzarella, gorgonzola, stracchino and fontina"
+          },
+          "prezzo": 10.00,
+          "tag": [
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "Boscaiola",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, funghi misti, salsiccia e scamorza",
+            "fr": "Sauce tomate, mozzarella, champignons mélangés, saucisse et scamorza",
+            "en": "Tomato sauce, mozzarella, mixed mushrooms, sausage and scamorza"
+          },
+          "prezzo": 11.00,
+          "tag": []
+        },
+        {
+          "nome": "Mia",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, prosciutto crudo, rucola e parmigiano",
+            "fr": "Sauce tomate, mozzarella, jambon cru, roquette et parmesan",
+            "en": "Tomato sauce, mozzarella, cured ham, rocket and parmesan"
+          },
+          "prezzo": 10.50,
+          "tag": []
+        },
+        {
+          "nome": "Capricciosa",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, prosciutto, funghi, acciughe e carciofi",
+            "fr": "Sauce tomate, mozzarella, jambon, champignons, anchois et artichauts",
+            "en": "Tomato sauce, mozzarella, ham, mushrooms, anchovies and artichokes"
+          },
+          "prezzo": 11.00,
+          "tag": []
+        },
+        {
+          "nome": "Verdure",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, verdure fresche e grigliate",
+            "fr": "Sauce tomate, mozzarella, légumes frais et grillés",
+            "en": "Tomato sauce, mozzarella, fresh and grilled vegetables"
+          },
+          "prezzo": 11.00,
+          "tag": [
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "All'insalata",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, insalata mista",
+            "fr": "Sauce tomate, mozzarella, salade mixte",
+            "en": "Tomato sauce, mozzarella, mixed salad"
+          },
+          "prezzo": 11.00,
+          "tag": [
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "Radicchio e pancetta",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, radicchio e pancetta",
+            "fr": "Sauce tomate, mozzarella, radicchio et lardons",
+            "en": "Tomato sauce, mozzarella, radicchio and bacon"
+          },
+          "prezzo": 10.00,
+          "tag": []
+        },
+        {
+          "nome": "Asparagi e uovo",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, asparagi e uovo",
+            "fr": "Sauce tomate, mozzarella, asperges et œuf",
+            "en": "Tomato sauce, mozzarella, asparagus and egg"
+          },
+          "prezzo": 10.00,
+          "tag": [
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "Toro seduto",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella di bufala, pomodorino ciliegia e basilico",
+            "fr": "Sauce tomate, mozzarella de bufflonne, tomates cerises et basilic",
+            "en": "Tomato sauce, buffalo mozzarella, cherry tomatoes and basil"
+          },
+          "prezzo": 11.00,
+          "tag": [
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "Per mangioni",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, prosciutto cotto, porcini, asparagi, salsiccetta, uovo e parmigiano",
+            "fr": "Sauce tomate, mozzarella, jambon, cèpes, asperges, saucisse, œuf et parmesan",
+            "en": "Tomato sauce, mozzarella, ham, porcini, asparagus, sausage, egg and parmesan"
+          },
+          "prezzo": 13.00,
+          "tag": []
+        },
+        {
+          "nome": "Delizia",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, stracchino, bresaola, noci e parmigiano",
+            "fr": "Sauce tomate, mozzarella, stracchino, bresaola, noix et parmesan",
+            "en": "Tomato sauce, mozzarella, stracchino, bresaola, walnuts and parmesan"
+          },
+          "prezzo": 13.00,
+          "tag": []
+        },
+        {
+          "nome": "Della casa",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, prosciutto, funghi, olive, würstel e salamino",
+            "fr": "Sauce tomate, mozzarella, jambon, champignons, olives, saucisse et salami",
+            "en": "Tomato sauce, mozzarella, ham, mushrooms, olives, sausage and salami"
+          },
+          "prezzo": 13.00,
+          "tag": []
+        },
+        {
+          "nome": "Mon petit amour",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, pomodorini, mozzarella di bufala, salmone, insalata e pepe rosa",
+            "fr": "Sauce tomate, tomates cerises, mozzarella de bufflonne, saumon, salade et poivre rose",
+            "en": "Tomato sauce, cherry tomatoes, buffalo mozzarella, salmon, salad and pink pepper"
+          },
+          "prezzo": 13.00,
+          "tag": []
+        },
+        {
+          "nome": "Del geometra",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, salsa tartufata, prosciutto, fontina dop, peperoni e salamino",
+            "fr": "Sauce tomate, mozzarella, sauce truffée, jambon, fontina dop, poivrons et salami",
+            "en": "Tomato sauce, mozzarella, truffle sauce, ham, fontina dop, peppers and salami"
+          },
+          "prezzo": 13.00,
+          "tag": []
+        },
+        {
+          "nome": "Dietetica",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, gorgonzola, salamino, patate fritte e cipolla",
+            "fr": "Sauce tomate, mozzarella, gorgonzola, salami, frites et oignon",
+            "en": "Tomato sauce, mozzarella, gorgonzola, salami, fries and onion"
+          },
+          "prezzo": 11.00,
+          "tag": []
+        },
+        {
+          "nome": "Terence Hill",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, fagioli, salsiccia, cipolla e parmigiano",
+            "fr": "Sauce tomate, mozzarella, haricots, saucisse, oignon et parmesan",
+            "en": "Tomato sauce, mozzarella, beans, sausage, onion and parmesan"
+          },
+          "prezzo": 13.00,
+          "tag": []
+        },
+        {
+          "nome": "Bud Spencer",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, spianata, fagioli, cipolle, uovo e parmigiano",
+            "fr": "Sauce tomate, mozzarella, spianata, haricots, oignons, œuf et parmesan",
+            "en": "Tomato sauce, mozzarella, spianata, beans, onions, egg and parmesan"
+          },
+          "prezzo": 11.00,
+          "tag": []
+        },
+        {
+          "nome": "Frutti di mare",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella e frutti di mare",
+            "fr": "Sauce tomate, mozzarella et fruits de mer",
+            "en": "Tomato sauce, mozzarella and seafood"
+          },
+          "prezzo": 11.00,
+          "tag": []
+        },
+        {
+          "nome": "Salmone e mascarpone",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, salmone e mascarpone",
+            "fr": "Sauce tomate, mozzarella, saumon et mascarpone",
+            "en": "Tomato sauce, mozzarella, salmon and mascarpone"
+          },
+          "prezzo": 11.00,
+          "tag": []
+        },
+        {
+          "nome": "Saporita",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, melanzane, salsiccetta, gorgonzola e funghi",
+            "fr": "Sauce tomate, mozzarella, aubergines, saucisse, gorgonzola et champignons",
+            "en": "Tomato sauce, mozzarella, eggplant, sausage, gorgonzola and mushrooms"
+          },
+          "prezzo": 11.00,
+          "tag": []
+        },
+        {
+          "nome": "Por & Por",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, porcini e Porchetta di Ariccia",
+            "fr": "Sauce tomate, mozzarella, cèpes et Porchetta di Ariccia",
+            "en": "Tomato sauce, mozzarella, porcini and Porchetta di Ariccia"
+          },
+          "prezzo": 11.00,
+          "tag": []
+        },
+        {
+          "nome": "Dell'amore",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, olive e ciliegine di mozzarella",
+            "fr": "Sauce tomate, mozzarella, olives et billes de mozzarella",
+            "en": "Tomato sauce, mozzarella, olives and mozzarella balls"
+          },
+          "prezzo": 11.00,
+          "tag": [
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "Tizi",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, fontina dop, porcini, panna e parmigiano",
+            "fr": "Sauce tomate, mozzarella, fontina dop, cèpes, crème et parmesan",
+            "en": "Tomato sauce, mozzarella, fontina dop, porcini, cream and parmesan"
+          },
+          "prezzo": 11.00,
+          "tag": []
+        },
+        {
+          "nome": "All'aceto balsamico",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, capperi, acciughe, scalogno e aceto balsamico",
+            "fr": "Sauce tomate, mozzarella, câpres, anchois, échalote et vinaigre balsamique",
+            "en": "Tomato sauce, mozzarella, capers, anchovies, shallot and balsamic vinegar"
+          },
+          "prezzo": 11.00,
+          "tag": []
+        },
+        {
+          "nome": "25 Aprile",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, robiola fresca, tonno, olive e prezzemolo",
+            "fr": "Sauce tomate, mozzarella, robiola fraîche, thon, olives et persil",
+            "en": "Tomato sauce, mozzarella, fresh robiola, tuna, olives and parsley"
+          },
+          "prezzo": 11.00,
+          "tag": []
+        },
+        {
+          "nome": "Del Bepi",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, pancetta stufata, uova e parmigiano",
+            "fr": "Sauce tomate, mozzarella, lardons braisés, œufs et parmesan",
+            "en": "Tomato sauce, mozzarella, braised bacon, eggs and parmesan"
+          },
+          "prezzo": 11.00,
+          "tag": []
+        },
+        {
+          "nome": "Chicco",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, basilico e burrata",
+            "fr": "Sauce tomate, basilic et burrata",
+            "en": "Tomato sauce, basil and burrata"
+          },
+          "prezzo": 11.00,
+          "tag": [
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "Tapadzo",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, rebletzen, salsiccetta, patate lesse e noci",
+            "fr": "Sauce tomate, mozzarella, rebletzen, saucisse, pommes de terre et noix",
+            "en": "Tomato sauce, mozzarella, rebletzen, sausage, boiled potatoes and walnuts"
+          },
+          "prezzo": 11.00,
+          "tag": []
+        },
+        {
+          "nome": "Maga",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, mais e gamberetti",
+            "fr": "Sauce tomate, mozzarella, maïs et crevettes",
+            "en": "Tomato sauce, mozzarella, corn and shrimps"
+          },
+          "prezzo": 11.00,
+          "tag": []
+        },
+        {
+          "nome": "Posillipo",
+          "immagine": null,
+          "descrizione": {
+            "it": "Pomodoro, mozzarella, zucchine, panna da cucina, salmone e pomodorini",
+            "fr": "Tomate, mozzarella, courgettes, crème, saumon et tomates cerises",
+            "en": "Tomato, mozzarella, zucchini, cream, salmon and cherry tomatoes"
+          },
+          "prezzo": 11.00,
+          "tag": []
+        }
+      ]
+    },
+    {
+      "id": "pizze-bianche",
+      "nome": {
+        "it": "Pizze Bianche",
+        "fr": "Pizzas Blanches",
+        "en": "White Pizzas"
+      },
+      "items": [
+        {
+          "nome": "Gorgo e cipolla",
+          "immagine": null,
+          "descrizione": {
+            "it": "Mozzarella, gorgonzola e cipolle",
+            "fr": "Mozzarella, gorgonzola et oignons",
+            "en": "Mozzarella, gorgonzola and onions"
+          },
+          "prezzo": 10.00,
+          "tag": [
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "Ricotta e mele",
+          "immagine": null,
+          "descrizione": {
+            "it": "Mozzarella, ricotta e mele",
+            "fr": "Mozzarella, ricotta et pommes",
+            "en": "Mozzarella, ricotta and apples"
+          },
+          "prezzo": 10.00,
+          "tag": [
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "Delicata",
+          "immagine": null,
+          "descrizione": {
+            "it": "Mozzarella, taleggio e noci",
+            "fr": "Mozzarella, taleggio et noix",
+            "en": "Mozzarella, taleggio and walnuts"
+          },
+          "prezzo": 10.00,
+          "tag": [
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "Carciofi",
+          "immagine": null,
+          "descrizione": {
+            "it": "Crema di carciofi, mozzarella e carciofi",
+            "fr": "Crème d'artichauts, mozzarella et artichauts",
+            "en": "Artichoke cream, mozzarella and artichokes"
+          },
+          "prezzo": 10.00,
+          "tag": [
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "Asparagi",
+          "immagine": null,
+          "descrizione": {
+            "it": "Crema di asparagi, mozzarella e asparagi",
+            "fr": "Crème d'asperges, mozzarella et asperges",
+            "en": "Asparagus cream, mozzarella and asparagus"
+          },
+          "prezzo": 10.00,
+          "tag": [
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "Patate e porri",
+          "immagine": null,
+          "descrizione": {
+            "it": "Mozzarella, patate lesse, porri e ricotta",
+            "fr": "Mozzarella, pommes de terre, poireaux et ricotta",
+            "en": "Mozzarella, boiled potatoes, leeks and ricotta"
+          },
+          "prezzo": 10.00,
+          "tag": [
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "Patate e porcini",
+          "immagine": null,
+          "descrizione": {
+            "it": "Mozzarella, patate lesse, porcini e ricotta",
+            "fr": "Mozzarella, pommes de terre, cèpes et ricotta",
+            "en": "Mozzarella, boiled potatoes, porcini and ricotta"
+          },
+          "prezzo": 10.00,
+          "tag": [
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "Acciugatte",
+          "immagine": null,
+          "descrizione": {
+            "it": "Mozzarella, acciughe e uva passa",
+            "fr": "Mozzarella, anchois et raisins secs",
+            "en": "Mozzarella, anchovies and raisins"
+          },
+          "prezzo": 10.00,
+          "tag": []
+        },
+        {
+          "nome": "Gamberetti e mele",
+          "immagine": null,
+          "descrizione": {
+            "it": "Mozzarella, gamberetti e mele",
+            "fr": "Mozzarella, crevettes et pommes",
+            "en": "Mozzarella, shrimps and apples"
+          },
+          "prezzo": 10.00,
+          "tag": []
+        },
+        {
+          "nome": "Genovese",
+          "immagine": null,
+          "descrizione": {
+            "it": "Mozzarella, pesto, ricotta e parmigiano",
+            "fr": "Mozzarella, pesto, ricotta et parmesan",
+            "en": "Mozzarella, pesto, ricotta and parmesan"
+          },
+          "prezzo": 10.00,
+          "tag": [
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "Funghi freschi",
+          "immagine": null,
+          "descrizione": {
+            "it": "Mozzarella, panna, funghi freschi e parmigiano",
+            "fr": "Mozzarella, crème, champignons frais et parmesan",
+            "en": "Mozzarella, cream, fresh mushrooms and parmesan"
+          },
+          "prezzo": 10.00,
+          "tag": [
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "Golosa",
+          "immagine": null,
+          "descrizione": {
+            "it": "Mozzarella, gorgonzola, stracchino e peperoni",
+            "fr": "Mozzarella, gorgonzola, stracchino et poivrons",
+            "en": "Mozzarella, gorgonzola, stracchino and peppers"
+          },
+          "prezzo": 11.00,
+          "tag": [
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "Sophie",
+          "immagine": null,
+          "descrizione": {
+            "it": "Mozzarella, gorgonzola, miele e noci",
+            "fr": "Mozzarella, gorgonzola, miel et noix",
+            "en": "Mozzarella, gorgonzola, honey and walnuts"
+          },
+          "prezzo": 10.00,
+          "tag": [
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "Al limone",
+          "immagine": null,
+          "descrizione": {
+            "it": "Mozzarella, limone, ananas, ricotta e carciofi",
+            "fr": "Mozzarella, citron, ananas, ricotta et artichauts",
+            "en": "Mozzarella, lemon, pineapple, ricotta and artichokes"
+          },
+          "prezzo": 10.00,
+          "tag": [
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "Lady",
+          "immagine": null,
+          "descrizione": {
+            "it": "Mozzarella, salmone e insalata",
+            "fr": "Mozzarella, saumon et salade",
+            "en": "Mozzarella, salmon and salad"
+          },
+          "prezzo": 10.00,
+          "tag": []
+        },
+        {
+          "nome": "Della luna",
+          "immagine": null,
+          "descrizione": {
+            "it": "Mozzarella, gorgonzola, stracchino, parmigiano, noci e radicchio dopo cottura",
+            "fr": "Mozzarella, gorgonzola, stracchino, parmesan, noix et radicchio après cuisson",
+            "en": "Mozzarella, gorgonzola, stracchino, parmesan, walnuts and radicchio after baking"
+          },
+          "prezzo": 11.00,
+          "tag": [
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "Della nonna",
+          "immagine": null,
+          "descrizione": {
+            "it": "Mozzarella, stracchino, patate lesse, tonno e erbetta cipollina",
+            "fr": "Mozzarella, stracchino, pommes de terre, thon et ciboulette",
+            "en": "Mozzarella, stracchino, boiled potatoes, tuna and chives"
+          },
+          "prezzo": 11.00,
+          "tag": []
+        },
+        {
+          "nome": "Porcini",
+          "immagine": null,
+          "descrizione": {
+            "it": "Crema di porcini, mozzarella e porcini",
+            "fr": "Crème de cèpes, mozzarella et cèpes",
+            "en": "Porcini cream, mozzarella and porcini"
+          },
+          "prezzo": 11.00,
+          "tag": [
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "Del nonno",
+          "immagine": null,
+          "descrizione": {
+            "it": "Mozzarella, pomodorini, salsiccetta e funghi",
+            "fr": "Mozzarella, tomates cerises, saucisse et champignons",
+            "en": "Mozzarella, cherry tomatoes, sausage and mushrooms"
+          },
+          "prezzo": 10.00,
+          "tag": []
+        },
+        {
+          "nome": "Ligure",
+          "immagine": null,
+          "descrizione": {
+            "it": "Pesto, mozzarella, pomodorini, stracchino, origano e parmigiano",
+            "fr": "Pesto, mozzarella, tomates cerises, stracchino, origan et parmesan",
+            "en": "Pesto, mozzarella, cherry tomatoes, stracchino, oregano and parmesan"
+          },
+          "prezzo": 11.00,
+          "tag": [
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "Verdure con crema",
+          "immagine": null,
+          "descrizione": {
+            "it": "Crema di asparagi o di carciofi, mozzarella, verdure fresche e grigliate",
+            "fr": "Crème d'asperges ou d'artichauts, mozzarella, légumes frais et grillés",
+            "en": "Asparagus or artichoke cream, mozzarella, fresh and grilled vegetables"
+          },
+          "prezzo": 13.00,
+          "tag": [
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "Primavera",
+          "immagine": null,
+          "descrizione": {
+            "it": "Mozzarella, zucchine grigliate, pomodorini, uovo e parmigiano",
+            "fr": "Mozzarella, courgettes grillées, tomates cerises, œuf et parmesan",
+            "en": "Mozzarella, grilled zucchini, cherry tomatoes, egg and parmesan"
+          },
+          "prezzo": 11.00,
+          "tag": [
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "Matthieu",
+          "immagine": null,
+          "descrizione": {
+            "it": "Mozzarella, miele, gorgonzola, mele, crudo e parmigiano",
+            "fr": "Mozzarella, miel, gorgonzola, pommes, jambon cru et parmesan",
+            "en": "Mozzarella, honey, gorgonzola, apples, cured ham and parmesan"
+          },
+          "prezzo": 11.00,
+          "tag": []
+        },
+        {
+          "nome": "D'autunno",
+          "immagine": null,
+          "descrizione": {
+            "it": "Mozzarella, Lardo di Arnad, castagne e miele",
+            "fr": "Mozzarella, Lardo di Arnad, châtaignes et miel",
+            "en": "Mozzarella, Lardo di Arnad, chestnuts and honey"
+          },
+          "prezzo": 11.00,
+          "tag": []
+        },
+        {
+          "nome": "Peccato originale",
+          "immagine": null,
+          "descrizione": {
+            "it": "Mozzarella, mele, brie e speck",
+            "fr": "Mozzarella, pommes, brie et speck",
+            "en": "Mozzarella, apples, brie and speck"
+          },
+          "prezzo": 11.00,
+          "tag": []
+        },
+        {
+          "nome": "Gustosa",
+          "immagine": null,
+          "descrizione": {
+            "it": "Mozzarella, pomodorini, pancetta stufata, cipolla rossa, rucola e parmigiano",
+            "fr": "Mozzarella, tomates cerises, lardons braisés, oignon rouge, roquette et parmesan",
+            "en": "Mozzarella, cherry tomatoes, braised bacon, red onion, rocket and parmesan"
+          },
+          "prezzo": 11.00,
+          "tag": []
+        },
+        {
+          "nome": "Gnam gnam",
+          "immagine": null,
+          "descrizione": {
+            "it": "Mozzarella, salsa di noci, bresaola, mandorle, rucola e parmigiano",
+            "fr": "Mozzarella, sauce aux noix, bresaola, amandes, roquette et parmesan",
+            "en": "Mozzarella, walnut sauce, bresaola, almonds, rocket and parmesan"
+          },
+          "prezzo": 11.00,
+          "tag": []
+        },
+        {
+          "nome": "Xa",
+          "immagine": null,
+          "descrizione": {
+            "it": "Mozzarella, patate lesse, pancetta stufata, salsiccetta e rosmarino",
+            "fr": "Mozzarella, pommes de terre, lardons braisés, saucisse et romarin",
+            "en": "Mozzarella, boiled potatoes, braised bacon, sausage and rosemary"
+          },
+          "prezzo": 11.00,
+          "tag": []
+        },
+        {
+          "nome": "Prelibata",
+          "immagine": null,
+          "descrizione": {
+            "it": "Crema di porcini, mozzarella, speck e rucola",
+            "fr": "Crème de cèpes, mozzarella, speck et roquette",
+            "en": "Porcini cream, mozzarella, speck and rocket"
+          },
+          "prezzo": 11.00,
+          "tag": []
+        },
+        {
+          "nome": "Quattro venti",
+          "immagine": null,
+          "descrizione": {
+            "it": "Mozzarella, pancetta stufata, uova sode, insalata, asparagi e parmigiano",
+            "fr": "Mozzarella, lardons braisés, œufs durs, salade, asperges et parmesan",
+            "en": "Mozzarella, braised bacon, hard-boiled eggs, salad, asparagus and parmesan"
+          },
+          "prezzo": 11.00,
+          "tag": []
+        },
+        {
+          "nome": "Rustica valdostana",
+          "immagine": null,
+          "descrizione": {
+            "it": "Mozzarella, fonduta, Fontina dop e porcini",
+            "fr": "Mozzarella, fondue, Fontina dop et cèpes",
+            "en": "Mozzarella, fondue, Fontina dop and porcini"
+          },
+          "prezzo": 13.00,
+          "tag": [
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "Monte bianco",
+          "immagine": null,
+          "descrizione": {
+            "it": "Mozzarella, fonduta, Fontina dop, noci e crudo",
+            "fr": "Mozzarella, fondue, Fontina dop, noix et jambon cru",
+            "en": "Mozzarella, fondue, Fontina dop, walnuts and cured ham"
+          },
+          "prezzo": 13.00,
+          "tag": []
+        },
+        {
+          "nome": "Europizza",
+          "immagine": null,
+          "descrizione": {
+            "it": "Crema di asparagi, mozzarella, asparagi, pomodorini ciliegia e gamberetti",
+            "fr": "Crème d'asperges, mozzarella, asperges, tomates cerises et crevettes",
+            "en": "Asparagus cream, mozzarella, asparagus, cherry tomatoes and shrimps"
+          },
+          "prezzo": 13.00,
+          "tag": []
+        },
+        {
+          "nome": "Tirolese",
+          "immagine": null,
+          "descrizione": {
+            "it": "Mozzarella, ricotta, spinaci, pancetta stufata, uva passa, pinoli e parmigiano",
+            "fr": "Mozzarella, ricotta, épinards, lardons braisés, raisins secs, pignons et parmesan",
+            "en": "Mozzarella, ricotta, spinach, braised bacon, raisins, pine nuts and parmesan"
+          },
+          "prezzo": 11.00,
+          "tag": []
+        },
+        {
+          "nome": "Tête à tête",
+          "immagine": null,
+          "descrizione": {
+            "it": "Crema di asparagi, speck, mozzarella, panna, asparagi, pepe rosa e insalata",
+            "fr": "Crème d'asperges, speck, mozzarella, crème, asperges, poivre rose et salade",
+            "en": "Asparagus cream, speck, mozzarella, cream, asparagus, pink pepper and salad"
+          },
+          "prezzo": 11.00,
+          "tag": []
+        },
+        {
+          "nome": "Settimo cielo",
+          "immagine": null,
+          "descrizione": {
+            "it": "Salsa tartufata, mozzarella, gorgonzola e parmigiano",
+            "fr": "Sauce truffée, mozzarella, gorgonzola et parmesan",
+            "en": "Truffle sauce, mozzarella, gorgonzola and parmesan"
+          },
+          "prezzo": 11.00,
+          "tag": [
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "Tartufata semplice",
+          "immagine": null,
+          "descrizione": {
+            "it": "Salsa tartufata, mozzarella e porcini",
+            "fr": "Sauce truffée, mozzarella et cèpes",
+            "en": "Truffle sauce, mozzarella and porcini"
+          },
+          "prezzo": 11.00,
+          "tag": [
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "Tartufata con patate",
+          "immagine": null,
+          "descrizione": {
+            "it": "Salsa tartufata, mozzarella, porcini e patate lesse",
+            "fr": "Sauce truffée, mozzarella, cèpes et pommes de terre",
+            "en": "Truffle sauce, mozzarella, porcini and boiled potatoes"
+          },
+          "prezzo": 11.00,
+          "tag": [
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "Tartufata con salsiccia",
+          "immagine": null,
+          "descrizione": {
+            "it": "Salsa tartufata, mozzarella, mascarpone e salsiccetta",
+            "fr": "Sauce truffée, mozzarella, mascarpone et saucisse",
+            "en": "Truffle sauce, mozzarella, mascarpone and sausage"
+          },
+          "prezzo": 11.00,
+          "tag": []
+        },
+        {
+          "nome": "Tartufo fresco",
+          "immagine": null,
+          "descrizione": {
+            "it": "Salsa tartufata, mozzarella, bresaola e parmigiano",
+            "fr": "Sauce truffée, mozzarella, bresaola et parmesan",
+            "en": "Truffle sauce, mozzarella, bresaola and parmesan"
+          },
+          "prezzo": 11.00,
+          "tag": []
+        },
+        {
+          "nome": "Sfiziosa",
+          "immagine": null,
+          "descrizione": {
+            "it": "Mozzarella di bufala, speck, rucola e pomodorini ciliegia",
+            "fr": "Mozzarella de bufflonne, speck, roquette et tomates cerises",
+            "en": "Buffalo mozzarella, speck, rocket and cherry tomatoes"
+          },
+          "prezzo": 13.00,
+          "tag": []
+        }
+      ]
+    },
+    {
+      "id": "immodificabili",
+      "nome": {
+        "it": "Le Immodificabili",
+        "fr": "Les Inmodifiables",
+        "en": "The Unmodifiables"
+      },
+      "items": [
+        {
+          "nome": "Mario",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, Porchetta di Ariccia e parmigiano",
+            "fr": "Sauce tomate, Porchetta di Ariccia et parmesan",
+            "en": "Tomato sauce, Porchetta di Ariccia and parmesan"
+          },
+          "prezzo": 9.00,
+          "tag": [
+            "immodificabile"
+          ]
+        },
+        {
+          "nome": "Super Mario",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella fiordilatte, Porchetta di Ariccia e parmigiano",
+            "fr": "Sauce tomate, mozzarella fiordilatte, Porchetta di Ariccia et parmesan",
+            "en": "Tomato sauce, fiordilatte mozzarella, Porchetta di Ariccia and parmesan"
+          },
+          "prezzo": 11.00,
+          "tag": [
+            "immodificabile"
+          ]
+        },
+        {
+          "nome": "Tag",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella fiordilatte, capperi e olive taggiasche",
+            "fr": "Sauce tomate, mozzarella fiordilatte, câpres et olives taggiasche",
+            "en": "Tomato sauce, fiordilatte mozzarella, capers and taggiasca olives"
+          },
+          "prezzo": 10.50,
+          "tag": [
+            "immodificabile",
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "Tag Hot",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella fiordilatte, capperi, olive taggiasche e peperoncini piccanti",
+            "fr": "Sauce tomate, mozzarella fiordilatte, câpres, olives taggiasche et piments",
+            "en": "Tomato sauce, fiordilatte mozzarella, capers, taggiasca olives and hot peppers"
+          },
+          "prezzo": 10.50,
+          "tag": [
+            "immodificabile",
+            "piccante"
+          ]
+        },
+        {
+          "nome": "Petroliere",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, gorgonzola, stracchino, aglio, salamino e capperi",
+            "fr": "Sauce tomate, gorgonzola, stracchino, ail, salami et câpres",
+            "en": "Tomato sauce, gorgonzola, stracchino, garlic, salami and capers"
+          },
+          "prezzo": 10.50,
+          "tag": [
+            "immodificabile"
+          ]
+        },
+        {
+          "nome": "Messicana",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, fagioli, cipolla, peperoni, mais, mozzarella e peperoncino piccante",
+            "fr": "Sauce tomate, haricots, oignon, poivrons, maïs, mozzarella et piment",
+            "en": "Tomato sauce, beans, onion, peppers, corn, mozzarella and hot pepper"
+          },
+          "prezzo": 10.50,
+          "tag": [
+            "immodificabile",
+            "piccante"
+          ]
+        },
+        {
+          "nome": "Miseria nobiltà",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, pancetta e basilico. Bordo ripieno: mozzarella, ricotta, uovo sodo, pinoli, pesto e grana",
+            "fr": "Sauce tomate, lardons et basilic. Bord farci: mozzarella, ricotta, œuf dur, pignons, pesto et grana",
+            "en": "Tomato sauce, bacon and basil. Stuffed crust: mozzarella, ricotta, hard-boiled egg, pine nuts, pesto and grana"
+          },
+          "prezzo": 13.50,
+          "tag": [
+            "immodificabile"
+          ]
+        },
+        {
+          "nome": "Luchino",
+          "immagine": null,
+          "descrizione": {
+            "it": "Mozzarella fiordilatte, prosciutto cotto, fontina dop, patate lesse e salsiccia",
+            "fr": "Mozzarella fiordilatte, jambon cuit, fontina dop, pommes de terre et saucisse",
+            "en": "Fiordilatte mozzarella, cooked ham, fontina dop, boiled potatoes and sausage"
+          },
+          "prezzo": 11.00,
+          "tag": [
+            "immodificabile"
+          ]
+        },
+        {
+          "nome": "Easy",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella fiordilatte, crudo e basilico",
+            "fr": "Sauce tomate, mozzarella fiordilatte, jambon cru et basilic",
+            "en": "Tomato sauce, fiordilatte mozzarella, cured ham and basil"
+          },
+          "prezzo": 11.00,
+          "tag": [
+            "immodificabile"
+          ]
+        },
+        {
+          "nome": "Easy Hot",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella fiordilatte, crudo, basilico e peperoncini piccanti",
+            "fr": "Sauce tomate, mozzarella fiordilatte, jambon cru, basilic et piments",
+            "en": "Tomato sauce, fiordilatte mozzarella, cured ham, basil and hot peppers"
+          },
+          "prezzo": 11.00,
+          "tag": [
+            "immodificabile",
+            "piccante"
+          ]
+        },
+        {
+          "nome": "Fanciulle 309",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, fagioli, cipolle, peperoni, pomodorini e patatine fritte",
+            "fr": "Sauce tomate, mozzarella, haricots, oignons, poivrons, tomates cerises et frites",
+            "en": "Tomato sauce, mozzarella, beans, onions, peppers, cherry tomatoes and fries"
+          },
+          "prezzo": 13.00,
+          "tag": [
+            "immodificabile"
+          ]
+        },
+        {
+          "nome": "Del Boss",
+          "immagine": null,
+          "descrizione": {
+            "it": "Panna da cucina, speck, mozzarella, burrata, radicchio, noci e basilico",
+            "fr": "Crème, speck, mozzarella, burrata, radicchio, noix et basilic",
+            "en": "Cream, speck, mozzarella, burrata, radicchio, walnuts and basil"
+          },
+          "prezzo": 13.50,
+          "tag": [
+            "immodificabile"
+          ]
+        },
+        {
+          "nome": "Proloco",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, panna da cucina, fagioli, cipolle, salamino piccante, gorgonzola e funghi",
+            "fr": "Sauce tomate, mozzarella, crème, haricots, oignons, salami épicé, gorgonzola et champignons",
+            "en": "Tomato sauce, mozzarella, cream, beans, onions, spicy salami, gorgonzola and mushrooms"
+          },
+          "prezzo": 13.00,
+          "tag": [
+            "immodificabile",
+            "piccante"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "calzoni",
+      "nome": {
+        "it": "Calzoni",
+        "fr": "Calzones",
+        "en": "Calzones"
+      },
+      "items": [
+        {
+          "nome": "Calzone",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, prosciutto, funghi e parmigiano",
+            "fr": "Sauce tomate, mozzarella, jambon, champignons et parmesan",
+            "en": "Tomato sauce, mozzarella, ham, mushrooms and parmesan"
+          },
+          "prezzo": 10.00,
+          "tag": []
+        },
+        {
+          "nome": "Calzone Mens-sana",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, ricotta, spinaci e parmigiano",
+            "fr": "Sauce tomate, mozzarella, ricotta, épinards et parmesan",
+            "en": "Tomato sauce, mozzarella, ricotta, spinach and parmesan"
+          },
+          "prezzo": 10.00,
+          "tag": [
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "Calzone ai formaggi",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, fontina, gorgonzola, stracchino, ricotta e parmigiano",
+            "fr": "Sauce tomate, mozzarella, fontina, gorgonzola, stracchino, ricotta et parmesan",
+            "en": "Tomato sauce, mozzarella, fontina, gorgonzola, stracchino, ricotta and parmesan"
+          },
+          "prezzo": 10.50,
+          "tag": [
+            "vegetariana"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "per-iniziare",
+      "nome": {
+        "it": "Per iniziare",
+        "fr": "Pour commencer",
+        "en": "Starters"
+      },
+      "items": [
+        {
+          "nome": "Olive all'ascolana",
+          "immagine": null,
+          "descrizione": {
+            "it": "10 pezzi — prodotto surgelato",
+            "fr": "10 pièces — produit surgelé",
+            "en": "10 pieces — frozen product"
+          },
+          "prezzo": 4.50,
+          "tag": []
+        },
+        {
+          "nome": "Anelli di cipolla",
+          "immagine": null,
+          "descrizione": {
+            "it": "10 pezzi — prodotto surgelato",
+            "fr": "10 pièces — produit surgelé",
+            "en": "10 pieces — frozen product"
+          },
+          "prezzo": 4.50,
+          "tag": []
+        },
+        {
+          "nome": "Patatine fritte",
+          "immagine": null,
+          "descrizione": {
+            "it": "Prodotto surgelato",
+            "fr": "Produit surgelé",
+            "en": "Frozen product"
+          },
+          "prezzo": 4.50,
+          "tag": []
+        },
+        {
+          "nome": "Patatine sorriso",
+          "immagine": null,
+          "descrizione": {
+            "it": "10 pezzi — prodotto surgelato",
+            "fr": "10 pièces — produit surgelé",
+            "en": "10 pieces — frozen product"
+          },
+          "prezzo": 4.50,
+          "tag": []
+        },
+        {
+          "nome": "Rosti",
+          "immagine": null,
+          "descrizione": {
+            "it": "4 pezzi — prodotto surgelato",
+            "fr": "4 pièces — produit surgelé",
+            "en": "4 pieces — frozen product"
+          },
+          "prezzo": 5.00,
+          "tag": []
+        },
+        {
+          "nome": "Pasta della pizza fritta con crudo",
+          "immagine": null,
+          "descrizione": {
+            "it": "Pasta della pizza fritta con prosciutto crudo",
+            "fr": "Pâte à pizza frite avec jambon cru",
+            "en": "Fried pizza dough with cured ham"
+          },
+          "prezzo": 12.00,
+          "tag": []
+        },
+        {
+          "nome": "Affettato Misto",
+          "immagine": null,
+          "descrizione": {
+            "it": "Selezione di salumi misti",
+            "fr": "Sélection de charcuteries",
+            "en": "Mixed cold cuts selection"
+          },
+          "prezzo": 12.00,
+          "tag": []
+        },
+        {
+          "nome": "Insalata di Mare",
+          "immagine": null,
+          "descrizione": {
+            "it": "Prodotto surgelato",
+            "fr": "Produit surgelé",
+            "en": "Frozen product"
+          },
+          "prezzo": 12.00,
+          "tag": []
+        },
+        {
+          "nome": "Caprese con Bufala",
+          "immagine": null,
+          "descrizione": {
+            "it": "Mozzarella di bufala, pomodori e basilico",
+            "fr": "Mozzarella de bufflonne, tomates et basilic",
+            "en": "Buffalo mozzarella, tomatoes and basil"
+          },
+          "prezzo": 12.00,
+          "tag": [
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "Crudo e Ananas",
+          "immagine": null,
+          "descrizione": {
+            "it": "Prosciutto crudo e ananas fresco",
+            "fr": "Jambon cru et ananas frais",
+            "en": "Cured ham and fresh pineapple"
+          },
+          "prezzo": 12.00,
+          "tag": []
+        },
+        {
+          "nome": "Bresaola, Rucola e Grana",
+          "immagine": null,
+          "descrizione": {
+            "it": "Bresaola, rucola fresca e grana padano",
+            "fr": "Bresaola, roquette fraîche et grana padano",
+            "en": "Bresaola, fresh rocket and grana padano"
+          },
+          "prezzo": 12.00,
+          "tag": []
+        },
+        {
+          "nome": "Porchetta di Ariccia",
+          "immagine": null,
+          "descrizione": {
+            "it": "Porchetta di Ariccia tradizionale",
+            "fr": "Porchetta di Ariccia traditionnelle",
+            "en": "Traditional Porchetta di Ariccia"
+          },
+          "prezzo": 12.00,
+          "tag": []
+        },
+        {
+          "nome": "Funghi, parmigiano e sedano",
+          "immagine": null,
+          "descrizione": {
+            "it": "Funghi freschi, parmigiano e sedano",
+            "fr": "Champignons frais, parmesan et céleri",
+            "en": "Fresh mushrooms, parmesan and celery"
+          },
+          "prezzo": 12.00,
+          "tag": [
+            "vegetariana"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "menu-bimbi",
+      "nome": {
+        "it": "Menu Bimbi",
+        "fr": "Menu Enfants",
+        "en": "Kids Menu"
+      },
+      "items": [
+        {
+          "nome": "Topolino",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro e mozzarella",
+            "fr": "Sauce tomate et mozzarella",
+            "en": "Tomato sauce and mozzarella"
+          },
+          "prezzo": 6.00,
+          "tag": [
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "Minnie",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella e patatine fritte",
+            "fr": "Sauce tomate, mozzarella et frites",
+            "en": "Tomato sauce, mozzarella and fries"
+          },
+          "prezzo": 7.00,
+          "tag": [
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "Paperino",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella e wurstel",
+            "fr": "Sauce tomate, mozzarella et saucisse",
+            "en": "Tomato sauce, mozzarella and sausage"
+          },
+          "prezzo": 6.00,
+          "tag": []
+        },
+        {
+          "nome": "Paperino con patatine",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, wurstel e patatine fritte",
+            "fr": "Sauce tomate, mozzarella, saucisse et frites",
+            "en": "Tomato sauce, mozzarella, sausage and fries"
+          },
+          "prezzo": 7.00,
+          "tag": []
+        },
+        {
+          "nome": "Pippo",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella e prosciutto cotto",
+            "fr": "Sauce tomate, mozzarella et jambon cuit",
+            "en": "Tomato sauce, mozzarella and cooked ham"
+          },
+          "prezzo": 6.00,
+          "tag": []
+        },
+        {
+          "nome": "Nonna Papera",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella e olive",
+            "fr": "Sauce tomate, mozzarella et olives",
+            "en": "Tomato sauce, mozzarella and olives"
+          },
+          "prezzo": 6.00,
+          "tag": [
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "Lo squalo (mini calzone)",
+          "immagine": null,
+          "descrizione": {
+            "it": "Mozzarella, prosciutto cotto e funghi",
+            "fr": "Mozzarella, jambon cuit et champignons",
+            "en": "Mozzarella, cooked ham and mushrooms"
+          },
+          "prezzo": 7.00,
+          "tag": []
+        },
+        {
+          "nome": "Zio Paperone",
+          "immagine": null,
+          "descrizione": {
+            "it": "Cotoletta alla milanese con patatine fritte e salse",
+            "fr": "Escalope milanaise avec frites et sauces",
+            "en": "Milanese cutlet with fries and sauces"
+          },
+          "prezzo": 8.00,
+          "tag": []
+        },
+        {
+          "nome": "Pluto",
+          "immagine": null,
+          "descrizione": {
+            "it": "Wurstel grigliato con patatine fritte e salse",
+            "fr": "Saucisse grillée avec frites et sauces",
+            "en": "Grilled sausage with fries and sauces"
+          },
+          "prezzo": 8.00,
+          "tag": []
+        }
+      ]
+    }
+  ]
+}

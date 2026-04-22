@@ -106,76 +106,86 @@
 .nav-links {
   display: flex;
   width: 100%;
-  justify-content: space-around; /* distribuisce lo spazio disponibile */
+  justify-content: space-around;
+  /* distribuisce lo spazio disponibile */
   font-size: var(--text-sm);
   font-weight: var(--weight-medium);
 }
 
 .nav-links a {
-  color: var(--color-lightBrown);  /* colore di default per link non attivi */
+  color: var(--color-lightBrown);
+  /* colore di default per link non attivi */
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.1rem; /* spazio tra icona e testo */
-  
+  gap: 0.1rem;
+  /* spazio tra icona e testo */
+
 }
 
 
 
 .nav-links a.active {
-  color: var(--color-red);    /* icona e testo diventano rossi */
+  color: var(--color-red);
+  /* icona e testo diventano rossi */
 }
 
 /* solo gli svg dentro nav-links */
 .nav-links svg {
-    width: 1.2rem;
-    height: 1.2rem;
-    stroke-width: 1.5px; /* linee più sottili */
-  }
+  width: 1.2rem;
+  height: 1.2rem;
+  stroke-width: 1.5px;
+  /* linee più sottili */
+}
 
 /* --------HERO -----------*/
 
-  .hero{
-    position: relative;
-    min-height: calc(100svh - 70px); /* altezza piena della viewport */
-  }
+.hero {
+  position: relative;
+  min-height: calc(100svh - 70px);
+  /* altezza piena della viewport */
+}
 
- .hero__img {
+.hero__img {
   position: absolute;
-  inset: 0; /* equivale a top:0; right:0; bottom:0; left:0 */
+  inset: 0;
+  /* equivale a top:0; right:0; bottom:0; left:0 */
   width: 100%;
   height: 100%;
-  object-fit: cover; /* copre tutto senza distorcersi */
+  object-fit: cover;
+  /* copre tutto senza distorcersi */
   z-index: var(--z-base);
 }
 
 .hero__overlay {
   position: absolute;
   inset: 0;
-  background: 
-    linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.5) 30%,     /* scuro in alto — badge leggibile */
-      transparent 44%             /* sparisce a metà */
+  background:
+    linear-gradient(to bottom,
+      rgba(0, 0, 0, 0.5) 30%,
+      /* scuro in alto — badge leggibile */
+      transparent 44%
+      /* sparisce a metà */
     ),
-    linear-gradient(
-      to bottom,
-      transparent 30%,            /* inizia trasparente a metà */
-      rgba(255, 255, 255, 1) 100% /* bianco in basso — bottoni */
+    linear-gradient(to bottom,
+      transparent 30%,
+      /* inizia trasparente a metà */
+      rgba(255, 255, 255, 1) 100%
+      /* bianco in basso — bottoni */
     );
   z-index: var(--z-raised);
 }
 
-  .hero__content {
-    position: absolute;
-    top: 33%;
-    left: 0;
-    right: 0;
-    z-index: var(--z-raised);
-    color: var(--color-bg);
-    text-align: center;
-    padding: var(--space-6);
-  }
+.hero__content {
+  position: absolute;
+  top: 33%;
+  left: 0;
+  right: 0;
+  z-index: var(--z-raised);
+  color: var(--color-bg);
+  text-align: center;
+  padding: var(--space-6);
+}
 
 
 .hero__eyebrow {
@@ -192,7 +202,7 @@
   font-size: var(--text-xs);
 }
 
-.hero__title{  
+.hero__title {
   font-family: var(--font-heading);
   font-size: var(--text-5xl);
   font-weight: var(--weight-bold);
@@ -201,13 +211,14 @@
   color: var(--color-brown);
 }
 
-.hero__title em{
+.hero__title em {
   font-size: 6.5rem;
   color: var(--color-red);
-  font-style: italic;  /* ← mancava questo */
+  font-style: italic;
+  /* ← mancava questo */
 }
 
-.hero__subtitle{
+.hero__subtitle {
   font-size: var(--text-base);
   font-weight: var(--weight-regular);
   color: var(--color-brown);
@@ -215,7 +226,7 @@
 
 }
 
-.hero__actions{
+.hero__actions {
   margin-top: var(--space-10);
   display: flex;
   align-items: center;
@@ -225,8 +236,10 @@
 }
 
 .btn {
-  width: 100%;        /* occupa tutto il contenitore */
-  max-width: 380px;   /* ma non supera 350px */
+  width: 100%;
+  /* occupa tutto il contenitore */
+  max-width: 380px;
+  /* ma non supera 350px */
   padding: var(--space-5) var(--space-6);
   border-radius: var(--radius-xl);
   font-weight: var(--weight-bold);
@@ -235,11 +248,12 @@
 
 }
 
- .btn-primary {
+.btn-primary {
   background-color: var(--color-red);
   color: var(--color-bg);
   transition: background-color var(--transition-normal);
 }
+
 .btn-secondary {
   background-color: transparent;
   color: var(--color-red);
@@ -267,9 +281,10 @@
   background-color: var(--color-lightRed);
   border-radius: var(--radius-xl);
   margin: 0 var(--space-5);
-  border: 1px dashed color-mix(in srgb, var(--color-red) 30%, transparent);}
+  border: 1px dashed color-mix(in srgb, var(--color-red) 30%, transparent);
+}
 
-.orari__header{
+.orari__header {
   font-family: var(--font-heading2);
   font-size: var(--text-xl);
   font-weight: 700;
@@ -279,6 +294,7 @@
   flex-direction: column;
   color: var(--color-red);
 }
+
 .clock-icon {
   width: 2.5rem;
   height: 2.5rem;
@@ -286,7 +302,7 @@
 
 }
 
-.ora{
+.ora {
   font-size: var(--text-lg);
   font-weight: var(--weight-medium);
   color: var(--color-brown);
@@ -308,7 +324,7 @@
 
 }
 
-.icon-red{
+.icon-red {
   width: 1.5rem;
   height: 1.5rem;
   color: var(--color-red);
@@ -318,7 +334,7 @@
   background-color: #E8B5AD;
 }
 
-.orari__azioni{
+.orari__azioni {
   margin: 0 var(--space-5);
   display: flex;
   align-items: center;
@@ -338,8 +354,10 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 0.2rem; /* spazio tra icona e testo */
-  flex: 1; /* ← occupano la stessa larghezza */
+  gap: 0.2rem;
+  /* spazio tra icona e testo */
+  flex: 1;
+  /* ← occupano la stessa larghezza */
 
 
 }
@@ -364,7 +382,8 @@
 
 .location__img-wrapper {
   position: relative;
-  height: 340px; /* prova questo, poi aggiusta a gusto */
+  height: 340px;
+  /* prova questo, poi aggiusta a gusto */
 }
 
 .location__img {
@@ -376,11 +395,12 @@
 .location__img-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    transparent 75%,      /* era 40%, ora inizia più tardi */
-    var(--color-bg3) 90% /* arriva al bruno solo alla fine */
-  );
+  background: linear-gradient(to bottom,
+      transparent 75%,
+      /* era 40%, ora inizia più tardi */
+      var(--color-bg3) 90%
+      /* arriva al bruno solo alla fine */
+    );
   z-index: var(--z-base);
 }
 
@@ -468,7 +488,8 @@
 
 .impasto__img-wrapper {
   position: relative;
-  height: 270px; /* prova questo, poi aggiusta a gusto */
+  height: 270px;
+  /* prova questo, poi aggiusta a gusto */
 }
 
 .impasto__img {
@@ -480,11 +501,12 @@
 .impasto__img-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    transparent 78%,      /* era 40%, ora inizia più tardi */
-    var(--color-crema) 90% /* arriva al bruno solo alla fine */
-  );
+  background: linear-gradient(to bottom,
+      transparent 78%,
+      /* era 40%, ora inizia più tardi */
+      var(--color-crema) 90%
+      /* arriva al bruno solo alla fine */
+    );
   z-index: var(--z-base);
 }
 
@@ -496,7 +518,7 @@
   flex-direction: column;
   gap: var(--space-2);
   z-index: var(--z-raised);
-  
+
 }
 
 .impasto__title {
@@ -546,7 +568,8 @@
   gap: var(--space-2);
 
 }
-.footer__contact-row{
+
+.footer__contact-row {
   display: flex;
   gap: var(--space-4);
   font-size: var(--text-sm);
@@ -559,7 +582,7 @@
   gap: var(--space-6);
   margin-top: var(--space-2);
   margin-bottom: var(--space-2);
-  
+
 }
 
 .footer__social-link {
@@ -581,4 +604,3 @@
   color: var(--color-crema);
   margin-top: var(--space-2);
 }
-
