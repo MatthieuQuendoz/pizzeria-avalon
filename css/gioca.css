@@ -1,0 +1,601 @@
+/* ============================================
+   PIZZERIA AVALON — Gioca Page
+   ============================================ */
+
+/* Riutilizzato da menu.css — lang switcher, navbar, footer */
+
+/* -------- LANG SWITCHER ----------- */
+.lang-switcher {
+  position: fixed;
+  top: var(--space-4);
+  right: var(--space-4);
+  z-index: var(--z-nav);
+}
+
+.lang-switcher__toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  background-color: var(--color-bg);
+  border: 1px solid rgba(45, 29, 29, 0.15);
+  border-radius: var(--radius-full);
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--color-brown);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  font-family: var(--font-heading2);
+  transition: box-shadow var(--transition-fast);
+}
+
+.lang-switcher__toggle:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.lang-switcher__chevron {
+  font-size: 0.65rem;
+  line-height: 1;
+  transition: transform var(--transition-fast);
+  display: inline-block;
+}
+
+.lang-switcher--open .lang-switcher__chevron {
+  transform: rotate(180deg);
+}
+
+.lang-switcher__dropdown {
+  position: absolute;
+  top: calc(100% + var(--space-2));
+  right: 0;
+  background-color: var(--color-bg);
+  border: 1px solid rgba(45, 29, 29, 0.10);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  padding: var(--space-2);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-width: 140px;
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.lang-switcher--open .lang-switcher__dropdown {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.lang-option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border: none;
+  background: none;
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--color-brown);
+  cursor: pointer;
+  font-family: var(--font-heading2);
+  transition: background-color var(--transition-fast);
+  text-align: left;
+  width: 100%;
+}
+
+.lang-option:hover {
+  background-color: var(--color-crema);
+}
+
+.lang-option--active {
+  color: var(--color-red);
+  font-weight: var(--weight-bold);
+}
+
+/* -------- NAVBAR ----------- */
+.navbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--color-lightRed);
+  padding: 1.25rem 0;
+  display: flex;
+  justify-content: center;
+  z-index: var(--z-nav);
+}
+
+.nav-links {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+}
+
+.nav-links a {
+  color: var(--color-lightBrown);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+}
+
+.nav-links a.active {
+  color: var(--color-red);
+}
+
+.nav-links svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  stroke-width: 1.5px;
+}
+
+/* -------- HERO ----------- */
+.gioca-hero {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-top: var(--space-12);
+  margin-bottom: var(--space-6);
+}
+
+.gioca-hero__text {
+  flex: 1;
+  min-width: 0;
+}
+
+.gioca-hero__eyebrow {
+  display: inline-block;
+  font-size: var(--text-xs);
+  font-weight: var(--weight-bold);
+  color: var(--color-green);
+  background-color: var(--color-lightGreen);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-3);
+  font-family: var(--font-heading2);
+}
+
+.gioca-hero__title {
+  font-family: var(--font-heading);
+  font-size: var(--text-3xl);
+  font-weight: var(--weight-bold);
+  color: var(--color-brown);
+  line-height: 1;
+  margin-bottom: var(--space-3);
+}
+
+.gioca-hero__title em {
+  display: block;
+  color: var(--color-red);
+  font-style: italic;
+}
+
+.gioca-hero__description {
+  font-size: var(--text-sm);
+  color: var(--color-lightBrown);
+  line-height: 1.6;
+  max-width: 220px;
+}
+
+.gioca-hero__knight {
+  width: 130px;
+  flex-shrink: 0;
+  object-fit: contain;
+  align-self: flex-end;
+}
+
+/* -------- CANVAS DI GIOCO ----------- */
+.gioca-canvas-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 440 / 580;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  margin-bottom: var(--space-5);
+  box-shadow: var(--shadow-md);
+  background-color: #F4D79A;
+}
+
+#game-container {
+  width: 100%;
+  height: 100%;
+  display: block;
+  touch-action: none;
+  user-select: none;
+}
+
+#game-container canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* -------- INTRO OVERLAY ----------- */
+.gioca-intro {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  background: linear-gradient(135deg, rgba(45, 29, 29, 0.85), rgba(90, 65, 60, 0.85));
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: opacity var(--transition-normal);
+}
+
+.gioca-intro--hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.gioca-intro__card {
+  background-color: var(--color-bg);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6) var(--space-5);
+  width: 100%;
+  max-width: 320px;
+  text-align: center;
+  box-shadow: var(--shadow-xl);
+}
+
+.gioca-intro__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: var(--color-lightRed);
+  color: var(--color-red);
+  margin-bottom: var(--space-3);
+}
+
+.gioca-intro__icon svg {
+  width: 1.4rem;
+  height: 1.4rem;
+}
+
+.gioca-intro__title {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: var(--weight-bold);
+  color: var(--color-brown);
+  margin-bottom: var(--space-2);
+}
+
+.gioca-intro__text {
+  font-size: var(--text-sm);
+  color: var(--color-lightBrown);
+  line-height: 1.5;
+  margin-bottom: var(--space-4);
+}
+
+.gioca-intro__input {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  border: 1.5px solid rgba(45, 29, 29, 0.15);
+  border-radius: var(--radius-full);
+  font-size: var(--text-base);
+  font-family: var(--font-heading2);
+  color: var(--color-brown);
+  background-color: var(--color-bg);
+  margin-bottom: var(--space-3);
+  text-align: center;
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+
+.gioca-intro__input:focus {
+  border-color: var(--color-red);
+}
+
+.gioca-intro__btn {
+  width: 100%;
+  padding: var(--space-3) var(--space-5);
+  border: none;
+  border-radius: var(--radius-full);
+  background-color: var(--color-red);
+  color: #fff;
+  font-size: var(--text-base);
+  font-weight: var(--weight-bold);
+  font-family: var(--font-heading2);
+  cursor: pointer;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  box-shadow: 0 4px 12px rgba(177, 44, 22, 0.3);
+}
+
+.gioca-intro__btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(177, 44, 22, 0.4);
+}
+
+.gioca-intro__btn:active {
+  transform: translateY(0);
+}
+
+.gioca-intro__btn:disabled {
+  background-color: var(--color-bg3);
+  color: var(--color-lightBrown);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* -------- HUD (score / target) ----------- */
+.gioca-hud {
+  display: flex;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+
+.gioca-hud__score,
+.gioca-hud__target {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-full);
+  font-size: var(--text-base);
+  font-weight: var(--weight-bold);
+  font-family: var(--font-heading2);
+}
+
+.gioca-hud__score {
+  background-color: var(--color-red);
+  color: #fff;
+}
+
+.gioca-hud__target {
+  background-color: var(--color-brown);
+  color: #fff;
+}
+
+.gioca-hud__score svg,
+.gioca-hud__target svg {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+
+/* -------- IL PREMIO ----------- */
+.gioca-premio {
+  background-color: var(--color-crema);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6) var(--space-5);
+  margin-bottom: var(--space-5);
+  text-align: center;
+}
+
+.gioca-premio__icon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--space-3);
+  color: var(--color-brown);
+}
+
+.gioca-premio__icon svg {
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+.gioca-premio__title {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+  color: var(--color-brown);
+  margin-bottom: var(--space-2);
+}
+
+.gioca-premio__text {
+  font-size: var(--text-sm);
+  color: var(--color-lightBrown);
+  line-height: 1.6;
+  margin-bottom: var(--space-5);
+}
+
+.gioca-premio__btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-full);
+  border: 1.5px solid rgba(45, 29, 29, 0.15);
+  background: transparent;
+  color: var(--color-lightBrown);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  font-family: var(--font-heading2);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: not-allowed;
+  transition: all var(--transition-normal);
+}
+
+.gioca-premio__btn svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.gioca-premio__btn--unlocked {
+  background-color: var(--color-green);
+  border-color: var(--color-green);
+  color: #fff;
+  cursor: pointer;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* -------- CLASSIFICA ----------- */
+.gioca-leaderboard {
+  background-color: var(--color-crema);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  margin-bottom: var(--space-8);
+}
+
+.gioca-leaderboard__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+  color: var(--color-brown);
+}
+
+.gioca-leaderboard__header svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  flex-shrink: 0;
+}
+
+.gioca-leaderboard__title {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+  color: var(--color-brown);
+}
+
+.gioca-leaderboard__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.leaderboard-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid rgba(45, 29, 29, 0.08);
+}
+
+.leaderboard-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.leaderboard-item__rank {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-xs);
+  font-weight: var(--weight-bold);
+  font-family: var(--font-heading2);
+  flex-shrink: 0;
+  background-color: var(--color-bg3);
+  color: var(--color-lightBrown);
+}
+
+.leaderboard-item__rank--1 {
+  background-color: var(--color-red);
+  color: #fff;
+}
+
+.leaderboard-item__rank--2 {
+  background-color: var(--color-lightBrown);
+  color: #fff;
+}
+
+.leaderboard-item__rank--3 {
+  background-color: var(--color-brown);
+  color: #fff;
+}
+
+.leaderboard-item__name {
+  flex: 1;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--color-brown);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.leaderboard-item__score {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  color: var(--color-lightBrown);
+  font-family: var(--font-heading2);
+  flex-shrink: 0;
+}
+
+.leaderboard-item__score--1 {
+  color: var(--color-red);
+}
+
+/* -------- FOOTER ----------- */
+.footer {
+  background-color: var(--color-lightBrown);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: var(--color-crema);
+  padding: var(--space-4) var(--space-12);
+}
+
+.footer__title {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-bold);
+  line-height: 1.2;
+  margin-bottom: var(--space-4);
+}
+
+.footer__address {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  margin-bottom: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.footer__contact-row {
+  display: flex;
+  gap: var(--space-4);
+  font-size: var(--text-sm);
+  margin-bottom: var(--space-2);
+  align-items: center;
+}
+
+.footer__social {
+  display: flex;
+  gap: var(--space-6);
+  margin-top: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+.footer__social-link {
+  color: var(--color-crema);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.footer__legal {
+  font-size: var(--text-xs);
+  color: var(--color-crema);
+  margin-top: var(--space-4);
+}
+
+.footer__text {
+  font-size: var(--text-sm);
+  color: var(--color-crema);
+  margin-top: var(--space-2);
+}

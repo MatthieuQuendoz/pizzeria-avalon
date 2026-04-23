@@ -1,6 +1,17 @@
 let categoriaCorrente = null;
 let categorieGlobali = null;
 
+const TAG_CONFIG = {
+  'vegan': { emoji: '🌱', label: { it: 'Vegan', fr: 'Végane', en: 'Vegan' } },
+  'vegetariana': { emoji: '🥗', label: { it: 'Vegetariana', fr: 'Végétarienne', en: 'Vegetarian' } },
+  'piccante': { emoji: '🌶️', label: { it: 'Piccante', fr: 'Épicé', en: 'Spicy' } },
+  'immodificabile': { emoji: '🔒', label: { it: 'Immodificabile', fr: 'Fixe', en: 'Fixed' } },
+  'senza glutine': { emoji: '🌾', label: { it: 'Senza glutine', fr: 'Sans gluten', en: 'Gluten-free' } },
+  'locale': { emoji: '🏔️', label: { it: 'Locale', fr: 'Local', en: 'Local' } },
+  'Classica': { emoji: '🎩', label: { it: 'Classica', fr: 'Classique', en: 'Classic' } },
+  'new': { emoji: '✨', label: { it: 'Nuovo', fr: 'Nouveau', en: 'New' } }
+};
+
 
 //Questa funziona prende i dati da menu.json
 async function caricaMenu(file) {
@@ -73,7 +84,24 @@ function mostraPizze(categoria) {
       img.classList.add('img-placeholder');
       img.alt = '';
     }
-    card.appendChild(img);
+
+    // crea il contenitore
+    const tags = document.createElement('div');
+    tags.classList.add('item-tags');
+
+    item.tag.forEach(t => {
+      const config = TAG_CONFIG[t];
+      if (!config) return; // ignora tag non riconosciuti
+
+      const span = document.createElement('span');
+      span.classList.add('item-tag', `item-tag--${t}`);
+      const lingua = localStorage.getItem('lingua') || 'it';
+      span.textContent = `${config.emoji} ${config.label[lingua]}`;
+      tags.appendChild(span);
+    });
+
+
+
 
     const nome = document.createElement('h3');
     nome.textContent = item.nome;
@@ -83,9 +111,11 @@ function mostraPizze(categoria) {
     descrizione.textContent = item.descrizione[lingua] || item.descrizione.it;
 
     const prezzo = document.createElement('span');
+    prezzo.classList.add('item-price');
     prezzo.textContent = formattaPrezzo(item);
 
     card.appendChild(img);
+    card.appendChild(tags);
     card.appendChild(nome);
     card.appendChild(descrizione);
     card.appendChild(prezzo);

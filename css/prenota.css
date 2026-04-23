@@ -107,275 +107,257 @@
   display: flex;
   width: 100%;
   justify-content: space-around;
-  /* distribuisce lo spazio disponibile */
   font-size: var(--text-sm);
   font-weight: var(--weight-medium);
 }
 
 .nav-links a {
   color: var(--color-lightBrown);
-  /* colore di default per link non attivi */
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.1rem;
-  /* spazio tra icona e testo */
-
 }
-
 
 .nav-links a.active {
   color: var(--color-red);
-  /* icona e testo diventano rossi */
 }
 
-/* solo gli svg dentro nav-links */
 .nav-links svg {
   width: 1.2rem;
   height: 1.2rem;
   stroke-width: 1.5px;
-  /* linee più sottili */
 }
 
-
-/* -------- MENU HEADER ----------- */
-.menu-header {
-  margin-top: var(--space-12);
-  margin-bottom: var(--space-12);
+/* -------- HERO PRENOTA ----------- */
+.prenota-hero {
+  padding-top: var(--space-16);
+  padding-bottom: var(--space-8);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
 }
 
-.menu-header__content {
-  background-image: url("../assets/images/menu-header.png");
-  background-size: cover;
-  padding: var(--space-12) var(--space-8);
-  text-align: left;
-  width: 100%;
-  height: 306px;
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  /* ← taglia l'immagine ai bordi del contenitore */
+.prenota-hero__badge {
+  display: inline-block;
+  background-color: var(--color-green);
+  color: var(--color-bg);
+  font-family: var(--font-heading2);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: var(--space-2) var(--space-5);
+  border-radius: var(--radius-full);
 }
 
-.menu-header__title {
+.prenota-hero__title {
   font-family: var(--font-heading);
   font-size: var(--text-4xl);
   font-weight: var(--weight-bold);
   color: var(--color-brown);
-  line-height: 1;
+  line-height: 1.1;
   margin: 0;
 }
 
-.menu-header__title em {
-  font-family: var(--font-heading);
-  font-size: var(--text-5xl);
-  font-weight: var(--weight-bold);
-  color: var(--color-red);
-  margin: 0;
+.prenota-hero__title em {
   display: block;
+  font-style: italic;
+  color: var(--color-red);
+  font-size: var(--text-4xl);
 }
 
-.menu-header__description {
+.prenota-hero__subtitle {
   font-size: var(--text-base);
-  font-weight: var(--weight-medium);
-  color: var(--color-brown);
-  text-align: left;
-}
-
-
-/* --- SCELTA DEL MENU (CIBO/BEVANDE/DOLCI) --- */
-
-.menu-guida {
-  font-size: var(--text-sm);
-  font-weight: var(--weight-medium);
   color: var(--color-lightBrown);
-  text-align: center;
-  margin-bottom: var(--space-3);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  line-height: 1.6;
+  max-width: 36ch;
 }
 
-.menu-macrogruppi {
-  display: flex;
-  background-color: var(--color-lightRed);
-  border-radius: var(--radius-full);
-  padding: var(--space-1);
-  gap: var(--space-1);
-  margin: 0 var(--space-5) var(--space-6);
-}
-
-.macrogruppo {
-  flex: 1;
-  border: none;
-  border-radius: var(--radius-full);
-  padding: var(--space-2) var(--space-3);
-  background: transparent;
-  color: var(--color-lightBrown);
-  font-size: var(--text-sm);
-  font-weight: var(--weight-medium);
-  font-family: var(--font-body);
-  cursor: pointer;
-  transition: all var(--transition-fast);
-}
-
-.macrogruppo.active {
-  background-color: var(--color-bg);
-  color: var(--color-brown);
-  font-weight: var(--weight-bold);
-  box-shadow: var(--shadow-sm);
-}
-
-/* --------MENU CATEGORIE ----------*/
-.menu-tabs {
-  display: flex;
-  overflow-x: auto;
-  white-space: nowrap;
-  gap: var(--space-2);
-  margin-bottom: var(--space-6);
-  padding: var(--space-2) var(--space-5);
-  /* ← respiro laterale */
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  margin-top: var(--space-12);
-}
-
-.menu-tabs::-webkit-scrollbar {
-  display: none;
-}
-
-.menu-tab {
-  padding: var(--space-2) var(--space-4);
-  border-radius: var(--radius-full);
-  background-color: var(--color-lightRed);
-  border: none;
-  color: var(--color-lightBrown);
-  font-size: var(--text-sm);
-  font-weight: var(--weight-medium);
-}
-
-/* ------ CARDS CATEGORIE ----------*/
-/* ------ CARDS ----------*/
-.menu-lista {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-6);
-  padding-bottom: var(--space-8);
-}
-
-.item-card {
-  background-color: var(--color-bg3);
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  padding: var(--space-4);
+/* -------- BOOKING ----------- */
+.prenota-book {
+  margin: 0 var(--space-2) var(--space-8);
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
-
 }
 
-.item-card:nth-child(even) {
-  background-color: var(--color-bg3);
-}
-
-.item-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: var(--radius-sm);
-  margin-bottom: var(--space-2);
-}
-
-.img-placeholder {
-  background: linear-gradient(135deg,
-      var(--color-lightRed) 0%,
-      var(--color-bg2) 100%);
-  /* nasconde il broken icon */
-  color: var(--color-brown);
-  font-size: 0;
-}
-
-.item-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-1);
-  margin-bottom: var(--space-2);
-}
-
-.item-tag {
-  font-size: var(--text-xs);
-  font-weight: var(--weight-medium);
-  padding: var(--space-1) var(--space-2);
-  border-radius: var(--radius-full);
-  background-color: var(--color-bg2);
-  color: var(--color-brown);
-}
-
-/* colori specifici per tipo */
-.item-tag--vegan {
-  background-color: #E8F5E9;
-  color: #2E7D32;
-}
-
-.item-tag--piccante {
-  background-color: #FBE9E7;
-  color: #BF360C;
-}
-
-.item-tag--vegetariana {
-  background-color: #F1F8E9;
-  color: #558B2F;
-}
-
-.item-tag--senza-glutine {
-  background-color: #FFF8E1;
-  color: #F57F17;
-}
-
-.item-tag--locale {
-  background-color: #E3F2FD;
-  color: #1565C0;
-}
-
-.item-tag--immodificabile {
-  background-color: #F3E5F5;
-  color: #6A1B9A;
-}
-
-
-
-
-
-.item-card h3 {
-  font-family: var(--font-heading);
+.prenota-book__label {
   font-size: var(--text-lg);
   font-weight: var(--weight-bold);
   color: var(--color-brown);
-  margin: 0;
 }
 
-.item-card p {
-  font-size: var(--text-sm);
-  color: var(--color-lightBrown);
-  line-height: 1.5;
-  margin: 0;
-}
-
-.item-price {
-  font-size: var(--text-base);
-  font-weight: var(--weight-medium);
-  color: var(--color-red);
-  font-style: italic;
-}
-
-/* tab attivo */
-.menu-tab.active {
+.prenota-book__cta {
+  display: block;
   background-color: var(--color-red);
+  color: var(--color-bg);
+  text-align: center;
+  font-family: var(--font-heading2);
+  font-size: var(--text-base);
+  font-weight: var(--weight-bold);
+  padding: var(--space-5);
+  border-radius: var(--radius-xl);
+  transition: background-color var(--transition-normal);
+}
+
+.prenota-book__cta:hover {
+  background-color: var(--color-brown);
+}
+
+/* -------- QUALCHE DOMANDA ----------- */
+.domande {
+  margin-bottom: var(--space-8);
+}
+
+.domande__title {
+  font-family: var(--font-heading2);
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-bold);
+  color: var(--color-red);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-align: center;
+  margin-bottom: var(--space-5);
+}
+
+.domande__azioni {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin: 0 var(--space-2);
+}
+
+.domande__btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-8) var(--space-6);
+  border-radius: var(--radius-xl);
+  font-family: var(--font-heading2);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+  transition: opacity var(--transition-fast);
+}
+
+.domande__btn svg {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.domande__btn:hover {
+  opacity: 0.88;
+}
+
+.domande__btn--wa {
+  background-color: var(--color-green);
   color: var(--color-bg);
 }
 
-.menu-tab {
-  cursor: pointer;
-  flex-shrink: 0;
-  /* evita che si restringano nello scroll */
+.domande__btn--tel {
+  background-color: var(--color-lightGreen);
+  color: var(--color-brown);
+}
+
+/* -------- LOCATION ----------- */
+.location {
+  margin: 0 var(--space-2) var(--space-8);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background-color: var(--color-bg3);
+  box-shadow: var(--shadow-lg);
+}
+
+.location__img-wrapper {
+  position: relative;
+  height: 280px;
+}
+
+.location__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.location__img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom,
+      transparent 70%,
+      var(--color-bg3) 92%);
+  z-index: var(--z-base);
+}
+
+.location__content {
+  position: relative;
+  margin-top: -15px;
+  padding: 0 var(--space-6) var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  z-index: var(--z-raised);
+}
+
+.location__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.location__icon {
+  width: 1.1rem;
+  height: 1.1rem;
+  color: var(--color-brown);
+}
+
+.location__label {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--color-brown);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.location__title {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-bold);
+  color: var(--color-brown);
+  line-height: 1.2;
+}
+
+.location__subtitle {
+  font-size: var(--text-sm);
+  color: color-mix(in srgb, var(--color-lightBrown) 60%, transparent);
+  line-height: 1.6;
+}
+
+.location__btn {
+  margin-top: var(--space-2);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background-color: var(--color-red);
+  color: var(--color-bg);
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-full);
+  font-weight: var(--weight-bold);
+  font-size: var(--text-sm);
+  align-self: flex-start;
+  transition: background-color var(--transition-normal);
+}
+
+.location__btn:hover {
+  background-color: var(--color-brown);
+}
+
+.location__btn svg {
+  width: 1rem;
+  height: 1rem;
 }
 
 /* -------- FOOTER ----------- */
@@ -403,7 +385,6 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
-
 }
 
 .footer__contact-row {
@@ -419,7 +400,6 @@
   gap: var(--space-6);
   margin-top: var(--space-2);
   margin-bottom: var(--space-2);
-
 }
 
 .footer__social-link {
@@ -428,7 +408,6 @@
   align-items: center;
   gap: var(--space-2);
 }
-
 
 .footer__legal {
   font-size: var(--text-xs);

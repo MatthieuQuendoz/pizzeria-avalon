@@ -17,7 +17,9 @@
             "en": "Tomato sauce and mozzarella"
           },
           "prezzo": 7.00,
-          "tag": []
+          "tag": [
+            "Classica"
+          ]
         },
         {
           "nome": "Marinara",
@@ -29,7 +31,8 @@
           },
           "prezzo": 7.00,
           "tag": [
-            "vegan"
+            "vegan",
+            "Classica"
           ]
         },
         {

@@ -5,9 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
-    content="Pizzeria Avalon di Jovençan. Vieni a trovarci! Siamo aperti Dal giovedì al lunedì a cena. Ti aspettiamo!">
+    content="Prenota un tavolo alla Pizzeria Avalon di Jovençan. Siamo aperti dal giovedì al lunedì a cena.">
 
-  <title>Menu - Pizzeria Avalon</title>
+  <title>Prenota — Pizzeria Avalon</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,19 +18,18 @@
   <!-- CSS -->
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/menu.css">
+  <link rel="stylesheet" href="css/prenota.css">
 
-  <!-- lucide icon -->
+  <!-- Lucide icons -->
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
   <!--COOKIES-->
   <script type="text/javascript"
     src="https://embeds.iubenda.com/widgets/1e3d3707-fe99-4f69-9752-2f4ad9fa1655.js"></script>
-
 </head>
 
-
 <body>
+
   <div class="lang-switcher" id="lang-switcher">
     <button class="lang-switcher__toggle" id="lang-toggle" aria-label="Cambia lingua">
       <span id="lang-current-flag">🇮🇹</span>
@@ -54,7 +53,7 @@
         <i data-lucide="book-open"></i>
         <span data-i18n="navbar.menu">Menu</span>
       </a>
-      <a href="prenota.html">
+      <a href="prenota.html" class="active">
         <i data-lucide="calendar"></i>
         <span data-i18n="navbar.prenota">Prenota</span>
       </a>
@@ -69,40 +68,64 @@
     </nav>
   </header>
 
-
   <main class="page-wrapper">
 
-    <section class="menu-header">
-      <div class="menu-header__content">
-        <h1 class="menu-header__title">
-          <span data-i18n="menu.titolo">Il nostro</span>
-          <em>Menu</em>
-        </h1>
-        <p class="menu-header__description" data-i18n="menu.description">
-          Impasti a lunga maturazione con ingredienti selezionati.</p>
+    <!-- Hero -->
+    <section class="prenota-hero">
+      <h1 class="prenota-hero__title">
+        <span data-i18n="prenota.titolo">Vieni a trovarci,</span>
+        <em data-i18n="prenota.titolo_em">ti aspettiamo</em>
+      </h1>
+      <p class="prenota-hero__subtitle" data-i18n="prenota.sottotitolo">
+        Impasti a lunga maturazione, ingredienti del territorio e il calore di una cucina autentica.
+        Prenota il tuo tavolo in pochi secondi.
+      </p>
+    </section>
+
+    <!-- Booking -->
+    <section class="prenota-book">
+      <a href="#gstpln_openWidget" class="prenota-book__cta" data-i18n="prenota.book_cta">
+        Prenota un tavolo
+      </a>
+    </section>
+
+    <!-- Qualche domanda -->
+    <section class="domande">
+      <h2 class="domande__title" data-i18n="prenota.domande_titolo">Qualche domanda?</h2>
+      <div class="domande__azioni">
+        <a href="https://wa.me/393514226610" class="domande__btn domande__btn--wa">
+          <i data-lucide="message-square-more"></i>
+          <span data-i18n="home.orari_whatsapp">WhatsApp</span>
+        </a>
+        <a href="tel:+390165250300" class="domande__btn domande__btn--tel">
+          <i data-lucide="phone"></i>
+          <span data-i18n="home.orari_chiamaci">Chiamaci</span>
+        </a>
       </div>
     </section>
 
+    <!-- Location -->
+    <section class="location">
+      <div class="location__img-wrapper">
+        <img src="assets/images/avalonDaFuori.jpg" alt="Vista esterna della Pizzeria Avalon a Jovençan"
+          class="location__img">
+        <div class="location__img-overlay" aria-hidden="true"></div>
+      </div>
 
-    <p class="menu-guida" data-i18n="menu.guida">Cosa vuoi ordinare?</p>
-
-    <div class="menu-macrogruppi" id="menu-macrogruppi">
-      <button class="macrogruppo active" data-file="menu-cibo.json">
-        🍕<span data-i18n="menu.cibo">Cibo</span></button>
-      <button class="macrogruppo" data-file="menu-bevande.json">
-        🍷<span data-i18n="menu.bevande">Bevande</span></button>
-      <button class="macrogruppo" data-file="menu-dolci.json">
-        🍰<span data-i18n="menu.dolci">Dessert</span>
-      </button>
-    </div>
-
-    <div class="menu-tabs" id="menu-tabs">
-      <!-- i tab delle categorie — generati da JS -->
-    </div>
-
-    <div class="menu-lista" id="menu-lista">
-      <!-- le card delle pizze — generate da JS -->
-    </div>
+      <div class="location__content">
+        <div class="location__header">
+          <i class="location__icon" data-lucide="map-pin"></i>
+          <p class="location__label" data-i18n="home.location_label">Dove siamo</p>
+        </div>
+        <h2 class="location__title" data-i18n="home.location_titolo">Fraz. Etral 7, Jovençan</h2>
+        <p class="location__subtitle" data-i18n="home.location_sottotitolo">Ci troviamo a 10 minuti da Aosta.</p>
+        <a href="https://maps.google.com/?q=Etral+8+Jovençan+Valle+d'Aosta" target="_blank" rel="noopener noreferrer"
+          class="btn location__btn">
+          <i data-lucide="navigation"></i>
+          <span data-i18n="home.location_maps">Apri in Google Maps</span>
+        </a>
+      </div>
+    </section>
 
   </main>
 
@@ -119,7 +142,7 @@
         </div>
         <div class="footer__contact-row">
           <i data-lucide="phone"></i>
-          <a href="tel:+390165250300"> +39 0165 250300</a>
+          <a href="tel:+390165250300">+39 0165 250300</a>
         </div>
         <div class="footer__contact-row">
           <i data-lucide="mail"></i>
@@ -139,7 +162,7 @@
       </a>
       <a href="https://www.instagram.com/pizzeriaavalon/" target="_blank" rel="noopener noreferrer"
         class="footer__social-link" aria-label="Instagram di Pizzeria Avalon">
-        <i data-lucide="camera"> </i> Instagram
+        <i data-lucide="camera"></i> Instagram
       </a>
     </div>
 
@@ -169,9 +192,22 @@
   <!-- JS -->
   <script src="js/i18n.js"></script>
   <script src="js/nav.js"></script>
-  <script src="js/menu.js"></script>
-
+  <script src="js/prenota.js"></script>
 
   <script>lucide.createIcons();</script>
 
+  <!-- Guestplan: nessun floating button, si apre via link #gstpln_openWidget -->
+  <script>
+    (function (g, s, t, p, l, n) {
+      g["_gstpln"] = {};
+      (l = s.createElement(t)), (n = s.getElementsByTagName(t)[0]);
+      l.async = 1; l.src = p; n.parentNode.insertBefore(l, n);
+    })(window, document, "script", "https://cdn.guestplan.com/widget.js");
+    _gstpln.accessKey = "c04fdf69efddaa09950f532db39a37d97f39cc51";
+    _gstpln.open = false;
+    _gstpln.showFab = false;
+  </script>
+
 </body>
+
+</html>

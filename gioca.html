@@ -5,9 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
-    content="Pizzeria Avalon di Jovençan. Vieni a trovarci! Siamo aperti Dal giovedì al lunedì a cena. Ti aspettiamo!">
+    content="Gioca a L'Acchiappa Pizze! Prendi più pizze possibili ed evita le bombe per vincere un omaggio alla Pizzeria Avalon.">
 
-  <title>Menu - Pizzeria Avalon</title>
+  <title>Gioca — Pizzeria Avalon</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,22 +15,26 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,100..900;1,100..900&family=Epilogue:ital,wght@0,100..900;1,100..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap"
     rel="stylesheet">
+
   <!-- CSS -->
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/menu.css">
+  <link rel="stylesheet" href="css/gioca.css">
 
-  <!-- lucide icon -->
+  <!-- Lucide icons -->
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+  <!-- Phaser -->
+  <script src="https://cdn.jsdelivr.net/npm/phaser@3.70.0/dist/phaser.min.js"></script>
 
   <!--COOKIES-->
   <script type="text/javascript"
     src="https://embeds.iubenda.com/widgets/1e3d3707-fe99-4f69-9752-2f4ad9fa1655.js"></script>
-
 </head>
 
-
 <body>
+
+  <!-- Lang switcher -->
   <div class="lang-switcher" id="lang-switcher">
     <button class="lang-switcher__toggle" id="lang-toggle" aria-label="Cambia lingua">
       <span id="lang-current-flag">🇮🇹</span>
@@ -44,6 +48,7 @@
     </div>
   </div>
 
+  <!-- Navbar -->
   <header class="navbar">
     <nav aria-label="Navigazione principale" class="nav-links">
       <a href="index.html">
@@ -58,7 +63,7 @@
         <i data-lucide="calendar"></i>
         <span data-i18n="navbar.prenota">Prenota</span>
       </a>
-      <a href="gioca.html">
+      <a href="gioca.html" class="active">
         <i data-lucide="gamepad-2"></i>
         <span data-i18n="navbar.gioca">Gioca</span>
       </a>
@@ -69,49 +74,99 @@
     </nav>
   </header>
 
-
   <main class="page-wrapper">
 
-    <section class="menu-header">
-      <div class="menu-header__content">
-        <h1 class="menu-header__title">
-          <span data-i18n="menu.titolo">Il nostro</span>
-          <em>Menu</em>
+    <!-- Hero -->
+    <section class="gioca-hero">
+      <div class="gioca-hero__text">
+        <span class="gioca-hero__eyebrow" data-i18n="gioca.eyebrow">Il Gioco</span>
+        <h1 class="gioca-hero__title">
+          <span data-i18n="gioca.titolo">L'acchiappa</span>
+          <em data-i18n="gioca.titolo_em">pizze</em>
         </h1>
-        <p class="menu-header__description" data-i18n="menu.description">
-          Impasti a lunga maturazione con ingredienti selezionati.</p>
+        <p class="gioca-hero__description" data-i18n="gioca.descrizione">
+          Cerca di prendere più pizze possibili ma mi raccomando, stai attento alle bombe!
+        </p>
       </div>
+      <img
+        class="gioca-hero__knight"
+        src="assets/game/knight.png"
+        alt="Il cavaliere di Avalon"
+        onerror="this.style.display='none'">
     </section>
 
+    <!-- Canvas di gioco -->
+    <div class="gioca-canvas-wrap">
+      <div id="game-container" aria-label="Area di gioco"></div>
 
-    <p class="menu-guida" data-i18n="menu.guida">Cosa vuoi ordinare?</p>
+      <!-- Overlay inserimento nome -->
+      <div class="gioca-intro" id="gioca-intro">
+        <div class="gioca-intro__card">
+          <div class="gioca-intro__icon">
+            <i data-lucide="sword"></i>
+          </div>
+          <h2 class="gioca-intro__title" data-i18n="gioca.intro_titolo">Pronto, cavaliere?</h2>
+          <p class="gioca-intro__text" data-i18n="gioca.intro_testo">
+            Inserisci il tuo nome per apparire nella classifica. Tocca lo schermo per cambiare direzione.
+          </p>
+          <input
+            type="text"
+            class="gioca-intro__input"
+            id="player-name"
+            maxlength="15"
+            autocomplete="off"
+            placeholder="Il tuo nome">
+          <button class="gioca-intro__btn" id="start-btn" data-i18n="gioca.intro_btn">Inizia a giocare</button>
+        </div>
+      </div>
+    </div>
 
-    <div class="menu-macrogruppi" id="menu-macrogruppi">
-      <button class="macrogruppo active" data-file="menu-cibo.json">
-        🍕<span data-i18n="menu.cibo">Cibo</span></button>
-      <button class="macrogruppo" data-file="menu-bevande.json">
-        🍷<span data-i18n="menu.bevande">Bevande</span></button>
-      <button class="macrogruppo" data-file="menu-dolci.json">
-        🍰<span data-i18n="menu.dolci">Dessert</span>
+    <!-- HUD: score + target -->
+    <div class="gioca-hud">
+      <div class="gioca-hud__score">
+        <i data-lucide="pause-circle"></i>
+        <span data-i18n="gioca.score">Score</span>:
+        <strong id="score-value">0</strong>
+      </div>
+      <div class="gioca-hud__target">
+        <i data-lucide="trophy"></i>
+        <span data-i18n="gioca.target">Target</span>:
+        <strong id="target-value">50</strong>
+      </div>
+    </div>
+
+    <!-- Premio -->
+    <div class="gioca-premio" id="premio-card">
+      <div class="gioca-premio__icon">
+        <i data-lucide="gift"></i>
+      </div>
+      <h2 class="gioca-premio__title" data-i18n="gioca.premio_titolo">Il Premio</h2>
+      <p class="gioca-premio__text" data-i18n="gioca.premio_testo">
+        Arriva a 50 pizze e vinci un piccolo omaggio in cassa!
+      </p>
+      <button class="gioca-premio__btn" id="premio-btn" disabled>
+        <i data-lucide="lock"></i>
+        <span data-i18n="gioca.premio_locked">Locked</span>
       </button>
     </div>
 
-    <div class="menu-tabs" id="menu-tabs">
-      <!-- i tab delle categorie — generati da JS -->
-    </div>
-
-    <div class="menu-lista" id="menu-lista">
-      <!-- le card delle pizze — generate da JS -->
+    <!-- Classifica -->
+    <div class="gioca-leaderboard">
+      <div class="gioca-leaderboard__header">
+        <i data-lucide="trophy"></i>
+        <h2 class="gioca-leaderboard__title" data-i18n="gioca.top_players">Top Players</h2>
+      </div>
+      <ol class="gioca-leaderboard__list" id="leaderboard-list">
+        <!-- popolato da gioca.js -->
+      </ol>
     </div>
 
   </main>
 
+  <!-- Footer -->
   <footer class="footer">
-    <div class="footer__overlay" aria-hidden="true"></div>
-
     <div class="footer__content">
       <h2 class="footer__title">Pizzeria Avalon</h2>
-
       <address class="footer__address">
         <div class="footer__contact-row">
           <i data-lucide="map-pin"></i>
@@ -119,7 +174,7 @@
         </div>
         <div class="footer__contact-row">
           <i data-lucide="phone"></i>
-          <a href="tel:+390165250300"> +39 0165 250300</a>
+          <a href="tel:+390165250300">+39 0165 250300</a>
         </div>
         <div class="footer__contact-row">
           <i data-lucide="mail"></i>
@@ -139,7 +194,7 @@
       </a>
       <a href="https://www.instagram.com/pizzeriaavalon/" target="_blank" rel="noopener noreferrer"
         class="footer__social-link" aria-label="Instagram di Pizzeria Avalon">
-        <i data-lucide="camera"> </i> Instagram
+        <i data-lucide="camera"></i> Instagram
       </a>
     </div>
 
@@ -151,8 +206,7 @@
       <script type="text/javascript">
         (function (w, d) {
           var loader = function () {
-            var s = d.createElement("script"),
-              tag = d.getElementsByTagName("script")[0];
+            var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0];
             s.src = "https://cdn.iubenda.com/iubenda.js";
             tag.parentNode.insertBefore(s, tag);
           };
@@ -168,10 +222,11 @@
 
   <!-- JS -->
   <script src="js/i18n.js"></script>
-  <script src="js/nav.js"></script>
-  <script src="js/menu.js"></script>
-
+  <script src="js/gioca-leaderboard.js"></script>
+  <script src="js/gioca-game.js"></script>
+  <script src="js/gioca.js"></script>
 
   <script>lucide.createIcons();</script>
 
 </body>
+</html>

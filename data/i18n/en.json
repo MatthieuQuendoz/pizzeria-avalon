@@ -33,6 +33,26 @@
     "bevande": "Drinks",
     "dolci": "Desserts"
   },
+  "prenota": {
+    "titolo": "We are waiting you",
+    "titolo_em": "Come visit us!",
+    "sottotitolo": "Choose the day and time you prefer and book your table at Avalon."
+  },
+  "gioca": {
+    "eyebrow": "The Game",
+    "titolo": "The pizza",
+    "titolo_em": "catcher",
+    "descrizione": "Try to catch as many pizzas as you can, but watch out for the bombs!",
+    "score": "Score",
+    "target": "Target",
+    "premio_titolo": "The Prize",
+    "premio_testo": "Reach 50 pizzas and win a little gift at the counter!",
+    "premio_locked": "Locked",
+    "top_players": "Top Players",
+    "intro_titolo": "Ready, knight?",
+    "intro_testo": "Enter your name to appear on the leaderboard. Tap the screen to change direction.",
+    "intro_btn": "Start playing"
+  },
   "footer": {
     "indirizzo": "Fraz. Etral 7, Jovençan (AO)",
     "orari": "Thu–Mon 6:00 PM–11:00 PM",

@@ -33,6 +33,26 @@
     "bevande": "Bevande",
     "dolci": "Dessert"
   },
+  "prenota": {
+    "titolo": "Vieni a trovarci",
+    "titolo_em": "ti aspettiamo",
+    "sottotitolo": "Scegli il giorno e l'orario che preferisci e prenota il tuo tavolo da Avalon."
+  },
+  "gioca": {
+    "eyebrow": "Il Gioco",
+    "titolo": "L'acchiappa",
+    "titolo_em": "pizze",
+    "descrizione": "Cerca di prendere più pizze possibili ma mi raccomando, stai attento alle bombe!",
+    "score": "Score",
+    "target": "Target",
+    "premio_titolo": "Il Premio",
+    "premio_testo": "Arriva a 50 pizze e vinci un piccolo omaggio in cassa!",
+    "premio_locked": "Locked",
+    "top_players": "Top Players",
+    "intro_titolo": "Pronto, cavaliere?",
+    "intro_testo": "Inserisci il tuo nome per apparire nella classifica. Tocca lo schermo per cambiare direzione.",
+    "intro_btn": "Inizia a giocare"
+  },
   "footer": {
     "indirizzo": "Fraz. Etral 7, Jovençan (AO)",
     "orari": "Gio–Lun 18:00–23:00",

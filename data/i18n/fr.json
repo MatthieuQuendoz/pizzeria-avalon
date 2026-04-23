@@ -33,6 +33,26 @@
     "bevande": "Boissons",
     "dolci": "Desserts"
   },
+  "prenota": {
+    "titolo": "Venez nous voir",
+    "titolo_em": "nous vous attendons",
+    "sottotitolo": "Choisissez le jour et l'heure qui vous conviennent et réservez votre table chez Avalon."
+  },
+  "gioca": {
+    "eyebrow": "Le Jeu",
+    "titolo": "L'attrape",
+    "titolo_em": "pizzas",
+    "descrizione": "Essayez d'attraper le plus de pizzas possible, mais attention aux bombes !",
+    "score": "Score",
+    "target": "Objectif",
+    "premio_titolo": "Le Prix",
+    "premio_testo": "Atteignez 50 pizzas et gagnez un petit cadeau à la caisse !",
+    "premio_locked": "Verrouillé",
+    "top_players": "Meilleurs Joueurs",
+    "intro_titolo": "Prêt, chevalier ?",
+    "intro_testo": "Entrez votre nom pour apparaître dans le classement. Touchez l'écran pour changer de direction.",
+    "intro_btn": "Commencer à jouer"
+  },
   "footer": {
     "indirizzo": "Fraz. Etral 7, Jovençan (AO)",
     "orari": "Jeu–Lun 18h00–23h00",
