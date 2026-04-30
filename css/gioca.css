@@ -2,152 +2,16 @@
    PIZZERIA AVALON — Gioca Page
    ============================================ */
 
-/* Riutilizzato da menu.css — lang switcher, navbar, footer */
-
-/* -------- LANG SWITCHER ----------- */
-.lang-switcher {
-  position: fixed;
-  top: var(--space-4);
-  right: var(--space-4);
-  z-index: var(--z-nav);
-}
-
-.lang-switcher__toggle {
-  display: flex;
-  align-items: center;
-  gap: var(--space-1);
-  background-color: var(--color-bg);
-  border: 1px solid rgba(45, 29, 29, 0.15);
-  border-radius: var(--radius-full);
-  padding: var(--space-2) var(--space-3);
-  font-size: var(--text-sm);
-  font-weight: var(--weight-medium);
-  color: var(--color-brown);
-  cursor: pointer;
-  box-shadow: var(--shadow-sm);
-  font-family: var(--font-heading2);
-  transition: box-shadow var(--transition-fast);
-}
-
-.lang-switcher__toggle:hover {
-  box-shadow: var(--shadow-md);
-}
-
-.lang-switcher__chevron {
-  font-size: 0.65rem;
-  line-height: 1;
-  transition: transform var(--transition-fast);
-  display: inline-block;
-}
-
-.lang-switcher--open .lang-switcher__chevron {
-  transform: rotate(180deg);
-}
-
-.lang-switcher__dropdown {
-  position: absolute;
-  top: calc(100% + var(--space-2));
-  right: 0;
-  background-color: var(--color-bg);
-  border: 1px solid rgba(45, 29, 29, 0.10);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-md);
-  padding: var(--space-2);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-1);
-  min-width: 140px;
-  opacity: 0;
-  transform: translateY(-6px);
-  pointer-events: none;
-  transition: opacity var(--transition-fast), transform var(--transition-fast);
-}
-
-.lang-switcher--open .lang-switcher__dropdown {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
-.lang-option {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  padding: var(--space-2) var(--space-3);
-  border: none;
-  background: none;
-  border-radius: var(--radius-sm);
-  font-size: var(--text-sm);
-  font-weight: var(--weight-medium);
-  color: var(--color-brown);
-  cursor: pointer;
-  font-family: var(--font-heading2);
-  transition: background-color var(--transition-fast);
-  text-align: left;
-  width: 100%;
-}
-
-.lang-option:hover {
-  background-color: var(--color-crema);
-}
-
-.lang-option--active {
-  color: var(--color-red);
-  font-weight: var(--weight-bold);
-}
-
-/* -------- NAVBAR ----------- */
-.navbar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: var(--color-lightRed);
-  padding: 1.25rem 0;
-  display: flex;
-  justify-content: center;
-  z-index: var(--z-nav);
-}
-
-.nav-links {
-  display: flex;
-  width: 100%;
-  justify-content: space-around;
-  font-size: var(--text-sm);
-  font-weight: var(--weight-medium);
-}
-
-.nav-links a {
-  color: var(--color-lightBrown);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.1rem;
-}
-
-.nav-links a.active {
-  color: var(--color-red);
-}
-
-.nav-links svg {
-  width: 1.2rem;
-  height: 1.2rem;
-  stroke-width: 1.5px;
-}
 
 /* -------- HERO ----------- */
 .gioca-hero {
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: var(--space-4);
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
   margin-top: var(--space-12);
-  margin-bottom: var(--space-6);
-}
-
-.gioca-hero__text {
-  flex: 1;
-  min-width: 0;
+  margin-bottom: var(--space-12);
+  gap: var(--space-3);
 }
 
 .gioca-hero__eyebrow {
@@ -160,17 +24,15 @@
   border-radius: var(--radius-full);
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  margin-bottom: var(--space-3);
   font-family: var(--font-heading2);
 }
 
 .gioca-hero__title {
   font-family: var(--font-heading);
-  font-size: var(--text-3xl);
+  font-size: var(--text-4xl);
   font-weight: var(--weight-bold);
   color: var(--color-brown);
   line-height: 1;
-  margin-bottom: var(--space-3);
 }
 
 .gioca-hero__title em {
@@ -179,25 +41,82 @@
   font-style: italic;
 }
 
+.gioca-hero__desc-wrap {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
 .gioca-hero__description {
   font-size: var(--text-sm);
   color: var(--color-lightBrown);
   line-height: 1.6;
-  max-width: 220px;
+  max-width: 210px;
+  text-align: center;
+}
+
+.gioca-hero__bomb-deco {
+  font-size: 2.2rem;
+  position: absolute;
+  right: -2.8rem;
+  top: -0.4rem;
+  user-select: none;
+  animation: bomb-swing 2.5s ease-in-out infinite;
+}
+
+@keyframes bomb-swing {
+
+  0%,
+  100% {
+    transform: rotate(-8deg) translateY(0);
+  }
+
+  50% {
+    transform: rotate(8deg) translateY(-5px);
+  }
+}
+
+.gioca-hero__scene {
+  position: relative;
+  width: 100%;
+  margin-inline: calc(-1 * var(--container-pad));
+  width: calc(100% + 2 * var(--container-pad));
+  display: flex;
+  justify-content: center;
+}
+
+.gioca-hero__scene::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 0%, white 100%);
+  pointer-events: none;
+}
+
+@keyframes knight-float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
 }
 
 .gioca-hero__knight {
-  width: 130px;
-  flex-shrink: 0;
+  width: 100%;
   object-fit: contain;
-  align-self: flex-end;
+  display: block;
 }
 
 /* -------- CANVAS DI GIOCO ----------- */
 .gioca-canvas-wrap {
   position: relative;
   width: 100%;
-  aspect-ratio: 440 / 580;
+  aspect-ratio: 390 / 600;
   border-radius: var(--radius-xl);
   overflow: hidden;
   margin-bottom: var(--space-5);
@@ -331,42 +250,107 @@
   cursor: not-allowed;
 }
 
-/* -------- HUD (score / target) ----------- */
-.gioca-hud {
-  display: flex;
-  gap: var(--space-3);
-  margin-bottom: var(--space-5);
-}
-
-.gioca-hud__score,
-.gioca-hud__target {
-  flex: 1;
+.gioca-intro__record {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: var(--space-2);
-  padding: var(--space-3) var(--space-4);
+  font-size: var(--text-sm);
+  color: var(--color-lightBrown);
+  background-color: var(--color-crema);
   border-radius: var(--radius-full);
-  font-size: var(--text-base);
-  font-weight: var(--weight-bold);
-  font-family: var(--font-heading2);
+  padding: var(--space-2) var(--space-4);
+  margin-bottom: var(--space-3);
+}
+
+.gioca-intro__record svg {
+  width: 0.9rem;
+  height: 0.9rem;
+  color: var(--color-red);
+  flex-shrink: 0;
+}
+
+/* -------- HUD (score + progress + mute) ----------- */
+.gioca-hud {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
 }
 
 .gioca-hud__score {
   background-color: var(--color-red);
   color: #fff;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  font-size: var(--text-base);
+  font-weight: var(--weight-bold);
+  font-family: var(--font-heading2);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-width: 56px;
+  justify-content: center;
 }
 
-.gioca-hud__target {
-  background-color: var(--color-brown);
-  color: #fff;
+.gioca-hud__progress-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
-.gioca-hud__score svg,
-.gioca-hud__target svg {
+.gioca-hud__progress {
+  height: 10px;
+  background-color: var(--color-crema);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.gioca-hud__progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--color-red) 0%, var(--color-green) 100%);
+  border-radius: var(--radius-full);
+  transition: width 0.35s ease;
+}
+
+.gioca-hud__progress-label {
+  font-size: var(--text-xs);
+  color: var(--color-lightBrown);
+  font-family: var(--font-heading2);
+  text-align: right;
+}
+
+.gioca-mute-btn {
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--color-crema);
+  color: var(--color-lightBrown);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.gioca-mute-btn:hover {
+  background-color: var(--color-lightRed);
+  color: var(--color-red);
+}
+
+.gioca-mute-btn--muted {
+  background-color: var(--color-lightRed);
+  color: var(--color-red);
+}
+
+.gioca-mute-btn svg {
   width: 1rem;
   height: 1rem;
-  flex-shrink: 0;
 }
 
 /* -------- IL PREMIO ----------- */
@@ -537,65 +521,4 @@
 
 .leaderboard-item__score--1 {
   color: var(--color-red);
-}
-
-/* -------- FOOTER ----------- */
-.footer {
-  background-color: var(--color-lightBrown);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  color: var(--color-crema);
-  padding: var(--space-4) var(--space-12);
-}
-
-.footer__title {
-  font-family: var(--font-heading);
-  font-size: var(--text-2xl);
-  font-weight: var(--weight-bold);
-  line-height: 1.2;
-  margin-bottom: var(--space-4);
-}
-
-.footer__address {
-  font-size: var(--text-sm);
-  font-weight: var(--weight-medium);
-  margin-bottom: var(--space-4);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-}
-
-.footer__contact-row {
-  display: flex;
-  gap: var(--space-4);
-  font-size: var(--text-sm);
-  margin-bottom: var(--space-2);
-  align-items: center;
-}
-
-.footer__social {
-  display: flex;
-  gap: var(--space-6);
-  margin-top: var(--space-2);
-  margin-bottom: var(--space-2);
-}
-
-.footer__social-link {
-  color: var(--color-crema);
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-}
-
-.footer__legal {
-  font-size: var(--text-xs);
-  color: var(--color-crema);
-  margin-top: var(--space-4);
-}
-
-.footer__text {
-  font-size: var(--text-sm);
-  color: var(--color-crema);
-  margin-top: var(--space-2);
 }

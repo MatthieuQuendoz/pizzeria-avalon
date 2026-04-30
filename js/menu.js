@@ -27,37 +27,33 @@ async function caricaMenu(file) {
 
 
 function creaTabs(categorie) {
-  const tabsContainer = document.getElementById('menu-tabs');
+  const containers = [
+    document.getElementById('menu-tabs'),
+    document.getElementById('menu-tabs-bottom'),
+  ].filter(Boolean);
 
-  //non mi è chiato da dove arriva "categorie" viene chiamato del file json e sono tutte le categorie delle pizze ogne categoria ha il tipo e un index?
+  const lingua = localStorage.getItem('lingua') || 'it';
+
   categorie.forEach((categoria, index) => {
+    containers.forEach(container => {
+      const tab = document.createElement('button');
+      tab.classList.add('menu-tab');
+      tab.dataset.tabIndex = index;
+      if (index === 0) tab.classList.add('active');
+      tab.textContent = categoria.nome[lingua] || categoria.nome.it;
 
-    //crea una elemento button e ad ogni bottone aggiunge la classe menu-tab
-    const tab = document.createElement('button');
-    tab.classList.add('menu-tab');
-
-    //se l'indice è 0 allora aggiunge la classe active
-    if (index === 0) tab.classList.add('active'); // attiva la prima tab di default
-    const lingua = localStorage.getItem('lingua') || 'it';
-    tab.textContent = categoria.nome[lingua] || categoria.nome.it;
-
-    tab.addEventListener('click', () => {
-      // rimuovi classe active da tutte le tab
-      document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
-      // aggiungi classe active alla tab cliccata
-      tab.classList.add('active');
-
-      tab.scrollIntoView({
-        behavior: 'smooth',
-        block: 'nearest',
-        inline: 'center'
+      tab.addEventListener('click', () => {
+        // Sincronizza active su tutti i tab (top + bottom) con lo stesso indice
+        document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll(`.menu-tab[data-tab-index="${index}"]`).forEach(t => t.classList.add('active'));
+        // Scroll in-view solo nella barra superiore
+        const topTab = document.querySelector(`#menu-tabs .menu-tab[data-tab-index="${index}"]`);
+        topTab?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        mostraPizze(categoria);
       });
-      // mostra le pizze della categoria cliccata
-      mostraPizze(categoria);
-    });
 
-    //cosa fa appendCHild??
-    tabsContainer.appendChild(tab);
+      container.appendChild(tab);
+    });
   });
 }
 
@@ -151,6 +147,7 @@ async function init() {
 document.addEventListener('linguaCambiata', () => {
   if (categorieGlobali) {
     document.getElementById('menu-tabs').innerHTML = '';
+    document.getElementById('menu-tabs-bottom').innerHTML = '';
     creaTabs(categorieGlobali);
   }
   if (categoriaCorrente) mostraPizze(categoriaCorrente);
@@ -165,6 +162,7 @@ document.querySelectorAll('.macrogruppo').forEach(btn => {
     if (!dati) return;
     categorieGlobali = dati.categorie;
     document.getElementById('menu-tabs').innerHTML = '';
+    document.getElementById('menu-tabs-bottom').innerHTML = '';
     creaTabs(dati.categorie);
     mostraPizze(dati.categorie[0]);
   });

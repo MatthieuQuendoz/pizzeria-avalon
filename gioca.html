@@ -24,9 +24,6 @@
   <!-- Lucide icons -->
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
-  <!-- Phaser -->
-  <script src="https://cdn.jsdelivr.net/npm/phaser@3.70.0/dist/phaser.min.js"></script>
-
   <!--COOKIES-->
   <script type="text/javascript"
     src="https://embeds.iubenda.com/widgets/1e3d3707-fe99-4f69-9752-2f4ad9fa1655.js"></script>
@@ -67,10 +64,6 @@
         <i data-lucide="gamepad-2"></i>
         <span data-i18n="navbar.gioca">Gioca</span>
       </a>
-      <a href="la-storia.html">
-        <i data-lucide="clock"></i>
-        <span data-i18n="navbar.storia">La Storia</span>
-      </a>
     </nav>
   </header>
 
@@ -78,21 +71,21 @@
 
     <!-- Hero -->
     <section class="gioca-hero">
-      <div class="gioca-hero__text">
-        <span class="gioca-hero__eyebrow" data-i18n="gioca.eyebrow">Il Gioco</span>
-        <h1 class="gioca-hero__title">
-          <span data-i18n="gioca.titolo">L'acchiappa</span>
-          <em data-i18n="gioca.titolo_em">pizze</em>
-        </h1>
+      <span class="gioca-hero__eyebrow" data-i18n="gioca.eyebrow">Il Gioco</span>
+      <h1 class="gioca-hero__title">
+        <span data-i18n="gioca.titolo">L'acchiappa</span>
+        <em data-i18n="gioca.titolo_em">pizze</em>
+      </h1>
+      <div class="gioca-hero__desc-wrap">
         <p class="gioca-hero__description" data-i18n="gioca.descrizione">
           Cerca di prendere più pizze possibili ma mi raccomando, stai attento alle bombe!
         </p>
+        <span class="gioca-hero__bomb-deco" aria-hidden="true">💣</span>
       </div>
-      <img
-        class="gioca-hero__knight"
-        src="assets/game/knight.png"
-        alt="Il cavaliere di Avalon"
-        onerror="this.style.display='none'">
+      <div class="gioca-hero__scene">
+        <img class="gioca-hero__knight" src="assets/game/knight.png" alt="Il cavaliere di Avalon"
+          onerror="this.style.display='none'">
+      </div>
     </section>
 
     <!-- Canvas di gioco -->
@@ -109,30 +102,33 @@
           <p class="gioca-intro__text" data-i18n="gioca.intro_testo">
             Inserisci il tuo nome per apparire nella classifica. Tocca lo schermo per cambiare direzione.
           </p>
-          <input
-            type="text"
-            class="gioca-intro__input"
-            id="player-name"
-            maxlength="15"
-            autocomplete="off"
+          <input type="text" class="gioca-intro__input" id="player-name" maxlength="15" autocomplete="off"
             placeholder="Il tuo nome">
+          <div class="gioca-intro__record" id="intro-record" hidden>
+            <i data-lucide="trophy"></i>
+            <span data-i18n="gioca.record_label">Il tuo record:</span>
+            <strong id="intro-record-value">0</strong> 🍕
+          </div>
           <button class="gioca-intro__btn" id="start-btn" data-i18n="gioca.intro_btn">Inizia a giocare</button>
         </div>
       </div>
     </div>
 
-    <!-- HUD: score + target -->
+    <!-- HUD: score + progress + mute -->
     <div class="gioca-hud">
       <div class="gioca-hud__score">
-        <i data-lucide="pause-circle"></i>
-        <span data-i18n="gioca.score">Score</span>:
-        <strong id="score-value">0</strong>
+        🍕 <strong id="score-value">0</strong>
       </div>
-      <div class="gioca-hud__target">
-        <i data-lucide="trophy"></i>
-        <span data-i18n="gioca.target">Target</span>:
-        <strong id="target-value">50</strong>
+      <div class="gioca-hud__progress-wrap">
+        <div class="gioca-hud__progress" id="hud-progress"
+          role="progressbar" aria-valuemin="0" aria-valuemax="50" aria-valuenow="0">
+          <div class="gioca-hud__progress-fill" id="progress-fill"></div>
+        </div>
+        <span class="gioca-hud__progress-label">/ <strong id="target-value">50</strong></span>
       </div>
+      <button class="gioca-mute-btn" id="mute-btn" aria-label="Attiva/disattiva audio">
+        <i data-lucide="volume-2" id="mute-icon"></i>
+      </button>
     </div>
 
     <!-- Premio -->
@@ -170,7 +166,7 @@
       <address class="footer__address">
         <div class="footer__contact-row">
           <i data-lucide="map-pin"></i>
-          <p data-i18n="footer.indirizzo">Fraz. Etral 7, Jovençan (AO)</p>
+          <p data-i18n="footer.indirizzo">Fraz. Etral 8, Jovençan (AO)</p>
         </div>
         <div class="footer__contact-row">
           <i data-lucide="phone"></i>
@@ -229,4 +225,5 @@
   <script>lucide.createIcons();</script>
 
 </body>
+
 </html>

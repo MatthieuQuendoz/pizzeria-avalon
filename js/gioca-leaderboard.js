@@ -85,8 +85,14 @@ async function renderLeaderboard() {
 function updateHUD(score, target = TARGET_SCORE) {
   const scoreEl = document.getElementById('score-value');
   const targetEl = document.getElementById('target-value');
+  const progressFill = document.getElementById('progress-fill');
+  const progressBar = document.getElementById('hud-progress');
+
   if (scoreEl) scoreEl.textContent = score;
   if (targetEl) targetEl.textContent = target;
+  if (progressFill) progressFill.style.width = Math.min(100, Math.round((score / target) * 100)) + '%';
+  if (progressBar) progressBar.setAttribute('aria-valuenow', score);
+
   maybeUnlockPrize(score, target);
 }
 

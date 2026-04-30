@@ -11,6 +11,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const savedName = getPlayerName();
   if (savedName) nameInput.value = savedName;
 
+  // Mostra record personale nell'intro (se esiste)
+  const best = getPlayerBest();
+  const introRecord = document.getElementById('intro-record');
+  if (best > 0 && introRecord) {
+    document.getElementById('intro-record-value').textContent = best;
+    introRecord.hidden = false;
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+  }
+
   // Abilita/disabilita bottone in base a input
   const validate = () => {
     const v = nameInput.value.trim();
@@ -32,6 +41,18 @@ document.addEventListener('DOMContentLoaded', () => {
     intro.classList.add('gioca-intro--hidden');
     AvalonGame.start(name);
     updateHUD(0);
+  });
+
+  // Pulsante mute
+  const muteBtn = document.getElementById('mute-btn');
+  let muted = false;
+  muteBtn?.addEventListener('click', () => {
+    muted = !muted;
+    AvalonAudio.setEnabled(!muted);
+    const icon = document.getElementById('mute-icon');
+    if (icon) icon.setAttribute('data-lucide', muted ? 'volume-x' : 'volume-2');
+    muteBtn.classList.toggle('gioca-mute-btn--muted', muted);
+    if (typeof lucide !== 'undefined') lucide.createIcons();
   });
 
   // Render iniziale
