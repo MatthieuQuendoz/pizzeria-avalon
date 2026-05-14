@@ -92,26 +92,33 @@
   </section>
 
   <section class="orari">
-    <div class="orari__content">
-      <div class="orari__header">
-        <i class="clock-icon" data-lucide="clock"></i>
-        <h2 data-i18n="home.orari_titolo">ORARIO</h2>
-        <p class="ora" data-i18n="home.orari_ore">18:00 - 23:00</p>
+    <div class="orari__card">
+      <p class="orari__label" data-i18n="home.orari_titolo">ORARIO</p>
+      <p class="ora" data-i18n="home.orari_ore">18:00 — 23:00</p>
+
+      <div class="orari__divider"></div>
+
+      <div class="orari__giorni">
+        <p class="orari__riga orari__riga--aperto">
+          <i data-lucide="check-circle"></i>
+          <span data-i18n="home.orari_aperti">Aperti dal giovedì al lunedì</span>
+        </p>
+        <p class="orari__riga orari__riga--chiuso">
+          <i data-lucide="x-circle"></i>
+          <span data-i18n="home.orari_chiusi">Chiusi martedì e mercoledì</span>
+        </p>
       </div>
 
-      <p class="orari__riga"><i class="icon-red" data-lucide="check"></i> <span data-i18n="home.orari_aperti"> Aperti
-          dal giovedì al lunedì </span></p>
-      <p class="orari__riga red"><i class="icon-red" data-lucide="circle-x"></i> <span data-i18n="home.orari_chiusi">
-          Chiusi martedì e mercoledì </span> </p>
-    </div>
-
-    <div class="orari__azioni">
-      <a href="tel:+390165250300" class="btn btn-primary">
-        <i data-lucide="phone"></i> <span data-i18n="home.orari_chiamaci">Chiamaci</span>
-      </a>
-      <a href="https://wa.me/393514226610" class="btn btn-verde">
-        <i data-lucide="message-square-more"></i> <span data-i18n="home.orari_whatsapp">WhatsApp </span>
-      </a>
+      <div class="orari__azioni">
+        <a href="tel:+390165250300" class="orari__btn orari__btn--chiama">
+          <i data-lucide="phone"></i>
+          <span data-i18n="home.orari_chiamaci">Chiamaci</span>
+        </a>
+        <a href="https://wa.me/393514226610" class="orari__btn orari__btn--whatsapp">
+          <i data-lucide="message-square-more"></i>
+          <span data-i18n="home.orari_whatsapp">WhatsApp</span>
+        </a>
+      </div>
     </div>
   </section>
 
