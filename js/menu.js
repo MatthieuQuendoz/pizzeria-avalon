@@ -60,62 +60,68 @@ function creaTabs(categorie) {
 
 
 function mostraPizze(categoria) {
-  categoriaCorrente = categoria; // ← aggiungi questa riga
-
+  categoriaCorrente = categoria;
 
   const container = document.getElementById('menu-lista');
-  container.innerHTML = ''; // pulisce il contenuto precedente
+  container.innerHTML = '';
+
+  const lingua = localStorage.getItem('lingua') || 'it';
 
   categoria.items.forEach(item => {
     const card = document.createElement('div');
     card.classList.add('item-card');
 
+    // — sinistra: corpo testuale —
+    const body = document.createElement('div');
+    body.classList.add('item-card__body');
 
-    //Qua popola la card con createElement che aggiunge elementi nell'html in loop per ogni elemento
-    const img = document.createElement('img');
-    if (item.immagine) {
-      img.src = item.immagine;
-      img.alt = item.nome;
-    } else {
-      img.classList.add('img-placeholder');
-      img.alt = '';
-    }
-
-    // crea il contenitore
     const tags = document.createElement('div');
     tags.classList.add('item-tags');
-
     item.tag.forEach(t => {
       const config = TAG_CONFIG[t];
-      if (!config) return; // ignora tag non riconosciuti
-
+      if (!config) return;
       const span = document.createElement('span');
       span.classList.add('item-tag', `item-tag--${t}`);
-      const lingua = localStorage.getItem('lingua') || 'it';
       span.textContent = `${config.emoji} ${config.label[lingua]}`;
       tags.appendChild(span);
     });
 
-
-
-
     const nome = document.createElement('h3');
+    nome.classList.add('item-card__name');
     nome.textContent = item.nome;
 
     const descrizione = document.createElement('p');
-    const lingua = localStorage.getItem('lingua') || 'it';
+    descrizione.classList.add('item-card__desc');
     descrizione.textContent = item.descrizione[lingua] || item.descrizione.it;
 
     const prezzo = document.createElement('span');
     prezzo.classList.add('item-price');
     prezzo.textContent = formattaPrezzo(item);
 
-    card.appendChild(img);
-    card.appendChild(tags);
-    card.appendChild(nome);
-    card.appendChild(descrizione);
-    card.appendChild(prezzo);
+    body.appendChild(tags);
+    body.appendChild(nome);
+    body.appendChild(descrizione);
+    body.appendChild(prezzo);
 
+    // — destra: immagine —
+    const media = document.createElement('div');
+    media.classList.add('item-card__media');
+
+    if (item.immagine) {
+      const img = document.createElement('img');
+      img.src = item.immagine;
+      img.alt = item.nome;
+      img.classList.add('item-card__img');
+      media.appendChild(img);
+    } else {
+      const placeholder = document.createElement('div');
+      placeholder.classList.add('item-card__placeholder');
+      placeholder.textContent = '🍕';
+      media.appendChild(placeholder);
+    }
+
+    card.appendChild(body);
+    card.appendChild(media);
     container.appendChild(card);
   });
 }

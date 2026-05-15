@@ -58,554 +58,419 @@ const AvalonAudio = (() => {
   };
 })();
 
-// ─── COLOUR HELPERS ────────────────────────────
-function lerpRGB(a, b, t) {
-  return [
-    Math.round(a[0] + (b[0] - a[0]) * t),
-    Math.round(a[1] + (b[1] - a[1]) * t),
-    Math.round(a[2] + (b[2] - a[2]) * t),
-  ];
-}
-function rgb(c) { return `rgb(${c[0]},${c[1]},${c[2]})`; }
-function rgba(c, a) { return `rgba(${c[0]},${c[1]},${c[2]},${a})`; }
+// ─── PIXEL ART HELPERS ─────────────────────────
+const PIXEL = 4;
 
-// ─── SKY PALETTE (dawn / day / dusk / night) ───
-const SKY = [
-  { top: [26, 5, 51], bot: [255, 154, 139] },  // 0 dawn
-  { top: [135, 206, 235], bot: [224, 244, 255] },  // 1 day
-  { top: [255, 107, 53], bot: [74, 25, 66] },   // 2 dusk
-  { top: [10, 10, 46], bot: [26, 26, 78] },   // 3 night
+function stamp(ctx, rows, pal, ox, oy, sz) {
+  const s = sz || PIXEL;
+  rows.forEach((row, ry) => {
+    row.forEach((c, rx) => {
+      if (!c) return;
+      ctx.fillStyle = pal[c];
+      ctx.fillRect(ox + rx * s, oy + ry * s, s, s);
+    });
+  });
+}
+
+// ─── BACKGROUND IMAGE ──────────────────────────
+let _bgImage = null;
+
+// ─── ANIMATED BG: CLOUDS ───────────────────────
+const CLOUD_SHAPE_LG = [
+  [0,0,1,1,1,1,1,1,1,0,0,0],
+  [0,1,1,1,1,1,1,1,1,1,1,0],
+  [0,1,1,1,1,1,1,1,1,1,1,0],
+  [0,0,1,1,1,1,1,1,1,1,0,0],
 ];
-function getSkyColors(cycleT) {
-  const idx = Math.floor(cycleT * 4) % 4;
-  const nxt = (idx + 1) % 4;
-  const t = (cycleT * 4) % 1;
-  const s = t * t * (3 - 2 * t); // smoothstep
-  return { top: lerpRGB(SKY[idx].top, SKY[nxt].top, s), bot: lerpRGB(SKY[idx].bot, SKY[nxt].bot, s) };
-}
+const CLOUD_SHAPE_MD = [
+  [0,1,1,1,1,1,1,0],
+  [1,1,1,1,1,1,1,1],
+  [0,1,1,1,1,1,1,0],
+];
+const CLOUD_SHAPE_SM = [
+  [0,1,1,1,1,0],
+  [1,1,1,1,1,1],
+  [0,1,1,1,1,0],
+];
 
-// ─── PRE-RENDER: MOON ──────────────────────────
-let _moonCanvas = null;
-function buildMoonCanvas() {
-  const mc = document.createElement('canvas');
-  mc.width = mc.height = 130;
-  const cx = mc.getContext('2d');
-
-  // Glow
-  const grd = cx.createRadialGradient(65, 65, 8, 65, 65, 58);
-  grd.addColorStop(0, 'rgba(180,210,255,0.55)');
-  grd.addColorStop(0.5, 'rgba(180,210,255,0.2)');
-  grd.addColorStop(1, 'rgba(180,210,255,0)');
-  cx.fillStyle = grd; cx.beginPath(); cx.arc(65, 65, 58, 0, Math.PI * 2); cx.fill();
-
-  // Full ivory circle
-  cx.fillStyle = '#F8F4DC'; cx.beginPath(); cx.arc(65, 65, 28, 0, Math.PI * 2); cx.fill();
-
-  // Crescent cut
-  cx.globalCompositeOperation = 'destination-out';
-  cx.fillStyle = 'rgba(0,0,0,1)'; cx.beginPath(); cx.arc(79, 59, 24, 0, Math.PI * 2); cx.fill();
-
-  // Craters
-  cx.globalCompositeOperation = 'source-atop';
-  cx.fillStyle = 'rgba(160,150,120,0.28)';
-  [[54, 68, 4], [49, 57, 2.5], [62, 76, 3.2]].forEach(([x, y, r]) => {
-    cx.beginPath(); cx.arc(x, y, r, 0, Math.PI * 2); cx.fill();
-  });
-
-  return mc;
-}
-
-// ─── PRE-RENDER: CASTLE ────────────────────────
-let _castleCanvas = null;
-const CASTLE_W = 280, CASTLE_H = 200;
-function buildCastleCanvas() {
-  const cc = document.createElement('canvas');
-  cc.width = CASTLE_W; cc.height = CASTLE_H;
-  const cx = cc.getContext('2d');
-
-  function stones(x, y, w, h, rowOff) {
-    const sh = 14, sw = 24;
-    for (let row = 0; row <= Math.ceil(h / sh) + 1; row++) {
-      const off = ((row + (rowOff || 0)) % 2 === 0) ? 0 : sw / 2;
-      for (let col = 0; col <= Math.ceil(w / sw) + 1; col++) {
-        const sx = x + col * sw - off, sy = y + row * sh;
-        const cx2 = Math.max(sx, x), cy2 = Math.max(sy, y);
-        const sw2 = Math.min(sx + sw, x + w) - cx2, sh2 = Math.min(sy + sh, y + h) - cy2;
-        if (sw2 <= 0 || sh2 <= 0) continue;
-        cx.fillStyle = '#7C7870'; cx.fillRect(cx2 + 1, cy2 + 1, sw2 - 2, sh2 - 2);
-        cx.strokeStyle = 'rgba(0,0,0,0.3)'; cx.lineWidth = 1; cx.strokeRect(cx2 + 0.5, cy2 + 0.5, sw2 - 1, sh2 - 1);
-      }
-    }
-  }
-
-  function tower(tx, ty, tw, th) {
-    cx.fillStyle = '#68625C'; cx.fillRect(tx, ty, tw, th);
-    stones(tx, ty, tw, th, 0);
-    // Battlements
-    const mw = 11, mg = 9;
-    for (let mx = tx; mx < tx + tw; mx += mw + mg) {
-      cx.fillStyle = '#5A5450'; cx.fillRect(mx, ty - 16, mw, 16);
-      stones(mx, ty - 16, mw, 16, 1);
-    }
-    // Arrow slit
-    cx.fillStyle = '#18100C';
-    cx.fillRect(tx + tw / 2 - 3, ty + th * 0.22, 6, 22);
-    cx.fillRect(tx + tw / 2 - 8, ty + th * 0.22 + 7, 16, 8);
-    // Round window
-    cx.beginPath(); cx.arc(tx + tw / 2, ty + th * 0.62, 5, Math.PI, 0); cx.fill();
-    cx.fillRect(tx + tw / 2 - 5, ty + th * 0.62, 10, 8);
-  }
-
-  // Hill
-  cx.fillStyle = '#527030'; cx.beginPath();
-  cx.ellipse(CASTLE_W / 2, CASTLE_H + 12, 132, 56, 0, Math.PI, Math.PI * 2); cx.fill();
-
-  // Wall
-  const wy = CASTLE_H - 118, wh = 118;
-  cx.fillStyle = '#68625C'; cx.fillRect(62, wy, CASTLE_W - 124, wh);
-  stones(62, wy, CASTLE_W - 124, wh, 0);
-
-  // Gate
-  const gx = CASTLE_W / 2 - 22, gw = 44, gy = wy + wh - 68;
-  cx.fillStyle = '#504A46'; cx.fillRect(gx - 4, gy, gw + 8, 80);
-  cx.fillStyle = '#100A08'; cx.fillRect(gx, gy + 12, gw, 60);
-  cx.beginPath(); cx.arc(CASTLE_W / 2, gy + 12, gw / 2, Math.PI, 0); cx.fill();
-  // Arch trim
-  cx.strokeStyle = '#504A46'; cx.lineWidth = 4;
-  cx.beginPath(); cx.arc(CASTLE_W / 2, gy + 12, gw / 2 + 2, Math.PI, 0); cx.stroke();
-  // Portcullis bars
-  cx.strokeStyle = '#281E14'; cx.lineWidth = 2;
-  for (let b = 0; b < 3; b++) {
-    cx.beginPath(); cx.moveTo(gx + 8 + b * 14, gy + 12); cx.lineTo(gx + 8 + b * 14, gy + 72); cx.stroke();
-  }
-  [gy + 32, gy + 52].forEach(barY => {
-    cx.beginPath(); cx.moveTo(gx, barY); cx.lineTo(gx + gw, barY); cx.stroke();
-  });
-
-  // Wall battlements
-  const mw = 11, mg = 9;
-  for (let mx = 66; mx < CASTLE_W - 58; mx += mw + mg) {
-    cx.fillStyle = '#5A5450'; cx.fillRect(mx, wy - 14, mw, 14);
-    stones(mx, wy - 14, mw, 14, 1);
-  }
-
-  // Towers (drawn last = on top)
-  tower(4, wy - 80, 56, CASTLE_H - wy + 80);
-  tower(CASTLE_W - 60, wy - 80, 56, CASTLE_H - wy + 80);
-
-  return cc;
-}
-
-// ─── SCENE GENERATION ──────────────────────────
-function genStars() {
-  return Array.from({ length: 46 }, () => ({
-    x: Math.random() * CANVAS_W, y: Math.random() * GROUND_Y * 0.72,
-    r: Math.random() * 1.5 + 0.4,
-    phase: Math.random() * Math.PI * 2, freq: 1 + Math.random() * 3.5,
-  }));
-}
-function genClouds() {
+function genCloudsV2() {
+  const shapes = [CLOUD_SHAPE_LG, CLOUD_SHAPE_MD, CLOUD_SHAPE_SM];
   return [
-    { baseX: 50, y: 58, scale: 1.25, speed: 20, blobs: [[-22, 0, 30], [0, -10, 25], [24, 4, 23], [-6, 10, 20], [28, 14, 18]] },
-    { baseX: 290, y: 118, scale: 0.88, speed: 13, blobs: [[-15, 0, 22], [1, -7, 18], [18, 4, 15], [-4, 8, 14]] },
-    { baseX: 170, y: 82, scale: 1.05, speed: 16, blobs: [[-18, 0, 26], [4, -8, 22], [21, 4, 19], [0, 10, 17], [23, 12, 14]] },
-    { baseX: 390, y: 44, scale: 0.68, speed: 8, blobs: [[-12, 0, 18], [3, -5, 15], [14, 4, 12]] },
+    { shape: CLOUD_SHAPE_LG, x:  20, y:  30, px: 3, speed:  6, alpha: 0.75 },
+    { shape: CLOUD_SHAPE_MD, x: 180, y:  18, px: 3, speed:  9, alpha: 0.65 },
+    { shape: CLOUD_SHAPE_SM, x: 300, y:  62, px: 2, speed:  5, alpha: 0.55 },
+    { shape: CLOUD_SHAPE_LG, x: 260, y:  78, px: 2, speed:  4, alpha: 0.50 },
+    { shape: CLOUD_SHAPE_MD, x:  90, y:  92, px: 2, speed:  7, alpha: 0.60 },
   ];
 }
-function genFlowers() {
-  const cols = ['#FF6B6B', '#FFE66D', '#FFFFFF', '#FF9A8B', '#A8E6CF', '#FFB347'];
-  return Array.from({ length: 22 }, (_, i) => ({
-    x: 10 + i * (CANVAS_W / 21) + (Math.random() - 0.5) * 8,
-    y: GROUND_Y + 4 + Math.random() * 9,
-    color: cols[Math.floor(Math.random() * cols.length)],
-    sz: 2 + Math.random() * 1.5,
+
+function drawClouds(ctx, t, dt) {
+  _clouds.forEach(c => {
+    c.x += c.speed * dt;
+    const w = c.shape[0].length * c.px;
+    if (c.x > CANVAS_W + 10) c.x = -w - 10;
+    ctx.save();
+    ctx.globalAlpha = c.alpha;
+    stamp(ctx, c.shape, { 1: '#F8F4EC' }, Math.round(c.x), c.y, c.px);
+    ctx.restore();
+  });
+}
+
+// ─── ANIMATED BG: BIRDS ────────────────────────
+const BIRD_FRAME_UP   = [[1,0,1],[0,1,0]];
+const BIRD_FRAME_DOWN = [[0,0,0],[1,1,1]];
+
+function spawnBird() {
+  const fromLeft = Math.random() < 0.5;
+  return {
+    x: fromLeft ? -12 : CANVAS_W + 12,
+    y: 20 + Math.random() * 110,
+    vx: (fromLeft ? 1 : -1) * (16 + Math.random() * 10),
+    flapPhase: Math.random() * Math.PI * 2,
+    bobPhase: Math.random() * Math.PI * 2,
+  };
+}
+
+function drawBirds(ctx, t, dt) {
+  _birdSpawnTimer -= dt;
+  if (_birdSpawnTimer <= 0 && _birds.length < 3) {
+    _birds.push(spawnBird());
+    if (Math.random() < 0.35) _birds.push(spawnBird()); // occasional pair
+    _birdSpawnTimer = 7 + Math.random() * 8;
+  }
+  for (let i = _birds.length - 1; i >= 0; i--) {
+    const b = _birds[i];
+    b.x += b.vx * dt;
+    if (b.x < -20 || b.x > CANVAS_W + 20) { _birds.splice(i, 1); continue; }
+    const flap = Math.floor((t * 0.001 * 7 + b.flapPhase) % 2);
+    const frame = flap === 0 ? BIRD_FRAME_UP : BIRD_FRAME_DOWN;
+    const bob = Math.sin(t * 0.002 + b.bobPhase) * 1.5;
+    stamp(ctx, frame, { 1: '#2A2018' }, Math.round(b.x), Math.round(b.y + bob), 3);
+  }
+}
+
+// ─── ANIMATED BG: FALLING LEAVES ───────────────
+const LEAF_COLORS = ['#C84820', '#D8802A', '#C0A018', '#E05028', '#A8581A'];
+const LEAF_SHAPE = [
+  [0,1,1,0],
+  [1,1,1,1],
+  [0,1,1,0],
+];
+
+function genLeavesV2() {
+  return Array.from({ length: 7 }, () => ({
+    baseX: Math.random() * CANVAS_W,
+    y: Math.random() * CANVAS_H - CANVAS_H,
+    vy: 22 + Math.random() * 18,
+    swayAmp: 8 + Math.random() * 14,
+    swayPhase: Math.random() * Math.PI * 2,
+    color: LEAF_COLORS[Math.floor(Math.random() * LEAF_COLORS.length)],
+    px: 2 + (Math.random() < 0.5 ? 0 : 1),
   }));
 }
-function genBirds() {
-  return [
-    { baseX: 80, y: 148, speed: 22, flapSpeed: 8.5, phase: 0 },
-    { baseX: 210, y: 128, speed: 18, flapSpeed: 9.2, phase: 1.6 },
-    { baseX: 330, y: 162, speed: 26, flapSpeed: 7.8, phase: 3.1 },
-  ];
+
+function drawLeaves(ctx, t, dt) {
+  _leaves.forEach(l => {
+    l.y += l.vy * dt;
+    if (l.y > CANVAS_H + 8) {
+      l.y = -10;
+      l.baseX = Math.random() * CANVAS_W;
+      l.color = LEAF_COLORS[Math.floor(Math.random() * LEAF_COLORS.length)];
+    }
+    const x = l.baseX + Math.sin(t * 0.0015 + l.swayPhase) * l.swayAmp;
+    stamp(ctx, LEAF_SHAPE, { 1: l.color }, Math.round(x), Math.round(l.y), l.px);
+  });
+}
+
+// ─── ANIMATED BG: CHIMNEY SMOKE ────────────────
+const SMOKE_X = 84;
+const SMOKE_Y = 265;
+
+function drawChimneySmoke(ctx, t, dt) {
+  _smokeTimer -= dt;
+  if (_smokeTimer <= 0) {
+    _smokePuffs.push({
+      x: SMOKE_X + (Math.random() - 0.5) * 4,
+      y: SMOKE_Y,
+      age: 0,
+      life: 2.4 + Math.random() * 0.8,
+      drift: (Math.random() - 0.5) * 6,
+    });
+    _smokeTimer = 0.22 + Math.random() * 0.12;
+  }
+  // sort oldest first → drawn under newer puffs
+  _smokePuffs.sort((a, b) => b.age - a.age);
+  for (let i = _smokePuffs.length - 1; i >= 0; i--) {
+    const p = _smokePuffs[i];
+    p.age += dt;
+    p.y -= 14 * dt;
+    p.x += p.drift * dt;
+    if (p.age > p.life) { _smokePuffs.splice(i, 1); continue; }
+    const k = p.age / p.life;
+    const alpha = (1 - k) * 0.95;
+    const sz = Math.round(6 + k * 10); // 6 → 16 px
+    const col = k < 0.5 ? '#B8B0A8' : '#EFEAE2';
+    ctx.save();
+    ctx.globalAlpha = alpha;
+    ctx.fillStyle = col;
+    ctx.fillRect(Math.round(p.x - sz / 2), Math.round(p.y - sz / 2), sz, sz);
+    ctx.restore();
+  }
 }
 
 // ─── DRAW: BACKGROUND ──────────────────────────
-function drawBackground(ctx, t) {
-  const cycleT = (t % DAY_CYCLE_MS) / DAY_CYCLE_MS;
-  const sky = getSkyColors(cycleT);
-
-  // Sky gradient
-  const sg = ctx.createLinearGradient(0, 0, 0, GROUND_Y);
-  sg.addColorStop(0, rgb(sky.top)); sg.addColorStop(1, rgb(sky.bot));
-  ctx.fillStyle = sg; ctx.fillRect(0, 0, CANVAS_W, GROUND_Y + 10);
-
-  // Stars (night + edges of dawn)
-  const nightStr = cycleT >= 0.75 ? (cycleT - 0.75) / 0.25 : cycleT < 0.1 ? (0.1 - cycleT) / 0.1 * 0.9 : 0;
-  if (nightStr > 0.01) drawStars(ctx, t, nightStr);
-
-  // Moon
-  const moonVis = cycleT >= 0.75 ? (cycleT - 0.75) / 0.25 : 0;
-  if (moonVis > 0.01) drawMoon(ctx, moonVis, t);
-
-  // Sun
-  const sunVis = (cycleT >= 0.22 && cycleT <= 0.78)
-    ? Math.min(1, Math.min((cycleT - 0.22) / 0.07, (0.78 - cycleT) / 0.07)) : 0;
-  if (sunVis > 0.01) drawSun(ctx, cycleT, sunVis, t);
-
-  // Clouds
-  const cloudA = cycleT >= 0.75 ? Math.max(0, 1 - (cycleT - 0.75) / 0.15)
-    : cycleT < 0.1 ? 0.5
-      : Math.min(1, Math.min((cycleT - 0.1) / 0.1, 1));
-  if (cloudA > 0.01) drawClouds(ctx, t, cloudA);
-
-  // Birds
-  if (cycleT >= 0.3 && cycleT <= 0.7) {
-    const ba = Math.min(1, Math.min((cycleT - 0.3) / 0.05, (0.7 - cycleT) / 0.05));
-    drawBirds(ctx, t, ba);
+function drawBackground(ctx, t, dt) {
+  if (_bgImage && _bgImage.complete && _bgImage.naturalWidth) {
+    const scale = Math.max(CANVAS_W / _bgImage.naturalWidth, CANVAS_H / _bgImage.naturalHeight);
+    const dw = _bgImage.naturalWidth * scale;
+    const dh = _bgImage.naturalHeight * scale;
+    const dx = (CANVAS_W - dw) / 2;
+    const dy = (CANVAS_H - dh) / 2;
+    ctx.drawImage(_bgImage, dx, dy, dw, dh);
+  } else {
+    ctx.fillStyle = '#3A2A1A';
+    ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
   }
-
-  // Mountains
-  drawMountains(ctx, cycleT);
-  // Castle
-  if (_castleCanvas) {
-    ctx.drawImage(_castleCanvas, (CANVAS_W - CASTLE_W) / 2, GROUND_Y - CASTLE_H + 22);
-  }
-  drawTrees(ctx);
-  drawGround(ctx);
+  drawClouds(ctx, t, dt);
+  drawBirds(ctx, t, dt);
+  drawChimneySmoke(ctx, t, dt);
+  drawLeaves(ctx, t, dt);
 }
 
-function drawStars(ctx, t, alpha) {
-  const ts = t * 0.001;
-  ctx.save(); ctx.globalAlpha = alpha;
-  _stars.forEach(s => {
-    const tw = 0.4 + 0.6 * (0.5 + 0.5 * Math.sin(ts * s.freq + s.phase));
-    ctx.fillStyle = `rgba(255,255,255,${tw})`;
-    ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2); ctx.fill();
-  });
-  ctx.restore();
-}
+// ─── KNIGHT PIXEL ART ──────────────────────────
+const KNIGHT_PX = 5;      // screen pixels per logical pixel
+const KNIGHT_COLS = 12;   // logical width
+const KNIGHT_ROWS = 18;   // logical height
+const KNIGHT_DW = KNIGHT_COLS * KNIGHT_PX;  // 60
+const KNIGHT_DH = KNIGHT_ROWS * KNIGHT_PX;  // 90
 
-function drawMoon(ctx, alpha, t) {
-  if (!_moonCanvas) return;
-  const ph = ((t % DAY_CYCLE_MS) / DAY_CYCLE_MS - 0.75 + 1) % 1 / 0.25;
-  const mx = CANVAS_W * 0.1 + ph * CANVAS_W * 0.5;
-  const my = 80 - Math.sin(ph * Math.PI) * 32;
-  ctx.save(); ctx.globalAlpha = Math.min(1, alpha * 1.4);
-  ctx.drawImage(_moonCanvas, mx - 65, my - 65);
-  ctx.restore();
-}
+// Palette: 0=transparent 1=silver-light 2=silver-mid 3=silver-dark 4=skin 5=gold 6=black 7=mustache-orange 8=sword-blade 9=brand-red
+const K = { 1:'#D0DCE8', 2:'#6878A0', 3:'#2A3848', 4:'#F2A880', 5:'#D4A828', 6:'#0A0A0A', 7:'#E87020', 8:'#E8EAF4', 9:'#B12C16' };
 
-function drawSun(ctx, cycleT, alpha, t) {
-  const ph = (cycleT - 0.22) / 0.56;
-  const sx = ph * CANVAS_W;
-  const sy = 95 - Math.sin(ph * Math.PI) * 58;
-  const ts = t * 0.001;
-
-  ctx.save(); ctx.globalAlpha = alpha;
-
-  // Glow
-  const grd = ctx.createRadialGradient(sx, sy, 0, sx, sy, 72);
-  grd.addColorStop(0, 'rgba(255,230,120,0.65)');
-  grd.addColorStop(0.35, 'rgba(255,200,80,0.3)');
-  grd.addColorStop(1, 'rgba(255,160,60,0)');
-  ctx.fillStyle = grd; ctx.beginPath(); ctx.arc(sx, sy, 72, 0, Math.PI * 2); ctx.fill();
-
-  // Rays
-  ctx.strokeStyle = 'rgba(255,220,100,0.55)'; ctx.lineWidth = 2.5; ctx.lineCap = 'round';
-  for (let i = 0; i < 8; i++) {
-    const a = (i / 8) * Math.PI * 2 + ts * 0.25;
-    ctx.beginPath();
-    ctx.moveTo(sx + Math.cos(a) * 30, sy + Math.sin(a) * 30);
-    ctx.lineTo(sx + Math.cos(a) * 48, sy + Math.sin(a) * 48);
-    ctx.stroke();
-  }
-
-  // Disc
-  ctx.fillStyle = '#FFE040'; ctx.beginPath(); ctx.arc(sx, sy, 24, 0, Math.PI * 2); ctx.fill();
-  ctx.strokeStyle = '#FFC020'; ctx.lineWidth = 2; ctx.stroke();
-
-  // Face
-  ctx.fillStyle = 'rgba(180,100,0,0.18)';
-  ctx.beginPath(); ctx.arc(sx - 8, sy - 4, 3, 0, Math.PI * 2); ctx.fill();
-  ctx.beginPath(); ctx.arc(sx + 8, sy - 4, 3, 0, Math.PI * 2); ctx.fill();
-  ctx.strokeStyle = 'rgba(180,100,0,0.22)'; ctx.lineWidth = 2; ctx.lineCap = 'round';
-  ctx.beginPath(); ctx.arc(sx, sy + 2, 8, 0.2, Math.PI - 0.2); ctx.stroke();
-
-  ctx.restore();
-}
-
-function drawClouds(ctx, t, alpha) {
-  const elapsed = t * 0.001;
-  ctx.save();
-  _clouds.forEach(c => {
-    const totalW = CANVAS_W + 220;
-    const cx2 = ((c.baseX + elapsed * c.speed * c.scale * 0.8) % totalW + totalW) % totalW - 110;
-    ctx.save(); ctx.translate(cx2, c.y); ctx.scale(c.scale, c.scale);
-    // Shadow
-    c.blobs.forEach(([bx, by, br]) => {
-      ctx.fillStyle = `rgba(150,175,200,${0.22 * alpha})`;
-      ctx.beginPath(); ctx.arc(bx + 5, by + 7, br, 0, Math.PI * 2); ctx.fill();
-    });
-    // Body
-    c.blobs.forEach(([bx, by, br]) => {
-      ctx.fillStyle = `rgba(255,255,255,${0.92 * alpha})`;
-      ctx.beginPath(); ctx.arc(bx, by, br, 0, Math.PI * 2); ctx.fill();
-    });
-    ctx.restore();
-  });
-  ctx.restore();
-}
-
-function drawBirds(ctx, t, alpha) {
-  const elapsed = t * 0.001;
-  ctx.save(); ctx.globalAlpha = alpha;
-  _birds.forEach(b => {
-    const bx = (b.baseX + elapsed * b.speed) % (CANVAS_W + 60) - 30;
-    const by = b.y + Math.sin(elapsed * 0.5 + b.phase) * 6;
-    const flap = Math.sin(elapsed * b.flapSpeed + b.phase) * 0.7;
-    ctx.strokeStyle = 'rgba(28,18,18,0.75)'; ctx.lineWidth = 1.8; ctx.lineCap = 'round';
-    ctx.beginPath();
-    ctx.moveTo(bx - 13, by + flap * 8);
-    ctx.quadraticCurveTo(bx - 4, by, bx, by);
-    ctx.quadraticCurveTo(bx + 4, by, bx + 13, by + flap * 8);
-    ctx.stroke();
-  });
-  ctx.restore();
-}
-
-function drawMountains(ctx, cycleT) {
-  const night = cycleT >= 0.75 ? (cycleT - 0.75) / 0.25 : 0;
-  const hills = [
-    [CANVAS_W * 0.15, GROUND_Y - 22, CANVAS_W * 0.6, 82, 120, 130, 158],
-    [CANVAS_W * 0.6, GROUND_Y - 12, CANVAS_W * 0.72, 100, 100, 110, 138],
-    [CANVAS_W * 0.87, GROUND_Y - 6, CANVAS_W * 0.52, 72, 110, 120, 148],
-  ];
-  hills.forEach(([hx, hy, hw, hh, r, g, b]) => {
-    const lr = Math.round(r - night * 60), lg = Math.round(g - night * 60), lb = Math.round(b - night * 50);
-    ctx.fillStyle = `rgba(${lr},${lg},${lb},0.52)`;
-    ctx.beginPath(); ctx.ellipse(hx, hy, hw / 2, hh, 0, Math.PI, Math.PI * 2); ctx.fill();
-  });
-}
-
-function drawTrees(ctx) {
-  const trees = [[18, GROUND_Y - 4, 0.62], [42, GROUND_Y - 7, 0.78], [322, GROUND_Y - 5, 0.7], [358, GROUND_Y - 4, 0.56], [384, GROUND_Y - 6, 0.64]];
-  trees.forEach(([tx, ty, ts]) => {
-    ctx.save(); ctx.translate(tx, ty); ctx.scale(ts, ts);
-    ctx.fillStyle = '#5C4A2A'; ctx.fillRect(-4, -14, 8, 16);
-    ctx.fillStyle = '#3A6B28'; ctx.beginPath(); ctx.arc(0, -24, 18, 0, Math.PI * 2); ctx.fill();
-    ctx.fillStyle = '#4A8038'; ctx.beginPath(); ctx.arc(-8, -17, 13, 0, Math.PI * 2); ctx.fill();
-    ctx.beginPath(); ctx.arc(8, -19, 11, 0, Math.PI * 2); ctx.fill();
-    ctx.restore();
-  });
-}
-
-function drawGround(ctx) {
-  // Dirt
-  ctx.fillStyle = '#8B6B47'; ctx.fillRect(0, GROUND_Y + 18, CANVAS_W, CANVAS_H - GROUND_Y - 18);
-
-  // Grass edge (slightly uneven)
-  ctx.fillStyle = '#4CAF50'; ctx.beginPath(); ctx.moveTo(0, GROUND_Y + 18);
-  for (let x = 0; x <= CANVAS_W; x += 6) {
-    ctx.lineTo(x, GROUND_Y + 6 + Math.sin(x * 0.28) * 3 + Math.sin(x * 0.65 + 1) * 2);
-  }
-  ctx.lineTo(CANVAS_W, GROUND_Y + 18); ctx.closePath(); ctx.fill();
-
-  // Dark patches
-  ctx.fillStyle = '#388E3C';
-  for (let px = 12; px < CANVAS_W - 12; px += 38 + (px % 18)) {
-    ctx.beginPath(); ctx.ellipse(px, GROUND_Y + 11, 14, 5, 0, 0, Math.PI * 2); ctx.fill();
-  }
-
-  // Flowers
-  _flowers.forEach(f => {
-    ctx.strokeStyle = '#2E7D32'; ctx.lineWidth = 1.5;
-    ctx.beginPath(); ctx.moveTo(f.x, GROUND_Y + 16); ctx.lineTo(f.x, f.y); ctx.stroke();
-    for (let p = 0; p < 5; p++) {
-      const a = (p / 5) * Math.PI * 2;
-      ctx.fillStyle = f.color;
-      ctx.beginPath(); ctx.arc(f.x + Math.cos(a) * 3.5, f.y + Math.sin(a) * 3.5, f.sz, 0, Math.PI * 2); ctx.fill();
-    }
-    ctx.fillStyle = '#FFEE58'; ctx.beginPath(); ctx.arc(f.x, f.y, 2, 0, Math.PI * 2); ctx.fill();
-  });
-
-  // Rocks
-  [[62, GROUND_Y + 14, 5], [188, GROUND_Y + 16, 4], [312, GROUND_Y + 13, 6]].forEach(([rx, ry, rr]) => {
-    ctx.fillStyle = '#9E9E9E'; ctx.beginPath(); ctx.ellipse(rx, ry, rr, rr * 0.6, 0.2, 0, Math.PI * 2); ctx.fill();
-    ctx.fillStyle = '#BDBDBD'; ctx.beginPath(); ctx.ellipse(rx - rr * 0.2, ry - rr * 0.2, rr * 0.4, rr * 0.3, 0.5, 0, Math.PI * 2); ctx.fill();
-  });
-}
-
-// ─── KNIGHT SPRITE ─────────────────────────────
-const FRAME_W = 350, FRAME_H = 261;
-const KNIGHT_DH = 90;
-const KNIGHT_DW = KNIGHT_DH * FRAME_W / FRAME_H; // ≈ 134
-
-const KNIGHT_FRAMES = [
-  // ── run (0–5) ──
-  { x: 0, y: 0 }, // 0
-  { x: 350, y: 0 }, // 1
-  { x: 700, y: 0 }, // 2
-  { x: 1050, y: 0 }, // 3
-  { x: 0, y: 261 }, // 4
-  { x: 350, y: 261 }, // 5
-  // ── attack (6–9) ──
-  { x: 700, y: 261 }, // 6
-  { x: 1050, y: 261 }, // 7
-  { x: 0, y: 522 }, // 8
-  { x: 350, y: 522 }, // 9
-  // ── dead (10–14) ──
-  { x: 700, y: 522 }, // 10
-  { x: 1050, y: 522 }, // 11
-  { x: 0, y: 783 }, // 12
-  { x: 350, y: 783 }, // 13
-  { x: 700, y: 783 }, // 14
+// Head + body (rows 0–11): conical helmet, pink round face, huge mustache, silver armor, sword at rest (blade=col11 rows0-7, guard=cols10-11 row7, handle=col11 rows8-10, pommel=col11 row11)
+const K_BODY = [
+  [0,0,0,0,0,1,2,0,0,0,0,8],  // 0  helmet tip + sword blade
+  [0,0,0,0,1,1,2,1,0,0,0,8],  // 1  helmet
+  [0,0,0,1,2,1,1,2,1,0,0,8],  // 2  helmet
+  [0,0,2,1,1,1,1,1,1,2,0,8],  // 3  helmet base wide
+  [0,0,1,4,4,4,4,4,4,1,0,8],  // 4  face (skin) + armor frame
+  [0,4,4,6,4,4,4,6,4,4,0,8],  // 5  eyes (dark pupils)
+  [4,4,7,7,7,7,7,7,7,4,0,8],  // 6  HUGE mustache (7 orange pixels)
+  [4,7,7,3,4,4,3,7,7,1,5,5],  // 7  drooping mustache + SWORD GUARD (gold cols10-11)
+  [2,1,1,1,1,1,1,1,1,1,2,6],  // 8  wide shoulders (12 cols) + handle
+  [1,1,2,5,1,1,1,5,2,1,0,6],  // 9  chest armor + gold "A" emblem
+  [1,1,1,2,5,1,5,2,1,1,0,6],  // 10 belly + gold center detail
+  [0,6,6,9,9,9,9,9,6,6,0,5],  // 11 belt (red+black) + pommel
 ];
 
-const ANIM = {
-  idle: { start: 0, count: 6, fps: 6, loop: true },
-  run: { start: 0, count: 6, fps: 6, loop: true },
-  catch: { start: 6, count: 4, fps: 12, loop: false },
-  hit: { start: 10, count: 5, fps: 8, loop: false },
-};
+// Catch: sword raised above head (guard at rows 0-1, blade off top)
+const K_BODY_CATCH = [
+  [0,0,0,0,0,1,2,0,0,0,5,5],  // 0  helmet + GUARD raised (gold cols10-11)
+  [0,0,0,0,1,1,2,1,0,0,3,6],  // 1  helmet + arm up + handle
+  [0,0,0,1,2,1,1,2,1,0,3,6],  // 2  helmet + arm
+  [0,0,2,1,1,1,1,1,1,2,3,6],  // 3  helmet base + arm
+  [0,0,1,4,4,4,4,4,4,1,3,5],  // 4  face + arm + pommel
+  [0,4,4,6,4,4,4,6,4,4,3,0],  // 5  eyes + arm
+  [4,4,7,7,7,7,7,7,7,4,3,0],  // 6  mustache + arm
+  [4,7,7,3,4,4,3,7,7,1,0,0],  // 7  drooping mustache
+  [2,1,1,1,1,1,1,1,1,1,2,0],  // 8  shoulders
+  [1,1,2,5,1,1,1,5,2,1,0,0],  // 9  chest
+  [1,1,1,2,5,1,5,2,1,1,0,0],  // 10 belly
+  [0,6,6,9,9,9,9,9,6,6,0,0],  // 11 belt
+];
+
+// Hit: tilted, sword drooping down-right
+const K_BODY_HIT = [
+  [0,0,0,0,0,0,1,2,0,0,0,0],  // 0  helmet tilted
+  [0,0,0,0,1,1,2,1,1,0,0,0],  // 1
+  [0,0,0,1,2,1,1,2,1,0,0,0],  // 2
+  [0,0,1,2,1,1,1,1,2,1,0,0],  // 3
+  [0,0,1,4,4,4,4,4,4,0,0,0],  // 4  face
+  [0,1,4,6,4,4,4,6,4,4,0,0],  // 5  eyes (sad)
+  [0,4,7,7,7,7,7,7,7,4,0,0],  // 6  mustache
+  [0,4,7,3,4,4,3,7,7,1,0,0],  // 7  drooping mustache
+  [0,2,1,1,1,1,1,1,1,1,2,0],  // 8  shoulders
+  [0,1,2,5,1,1,1,5,2,1,8,0],  // 9  chest + sword falling (blade col10)
+  [0,1,1,2,5,1,5,2,1,0,8,0],  // 10 belly + sword
+  [0,6,6,9,9,9,9,9,6,0,5,8],  // 11 belt + guard fallen (col10) + blade (col11)
+];
+
+// Legs frame A: left foot forward (12 cols)
+const K_LEGS_A = [
+  [0,0,1,1,0,0,0,1,1,0,0,0],  // 12
+  [0,1,2,1,0,0,0,1,2,1,0,0],  // 13
+  [0,6,6,0,0,0,0,0,6,6,0,0],  // 14
+  [6,6,6,0,0,0,0,0,6,6,6,0],  // 15
+  [6,6,0,0,0,0,0,0,0,6,6,6],  // 16 left foot forward, right back
+  [0,0,0,0,0,0,0,0,0,0,0,0],  // 17
+];
+
+// Legs frame B: right foot forward (minimal difference → smooth alternation)
+const K_LEGS_B = [
+  [0,0,0,1,1,0,0,1,1,0,0,0],  // 12
+  [0,0,1,2,1,0,0,1,2,1,0,0],  // 13
+  [0,0,6,6,0,0,0,0,6,6,0,0],  // 14
+  [0,6,6,6,0,0,0,0,6,6,6,0],  // 15
+  [6,6,6,0,0,0,0,0,0,6,6,6],  // 16 right foot forward, left back
+  [0,0,0,0,0,0,0,0,0,0,0,0],  // 17
+];
+
+// Legs hit: scomposte
+const K_LEGS_HIT = [
+  [0,0,0,1,1,0,1,1,0,0,0,0],  // 12
+  [0,0,1,2,0,0,2,1,0,0,0,0],  // 13
+  [0,6,6,0,0,0,0,6,6,0,0,0],  // 14
+  [6,6,0,0,0,0,0,0,6,6,0,0],  // 15
+  [0,0,0,0,0,0,0,0,0,0,0,0],  // 16
+  [0,0,0,0,0,0,0,0,0,0,0,0],  // 17
+];
 
 function drawKnight(ctx, x, state, t, facingRight) {
-  if (!_spritesheetImg || !_spritesheetImg.complete) return;
-
-  const anim = ANIM[state] || ANIM.run;
   const sec = t * 0.001;
-  let localFrame;
-  if (state === 'hit') {
-    const elapsed = (t - _knightAnim.hitStartTs) * 0.001;
-    localFrame = Math.min(Math.floor(elapsed * anim.fps), anim.count - 1);
-  } else {
-    localFrame = Math.floor(sec * anim.fps) % anim.count;
-  }
+  const WALK_HZ = 3;
 
-  const frame = KNIGHT_FRAMES[anim.start + localFrame];
-  const dw = KNIGHT_DW, dh = KNIGHT_DH;
-  const dx = x - dw / 2;
-  const dy = GROUND_Y - dh + (state === 'hit' ? dh * 0.55 : 0);
+  const legFrame = (state === 'run') ? Math.floor(sec * WALK_HZ) % 2 : 0;
+  const waddle   = (state === 'run') ? Math.round(Math.sin(sec * WALK_HZ * Math.PI) * 2) : 0;
+
+  const body = state === 'catch' ? K_BODY_CATCH : state === 'hit' ? K_BODY_HIT : K_BODY;
+  const legs = state === 'hit' ? K_LEGS_HIT : (legFrame === 0 ? K_LEGS_A : K_LEGS_B);
+  const rows = [...body, ...legs];
+
+  const ox = Math.round(x - KNIGHT_DW / 2);
+  const oy = GROUND_Y - KNIGHT_DH + waddle;
 
   ctx.save();
-  // Flip orizzontale attorno al centro x del cavaliere
   if (!facingRight) ctx.transform(-1, 0, 0, 1, x * 2, 0);
 
-  ctx.drawImage(_spritesheetImg, frame.x, frame.y, FRAME_W, FRAME_H, dx, dy, dw, dh);
+  stamp(ctx, rows, K, ox, oy, KNIGHT_PX);
 
-  // Flash rosso durante hit
+  // Red flash on hit
   if (state === 'hit' && Math.sin(t * 0.028) > 0) {
-    ctx.globalAlpha = 0.45;
+    ctx.globalAlpha = 0.38;
     ctx.fillStyle = '#FF3030';
-    ctx.beginPath();
-    ctx.ellipse(x, dy + dh * 0.5, dw * 0.42, dh * 0.42, 0, 0, Math.PI * 2);
-    ctx.fill();
+    rows.forEach((row, ry) => {
+      row.forEach((c, rx) => {
+        if (c) ctx.fillRect(ox + rx * KNIGHT_PX, oy + ry * KNIGHT_PX, KNIGHT_PX, KNIGHT_PX);
+      });
+    });
   }
 
   ctx.restore();
 }
 
 
-// ─── DRAW: PIZZA (3 variants) ──────────────────
+// ─── DRAW: PIZZA PIXEL ART (3 variants) ────────
+const PIZZA_PX = 4;
+// Palette: 1=crust, 2=sauce-red, 3=cheese, 4=dark-crust, 5=mozzarella, 6=basil, 7=pepperoni, 8=quattro
+const P_PAL = { 1:'#C87830', 2:'#C83020', 3:'#E8D878', 4:'#8B4818', 5:'#F5EFD8', 6:'#2A6818', 7:'#8B1808', 8:'#E8C858' };
+
+// 10×10 pizza frames
+const PIZZA_MARGHERITA = [
+  [0,0,1,1,1,1,1,1,0,0],
+  [0,1,2,2,2,2,2,2,1,0],
+  [1,2,5,2,5,2,2,5,2,1],
+  [1,2,2,5,2,2,5,2,2,1],
+  [1,2,6,2,2,5,2,2,6,1],
+  [1,2,2,2,5,2,2,2,2,1],
+  [1,2,5,2,2,2,5,2,2,1],
+  [0,1,2,2,5,2,2,2,1,0],
+  [0,0,1,1,1,1,1,1,0,0],
+  [0,0,0,0,0,0,0,0,0,0],
+];
+
+const PIZZA_PEPPERONI = [
+  [0,0,1,1,1,1,1,1,0,0],
+  [0,1,2,2,2,2,2,2,1,0],
+  [1,2,7,2,2,7,2,2,2,1],
+  [1,2,2,2,7,2,2,7,2,1],
+  [1,2,2,7,2,2,7,2,2,1],
+  [1,2,7,2,2,7,2,2,7,1],
+  [1,2,2,2,7,2,2,2,2,1],
+  [0,1,2,7,2,2,7,2,1,0],
+  [0,0,1,1,1,1,1,1,0,0],
+  [0,0,0,0,0,0,0,0,0,0],
+];
+
+const PIZZA_FORMAGGI = [
+  [0,0,1,1,1,1,1,1,0,0],
+  [0,1,8,8,4,3,3,3,1,0],
+  [1,8,8,8,4,3,3,3,3,1],
+  [1,8,8,8,4,3,3,3,3,1],
+  [1,4,4,4,4,4,4,4,4,1],
+  [1,5,5,5,4,8,8,8,8,1],
+  [1,5,5,5,4,8,8,8,8,1],
+  [0,1,5,5,4,8,8,8,1,0],
+  [0,0,1,1,1,1,1,1,0,0],
+  [0,0,0,0,0,0,0,0,0,0],
+];
+
+const PIZZA_FRAMES = [PIZZA_MARGHERITA, PIZZA_PEPPERONI, PIZZA_FORMAGGI];
+
 function drawPizza(ctx, x, y, variant, rotation, glowing) {
-  ctx.save(); ctx.translate(x, y); ctx.rotate(rotation);
-  const r = 23;
+  const frame = PIZZA_FRAMES[variant % 3];
+  const size = frame.length * PIZZA_PX;
+  const ox = Math.round(x - size / 2);
+  const oy = Math.round(y - size / 2);
+
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.rotate(Math.round(rotation / (Math.PI / 2)) * (Math.PI / 2)); // snap rotation to 90° steps
+  ctx.translate(-x, -y);
 
   if (glowing) {
-    const g = ctx.createRadialGradient(0, 0, r * 0.4, 0, 0, r * 2.6);
-    g.addColorStop(0, 'rgba(255,200,80,0.45)'); g.addColorStop(1, 'rgba(255,200,80,0)');
-    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(0, 0, r * 2.6, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = 'rgba(255,200,80,0.25)';
+    ctx.fillRect(ox - PIZZA_PX * 2, oy - PIZZA_PX * 2, size + PIZZA_PX * 4, size + PIZZA_PX * 4);
   }
 
-  // Crust
-  ctx.fillStyle = '#C8843A'; ctx.beginPath(); ctx.arc(0, 0, r, 0, Math.PI * 2); ctx.fill();
-  ctx.strokeStyle = '#8B5A1A'; ctx.lineWidth = 1.5; ctx.stroke();
-  ctx.strokeStyle = '#D9954A'; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(0, 0, r - 2.5, 0, Math.PI * 2); ctx.stroke();
-
-  const ir = r - 6;
-
-  if (variant === 0) {
-    // MARGHERITA
-    ctx.fillStyle = '#E04030'; ctx.beginPath(); ctx.arc(0, 0, ir, 0, Math.PI * 2); ctx.fill();
-    ctx.fillStyle = '#F5EFE0';
-    [[0, -8, 6], [8, 5, 5], [-7, 6, 5], [2, 10, 4], [-9, -2, 4]].forEach(([bx, by, br]) => {
-      ctx.beginPath(); ctx.arc(bx, by, br, 0, Math.PI * 2); ctx.fill();
-    });
-    [[-4, -2, 0.4], [6, -5, -0.5], [-6, 10, 0.8]].map(([lx, ly, la]) => {
-      ctx.save(); ctx.translate(lx, ly); ctx.rotate(la);
-      ctx.fillStyle = '#2E7D32'; ctx.beginPath(); ctx.ellipse(0, 0, 5, 3, 0, 0, Math.PI * 2); ctx.fill();
-      ctx.restore();
-    });
-  } else if (variant === 1) {
-    // PEPPERONI
-    ctx.fillStyle = '#D03828'; ctx.beginPath(); ctx.arc(0, 0, ir, 0, Math.PI * 2); ctx.fill();
-    ctx.fillStyle = '#F0EAD8';
-    [[0, -5, 5], [8, 6, 4], [-7, 5, 4]].forEach(([bx, by, br]) => { ctx.beginPath(); ctx.arc(bx, by, br, 0, Math.PI * 2); ctx.fill(); });
-    [[-6, -8, 5], [7, -7, 5], [0, 6, 5], [-9, 3, 4.5], [9, 3, 4.5], [-1, -1, 4]].forEach(([px, py, pr]) => {
-      ctx.fillStyle = '#7B1A0E'; ctx.beginPath(); ctx.arc(px, py, pr, 0, Math.PI * 2); ctx.fill();
-      ctx.fillStyle = '#9B2A1A'; ctx.beginPath(); ctx.arc(px - 1, py - 1, pr * 0.5, 0, Math.PI * 2); ctx.fill();
-    });
-  } else {
-    // QUATTRO FORMAGGI
-    ctx.fillStyle = '#EDE0C0'; ctx.beginPath(); ctx.arc(0, 0, ir, 0, Math.PI * 2); ctx.fill();
-    ['#F5D58A', '#E8C890', '#D4B870', '#F0DC98'].forEach((col, q) => {
-      ctx.fillStyle = col; ctx.beginPath(); ctx.moveTo(0, 0);
-      ctx.arc(0, 0, ir, q * Math.PI / 2 - 0.06, (q + 1) * Math.PI / 2 + 0.06); ctx.closePath(); ctx.fill();
-    });
-    ctx.strokeStyle = '#C09040'; ctx.lineWidth = 1;
-    ctx.beginPath(); ctx.moveTo(0, -ir); ctx.lineTo(0, ir); ctx.stroke();
-    ctx.beginPath(); ctx.moveTo(-ir, 0); ctx.lineTo(ir, 0); ctx.stroke();
-    ctx.fillStyle = 'rgba(180,140,60,0.35)';
-    [[-6, -6, 3], [7, 6, 2.5], [-5, 7, 2.2], [7, -7, 2.5]].forEach(([bx, by, br]) => {
-      ctx.beginPath(); ctx.arc(bx, by, br, 0, Math.PI * 2); ctx.fill();
-    });
-  }
-
-  // Inner edge outline
-  ctx.strokeStyle = '#6B3A10'; ctx.lineWidth = 1.5;
-  ctx.beginPath(); ctx.arc(0, 0, ir, 0, Math.PI * 2); ctx.stroke();
-
+  stamp(ctx, frame, P_PAL, ox, oy, PIZZA_PX);
   ctx.restore();
 }
 
-// ─── DRAW: BOMB ────────────────────────────────
+// ─── DRAW: BOMB PIXEL ART ──────────────────────
+const BOMB_PX = 4;
+const B_PAL = { 1:'#181818', 2:'#282828', 3:'#7B5B30', 4:'#FFD700', 5:'#FF6820', 6:'#FFFFFF' };
+
+const BOMB_FRAME = [
+  [0,0,0,3,3,0,0,0],  // 0 fuse
+  [0,0,0,0,3,0,0,0],  // 1
+  [0,0,1,1,1,1,0,0],  // 2 body top
+  [0,1,2,1,1,2,1,0],  // 3
+  [1,2,1,1,1,1,2,1],  // 4 highlight
+  [1,2,1,6,1,1,2,1],  // 5
+  [1,2,1,1,1,1,2,1],  // 6
+  [0,1,2,1,1,2,1,0],  // 7
+  [0,0,1,1,1,1,0,0],  // 8 body bottom
+  [0,0,0,0,0,0,0,0],
+];
+
+const BOMB_SPARK_ON = [
+  [0,0,0,4,0,0,0,0],
+  [0,0,4,5,4,0,0,0],
+  [0,0,0,4,0,0,0,0],
+];
+
+const BOMB_SPARK_OFF = [
+  [0,0,0,5,0,0,0,0],
+  [0,0,0,5,0,0,0,0],
+  [0,0,0,0,0,0,0,0],
+];
+
+const B_PAL_OUTLINE = { 1:'#B12C17', 2:'#B12C17', 3:'#B12C17', 4:'#B12C17', 5:'#B12C17', 6:'#B12C17' };
+const BOMB_OUTLINE_OFFSETS = [[-1,0],[1,0],[0,-1],[0,1]];
+
 function drawBomb(ctx, x, y, t) {
-  ctx.save(); ctx.translate(x, y);
-  const ts = t * 0.001;
-  ctx.rotate(Math.sin(ts * 5.5) * 0.08);
-
-  const r = 20, fx = 8, fy = -r - 20;
-
-  // Fuse
-  ctx.strokeStyle = '#7B5B30'; ctx.lineWidth = 2.5; ctx.lineCap = 'round';
-  ctx.beginPath(); ctx.moveTo(0, -r + 2); ctx.quadraticCurveTo(10, -r - 8, fx, fy); ctx.stroke();
-
-  // Spark
-  const pulse = 0.5 + 0.5 * Math.sin(ts * 30);
-  const sr = 4 + pulse * 3;
-  const sg = ctx.createRadialGradient(fx, fy, 0, fx, fy, sr * 2.6);
-  sg.addColorStop(0, 'rgba(255,255,220,1)'); sg.addColorStop(0.2, '#FFD700');
-  sg.addColorStop(0.6, 'rgba(255,107,53,0.8)'); sg.addColorStop(1, 'rgba(255,50,0,0)');
-  ctx.fillStyle = sg; ctx.beginPath(); ctx.arc(fx, fy, sr * 2.6, 0, Math.PI * 2); ctx.fill();
-  ctx.fillStyle = '#FFFFFF'; ctx.beginPath(); ctx.arc(fx, fy, 2, 0, Math.PI * 2); ctx.fill();
-
-  // Cap
-  ctx.fillStyle = '#4A3828'; ctx.beginPath(); ctx.ellipse(0, -r + 2, 8, 5, 0, 0, Math.PI * 2); ctx.fill();
-
-  // Body
-  const bg = ctx.createRadialGradient(-6, -6, 2, 0, 0, r);
-  bg.addColorStop(0, '#4A4848'); bg.addColorStop(0.35, '#282424'); bg.addColorStop(1, '#0A0808');
-  ctx.fillStyle = bg; ctx.beginPath(); ctx.arc(0, 0, r, 0, Math.PI * 2); ctx.fill();
-  ctx.strokeStyle = '#181414'; ctx.lineWidth = 2; ctx.stroke();
-
-  // Specular
-  ctx.fillStyle = 'rgba(255,255,255,0.2)'; ctx.beginPath(); ctx.ellipse(-6, -7, 7, 5, -0.3, 0, Math.PI * 2); ctx.fill();
-
-  // White cross
-  ctx.fillStyle = 'rgba(255,255,255,0.62)';
-  ctx.fillRect(-2, -r + 8, 4, r * 1.2 - 8);
-  ctx.fillRect(-r + 4, -2, r * 2 - 8, 4);
-
-  ctx.restore();
+  const sparkOn = Math.floor(t * 0.006) % 2 === 0;
+  const spark = sparkOn ? BOMB_SPARK_ON : BOMB_SPARK_OFF;
+  const total = [...spark, ...BOMB_FRAME];
+  const size = 8 * BOMB_PX;
+  const ox = Math.round(x - size / 2);
+  const oy = Math.round(y - size / 2 - BOMB_PX * 3);
+  // red outline (4 cardinal offsets)
+  BOMB_OUTLINE_OFFSETS.forEach(([dx, dy]) => {
+    stamp(ctx, total, B_PAL_OUTLINE, ox + dx * BOMB_PX, oy + dy * BOMB_PX, BOMB_PX);
+  });
+  // bomb body on top
+  stamp(ctx, total, B_PAL, ox, oy, BOMB_PX);
 }
 
 // ─── PARTICLES ─────────────────────────────────
@@ -718,9 +583,10 @@ function drawHint(ctx, timer) {
 
 // ─── GAME STATE ────────────────────────────────
 let _canvas = null, _ctx = null, _animFrame = null, _lastTs = 0, _startTs = 0;
-let _spritesheetImg = null;
 let _knightAnim = { hitStartTs: 0 };
-let _stars = [], _clouds = [], _flowers = [], _birds = [];
+let _clouds = [], _leaves = [];
+let _birds = [], _birdSpawnTimer = 0;
+let _smokePuffs = [], _smokeTimer = 0;
 let _knight = { x: 80, speed: INITIAL_KNIGHT_SPEED, movingRight: true, state: 'idle', stateTimer: 0 };
 let _objects = [], _spawnTimer = INITIAL_SPAWN_DELAY, _spawnDelay = INITIAL_SPAWN_DELAY, _bombChance = 0.30, _combo = 0;
 let _score = 0, _isGameOver = false, _hasCelebrated = false, _showPanel = false;
@@ -746,7 +612,7 @@ function gameLoop(ts) {
 
   _ctx.save(); _ctx.translate(_shakeX, _shakeY);
 
-  drawBackground(_ctx, gameT);
+  drawBackground(_ctx, gameT, dt);
 
   if (!_isGameOver) {
     updateKnight(dt);
@@ -939,12 +805,17 @@ const AvalonGame = {
     }
     _ctx = _canvas.getContext('2d');
 
-    // Build pre-rendered assets
-    _moonCanvas = buildMoonCanvas();
-    _castleCanvas = buildCastleCanvas();
+    // Load background image
+    _bgImage = new Image();
+    _bgImage.src = 'assets/game/bg.png';
 
-    // Generate scene elements
-    _stars = genStars(); _clouds = genClouds(); _flowers = genFlowers(); _birds = genBirds();
+    // Initialize animated bg elements
+    _clouds = genCloudsV2();
+    _leaves = genLeavesV2();
+    _birds = [];
+    _birdSpawnTimer = 3;
+    _smokePuffs = [];
+    _smokeTimer = 0;
 
     restartGame();
 
@@ -954,18 +825,7 @@ const AvalonGame = {
       _showHint = true; _hintTimer = 3.5;
     }
 
-    // Carica spritesheet; avvia il loop solo dopo il load
-    const startLoop = () => {
-      _lastTs = performance.now(); _startTs = _lastTs;
-      _animFrame = requestAnimationFrame(gameLoop);
-    };
-    if (_spritesheetImg && _spritesheetImg.complete) {
-      startLoop();
-    } else {
-      const img = new Image();
-      img.onload = () => { _spritesheetImg = img; startLoop(); };
-      img.onerror = () => { _spritesheetImg = null; startLoop(); }; // gioca anche senza sprite
-      img.src = 'assets/game/spritesheet.png';
-    }
+    _lastTs = performance.now(); _startTs = _lastTs;
+    _animFrame = requestAnimationFrame(gameLoop);
   },
 };

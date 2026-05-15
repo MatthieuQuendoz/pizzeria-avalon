@@ -10,7 +10,7 @@
       "items": [
         {
           "nome": "Margherita",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/margherita.png",
           "descrizione": {
             "it": "Passata di pomodoro e mozzarella",
             "fr": "Sauce tomate et mozzarella",
