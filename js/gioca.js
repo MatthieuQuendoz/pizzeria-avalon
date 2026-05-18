@@ -2,10 +2,29 @@
    PIZZERIA AVALON — Gioca (orchestratore pagina)
    ============================================ */
 
+// Hooks chiamati da gioca-game.js per la schermata vittoria
+function showVictoryModal() {
+  const m = document.getElementById('victory-modal');
+  if (m) m.hidden = false;
+}
+function hideVictoryModal() {
+  const m = document.getElementById('victory-modal');
+  if (m) m.hidden = true;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const intro = document.getElementById('gioca-intro');
   const nameInput = document.getElementById('player-name');
   const startBtn = document.getElementById('start-btn');
+  const preloadStatus = document.getElementById('preload-status');
+
+  // Preload asset gioco (bg.png) prima di permettere lo start
+  let assetsReady = false;
+  AvalonGame.preload().then(() => {
+    assetsReady = true;
+    if (preloadStatus) preloadStatus.hidden = true;
+    validate();
+  });
 
   // Precompila nome se già salvato
   const savedName = getPlayerName();
@@ -20,10 +39,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (typeof lucide !== 'undefined') lucide.createIcons();
   }
 
-  // Abilita/disabilita bottone in base a input
+  // Abilita/disabilita bottone in base a input + preload
   const validate = () => {
     const v = nameInput.value.trim();
-    startBtn.disabled = v.length < 2;
+    startBtn.disabled = v.length < 2 || !assetsReady;
   };
   nameInput.addEventListener('input', validate);
   validate();
@@ -36,11 +55,21 @@ document.addEventListener('DOMContentLoaded', () => {
   // Avvio partita
   startBtn.addEventListener('click', () => {
     const name = nameInput.value.trim().slice(0, 15);
-    if (name.length < 2) return;
+    if (name.length < 2 || !assetsReady) return;
     savePlayerName(name);
     intro.classList.add('gioca-intro--hidden');
     AvalonGame.start(name);
     updateHUD(0);
+  });
+
+  // Victory modal buttons
+  document.getElementById('victory-continue')?.addEventListener('click', () => {
+    hideVictoryModal();
+    AvalonGame.resumeAfterVictory();
+  });
+  document.getElementById('victory-end')?.addEventListener('click', () => {
+    hideVictoryModal();
+    AvalonGame.endAfterVictory();
   });
 
   // Pulsante mute

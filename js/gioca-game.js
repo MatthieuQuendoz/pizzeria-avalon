@@ -508,6 +508,41 @@ function spawnBombParticles(x, y) {
   }
 }
 
+// ─── CONFETTI (victory celebration) ────────────
+const CONFETTI_COLORS = ['#B12C16', '#D4A828', '#3F6833', '#E87020', '#F8F4EC', '#2A6818'];
+function spawnConfetti(n) {
+  for (let i = 0; i < n; i++) {
+    _confetti.push({
+      x: CANVAS_W / 2 + (Math.random() - 0.5) * CANVAS_W * 0.6,
+      y: -10 + Math.random() * 40,
+      vx: (Math.random() - 0.5) * 220,
+      vy: 40 + Math.random() * 120,
+      rot: Math.random() * Math.PI * 2,
+      vrot: (Math.random() - 0.5) * 8,
+      color: CONFETTI_COLORS[Math.floor(Math.random() * CONFETTI_COLORS.length)],
+      size: 6 + Math.random() * 6,
+      life: 3.5 + Math.random() * 1.5, max: 5,
+    });
+  }
+}
+function updateAndDrawConfetti(ctx, dt) {
+  for (let i = _confetti.length - 1; i >= 0; i--) {
+    const p = _confetti[i];
+    p.vy += 280 * dt;
+    p.x += p.vx * dt; p.y += p.vy * dt;
+    p.rot += p.vrot * dt;
+    p.life -= dt;
+    if (p.life <= 0 || p.y > CANVAS_H + 20) { _confetti.splice(i, 1); continue; }
+    ctx.save();
+    ctx.globalAlpha = Math.min(1, p.life / 1.2);
+    ctx.translate(p.x, p.y);
+    ctx.rotate(p.rot);
+    ctx.fillStyle = p.color;
+    ctx.fillRect(-p.size / 2, -p.size / 3, p.size, p.size * 0.6);
+    ctx.restore();
+  }
+}
+
 // ─── FLOATING TEXT ─────────────────────────────
 function updateAndDrawTexts(ctx, dt) {
   for (let i = _ftexts.length - 1; i >= 0; i--) {
@@ -595,6 +630,7 @@ let _particles = [], _ftexts = [];
 let _retryZone = null, _retryHover = false;
 let _shakeX = 0, _shakeY = 0, _shakeDur = 0;
 let _hintTimer = 0, _showHint = false;
+let _isVictoryPaused = false, _confetti = [], _confettiBurstTimer = 0;
 
 // ─── GAME LOOP ─────────────────────────────────
 function gameLoop(ts) {
@@ -615,8 +651,10 @@ function gameLoop(ts) {
   drawBackground(_ctx, gameT, dt);
 
   if (!_isGameOver) {
-    updateKnight(dt);
-    updateObjects(dt);
+    if (!_isVictoryPaused) {
+      updateKnight(dt);
+      updateObjects(dt);
+    }
 
     // Falling objects (behind knight)
     _objects.forEach(obj => {
@@ -629,6 +667,16 @@ function gameLoop(ts) {
 
     updateAndDrawParticles(_ctx, dt);
     updateAndDrawTexts(_ctx, dt);
+
+    // Confetti during victory pause (and after, until faded)
+    if (_isVictoryPaused) {
+      _confettiBurstTimer -= dt;
+      if (_confettiBurstTimer <= 0) {
+        spawnConfetti(40);
+        _confettiBurstTimer = 1.4;
+      }
+    }
+    updateAndDrawConfetti(_ctx, dt);
 
     // Hint
     if (_showHint && _hintTimer > 0) {
@@ -712,13 +760,18 @@ function catchPizza(obj, idx) {
     addText(_knight.x, KNIGHT_Y - 55, `Combo x${_combo}!`, '#B12C16', 20);
   }
   _knight.state = 'catch'; _knight.stateTimer = 0.3;
-  _spawnDelay = Math.max(MIN_SPAWN_DELAY, _spawnDelay - 30);
-  _knight.speed = Math.min(MAX_KNIGHT_SPEED, _knight.speed + 4);
-  _bombChance = Math.min(0.5, _bombChance + 0.01);
+  // Smooth difficulty ramp: factor 1.0 → 2.2 between score 40 and 60
+  const accelFactor = _score < 40 ? 1.0 : 1.0 + Math.min(1.2, (_score - 40) / 20 * 1.2);
+  _spawnDelay = Math.max(MIN_SPAWN_DELAY, _spawnDelay - 30 * accelFactor);
+  _knight.speed = Math.min(MAX_KNIGHT_SPEED, _knight.speed + 4 * accelFactor);
+  _bombChance = Math.min(0.55, _bombChance + 0.01 * accelFactor);
   if (typeof updateHUD === 'function') updateHUD(_score);
   if (!_hasCelebrated && _score >= TARGET_SCORE) {
-    _hasCelebrated = true; AvalonAudio.win();
-    addText(CANVAS_W / 2, CANVAS_H / 2, '🎉 Premio sbloccato!', '#2E7D32', 24);
+    _hasCelebrated = true;
+    _isVictoryPaused = true;
+    AvalonAudio.win();
+    spawnConfetti(80);
+    if (typeof showVictoryModal === 'function') showVictoryModal();
   }
 }
 
@@ -782,6 +835,7 @@ function restartGame() {
   _objects = []; _spawnTimer = INITIAL_SPAWN_DELAY; _spawnDelay = INITIAL_SPAWN_DELAY;
   _bombChance = 0.30; _combo = 0; _score = 0;
   _isGameOver = false; _hasCelebrated = false; _showPanel = false;
+  _isVictoryPaused = false; _confetti = []; _confettiBurstTimer = 0;
   _retryZone = null; _retryHover = false;
   _particles = []; _ftexts = []; _shakeDur = 0;
   _knightAnim.hitStartTs = 0;
@@ -790,6 +844,15 @@ function restartGame() {
 
 // ─── PUBLIC API ────────────────────────────────
 const AvalonGame = {
+  preload() {
+    return new Promise(resolve => {
+      if (_bgImage && _bgImage.complete && _bgImage.naturalWidth) { resolve(); return; }
+      _bgImage = new Image();
+      _bgImage.onload = () => resolve();
+      _bgImage.onerror = () => resolve(); // fallback se manca
+      _bgImage.src = 'assets/game/bg.png';
+    });
+  },
   start(playerName) {
     _playerName = playerName;
     AvalonAudio.resume();
@@ -805,9 +868,11 @@ const AvalonGame = {
     }
     _ctx = _canvas.getContext('2d');
 
-    // Load background image
-    _bgImage = new Image();
-    _bgImage.src = 'assets/game/bg.png';
+    // Background image may already be loaded via preload(); fallback if not
+    if (!_bgImage) {
+      _bgImage = new Image();
+      _bgImage.src = 'assets/game/bg.png';
+    }
 
     // Initialize animated bg elements
     _clouds = genCloudsV2();
@@ -827,5 +892,13 @@ const AvalonGame = {
 
     _lastTs = performance.now(); _startTs = _lastTs;
     _animFrame = requestAnimationFrame(gameLoop);
+  },
+  resumeAfterVictory() {
+    _isVictoryPaused = false;
+  },
+  endAfterVictory() {
+    _isVictoryPaused = false;
+    _isGameOver = true;
+    _showPanel = true;
   },
 };

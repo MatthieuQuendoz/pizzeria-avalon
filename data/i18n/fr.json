@@ -51,7 +51,12 @@
     "top_players": "Meilleurs Joueurs",
     "intro_titolo": "Prêt, chevalier ?",
     "intro_testo": "Entrez votre nom pour apparaître dans le classement. Touchez l'écran pour changer de direction.",
-    "intro_btn": "Commencer à jouer"
+    "intro_btn": "Commencer à jouer",
+    "preload": "Chargement des ressources...",
+    "victory_title": "Tu as gagné !",
+    "victory_text": "Tu as attrapé 50 pizzas. Un petit cadeau t'attend en caisse !",
+    "victory_continue": "Continuer à jouer",
+    "victory_end": "Terminer"
   },
   "footer": {
     "indirizzo": "Fraz. Etral 8, Jovençan (AO)",

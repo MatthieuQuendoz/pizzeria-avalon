@@ -122,10 +122,20 @@ html {
   left: 0;
   width: 100%;
   background-color: var(--color-lightRed);
-  padding: 1.25rem 0;
+  padding: 1.25rem 0 calc(1.25rem + env(safe-area-inset-bottom));
   display: flex;
   justify-content: center;
   z-index: var(--z-nav);
+}
+
+/* Iubenda widget — push above bottom navbar to avoid covering CTAs */
+.iub-cs-content,
+.iubenda-tp-btn,
+#iubenda-cs-banner,
+#iubenda-cs-banner-content,
+.iubenda_policy_button,
+.iubenda-cs-floating-button {
+  bottom: calc(90px + env(safe-area-inset-bottom)) !important;
 }
 
 .nav-links {
@@ -239,7 +249,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* Firefox su Mac */
-  padding-bottom: 70px;
+  padding-bottom: calc(70px + env(safe-area-inset-bottom));
 }
 
 /* --- Contenitore pagina --- */

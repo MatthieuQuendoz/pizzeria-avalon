@@ -24,9 +24,11 @@
   <!-- Lucide icons -->
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
-  <!--COOKIES-->
+  <!-- COOKIES — disabilitato qui, banner solo in index.html.
+       TODO: ripristinare quando il dominio sarà configurato nel dashboard Iubenda
   <script type="text/javascript"
     src="https://embeds.iubenda.com/widgets/1e3d3707-fe99-4f69-9752-2f4ad9fa1655.js"></script>
+  -->
 </head>
 
 <body>
@@ -109,7 +111,26 @@
             <span data-i18n="gioca.record_label">Il tuo record:</span>
             <strong id="intro-record-value">0</strong> 🍕
           </div>
-          <button class="gioca-intro__btn" id="start-btn" data-i18n="gioca.intro_btn">Inizia a giocare</button>
+          <button class="gioca-intro__btn" id="start-btn" data-i18n="gioca.intro_btn" disabled>Inizia a giocare</button>
+          <p class="gioca-intro__preload" id="preload-status">
+            <span class="gioca-spinner" aria-hidden="true"></span>
+            <span data-i18n="gioca.preload">Caricamento asset...</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- Modal vittoria (a 50 pizze) -->
+      <div class="victory-modal" id="victory-modal" hidden>
+        <div class="victory-card">
+          <div class="victory-trophy">🏆</div>
+          <h2 class="victory-title" data-i18n="gioca.victory_title">Hai vinto!</h2>
+          <p class="victory-text" data-i18n="gioca.victory_text">
+            Hai catturato 50 pizze. Ti aspetta un piccolo omaggio in cassa!
+          </p>
+          <div class="victory-actions">
+            <button class="victory-btn victory-btn--primary" id="victory-continue" data-i18n="gioca.victory_continue">Continua a giocare</button>
+            <button class="victory-btn victory-btn--secondary" id="victory-end" data-i18n="gioca.victory_end">Termina</button>
+          </div>
         </div>
       </div>
     </div>

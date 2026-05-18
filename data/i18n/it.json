@@ -51,7 +51,12 @@
     "top_players": "Top Players",
     "intro_titolo": "Pronto, cavaliere?",
     "intro_testo": "Inserisci il tuo nome per apparire nella classifica. Tocca lo schermo per cambiare direzione.",
-    "intro_btn": "Inizia a giocare"
+    "intro_btn": "Inizia a giocare",
+    "preload": "Caricamento asset...",
+    "victory_title": "Hai vinto!",
+    "victory_text": "Hai catturato 50 pizze. Ti aspetta un piccolo omaggio in cassa!",
+    "victory_continue": "Continua a giocare",
+    "victory_end": "Termina"
   },
   "footer": {
     "indirizzo": "Fraz. Etral 8, Jovençan (AO)",
