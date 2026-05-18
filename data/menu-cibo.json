@@ -10,7 +10,7 @@
       "items": [
         {
           "nome": "Margherita",
-          "immagine": "assets/menu/pizzas/margherita.png",
+          "immagine": "assets/menu/pizzas/rosse/margherita.webp",
           "descrizione": {
             "it": "Passata di pomodoro e mozzarella",
             "fr": "Sauce tomate et mozzarella",
@@ -96,13 +96,26 @@
         },
         {
           "nome": "Diavola",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/rosse/diavola.webp",
           "descrizione": {
             "it": "Passata di pomodoro, mozzarella e salamino piccante",
             "fr": "Sauce tomate, mozzarella et salami épicé",
             "en": "Tomato sauce, mozzarella and spicy salami"
           },
           "prezzo": 9.00,
+          "tag": [
+            "piccante"
+          ]
+        },
+        {
+          "nome": "Gorgonzola e salamino",
+          "immagine": "assets/menu/pizzas/rosse/gorgosalamino.webp",
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, gorgonzola e salamino piccante",
+            "fr": "Sauce tomate, mozzarella, gorgonzola et salami épicé",
+            "en": "Tomato sauce, mozzarella, gorgonzola and spicy salami"
+          },
+          "prezzo": 10.00,
           "tag": [
             "piccante"
           ]
@@ -135,7 +148,7 @@
         },
         {
           "nome": "Prosciutto",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/rosse/prosciutto.webp",
           "descrizione": {
             "it": "Passata di pomodoro, mozzarella e prosciutto cotto",
             "fr": "Sauce tomate, mozzarella et jambon cuit",
@@ -279,7 +292,7 @@
         },
         {
           "nome": "Quattro stagioni",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/rosse/quattrostagioni.webp",
           "descrizione": {
             "it": "Passata di pomodoro, mozzarella, prosciutto, funghi, carciofi e asparagi",
             "fr": "Sauce tomate, mozzarella, jambon, champignons, artichauts et asperges",
@@ -476,7 +489,7 @@
         },
         {
           "nome": "Asparagi e uovo",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/rosse/asparagi.webp",
           "descrizione": {
             "it": "Passata di pomodoro, mozzarella, asparagi e uovo",
             "fr": "Sauce tomate, mozzarella, asperges et œuf",
@@ -524,7 +537,7 @@
         },
         {
           "nome": "Della casa",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/rosse/casa.webp",
           "descrizione": {
             "it": "Passata di pomodoro, mozzarella, prosciutto, funghi, olive, würstel e salamino",
             "fr": "Sauce tomate, mozzarella, jambon, champignons, olives, saucisse et salami",
