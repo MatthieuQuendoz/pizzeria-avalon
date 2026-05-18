@@ -1,3 +1,11 @@
+/* --------HOME BODY -----------*/
+/* Sfondo nero solo nella home: la safe-area-top (status bar iOS) eredita
+   questo colore, dando una status bar fissa nera anche su Chrome iOS che
+   ignora il meta theme-color. */
+body.home {
+  background-color: #010100;
+}
+
 /* --------HERO -----------*/
 
 .hero {
