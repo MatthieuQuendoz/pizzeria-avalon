@@ -64,10 +64,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Victory modal buttons
   document.getElementById('victory-continue')?.addEventListener('click', () => {
+    AvalonAudio.resume();
     hideVictoryModal();
     AvalonGame.resumeAfterVictory();
   });
   document.getElementById('victory-end')?.addEventListener('click', () => {
+    AvalonAudio.resume();
     hideVictoryModal();
     AvalonGame.endAfterVictory();
   });
@@ -76,6 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const muteBtn = document.getElementById('mute-btn');
   let muted = false;
   muteBtn?.addEventListener('click', () => {
+    AvalonAudio.resume();
     muted = !muted;
     AvalonAudio.setEnabled(!muted);
     const icon = document.getElementById('mute-icon');

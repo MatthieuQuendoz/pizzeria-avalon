@@ -25,9 +25,17 @@ const AvalonAudio = (() => {
       try { ctx = new (window.AudioContext || window.webkitAudioContext)(); } catch (_) { }
     return ctx;
   }
-  function resume() { const c = getCtx(); if (c && c.state === 'suspended') c.resume(); }
+  function resume() {
+    const c = getCtx();
+    if (!c) return;
+    console.log('[AvalonAudio] resume, state=', c.state);
+    if (c.state === 'suspended' || c.state === 'interrupted') {
+      c.resume().then(() => console.log('[AvalonAudio] resumed →', c.state)).catch(() => {});
+    }
+  }
   function tone(freq, dur, type = 'sine', vol = 0.08) {
     const c = getCtx(); if (!c || !enabled) return;
+    if (c.state !== 'running') { try { c.resume(); } catch (_) {} }
     try {
       const osc = c.createOscillator(), gain = c.createGain();
       osc.type = type; osc.frequency.value = freq;
@@ -39,6 +47,7 @@ const AvalonAudio = (() => {
   }
   function noise(dur = 0.4, vol = 0.25) {
     const c = getCtx(); if (!c || !enabled) return;
+    if (c.state !== 'running') { try { c.resume(); } catch (_) {} }
     try {
       const buf = c.createBuffer(1, c.sampleRate * dur, c.sampleRate);
       const d = buf.getChannelData(0);
