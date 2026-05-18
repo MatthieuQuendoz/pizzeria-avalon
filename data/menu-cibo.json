@@ -1270,9 +1270,7 @@
             "en": "Tomato sauce, Porchetta di Ariccia and parmesan"
           },
           "prezzo": 9.00,
-          "tag": [
-            "immodificabile"
-          ]
+          "tag": []
         },
         {
           "nome": "Super Mario",
@@ -1283,9 +1281,7 @@
             "en": "Tomato sauce, fiordilatte mozzarella, Porchetta di Ariccia and parmesan"
           },
           "prezzo": 11.00,
-          "tag": [
-            "immodificabile"
-          ]
+          "tag": []
         },
         {
           "nome": "Tag",
@@ -1297,7 +1293,6 @@
           },
           "prezzo": 10.50,
           "tag": [
-            "immodificabile",
             "vegetariana"
           ]
         },
@@ -1311,7 +1306,6 @@
           },
           "prezzo": 10.50,
           "tag": [
-            "immodificabile",
             "piccante"
           ]
         },
@@ -1324,9 +1318,7 @@
             "en": "Tomato sauce, gorgonzola, stracchino, garlic, salami and capers"
           },
           "prezzo": 10.50,
-          "tag": [
-            "immodificabile"
-          ]
+          "tag": []
         },
         {
           "nome": "Messicana",
@@ -1338,7 +1330,6 @@
           },
           "prezzo": 10.50,
           "tag": [
-            "immodificabile",
             "piccante"
           ]
         },
@@ -1351,9 +1342,7 @@
             "en": "Tomato sauce, bacon and basil. Stuffed crust: mozzarella, ricotta, hard-boiled egg, pine nuts, pesto and grana"
           },
           "prezzo": 13.50,
-          "tag": [
-            "immodificabile"
-          ]
+          "tag": []
         },
         {
           "nome": "Luchino",
@@ -1364,9 +1353,7 @@
             "en": "Fiordilatte mozzarella, cooked ham, fontina dop, boiled potatoes and sausage"
           },
           "prezzo": 11.00,
-          "tag": [
-            "immodificabile"
-          ]
+          "tag": []
         },
         {
           "nome": "Easy",
@@ -1377,9 +1364,7 @@
             "en": "Tomato sauce, fiordilatte mozzarella, cured ham and basil"
           },
           "prezzo": 11.00,
-          "tag": [
-            "immodificabile"
-          ]
+          "tag": []
         },
         {
           "nome": "Easy Hot",
@@ -1391,7 +1376,6 @@
           },
           "prezzo": 11.00,
           "tag": [
-            "immodificabile",
             "piccante"
           ]
         },
@@ -1404,9 +1388,7 @@
             "en": "Tomato sauce, mozzarella, beans, onions, peppers, cherry tomatoes and fries"
           },
           "prezzo": 13.00,
-          "tag": [
-            "immodificabile"
-          ]
+          "tag": []
         },
         {
           "nome": "Del Boss",
@@ -1417,9 +1399,7 @@
             "en": "Cream, speck, mozzarella, burrata, radicchio, walnuts and basil"
           },
           "prezzo": 13.50,
-          "tag": [
-            "immodificabile"
-          ]
+          "tag": []
         },
         {
           "nome": "Proloco",
@@ -1431,7 +1411,6 @@
           },
           "prezzo": 13.00,
           "tag": [
-            "immodificabile",
             "piccante"
           ]
         }
