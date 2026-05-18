@@ -126,6 +126,9 @@ html {
   display: flex;
   justify-content: center;
   z-index: var(--z-nav);
+  /* Estende il colore della navbar verso il basso per coprire il gap che appare
+     su Chrome iOS quando la toolbar inferiore si nasconde durante lo scroll. */
+  box-shadow: 0 200px 0 0 var(--color-lightRed);
 }
 
 /* Iubenda widget — push above bottom navbar to avoid covering CTAs */
