@@ -196,7 +196,7 @@
         },
         {
           "nome": "Prosciutto e funghi",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/rosse/prosciuttofunghi.webp",
           "descrizione": {
             "it": "Passata di pomodoro, mozzarella, prosciutto e funghi",
             "fr": "Sauce tomate, mozzarella, jambon et champignons",
@@ -207,7 +207,7 @@
         },
         {
           "nome": "Zucchine",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/rosse/zucchinie.webp",
           "descrizione": {
             "it": "Passata di pomodoro, mozzarella, zucchine e parmigiano",
             "fr": "Sauce tomate, mozzarella, courgettes et parmesan",
@@ -349,7 +349,7 @@
         },
         {
           "nome": "Contadina",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/rosse/contadina.webp",
           "descrizione": {
             "it": "Passata di pomodoro, mozzarella, funghi, salsiccetta, fontina dop e pomodoro fresco",
             "fr": "Sauce tomate, mozzarella, champignons, saucisse, fontina dop et tomate fraîche",
@@ -382,7 +382,7 @@
         },
         {
           "nome": "Greundza",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/rosse/greundza.webp",
           "descrizione": {
             "it": "Passata di pomodoro, mozzarella, stracchino, radicchio, parmigiano e noci",
             "fr": "Sauce tomate, mozzarella, stracchino, radicchio, parmesan et noix",
@@ -395,7 +395,7 @@
         },
         {
           "nome": "Avalon",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/rosse/avalon.webp",
           "descrizione": {
             "it": "Passata di pomodoro, mozzarella, melanzane, gorgonzola, salsiccetta e funghi Champignon crudi",
             "fr": "Sauce tomate, mozzarella, aubergines, gorgonzola, saucisse et champignons crus",
@@ -465,7 +465,7 @@
         },
         {
           "nome": "All'insalata",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/rosse/insalata.webp",
           "descrizione": {
             "it": "Passata di pomodoro, mozzarella, insalata mista",
             "fr": "Sauce tomate, mozzarella, salade mixte",
@@ -502,7 +502,7 @@
         },
         {
           "nome": "Toro seduto",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/rosse/toroseduto.webp",
           "descrizione": {
             "it": "Passata di pomodoro, mozzarella di bufala, pomodorino ciliegia e basilico",
             "fr": "Sauce tomate, mozzarella de bufflonne, tomates cerises et basilic",
@@ -559,7 +559,7 @@
         },
         {
           "nome": "Del geometra",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/rosse/delgeometra.webp",
           "descrizione": {
             "it": "Passata di pomodoro, mozzarella, salsa tartufata, prosciutto, fontina dop, peperoni e salamino",
             "fr": "Sauce tomate, mozzarella, sauce truffée, jambon, fontina dop, poivrons et salami",
@@ -812,7 +812,7 @@
         },
         {
           "nome": "Asparagi",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/bianche/asparagi.webp",
           "descrizione": {
             "it": "Crema di asparagi, mozzarella e asparagi",
             "fr": "Crème d'asperges, mozzarella et asperges",
@@ -838,7 +838,7 @@
         },
         {
           "nome": "Patate e porcini",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/bianche/patateporcini.webp",
           "descrizione": {
             "it": "Mozzarella, patate lesse, porcini e ricotta",
             "fr": "Mozzarella, pommes de terre, cèpes et ricotta",
@@ -886,7 +886,7 @@
         },
         {
           "nome": "Funghi freschi",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/bianche/funghifreschi.webp",
           "descrizione": {
             "it": "Mozzarella, panna, funghi freschi e parmigiano",
             "fr": "Mozzarella, crème, champignons frais et parmesan",
@@ -912,7 +912,7 @@
         },
         {
           "nome": "Sophie",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/bianche/sophie.webp",
           "descrizione": {
             "it": "Mozzarella, gorgonzola, miele e noci",
             "fr": "Mozzarella, gorgonzola, miel et noix",
@@ -973,7 +973,7 @@
         },
         {
           "nome": "Porcini",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/bianche/porcini.webp",
           "descrizione": {
             "it": "Crema di porcini, mozzarella e porcini",
             "fr": "Crème de cèpes, mozzarella et cèpes",
@@ -1023,7 +1023,7 @@
         },
         {
           "nome": "Primavera",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/bianche/primavera.webp",
           "descrizione": {
             "it": "Mozzarella, zucchine grigliate, pomodorini, uovo e parmigiano",
             "fr": "Mozzarella, courgettes grillées, tomates cerises, œuf et parmesan",
@@ -1091,7 +1091,7 @@
         },
         {
           "nome": "Xa",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/bianche/xa.webp",
           "descrizione": {
             "it": "Mozzarella, patate lesse, pancetta stufata, salsiccetta e rosmarino",
             "fr": "Mozzarella, pommes de terre, lardons braisés, saucisse et romarin",
@@ -1137,7 +1137,7 @@
         },
         {
           "nome": "Monte bianco",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/bianche/montebianco.webp",
           "descrizione": {
             "it": "Mozzarella, fonduta, Fontina dop, noci e crudo",
             "fr": "Mozzarella, fondue, Fontina dop, noix et jambon cru",
@@ -1159,7 +1159,7 @@
         },
         {
           "nome": "Tirolese",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/bianche/tirolese.webp",
           "descrizione": {
             "it": "Mozzarella, ricotta, spinaci, pancetta stufata, uva passa, pinoli e parmigiano",
             "fr": "Mozzarella, ricotta, épinards, lardons braisés, raisins secs, pignons et parmesan",
@@ -1330,7 +1330,7 @@
         },
         {
           "nome": "Messicana",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/immodificabili/messicana.webp",
           "descrizione": {
             "it": "Passata di pomodoro, fagioli, cipolla, peperoni, mais, mozzarella e peperoncino piccante",
             "fr": "Sauce tomate, haricots, oignon, poivrons, maïs, mozzarella et piment",
@@ -1423,7 +1423,7 @@
         },
         {
           "nome": "Proloco",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/immodificabili/proloco.webp",
           "descrizione": {
             "it": "Passata di pomodoro, mozzarella, panna da cucina, fagioli, cipolle, salamino piccante, gorgonzola e funghi",
             "fr": "Sauce tomate, mozzarella, crème, haricots, oignons, salami épicé, gorgonzola et champignons",
