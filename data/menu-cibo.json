@@ -37,7 +37,7 @@
         },
         {
           "nome": "Tonno",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/rosse/tonno.webp",
           "descrizione": {
             "it": "Passata di pomodoro, mozzarella e tonno",
             "fr": "Sauce tomate, mozzarella et thon",
@@ -371,7 +371,7 @@
         },
         {
           "nome": "Nettuno",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/rosse/nettuno.webp",
           "descrizione": {
             "it": "Passata di pomodoro, mozzarella, tonno, acciughe, olive e pomodoro fresco",
             "fr": "Sauce tomate, mozzarella, thon, anchois, olives et tomate fraîche",
@@ -717,7 +717,7 @@
         },
         {
           "nome": "Tapadzo",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/rosse/tapadzo.webp",
           "descrizione": {
             "it": "Passata di pomodoro, mozzarella, rebletzen, salsiccetta, patate lesse e noci",
             "fr": "Sauce tomate, mozzarella, rebletzen, saucisse, pommes de terre et noix",
@@ -949,7 +949,7 @@
         },
         {
           "nome": "Della luna",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/bianche/dellaluna.webp",
           "descrizione": {
             "it": "Mozzarella, gorgonzola, stracchino, parmigiano, noci e radicchio dopo cottura",
             "fr": "Mozzarella, gorgonzola, stracchino, parmesan, noix et radicchio après cuisson",
@@ -1036,7 +1036,7 @@
         },
         {
           "nome": "Matthieu",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/bianche/matthieu.webp",
           "descrizione": {
             "it": "Mozzarella, miele, gorgonzola, mele, crudo e parmigiano",
             "fr": "Mozzarella, miel, gorgonzola, pommes, jambon cru et parmesan",
@@ -1058,7 +1058,7 @@
         },
         {
           "nome": "Peccato originale",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/bianche/peccatooriginale.webp",
           "descrizione": {
             "it": "Mozzarella, mele, brie e speck",
             "fr": "Mozzarella, pommes, brie et speck",
@@ -1392,7 +1392,7 @@
         },
         {
           "nome": "Del Boss",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/immodificabili/delboss.webp",
           "descrizione": {
             "it": "Panna da cucina, speck, mozzarella, burrata, radicchio, noci e basilico",
             "fr": "Crème, speck, mozzarella, burrata, radicchio, noix et basilic",
@@ -1630,7 +1630,7 @@
       "items": [
         {
           "nome": "Topolino",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/bimbi/topolino.webp",
           "descrizione": {
             "it": "Passata di pomodoro e mozzarella",
             "fr": "Sauce tomate et mozzarella",
