@@ -5,13 +5,29 @@
 
 /* -------- HERO ----------- */
 .gioca-hero {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin-top: var(--space-12);
-  margin-bottom: var(--space-12);
+  min-height: 100vh;
+  padding-top: var(--space-12);
+  padding-bottom: 0;
   gap: var(--space-3);
+
+  /* Full-bleed: esce dal container padding */
+  margin-inline: calc(-1 * var(--container-pad));
+  width: calc(100% + 2 * var(--container-pad));
+  padding-inline: var(--container-pad);
+
+  /* Sfondo: gradiente trasparente→bianco sopra hero_bg */
+  background-image:
+    linear-gradient(to bottom, transparent 40%, white 100%),
+    url('../assets/game/hero_bg.png');
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  overflow: hidden;
 }
 
 .gioca-hero__eyebrow {
@@ -57,60 +73,19 @@
 }
 
 .gioca-hero__bomb-deco {
-  font-size: 2.2rem;
+  width: 72px;
   position: absolute;
-  right: -2.8rem;
-  top: -0.4rem;
+  right: -4.5rem;
+  top: -0.5rem;
   user-select: none;
-  animation: bomb-swing 2.5s ease-in-out infinite;
+  animation: bomb-float 3s ease-in-out infinite;
 }
 
-@keyframes bomb-swing {
-
-  0%,
-  100% {
-    transform: rotate(-8deg) translateY(0);
-  }
-
-  50% {
-    transform: rotate(8deg) translateY(-5px);
-  }
+@keyframes bomb-float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-12px); }
 }
 
-.gioca-hero__scene {
-  position: relative;
-  width: 100%;
-  margin-inline: calc(-1 * var(--container-pad));
-  width: calc(100% + 2 * var(--container-pad));
-  display: flex;
-  justify-content: center;
-}
-
-.gioca-hero__scene::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, transparent 0%, white 100%);
-  pointer-events: none;
-}
-
-@keyframes knight-float {
-
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-8px);
-  }
-}
-
-.gioca-hero__knight {
-  width: 100%;
-  object-fit: contain;
-  display: block;
-}
 
 /* -------- CANVAS DI GIOCO ----------- */
 .gioca-canvas-wrap {
@@ -119,6 +94,7 @@
   aspect-ratio: 390 / 600;
   border-radius: var(--radius-xl);
   overflow: hidden;
+  margin-top: var(--space-8);
   margin-bottom: var(--space-5);
   box-shadow: var(--shadow-md);
   background-color: #F4D79A;
