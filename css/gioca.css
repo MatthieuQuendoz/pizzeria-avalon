@@ -10,7 +10,9 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  min-height: 100vh;
+  /* La hero occupa l'80% dell'altezza dello schermo: la foto parte
+     dall'alto e termina all'80% del viewport. */
+  height: 80vh;
   padding-top: var(--space-12);
   padding-bottom: 0;
   gap: var(--space-3);
@@ -20,12 +22,17 @@
   width: calc(100% + 2 * var(--container-pad));
   padding-inline: var(--container-pad);
 
-  /* Sfondo: gradiente trasparente→bianco sopra hero_bg */
+  /* Sfondo: immagine in cover ancorata in basso + gradiente.
+     Valori PER-LAYER: il gradiente copre esattamente la sezione
+     (100% 100%) così il bianco arriva davvero fino in fondo e copre
+     il bordo dell'immagine (niente più linea). L'immagine resta in
+     cover. La sfumatura inizia tardi (80%) e diventa bianco pieno solo
+     nell'ultima fascia (96%), così la foto è visibile il più possibile. */
   background-image:
-    linear-gradient(to bottom, transparent 55%, white 100%),
+    linear-gradient(to bottom, transparent 80%, white 96%),
     url('../assets/game/hero_bg.png');
-  background-size: 128%;
-  background-position: center 80%;
+  background-size: 100% 100%, cover;
+  background-position: center top, center bottom;
   background-repeat: no-repeat;
   overflow: hidden;
 }
@@ -73,10 +80,10 @@
 }
 
 .gioca-hero__bomb-deco {
-  width: 100px;
+  width: 64px;
   position: absolute;
-  right: -3.5rem;
-  top: 2.5rem;
+  right: -1rem;
+  top: 4.5rem;
   user-select: none;
   animation: bomb-float 3s ease-in-out infinite;
 }
@@ -94,7 +101,7 @@
   aspect-ratio: 390 / 600;
   border-radius: var(--radius-xl);
   overflow: hidden;
-  margin-top: var(--space-8);
+  margin-top: var(--space-24);
   margin-bottom: var(--space-5);
   box-shadow: var(--shadow-md);
   background-color: #F4D79A;
