@@ -22,17 +22,17 @@
 
   /* Sfondo: gradiente trasparente→bianco sopra hero_bg */
   background-image:
-    linear-gradient(to bottom, transparent 40%, white 100%),
+    linear-gradient(to bottom, transparent 55%, white 100%),
     url('../assets/game/hero_bg.png');
-  background-size: cover;
-  background-position: center bottom;
+  background-size: 128%;
+  background-position: center 80%;
   background-repeat: no-repeat;
   overflow: hidden;
 }
 
 .gioca-hero__eyebrow {
   display: inline-block;
-  font-size: var(--text-xs);
+  font-size: var(--text-base);
   font-weight: var(--weight-bold);
   color: var(--color-green);
   background-color: var(--color-lightGreen);
@@ -45,7 +45,7 @@
 
 .gioca-hero__title {
   font-family: var(--font-heading);
-  font-size: var(--text-4xl);
+  font-size: var(--text-5xl);
   font-weight: var(--weight-bold);
   color: var(--color-brown);
   line-height: 1;
@@ -65,18 +65,18 @@
 }
 
 .gioca-hero__description {
-  font-size: var(--text-sm);
+  font-size: var(--text-lg);
   color: var(--color-lightBrown);
   line-height: 1.6;
-  max-width: 210px;
+  max-width: 320px;
   text-align: center;
 }
 
 .gioca-hero__bomb-deco {
-  width: 72px;
+  width: 100px;
   position: absolute;
-  right: -4.5rem;
-  top: -0.5rem;
+  right: -3.5rem;
+  top: 2.5rem;
   user-select: none;
   animation: bomb-float 3s ease-in-out infinite;
 }
