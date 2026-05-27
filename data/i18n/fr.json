@@ -43,6 +43,7 @@
     "titolo": "L'attrape",
     "titolo_em": "pizzas",
     "descrizione": "Essayez d'attraper le plus de pizzas possible, mais attention aux bombes !",
+    "scroll_hint": "Fais défiler pour jouer",
     "score": "Score",
     "target": "Objectif",
     "premio_titolo": "Le Prix",

@@ -43,6 +43,7 @@
     "titolo": "The pizza",
     "titolo_em": "catcher",
     "descrizione": "Try to catch as many pizzas as you can, but watch out for the bombs!",
+    "scroll_hint": "Scroll down to play",
     "score": "Score",
     "target": "Target",
     "premio_titolo": "The Prize",

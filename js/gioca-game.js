@@ -19,7 +19,7 @@ const DAY_CYCLE_MS = 120000;
 
 // ─── AUDIO (Web Audio API, no file esterni) ─────
 const AvalonAudio = (() => {
-  let ctx = null, enabled = true;
+  let ctx = null, enabled = true, unlocked = false, silentEl = null;
   function getCtx() {
     if (!ctx && typeof AudioContext !== 'undefined')
       try { ctx = new (window.AudioContext || window.webkitAudioContext)(); } catch (_) { }
@@ -28,10 +28,37 @@ const AvalonAudio = (() => {
   function resume() {
     const c = getCtx();
     if (!c) return;
-    console.log('[AvalonAudio] resume, state=', c.state);
     if (c.state === 'suspended' || c.state === 'interrupted') {
-      c.resume().then(() => console.log('[AvalonAudio] resumed →', c.state)).catch(() => {});
+      c.resume().catch(() => {});
     }
+  }
+  // Su iOS l'audio Web Audio è instradato sul canale "ambient" e viene
+  // silenziato dall'interruttore muto fisico. Riprodurre un breve <audio>
+  // silenzioso in loop al primo tocco commuta la sessione sul canale
+  // "playback", che ignora l'interruttore muto.
+  const SILENT_WAV = 'data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQAAAAA=';
+  function unlock() {
+    const c = getCtx();
+    if (c && (c.state === 'suspended' || c.state === 'interrupted')) c.resume().catch(() => {});
+    if (unlocked) return;
+    unlocked = true;
+    // Sblocca l'autoplay gate del Web Audio con un buffer vuoto
+    if (c) {
+      try {
+        const src = c.createBufferSource();
+        src.buffer = c.createBuffer(1, 1, c.sampleRate);
+        src.connect(c.destination); src.start(0);
+      } catch (_) { }
+    }
+    // Loop silenzioso → sessione audio "playback" (ignora il muto su iOS)
+    try {
+      if (!silentEl) {
+        silentEl = new Audio(SILENT_WAV);
+        silentEl.loop = true;
+        silentEl.volume = 0.001;
+      }
+      silentEl.play().catch(() => {});
+    } catch (_) { }
   }
   function tone(freq, dur, type = 'sine', vol = 0.08) {
     const c = getCtx(); if (!c || !enabled) return;
@@ -58,7 +85,7 @@ const AvalonAudio = (() => {
     } catch (_) { }
   }
   return {
-    resume, setEnabled(v) { enabled = v; },
+    resume, unlock, setEnabled(v) { enabled = v; },
     pizza() { tone(880, 0.08, 'triangle', 0.08); setTimeout(() => tone(1320, 0.08, 'triangle', 0.08), 50); },
     combo(l) { tone(700 + l * 120, 0.12, 'square', 0.06); },
     bomb() { noise(0.45, 0.3); tone(120, 0.35, 'sawtooth', 0.15); },

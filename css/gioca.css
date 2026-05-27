@@ -93,6 +93,38 @@
   50%       { transform: translateY(-12px); }
 }
 
+.gioca-hero__scroll {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  /* Posizionato nella zona bianca sotto la hero (lo sfondo pagina è
+     bianco), con un po' di spazio prima del canvas. */
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-6);
+  text-decoration: none;
+  color: var(--color-red);
+  font-family: var(--font-heading2);
+  font-weight: var(--weight-bold);
+  font-size: var(--text-sm);
+  letter-spacing: 0.04em;
+  animation: gioca-scroll-bounce 1.8s ease-in-out infinite;
+}
+
+.gioca-hero__scroll-arrow {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+@keyframes gioca-scroll-bounce {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(8px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gioca-hero__scroll { animation: none; }
+}
+
 
 /* -------- CANVAS DI GIOCO ----------- */
 .gioca-canvas-wrap {
@@ -101,7 +133,7 @@
   aspect-ratio: 390 / 600;
   border-radius: var(--radius-xl);
   overflow: hidden;
-  margin-top: var(--space-24);
+  margin-top: var(--space-10);
   margin-bottom: var(--space-5);
   box-shadow: var(--shadow-md);
   background-color: #F4D79A;

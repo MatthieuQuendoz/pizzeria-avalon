@@ -13,6 +13,17 @@ function hideVictoryModal() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Sblocca l'audio al primissimo gesto utente (necessario su iOS:
+  // l'interruttore muto fisico silenzia il Web Audio finché non si
+  // commuta la sessione sul canale "playback"). One-shot.
+  const unlockAudio = () => {
+    AvalonAudio.unlock();
+    ['pointerdown', 'touchend', 'click'].forEach(ev =>
+      document.removeEventListener(ev, unlockAudio));
+  };
+  ['pointerdown', 'touchend', 'click'].forEach(ev =>
+    document.addEventListener(ev, unlockAudio));
+
   const intro = document.getElementById('gioca-intro');
   const nameInput = document.getElementById('player-name');
   const startBtn = document.getElementById('start-btn');

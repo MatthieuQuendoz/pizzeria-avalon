@@ -27,7 +27,7 @@
   },
   "menu": {
     "titolo": "Il nostro",
-    "description": "Impasti a lunga maturazione con ingredienti selezionati.",
+    "description": "Impasto a lunga maturazione con ingredienti selezionati.",
     "guida": "Cosa vuoi ordinare?",
     "cibo": "Cibo",
     "bevande": "Bevande",
@@ -43,6 +43,7 @@
     "titolo": "L'acchiappa",
     "titolo_em": "pizze",
     "descrizione": "Cerca di prendere più pizze possibili ma mi raccomando, stai attento alle bombe!",
+    "scroll_hint": "Scorri per giocare",
     "score": "Score",
     "target": "Target",
     "premio_titolo": "Il Premio",
