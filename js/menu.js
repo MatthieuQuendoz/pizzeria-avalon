@@ -13,6 +13,32 @@ const TAG_CONFIG = {
 };
 
 
+// Aggiorna larghezza e posizione del "thumb" dell'indicatore di scroll
+// per uno specifico wrapper (.menu-tabs-wrap). Se omesso, aggiorna tutti.
+function aggiornaIndicatore(wrap) {
+  if (!wrap) {
+    document.querySelectorAll('.menu-tabs-wrap').forEach(aggiornaIndicatore);
+    return;
+  }
+  const tabs = wrap.querySelector('.menu-tabs');
+  const indicator = wrap.querySelector('.menu-tabs-indicator');
+  const thumb = indicator?.querySelector('.menu-tabs-indicator__thumb');
+  if (!tabs || !indicator || !thumb) return;
+  const scrollable = tabs.scrollWidth - tabs.clientWidth;
+  if (scrollable <= 1) {
+    wrap.classList.add('is-not-scrollable');
+    return;
+  }
+  wrap.classList.remove('is-not-scrollable');
+  const ratio = tabs.clientWidth / tabs.scrollWidth;
+  const progress = tabs.scrollLeft / scrollable;
+  const trackW = indicator.clientWidth;
+  const thumbW = Math.max(24, trackW * ratio);
+  const maxLeft = trackW - thumbW;
+  thumb.style.width = thumbW + 'px';
+  thumb.style.transform = `translateX(${progress * maxLeft}px)`;
+}
+
 //Questa funziona prende i dati da menu.json
 async function caricaMenu(file) {
   try {
@@ -46,9 +72,14 @@ function creaTabs(categorie) {
         // Sincronizza active su tutti i tab (top + bottom) con lo stesso indice
         document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
         document.querySelectorAll(`.menu-tab[data-tab-index="${index}"]`).forEach(t => t.classList.add('active'));
-        // Scroll in-view solo nella barra superiore
+        // Scroll in-view del tab corrispondente nella barra superiore
         const topTab = document.querySelector(`#menu-tabs .menu-tab[data-tab-index="${index}"]`);
         topTab?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        // Se il click viene dallo slider in fondo, riporta la pagina in cima alla lista
+        if (tab.closest('#menu-tabs-bottom')) {
+          document.getElementById('menu-tabs-wrap')
+            ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
         mostraPizze(categoria);
       });
 
@@ -147,6 +178,7 @@ async function init() {
   categorieGlobali = dati.categorie;
   creaTabs(dati.categorie);
   mostraPizze(dati.categorie[0]);
+  aggiornaIndicatore();
 }
 
 // fuori da init
@@ -155,6 +187,7 @@ document.addEventListener('linguaCambiata', () => {
     document.getElementById('menu-tabs').innerHTML = '';
     document.getElementById('menu-tabs-bottom').innerHTML = '';
     creaTabs(categorieGlobali);
+    aggiornaIndicatore();
   }
   if (categoriaCorrente) mostraPizze(categoriaCorrente);
 });
@@ -171,7 +204,27 @@ document.querySelectorAll('.macrogruppo').forEach(btn => {
     document.getElementById('menu-tabs-bottom').innerHTML = '';
     creaTabs(dati.categorie);
     mostraPizze(dati.categorie[0]);
+    aggiornaIndicatore();
   });
 });
+
+// Listener per gli indicatori di scroll (top + bottom), una sola volta
+(function () {
+  const wraps = document.querySelectorAll('.menu-tabs-wrap');
+  wraps.forEach(wrap => {
+    const tabs = wrap.querySelector('.menu-tabs');
+    if (!tabs) return;
+    let raf = 0;
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => { raf = 0; aggiornaIndicatore(wrap); });
+    };
+    tabs.addEventListener('scroll', onScroll, { passive: true });
+    if (typeof ResizeObserver !== 'undefined') {
+      new ResizeObserver(() => aggiornaIndicatore(wrap)).observe(tabs);
+    }
+  });
+  window.addEventListener('resize', () => aggiornaIndicatore());
+})();
 
 init();

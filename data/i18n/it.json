@@ -31,12 +31,15 @@
     "guida": "Cosa vuoi ordinare?",
     "cibo": "Cibo",
     "bevande": "Bevande",
-    "dolci": "Dessert"
+    "dolci": "Dessert",
+    "altre_categorie": "Altre categorie"
   },
   "prenota": {
     "titolo": "Vieni a trovarci",
     "titolo_em": "ti aspettiamo",
-    "sottotitolo": "Scegli il giorno e l'orario che preferisci e prenota il tuo tavolo da Avalon."
+    "book_istruzioni": "Scegli il giorno e l'orario che preferisci e prenota in pochi secondi.",
+    "book_cta": "Prenota un tavolo",
+    "domande_titolo": "Qualche domanda?"
   },
   "gioca": {
     "eyebrow": "Il Gioco",

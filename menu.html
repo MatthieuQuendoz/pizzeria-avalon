@@ -95,16 +95,27 @@
       </button>
     </div>
 
-    <div class="menu-tabs" id="menu-tabs">
-      <!-- i tab delle categorie — generati da JS -->
+    <div class="menu-tabs-wrap" id="menu-tabs-wrap">
+      <div class="menu-tabs" id="menu-tabs">
+        <!-- i tab delle categorie — generati da JS -->
+      </div>
+      <div class="menu-tabs-indicator" aria-hidden="true">
+        <div class="menu-tabs-indicator__thumb" id="menu-tabs-thumb"></div>
+      </div>
     </div>
 
     <div class="menu-lista" id="menu-lista">
       <!-- le card delle pizze — generate da JS -->
     </div>
 
-    <div class="menu-tabs menu-tabs--bottom" id="menu-tabs-bottom">
-      <!-- tab in fondo — popolato da JS -->
+    <div class="menu-tabs-wrap menu-tabs-wrap--bottom">
+      <p class="menu-tabs-eyebrow" data-i18n="menu.altre_categorie">Altre categorie</p>
+      <div class="menu-tabs" id="menu-tabs-bottom">
+        <!-- tab in fondo — popolato da JS -->
+      </div>
+      <div class="menu-tabs-indicator" aria-hidden="true">
+        <div class="menu-tabs-indicator__thumb" id="menu-tabs-bottom-thumb"></div>
+      </div>
     </div>
 
   </main>

@@ -31,12 +31,15 @@
     "guida": "Que veux-tu commander?",
     "cibo": "Nourriture",
     "bevande": "Boissons",
-    "dolci": "Desserts"
+    "dolci": "Desserts",
+    "altre_categorie": "Autres catégories"
   },
   "prenota": {
-    "titolo": "Venez nous voir",
-    "titolo_em": "nous vous attendons",
-    "sottotitolo": "Choisissez le jour et l'heure qui vous conviennent et réservez votre table chez Avalon."
+    "titolo": "Viens nous voir",
+    "titolo_em": "on t'attend",
+    "book_istruzioni": "Choisis le jour et l'horaire que tu préfères et réserve en quelques secondes.",
+    "book_cta": "Réserver une table",
+    "domande_titolo": "Une question ?"
   },
   "gioca": {
     "eyebrow": "Le Jeu",

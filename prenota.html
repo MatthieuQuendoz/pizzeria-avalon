@@ -68,36 +68,38 @@
 
   <main class="page-wrapper">
 
-    <!-- Hero -->
+    <!-- Hero con immagine placeholder -->
     <section class="prenota-hero">
-      <h1 class="prenota-hero__title">
-        <span data-i18n="prenota.titolo">Vieni a trovarci,</span>
-        <em data-i18n="prenota.titolo_em">ti aspettiamo</em>
-      </h1>
-      <p class="prenota-hero__subtitle" data-i18n="prenota.sottotitolo">
-        Impasti a lunga maturazione, ingredienti del territorio e il calore di una cucina autentica.
-        Prenota il tuo tavolo in pochi secondi.
-      </p>
+      <div class="prenota-hero__content">
+        <h1 class="prenota-hero__title">
+          <span data-i18n="prenota.titolo">Vieni a trovarci</span>
+          <em data-i18n="prenota.titolo_em">ti aspettiamo</em>
+        </h1>
+      </div>
     </section>
 
-    <!-- Booking -->
+    <!-- Booking block: solo istruzione + CTA grande -->
     <section class="prenota-book">
-      <a href="#gstpln_openWidget" class="prenota-book__cta" data-i18n="prenota.book_cta">
-        Prenota un tavolo
+      <p class="prenota-book__instructions" data-i18n="prenota.book_istruzioni">
+        Scegli il giorno e l'orario che preferisci e prenota in pochi secondi.
+      </p>
+      <a href="#gstpln_openWidget" class="prenota-book__cta">
+        <i data-lucide="calendar"></i>
+        <span data-i18n="prenota.book_cta">Prenota un tavolo</span>
       </a>
     </section>
 
-    <!-- Qualche domanda -->
+    <!-- Qualche domanda — bottoni affiancati e piccoli -->
     <section class="domande">
       <h2 class="domande__title" data-i18n="prenota.domande_titolo">Qualche domanda?</h2>
       <div class="domande__azioni">
-        <a href="https://wa.me/393514226610" class="domande__btn domande__btn--wa">
-          <i data-lucide="message-square-more"></i>
-          <span data-i18n="home.orari_whatsapp">WhatsApp</span>
-        </a>
         <a href="tel:+390165250300" class="domande__btn domande__btn--tel">
           <i data-lucide="phone"></i>
           <span data-i18n="home.orari_chiamaci">Chiamaci</span>
+        </a>
+        <a href="https://wa.me/393514226610" class="domande__btn domande__btn--wa">
+          <i data-lucide="message-square-more"></i>
+          <span data-i18n="home.orari_whatsapp">WhatsApp</span>
         </a>
       </div>
     </section>

@@ -111,17 +111,34 @@
   box-shadow: var(--shadow-sm);
 }
 
-/* -------- MENU CATEGORIE ----------*/
+/* -------- MENU CATEGORIE (slider) ----------*/
+.menu-tabs-wrap {
+  position: relative;
+  margin-top: var(--space-12);
+  margin-bottom: var(--space-6);
+}
+
 .menu-tabs {
   display: flex;
   overflow-x: auto;
   white-space: nowrap;
-  gap: var(--space-2);
-  margin-bottom: var(--space-6);
-  padding: var(--space-2) var(--space-5);
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-5);
   scrollbar-width: none;
   -ms-overflow-style: none;
-  margin-top: var(--space-12);
+  scroll-snap-type: x proximity;
+  scroll-padding-inline: var(--space-5);
+  /* Sfumatura ai bordi: comunica "c'è altro qui" invece di tagliare di netto */
+  -webkit-mask-image: linear-gradient(to right,
+    transparent 0,
+    #000 16px,
+    #000 calc(100% - 28px),
+    transparent 100%);
+          mask-image: linear-gradient(to right,
+    transparent 0,
+    #000 16px,
+    #000 calc(100% - 28px),
+    transparent 100%);
 }
 
 .menu-tabs::-webkit-scrollbar {
@@ -129,20 +146,63 @@
 }
 
 .menu-tab {
-  padding: var(--space-2) var(--space-4);
+  padding: var(--space-3) var(--space-5);
   border-radius: var(--radius-full);
   background-color: var(--color-lightRed);
   border: none;
-  color: var(--color-lightBrown);
-  font-size: var(--text-sm);
+  color: var(--color-brown);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
   font-weight: var(--weight-medium);
   cursor: pointer;
   flex-shrink: 0;
+  scroll-snap-align: start;
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.menu-tab:hover {
+  background-color: #FFE3DF;
 }
 
 .menu-tab.active {
   background-color: var(--color-red);
   color: var(--color-bg);
+  font-weight: var(--weight-bold);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Indicatore di scroll: traccia + thumb proporzionale */
+.menu-tabs-indicator {
+  height: 3px;
+  margin: var(--space-2) var(--space-5) 0;
+  background-color: var(--color-lightRed);
+  border-radius: var(--radius-full);
+  position: relative;
+  overflow: hidden;
+  opacity: 1;
+  transition: opacity var(--transition-fast);
+}
+
+.menu-tabs-wrap.is-not-scrollable .menu-tabs-indicator {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.menu-tabs-indicator__thumb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 30%;
+  background-color: var(--color-red);
+  border-radius: var(--radius-full);
+  transform: translateX(0);
+  transition: transform 0.15s ease, width 0.15s ease;
+  will-change: transform, width;
 }
 
 /* ------ LISTA + CARDS ----------*/
@@ -289,32 +349,19 @@
   transform: translateY(calc(-50% + 21px));
 }
 
-/* -------- TAB IN FONDO ----------- */
-.menu-tabs--bottom {
-  flex-wrap: wrap;
-  justify-content: center;
-  overflow-x: visible;
-  white-space: normal;
-  background-color: var(--color-crema);
-  border-radius: var(--radius-xl);
-  padding: var(--space-4) var(--space-4);
-  margin-top: var(--space-4);
-  margin-bottom: var(--space-8);
-  margin-left: var(--space-5);
-  margin-right: var(--space-5);
-  gap: var(--space-2);
+/* -------- SLIDER A FONDO PAGINA ----------- */
+.menu-tabs-wrap--bottom {
+  margin-top: var(--space-8);
+  margin-bottom: var(--space-10);
 }
 
-.menu-tabs--bottom .menu-tab {
-  background-color: transparent;
-  border: 1.5px solid rgba(90, 65, 60, 0.25);
-  color: var(--color-lightBrown);
+.menu-tabs-eyebrow {
+  text-align: center;
+  font-family: var(--font-heading2);
   font-size: var(--text-xs);
-  padding: var(--space-2) var(--space-3);
-}
-
-.menu-tabs--bottom .menu-tab.active {
-  background-color: var(--color-brown);
-  border-color: var(--color-brown);
-  color: var(--color-bg);
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-lightBrown);
+  margin: 0 0 var(--space-3);
 }
