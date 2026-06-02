@@ -10,7 +10,7 @@
             "items": [
                 {
                     "nome": "Nutella",
-                    "immagine": null,
+                    "immagine": "assets/menu/dolci/pizzedolci/nutella.webp",
                     "descrizione": {
                         "it": "Pizza alla nutella con zucchero a velo e panna al centro",
                         "fr": "Pizza à la nutella avec sucre glace et crème chantilly au centre",
@@ -28,7 +28,7 @@
                 },
                 {
                     "nome": "Mele",
-                    "immagine": null,
+                    "immagine": "assets/menu/dolci/pizzedolci/mele.webp",
                     "descrizione": {
                         "it": "Pizza con fette di mele e amaretto con zucchero a velo e panna al centro",
                         "fr": "Pizza aux tranches de pommes et amaretto avec sucre glace et crème au centre",
@@ -77,7 +77,7 @@
             "items": [
                 {
                     "nome": "Nutella",
-                    "immagine": null,
+                    "immagine": "assets/menu/dolci/pizzedolci/fagottini.webp",
                     "descrizione": {
                         "it": "2 piccoli calzoni ripieni di nutella con zucchero a velo",
                         "fr": "2 petits calzones farcis de nutella avec sucre glace",
