@@ -1,0 +1,118 @@
+/* ============================================
+   PIZZERIA AVALON — Responsive (shared)
+   ============================================ */
+
+.page-wrapper {
+  width: 100%;
+}
+
+/* Contenuto home (orari, location) allineato al container */
+.content-constrain {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+  width: 100%;
+}
+
+.content-constrain.orari {
+  padding-block: var(--space-5);
+  padding-inline: var(--container-pad);
+}
+
+.content-constrain.location {
+  margin: 0 auto var(--space-12);
+}
+
+@media (min-width: 768px) {
+  .btn {
+    max-width: 420px;
+  }
+}
+
+/* -------- Navbar desktop (top) ----------- */
+@media (min-width: 1024px) {
+  body {
+    padding-bottom: var(--space-6);
+    padding-top: calc(var(--nav-height-desktop) + env(safe-area-inset-top, 0px));
+  }
+
+  body.home {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+
+  .navbar {
+    top: 0;
+    bottom: auto;
+    padding: var(--space-3) var(--container-pad);
+    padding-top: calc(var(--space-3) + env(safe-area-inset-top, 0px));
+    /* override mobile bottom-gap fill (base.css box-shadow: 0 200px …) */
+    box-shadow: var(--shadow-sm);
+  }
+
+  .nav-links {
+    max-width: var(--container-max);
+    margin-inline: auto;
+    justify-content: center;
+    gap: var(--space-8);
+  }
+
+  .nav-links a {
+    flex-direction: row;
+    gap: var(--space-2);
+    font-size: var(--text-base);
+  }
+
+  .nav-links svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .lang-switcher {
+    top: calc(var(--space-3) + env(safe-area-inset-top, 0px));
+  }
+
+  .iub-cs-content,
+  .iubenda-tp-btn,
+  #iubenda-cs-banner,
+  #iubenda-cs-banner-content,
+  .iubenda_policy_button,
+  .iubenda-cs-floating-button {
+    bottom: var(--space-4) !important;
+  }
+}
+
+/* -------- Footer desktop ----------- */
+@media (min-width: 1024px) {
+  .footer {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "content social"
+      "legal legal"
+      "copy copy";
+    column-gap: var(--space-12);
+    row-gap: var(--space-4);
+    padding: var(--space-8) var(--space-12);
+    max-width: var(--container-max);
+    margin-inline: auto;
+    width: 100%;
+  }
+
+  .footer__content {
+    grid-area: content;
+  }
+
+  .footer__social {
+    grid-area: social;
+    align-self: start;
+    margin-top: var(--space-4);
+  }
+
+  .footer__legal {
+    grid-area: legal;
+  }
+
+  .footer__text {
+    grid-area: copy;
+  }
+}

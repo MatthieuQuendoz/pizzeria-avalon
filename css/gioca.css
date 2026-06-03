@@ -12,7 +12,7 @@
   text-align: center;
   /* La hero occupa l'80% dell'altezza dello schermo: la foto parte
      dall'alto e termina all'80% del viewport. */
-  height: 80vh;
+  height: clamp(320px, 80vh, 520px);
   padding-top: var(--space-12);
   padding-bottom: 0;
   gap: var(--space-3);
@@ -75,17 +75,23 @@
   font-size: var(--text-lg);
   color: var(--color-lightBrown);
   line-height: 1.6;
-  max-width: 320px;
+  max-width: min(32rem, 90%);
   text-align: center;
 }
 
 .gioca-hero__bomb-deco {
   width: 64px;
   position: absolute;
-  right: -1rem;
+  right: max(-1rem, -5vw);
   top: 4.5rem;
   user-select: none;
   animation: bomb-float 3s ease-in-out infinite;
+}
+
+@media (max-width: 400px) {
+  .gioca-hero__bomb-deco {
+    display: none;
+  }
 }
 
 @keyframes bomb-float {
@@ -130,6 +136,8 @@
 .gioca-canvas-wrap {
   position: relative;
   width: 100%;
+  max-width: 520px;
+  margin-inline: auto;
   aspect-ratio: 390 / 600;
   border-radius: var(--radius-xl);
   overflow: hidden;

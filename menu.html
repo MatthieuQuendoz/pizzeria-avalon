@@ -8,6 +8,7 @@
     content="Pizzeria Avalon di Jovençan. Vieni a trovarci! Siamo aperti Dal giovedì al lunedì a cena. Ti aspettiamo!">
 
   <title>Menu - Pizzeria Avalon</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,6 +19,7 @@
   <!-- CSS -->
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/responsive.css">
   <link rel="stylesheet" href="css/menu.css">
 
   <!-- lucide icon -->
@@ -53,7 +55,7 @@
         <i data-lucide="house"></i>
         <span data-i18n="navbar.home">Home</span>
       </a>
-      <a href="menu.html" class="active">
+      <a href="menu.html">
         <i data-lucide="book-open"></i>
         <span data-i18n="navbar.menu">Menu</span>
       </a>
@@ -158,23 +160,10 @@
     </div>
 
     <div class="footer__legal">
-      <a href="https://www.iubenda.com/privacy-policy/66195849" class="iubenda-white iubenda-noiframe iubenda-embed"
+      <a href="https://www.iubenda.com/privacy-policy/66195849" target="_blank" rel="noopener noreferrer"
         title="Privacy Policy">Privacy Policy</a>
-      <a href="https://www.iubenda.com/privacy-policy/66195849/cookie-policy"
-        class="iubenda-white iubenda-noiframe iubenda-embed" title="Cookie Policy">Cookie Policy</a>
-      <script type="text/javascript">
-        (function (w, d) {
-          var loader = function () {
-            var s = d.createElement("script"),
-              tag = d.getElementsByTagName("script")[0];
-            s.src = "https://cdn.iubenda.com/iubenda.js";
-            tag.parentNode.insertBefore(s, tag);
-          };
-          if (w.addEventListener) { w.addEventListener("load", loader, false); }
-          else if (w.attachEvent) { w.attachEvent("onload", loader); }
-          else { w.onload = loader; }
-        })(window, document);
-      </script>
+      <a href="https://www.iubenda.com/privacy-policy/66195849/cookie-policy" target="_blank" rel="noopener noreferrer"
+        title="Cookie Policy">Cookie Policy</a>
     </div>
 
     <p class="footer__text" data-i18n="footer.copyright">© 1994–2025 Pizzeria Avalon. Tutti i diritti riservati.</p>

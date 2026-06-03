@@ -76,8 +76,13 @@
   --transition-slow:   400ms ease;
 
   /* --- Layout --- */
-  --container-max:   480px;   /* sito mobile-first, max larghezza contenuto */
+  --bp-md: 768px;
+  --bp-lg: 1024px;
+  --bp-xl: 1280px;
+  --layout-mobile-max: 480px; /* larghezza di riferimento card menu (mobile) */
+  --container-max: min(100%, 480px);
   --container-pad:   var(--space-5);
+  --nav-height-desktop: 4rem;
 
   /* --- Z-index --- */
   --z-base:    0;
@@ -86,4 +91,23 @@
   --z-modal:   200;
   --z-nav:     300;
   --z-toast:   400;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --container-max: 900px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --container-max: 960px;
+  }
+}
+
+@media (min-width: 1280px) {
+  :root {
+    --container-max: 1120px;
+    --container-pad: var(--space-6);
+  }
 }

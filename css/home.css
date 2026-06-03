@@ -67,6 +67,8 @@ body.home {
   color: var(--color-bg);
   text-align: center;
   padding: var(--space-6);
+  max-width: 42rem;
+  margin-inline: auto;
 }
 
 
@@ -86,18 +88,17 @@ body.home {
 
 .hero__title {
   font-family: var(--font-heading);
-  font-size: var(--text-5xl);
+  font-size: clamp(2.5rem, 10vw, var(--text-5xl));
   font-weight: var(--weight-bold);
   margin-bottom: var(--space-2);
-  line-height: 4.5rem;
+  line-height: 1.1;
   color: var(--color-brown);
 }
 
 .hero__title em {
-  font-size: 6.5rem;
+  font-size: clamp(3.5rem, 14vw, 6.5rem);
   color: var(--color-red);
   font-style: italic;
-  /* ← mancava questo */
 }
 
 .hero__subtitle {
@@ -115,6 +116,13 @@ body.home {
   justify-content: center;
   gap: var(--space-4);
   flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .hero__actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 }
 
 .btn {
@@ -284,7 +292,7 @@ body.home {
 
 /* -------- LOCATION ----------- */
 .location {
-  margin: 0 var(--space-5);
+  margin: 0 auto var(--space-12);
   border-radius: var(--radius-xl);
   overflow: hidden;
   background-color: var(--color-bg3);
@@ -294,8 +302,7 @@ body.home {
 
 .location__img-wrapper {
   position: relative;
-  height: 340px;
-  /* prova questo, poi aggiusta a gusto */
+  height: clamp(240px, 40vh, 420px);
 }
 
 .location__img {

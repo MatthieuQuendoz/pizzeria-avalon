@@ -68,6 +68,16 @@
   overflow: hidden;
 }
 
+@media (min-width: 768px) {
+  .menu-header__content {
+    min-height: 280px;
+  }
+
+  .menu-header__description {
+    max-width: min(28rem, 65%);
+  }
+}
+
 
 /* --- SCELTA DEL MENU (CIBO/BEVANDE/DOLCI) --- */
 
@@ -207,17 +217,34 @@
 
 /* ------ LISTA + CARDS ----------*/
 .menu-lista {
+  /* Larghezza fissa come su mobile (480px container − padding wrapper + lista) */
+  --menu-card-width: calc(var(--layout-mobile-max) - 4 * var(--space-5));
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: var(--space-4);
   padding: 0 var(--space-5) var(--space-8);
 }
 
-@media (min-width: 768px) {
+.menu-lista .item-card {
+  width: 100%;
+  max-width: var(--menu-card-width);
+  flex-shrink: 0;
+}
+
+/* 2-up solo se entrano due card intere (~400px × 2 + gap + padding) */
+@media (min-width: 900px) {
   .menu-lista {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, var(--menu-card-width));
+    justify-content: center;
     gap: var(--space-5);
+  }
+
+  .menu-lista .item-card {
+    width: var(--menu-card-width);
+    min-width: var(--menu-card-width);
+    max-width: var(--menu-card-width);
   }
 }
 

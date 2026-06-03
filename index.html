@@ -9,6 +9,7 @@
     content="Pizzeria Avalon di Jovençan. Vieni a trovarci! Siamo aperti Dal giovedì al lunedì a cena. Ti aspettiamo!">
 
   <title>Pizzeria Avalon</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,14 +20,11 @@
   <!-- CSS -->
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/responsive.css">
   <link rel="stylesheet" href="css/home.css">
 
   <!-- lucide icon -->
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-
-  <!--COOKIES-->
-  <script type="text/javascript"
-    src="https://embeds.iubenda.com/widgets/1e3d3707-fe99-4f69-9752-2f4ad9fa1655.js"></script>
 
 </head>
 
@@ -49,7 +47,7 @@
 
   <header class="navbar">
     <nav aria-label="Navigazione principale" class="nav-links">
-      <a href="index.html" class="active">
+      <a href="index.html">
         <i data-lucide="house"></i>
         <span data-i18n="navbar.home">Home</span>
       </a>
@@ -94,7 +92,7 @@
     </div>
   </section>
 
-  <section class="orari">
+  <section class="orari content-constrain">
     <div class="orari__card">
       <p class="orari__label" data-i18n="home.orari_titolo">ORARIO</p>
       <p class="ora" data-i18n="home.orari_ore">18:00 — 23:00</p>
@@ -125,7 +123,7 @@
     </div>
   </section>
 
-  <section class="location">
+  <section class="location content-constrain">
     <div class="location__img-wrapper">
       <img src="assets/images/avalonDaFuori.jpg" alt="Vista esterna della Pizzeria Avalon a Jovençan"
         class="location__img">
@@ -194,17 +192,19 @@
       <a href="https://www.iubenda.com/privacy-policy/66195849/cookie-policy"
         class="iubenda-white iubenda-noiframe iubenda-embed" title="Cookie Policy">Cookie Policy</a>
       <script type="text/javascript">
-        (function (w, d) {
-          var loader = function () {
-            var s = d.createElement("script"),
-              tag = d.getElementsByTagName("script")[0];
-            s.src = "https://cdn.iubenda.com/iubenda.js";
-            tag.parentNode.insertBefore(s, tag);
-          };
-          if (w.addEventListener) { w.addEventListener("load", loader, false); }
-          else if (w.attachEvent) { w.attachEvent("onload", loader); }
-          else { w.onload = loader; }
-        })(window, document);
+        (function (w) {
+          function loadIubendaEmbeds() {
+            var s = document.createElement('script');
+            s.src = 'https://cdn.iubenda.com/iubenda.js';
+            s.async = true;
+            document.head.appendChild(s);
+          }
+          if ('requestIdleCallback' in w) {
+            w.requestIdleCallback(loadIubendaEmbeds, { timeout: 2000 });
+          } else {
+            w.addEventListener('load', loadIubendaEmbeds, { once: true });
+          }
+        })(window);
       </script>
     </div>
 
@@ -218,6 +218,16 @@
 
 
   <script>lucide.createIcons();</script>
+
+  <!-- Cookie banner: dopo il paint per evitare scatti al caricamento -->
+  <script>
+    window.addEventListener('load', function () {
+      var s = document.createElement('script');
+      s.src = 'https://embeds.iubenda.com/widgets/1e3d3707-fe99-4f69-9752-2f4ad9fa1655.js';
+      s.async = true;
+      document.head.appendChild(s);
+    }, { once: true });
+  </script>
 
   <!-- Guestplan: nessun floating button, si apre via link #gstpln_openWidget -->
   <script>

@@ -5,9 +5,7 @@
 }
 
 .prenota-hero__content {
-  background-image:
-    linear-gradient(rgba(254, 239, 237, 0.55), rgba(254, 239, 237, 0.55)),
-    url('../assets/images/menu-header.webp');
+  background-image: url('../assets/images/prenota-header.png');
   background-size: cover;
   background-position: center;
   padding: var(--space-6) var(--space-8) var(--space-5) var(--space-4);
@@ -45,6 +43,24 @@
   color: var(--color-red);
   line-height: 0.95;
   margin-top: -2px;
+}
+
+@media (min-width: 768px) {
+  .prenota-hero__content {
+    min-height: 280px;
+  }
+
+  .prenota-book,
+  .domande {
+    max-width: 36rem;
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 479px) {
+  .domande__azioni {
+    flex-direction: column;
+  }
 }
 
 
