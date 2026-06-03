@@ -19,12 +19,16 @@ const DAY_CYCLE_MS = 120000;
 
 // ─── AUDIO (Web Audio API, no file esterni) ─────
 const AvalonAudio = (() => {
-  let ctx = null, enabled = true, unlocked = false, silentEl = null;
+  let ctx = null;
+  let enabled = true;
+
   function getCtx() {
-    if (!ctx && typeof AudioContext !== 'undefined')
+    if (!ctx && typeof AudioContext !== 'undefined') {
       try { ctx = new (window.AudioContext || window.webkitAudioContext)(); } catch (_) { }
+    }
     return ctx;
   }
+
   function resume() {
     const c = getCtx();
     if (!c) return;
@@ -32,60 +36,69 @@ const AvalonAudio = (() => {
       c.resume().catch(() => {});
     }
   }
-  // Su iOS l'audio Web Audio è instradato sul canale "ambient" e viene
-  // silenziato dall'interruttore muto fisico. Riprodurre un breve <audio>
-  // silenzioso in loop al primo tocco commuta la sessione sul canale
-  // "playback", che ignora l'interruttore muto.
-  const SILENT_WAV = 'data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQAAAAA=';
+
   function unlock() {
     const c = getCtx();
-    if (c && (c.state === 'suspended' || c.state === 'interrupted')) c.resume().catch(() => {});
-    if (unlocked) return;
-    unlocked = true;
-    // Sblocca l'autoplay gate del Web Audio con un buffer vuoto
-    if (c) {
-      try {
-        const src = c.createBufferSource();
-        src.buffer = c.createBuffer(1, 1, c.sampleRate);
-        src.connect(c.destination); src.start(0);
-      } catch (_) { }
-    }
-    // Loop silenzioso → sessione audio "playback" (ignora il muto su iOS)
+    if (!c) return;
+    resume();
     try {
-      if (!silentEl) {
-        silentEl = new Audio(SILENT_WAV);
-        silentEl.loop = true;
-        silentEl.volume = 0.001;
-      }
-      silentEl.play().catch(() => {});
+      const src = c.createBufferSource();
+      src.buffer = c.createBuffer(1, 1, c.sampleRate);
+      src.connect(c.destination);
+      src.start(0);
     } catch (_) { }
   }
+
   function tone(freq, dur, type = 'sine', vol = 0.08) {
-    const c = getCtx(); if (!c || !enabled) return;
-    if (c.state !== 'running') { try { c.resume(); } catch (_) {} }
+    const c = getCtx();
+    if (!c || !enabled) return;
+    if (c.state !== 'running') c.resume().catch(() => {});
     try {
-      const osc = c.createOscillator(), gain = c.createGain();
-      osc.type = type; osc.frequency.value = freq;
-      osc.connect(gain); gain.connect(c.destination);
+      const osc = c.createOscillator();
+      const gain = c.createGain();
+      osc.type = type;
+      osc.frequency.value = freq;
+      osc.connect(gain);
+      gain.connect(c.destination);
       gain.gain.setValueAtTime(vol, c.currentTime);
       gain.gain.exponentialRampToValueAtTime(0.0001, c.currentTime + dur);
-      osc.start(); osc.stop(c.currentTime + dur);
+      osc.start();
+      osc.stop(c.currentTime + dur);
     } catch (_) { }
   }
+
   function noise(dur = 0.4, vol = 0.25) {
-    const c = getCtx(); if (!c || !enabled) return;
-    if (c.state !== 'running') { try { c.resume(); } catch (_) {} }
+    const c = getCtx();
+    if (!c || !enabled) return;
+    if (c.state !== 'running') c.resume().catch(() => {});
     try {
       const buf = c.createBuffer(1, c.sampleRate * dur, c.sampleRate);
       const d = buf.getChannelData(0);
-      for (let i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / d.length, 2);
-      const src = c.createBufferSource(), gain = c.createGain();
-      gain.gain.value = vol; src.buffer = buf;
-      src.connect(gain); gain.connect(c.destination); src.start();
+      for (let i = 0; i < d.length; i++) {
+        d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / d.length, 2);
+      }
+      const src = c.createBufferSource();
+      const gain = c.createGain();
+      gain.gain.value = vol;
+      src.buffer = buf;
+      src.connect(gain);
+      gain.connect(c.destination);
+      src.start();
     } catch (_) { }
   }
+
+  function teardown() {
+    if (ctx) {
+      ctx.close().catch(() => {});
+      ctx = null;
+    }
+  }
+
   return {
-    resume, unlock, setEnabled(v) { enabled = v; },
+    resume,
+    unlock,
+    teardown,
+    setEnabled(v) { enabled = v; },
     pizza() { tone(880, 0.08, 'triangle', 0.08); setTimeout(() => tone(1320, 0.08, 'triangle', 0.08), 50); },
     combo(l) { tone(700 + l * 120, 0.12, 'square', 0.06); },
     bomb() { noise(0.45, 0.3); tone(120, 0.35, 'sawtooth', 0.15); },
@@ -667,10 +680,29 @@ let _retryZone = null, _retryHover = false;
 let _shakeX = 0, _shakeY = 0, _shakeDur = 0;
 let _hintTimer = 0, _showHint = false;
 let _isVictoryPaused = false, _confetti = [], _confettiBurstTimer = 0;
+let _gameRunning = false, _gameOverPanelTimer = null, _inputHandlers = null;
+let _resumeAfterPageShow = false;
+
+function pauseGame() {
+  if (!_gameRunning) return;
+  _gameRunning = false;
+  if (_animFrame) {
+    cancelAnimationFrame(_animFrame);
+    _animFrame = null;
+  }
+}
+
+function resumePausedGame() {
+  if (_gameRunning || !_canvas) return;
+  _gameRunning = true;
+  _lastTs = performance.now();
+  AvalonAudio.resume();
+  _animFrame = requestAnimationFrame(gameLoop);
+}
 
 // ─── GAME LOOP ─────────────────────────────────
 function gameLoop(ts) {
-  _animFrame = requestAnimationFrame(gameLoop);
+  if (!_gameRunning) return;
   const dt = Math.min((ts - _lastTs) / 1000, 0.05);
   _lastTs = ts;
   const gameT = ts - _startTs;
@@ -733,6 +765,10 @@ function gameLoop(ts) {
   }
 
   _ctx.restore();
+
+  if (_gameRunning) {
+    _animFrame = requestAnimationFrame(gameLoop);
+  }
 }
 
 // ─── UPDATE: KNIGHT ────────────────────────────
@@ -826,12 +862,27 @@ function hitBomb(obj) {
   if (typeof leaderboardApi !== 'undefined')
     leaderboardApi.submitScore(_playerName, _score)
       .then(() => { if (typeof renderLeaderboard === 'function') renderLeaderboard(); });
-  setTimeout(() => { _showPanel = true; }, 820);
+  if (_gameOverPanelTimer) clearTimeout(_gameOverPanelTimer);
+  _gameOverPanelTimer = setTimeout(() => {
+    _gameOverPanelTimer = null;
+    if (_gameRunning) _showPanel = true;
+  }, 820);
 }
 
 // ─── INPUT ─────────────────────────────────────
+function removeInput(canvas) {
+  if (!canvas || !_inputHandlers) return;
+  canvas.removeEventListener('click', _inputHandlers.click);
+  canvas.removeEventListener('touchstart', _inputHandlers.touchstart);
+  canvas.removeEventListener('mousemove', _inputHandlers.mousemove);
+  _inputHandlers = null;
+}
+
 function initInput(canvas) {
+  if (_inputHandlers) return;
+
   function onTap(cx, cy) {
+    if (!_gameRunning) return;
     AvalonAudio.resume();
     if (_isGameOver && _showPanel && _retryZone) {
       const rect = canvas.getBoundingClientRect();
@@ -846,23 +897,33 @@ function initInput(canvas) {
     AvalonAudio.click();
   }
   function onMove(cx, cy) {
-    if (!_isGameOver || !_showPanel || !_retryZone) return;
+    if (!_gameRunning || !_isGameOver || !_showPanel || !_retryZone) return;
     const rect = canvas.getBoundingClientRect();
     const lx = cx * (CANVAS_W / rect.width), ly = cy * (CANVAS_H / rect.height);
     const z = _retryZone;
     _retryHover = lx >= z.x && lx <= z.x + z.w && ly >= z.y && ly <= z.y + z.h;
   }
-  canvas.addEventListener('click', e => {
-    const r = canvas.getBoundingClientRect(); onTap(e.clientX - r.left, e.clientY - r.top);
-  });
-  canvas.addEventListener('touchstart', e => {
-    e.preventDefault();
-    const r = canvas.getBoundingClientRect(), tc = e.changedTouches[0];
-    onTap(tc.clientX - r.left, tc.clientY - r.top);
-  }, { passive: false });
-  canvas.addEventListener('mousemove', e => {
-    const r = canvas.getBoundingClientRect(); onMove(e.clientX - r.left, e.clientY - r.top);
-  });
+
+  _inputHandlers = {
+    click(e) {
+      const r = canvas.getBoundingClientRect();
+      onTap(e.clientX - r.left, e.clientY - r.top);
+    },
+    touchstart(e) {
+      if (!_gameRunning) return;
+      e.preventDefault();
+      const r = canvas.getBoundingClientRect();
+      const tc = e.changedTouches[0];
+      onTap(tc.clientX - r.left, tc.clientY - r.top);
+    },
+    mousemove(e) {
+      const r = canvas.getBoundingClientRect();
+      onMove(e.clientX - r.left, e.clientY - r.top);
+    },
+  };
+  canvas.addEventListener('click', _inputHandlers.click);
+  canvas.addEventListener('touchstart', _inputHandlers.touchstart, { passive: false });
+  canvas.addEventListener('mousemove', _inputHandlers.mousemove);
 }
 
 // ─── RESTART ───────────────────────────────────
@@ -891,7 +952,9 @@ const AvalonGame = {
   },
   start(playerName) {
     _playerName = playerName;
+    _resumeAfterPageShow = false;
     AvalonAudio.resume();
+    AvalonAudio.unlock();
     if (_animFrame) { cancelAnimationFrame(_animFrame); _animFrame = null; }
 
     const container = document.getElementById('game-container');
@@ -926,6 +989,7 @@ const AvalonGame = {
       _showHint = true; _hintTimer = 3.5;
     }
 
+    _gameRunning = true;
     _lastTs = performance.now(); _startTs = _lastTs;
     _animFrame = requestAnimationFrame(gameLoop);
   },
@@ -937,4 +1001,51 @@ const AvalonGame = {
     _isGameOver = true;
     _showPanel = true;
   },
+  isRunning() {
+    return _gameRunning;
+  },
+  /** Stop immediato prima di lasciare la pagina (loop + audio). */
+  stopForNavigation() {
+    _resumeAfterPageShow = false;
+    _gameRunning = false;
+    if (_animFrame) {
+      cancelAnimationFrame(_animFrame);
+      _animFrame = null;
+    }
+    if (_gameOverPanelTimer) {
+      clearTimeout(_gameOverPanelTimer);
+      _gameOverPanelTimer = null;
+    }
+    AvalonAudio.teardown();
+  },
+  destroy() {
+    _resumeAfterPageShow = false;
+    _gameRunning = false;
+    if (_animFrame) {
+      cancelAnimationFrame(_animFrame);
+      _animFrame = null;
+    }
+    if (_gameOverPanelTimer) {
+      clearTimeout(_gameOverPanelTimer);
+      _gameOverPanelTimer = null;
+    }
+    if (_canvas) removeInput(_canvas);
+    AvalonAudio.teardown();
+    _objects = [];
+    _particles = [];
+    _ftexts = [];
+    _confetti = [];
+    _birds = [];
+    _smokePuffs = [];
+  },
 };
+
+window.addEventListener('pagehide', (e) => {
+  _resumeAfterPageShow = _gameRunning;
+  if (e.persisted) pauseGame();
+  else AvalonGame.destroy();
+});
+
+window.addEventListener('pageshow', (e) => {
+  if (e.persisted && _resumeAfterPageShow) resumePausedGame();
+});

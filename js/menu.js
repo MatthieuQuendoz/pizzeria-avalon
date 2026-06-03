@@ -142,6 +142,10 @@ function mostraPizze(categoria) {
       const img = document.createElement('img');
       img.src = item.immagine;
       img.alt = item.nome;
+      img.width = 200;
+      img.height = 200;
+      img.loading = 'lazy';
+      img.decoding = 'async';
       img.classList.add('item-card__img');
       media.appendChild(img);
     } else {

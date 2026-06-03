@@ -13,16 +13,23 @@ function hideVictoryModal() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Sblocca l'audio al primissimo gesto utente (necessario su iOS:
-  // l'interruttore muto fisico silenzia il Web Audio finché non si
-  // commuta la sessione sul canale "playback"). One-shot.
-  const unlockAudio = () => {
-    AvalonAudio.unlock();
-    ['pointerdown', 'touchend', 'click'].forEach(ev =>
-      document.removeEventListener(ev, unlockAudio));
-  };
-  ['pointerdown', 'touchend', 'click'].forEach(ev =>
-    document.addEventListener(ev, unlockAudio));
+  document.querySelectorAll('.nav-links a[href]').forEach((link) => {
+    const href = link.getAttribute('href') || '';
+    if (!href || href.includes('gioca.html')) return;
+
+    link.addEventListener('pointerdown', () => {
+      if (typeof AvalonGame !== 'undefined' && AvalonGame.isRunning()) {
+        AvalonGame.stopForNavigation();
+      }
+    }, { capture: true });
+
+    link.addEventListener('click', (e) => {
+      if (typeof AvalonGame === 'undefined' || !AvalonGame.isRunning()) return;
+      e.preventDefault();
+      AvalonGame.stopForNavigation();
+      window.location.href = href;
+    }, { capture: true });
+  });
 
   const intro = document.getElementById('gioca-intro');
   const nameInput = document.getElementById('player-name');
@@ -68,6 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const name = nameInput.value.trim().slice(0, 15);
     if (name.length < 2 || !assetsReady) return;
     savePlayerName(name);
+    AvalonAudio.unlock();
     intro.classList.add('gioca-intro--hidden');
     AvalonGame.start(name);
     updateHUD(0);

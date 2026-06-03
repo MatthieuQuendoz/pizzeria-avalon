@@ -1437,7 +1437,7 @@
         },
         {
           "nome": "Calzone Mens-sana",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/rosse/calzone.webp",
           "descrizione": {
             "it": "Passata di pomodoro, mozzarella, ricotta, spinaci e parmigiano",
             "fr": "Sauce tomate, mozzarella, ricotta, épinards et parmesan",
@@ -1450,7 +1450,7 @@
         },
         {
           "nome": "Calzone ai formaggi",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/rosse/calzone.webp",
           "descrizione": {
             "it": "Passata di pomodoro, mozzarella, fontina, gorgonzola, stracchino, ricotta e parmigiano",
             "fr": "Sauce tomate, mozzarella, fontina, gorgonzola, stracchino, ricotta et parmesan",
