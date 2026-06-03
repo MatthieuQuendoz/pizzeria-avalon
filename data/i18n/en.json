@@ -27,7 +27,6 @@
   },
   "menu": {
     "titolo": "Our",
-    "description": "Long-fermented doughs made with carefully selected ingredients.",
     "guida": "What do you want to order?",
     "cibo": "Food",
     "bevande": "Drinks",
@@ -37,7 +36,9 @@
   "prenota": {
     "titolo": "Come visit us",
     "titolo_em": "we're waiting",
-    "book_istruzioni": "Pick the day and time you prefer and book in just a few seconds.",
+    "book_istruzioni_pre": "Pick the day and time you prefer and ",
+    "book_istruzioni_em": "book",
+    "book_istruzioni_post": " in just a few seconds.",
     "book_cta": "Book a table",
     "domande_titolo": "Any questions?"
   },

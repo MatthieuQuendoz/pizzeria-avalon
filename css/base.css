@@ -118,17 +118,60 @@ html {
 /* -------- NAVBAR ----------- */
 .navbar {
   position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
+  bottom: calc(var(--space-4) + env(safe-area-inset-bottom));
+  left: var(--space-4);
+  right: var(--space-4);
+  width: auto;
   background-color: var(--color-lightRed);
-  padding: 1.25rem 0 calc(1.25rem + env(safe-area-inset-bottom));
+  border-radius: var(--radius-xl);
+  padding: var(--space-4) var(--space-2);
   display: flex;
   justify-content: center;
+  align-items: center;
   z-index: var(--z-nav);
-  /* Estende il colore della navbar verso il basso per coprire il gap che appare
-     su Chrome iOS quando la toolbar inferiore si nasconde durante lo scroll. */
-  box-shadow: 0 200px 0 0 var(--color-lightRed);
+  box-shadow: var(--shadow-md);
+}
+
+.navbar__brand,
+.navbar__brand.brand-logo {
+  display: none;
+}
+
+/* -------- LOGO TESTUALE (Pizzeria sopra, AVALON sotto) ----------- */
+.brand-logo {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  line-height: 0.9;
+  text-decoration: none;
+  color: inherit;
+  font-family: var(--font-heading);
+  font-weight: var(--weight-regular);
+  letter-spacing: 0;
+}
+
+.brand-logo__prefix {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 0.52em;
+  font-weight: var(--weight-medium);
+  color: var(--color-brown);
+  letter-spacing: 0.02em;
+  line-height: 1;
+  margin-left: 10px;
+}
+
+.brand-logo__name {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1em;
+  font-weight: var(--weight-bold);
+  color: var(--color-red);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  line-height: 0.88;
+  margin-top: -0.1em;
 }
 
 /* Iubenda widget — push above bottom navbar to avoid covering CTAs */
@@ -138,7 +181,7 @@ html {
 #iubenda-cs-banner-content,
 .iubenda_policy_button,
 .iubenda-cs-floating-button {
-  bottom: calc(90px + env(safe-area-inset-bottom)) !important;
+  bottom: calc(6.5rem + var(--space-4) + env(safe-area-inset-bottom)) !important;
 }
 
 .nav-links {
@@ -194,6 +237,19 @@ html {
   font-weight: var(--weight-bold);
   line-height: 1.2;
   margin-bottom: var(--space-4);
+}
+
+.footer__title.brand-logo {
+  font-size: clamp(1.75rem, 4.5vw, 2.35rem);
+  font-weight: var(--weight-regular);
+}
+
+.footer__title.brand-logo .brand-logo__prefix {
+  color: var(--color-crema);
+}
+
+.footer__title.brand-logo .brand-logo__name {
+  color: #e8a090;
 }
 
 .footer__address {
@@ -252,7 +308,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* Firefox su Mac */
-  padding-bottom: calc(70px + env(safe-area-inset-bottom));
+  padding-bottom: calc(5.5rem + var(--space-8) + env(safe-area-inset-bottom));
 }
 
 /* --- Contenitore pagina --- */

@@ -27,7 +27,6 @@
   },
   "menu": {
     "titolo": "Il nostro",
-    "description": "Impasto a lunga maturazione con ingredienti selezionati.",
     "guida": "Cosa vuoi ordinare?",
     "cibo": "Cibo",
     "bevande": "Bevande",
@@ -37,7 +36,9 @@
   "prenota": {
     "titolo": "Vieni a trovarci",
     "titolo_em": "ti aspettiamo",
-    "book_istruzioni": "Scegli il giorno e l'orario che preferisci e prenota in pochi secondi.",
+    "book_istruzioni_pre": "Scegli il giorno e l'orario che preferisci e ",
+    "book_istruzioni_em": "prenota",
+    "book_istruzioni_post": " in pochi secondi.",
     "book_cta": "Prenota un tavolo",
     "domande_titolo": "Qualche domanda?"
   },

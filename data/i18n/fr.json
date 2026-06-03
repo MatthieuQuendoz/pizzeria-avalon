@@ -27,7 +27,6 @@
   },
   "menu": {
     "titolo": "Notre",
-    "description": "Pâtes à longue maturation avec des ingrédients soigneusement sélectionnés.",
     "guida": "Que veux-tu commander?",
     "cibo": "Nourriture",
     "bevande": "Boissons",
@@ -37,7 +36,9 @@
   "prenota": {
     "titolo": "Viens nous voir",
     "titolo_em": "on t'attend",
-    "book_istruzioni": "Choisis le jour et l'horaire que tu préfères et réserve en quelques secondes.",
+    "book_istruzioni_pre": "Choisis le jour et l'horaire que tu préfères et ",
+    "book_istruzioni_em": "réserve",
+    "book_istruzioni_post": " en quelques secondes.",
     "book_cta": "Réserver une table",
     "domande_titolo": "Une question ?"
   },

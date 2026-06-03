@@ -29,11 +29,11 @@
   }
 }
 
-/* -------- Navbar desktop (top) ----------- */
+/* -------- Navbar desktop (top, stile pill come mobile) ----------- */
 @media (min-width: 1024px) {
   body {
     padding-bottom: var(--space-6);
-    padding-top: calc(var(--nav-height-desktop) + env(safe-area-inset-top, 0px));
+    padding-top: calc(10px + var(--nav-height-desktop) + var(--space-4) + env(safe-area-inset-top, 0px));
   }
 
   body.home {
@@ -41,17 +41,38 @@
   }
 
   .navbar {
-    top: 0;
+    top: calc(10px + env(safe-area-inset-top, 0px));
     bottom: auto;
-    padding: var(--space-3) var(--container-pad);
-    padding-top: calc(var(--space-3) + env(safe-area-inset-top, 0px));
-    /* override mobile bottom-gap fill (base.css box-shadow: 0 200px …) */
-    box-shadow: var(--shadow-sm);
+    left: var(--space-4);
+    right: calc(var(--space-4) + 5.75rem);
+    width: auto;
+    border-radius: var(--radius-xl);
+    padding: var(--space-3) var(--space-6);
+    box-shadow: var(--shadow-md);
+    gap: var(--space-6);
+    justify-content: flex-start;
+  }
+
+  .navbar__brand.brand-logo {
+    display: inline-flex;
+    flex-shrink: 0;
+    font-size: clamp(1.2rem, 2.1vw, 1.65rem);
+    line-height: 1;
+  }
+
+  .navbar__brand.brand-logo:hover .brand-logo__prefix {
+    color: var(--color-red);
+  }
+
+  .navbar__brand.brand-logo:hover .brand-logo__name {
+    color: #9a2412;
   }
 
   .nav-links {
-    max-width: var(--container-max);
-    margin-inline: auto;
+    flex: 1;
+    width: auto;
+    max-width: none;
+    margin-inline: 0;
     justify-content: center;
     gap: var(--space-8);
   }
@@ -68,7 +89,9 @@
   }
 
   .lang-switcher {
-    top: calc(var(--space-3) + env(safe-area-inset-top, 0px));
+    top: calc(10px + env(safe-area-inset-top, 0px) + var(--space-3));
+    right: var(--space-4);
+    z-index: calc(var(--z-nav) + 1);
   }
 
   .iub-cs-content,

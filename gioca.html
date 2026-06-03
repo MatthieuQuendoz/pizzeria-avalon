@@ -36,7 +36,7 @@
   -->
 </head>
 
-<body>
+<body class="gioca-page">
 
   <!-- Lang switcher -->
   <div class="lang-switcher" id="lang-switcher">
@@ -54,6 +54,10 @@
 
   <!-- Navbar -->
   <header class="navbar">
+    <a href="index.html" class="navbar__brand brand-logo" aria-label="Pizzeria Avalon — Home">
+      <span class="brand-logo__prefix">Pizzeria</span>
+      <span class="brand-logo__name">Avalon</span>
+    </a>
     <nav aria-label="Navigazione principale" class="nav-links">
       <a href="index.html">
         <i data-lucide="house"></i>
@@ -78,6 +82,12 @@
 
     <!-- Hero -->
     <section class="gioca-hero">
+      <a href="#game-container" class="gioca-hero__bg-link" aria-label="Scorri per giocare">
+        <picture class="gioca-hero__bg" aria-hidden="true">
+          <source media="(min-width: 768px)" srcset="assets/game/hero_bg_hor.webp" type="image/webp">
+          <img src="assets/game/hero_bg_ver.webp" alt="" decoding="async" fetchpriority="high">
+        </picture>
+      </a>
       <span class="gioca-hero__eyebrow" data-i18n="gioca.eyebrow">Il Gioco</span>
       <h1 class="gioca-hero__title">
         <span data-i18n="gioca.titolo">L'acchiappa</span>
@@ -189,8 +199,13 @@
 
   <!-- Footer -->
   <footer class="footer">
+    <div class="footer__overlay" aria-hidden="true"></div>
+
     <div class="footer__content">
-      <h2 class="footer__title">Pizzeria Avalon</h2>
+      <h2 class="footer__title brand-logo">
+        <span class="brand-logo__prefix">Pizzeria</span>
+        <span class="brand-logo__name">Avalon</span>
+      </h2>
       <address class="footer__address">
         <div class="footer__contact-row">
           <i data-lucide="map-pin"></i>

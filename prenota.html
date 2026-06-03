@@ -32,7 +32,7 @@
   -->
 </head>
 
-<body>
+<body class="prenota-page">
 
   <div class="lang-switcher" id="lang-switcher">
     <button class="lang-switcher__toggle" id="lang-toggle" aria-label="Cambia lingua">
@@ -48,6 +48,10 @@
   </div>
 
   <header class="navbar">
+    <a href="index.html" class="navbar__brand brand-logo" aria-label="Pizzeria Avalon — Home">
+      <span class="brand-logo__prefix">Pizzeria</span>
+      <span class="brand-logo__name">Avalon</span>
+    </a>
     <nav aria-label="Navigazione principale" class="nav-links">
       <a href="index.html">
         <i data-lucide="house"></i>
@@ -70,9 +74,9 @@
 
   <main class="page-wrapper">
 
-    <!-- Hero con immagine placeholder -->
     <section class="prenota-hero">
       <div class="prenota-hero__content">
+        <div class="prenota-hero__overlay" aria-hidden="true"></div>
         <h1 class="prenota-hero__title">
           <span data-i18n="prenota.titolo">Vieni a trovarci</span>
           <em data-i18n="prenota.titolo_em">ti aspettiamo</em>
@@ -80,15 +84,18 @@
       </div>
     </section>
 
-    <!-- Booking block: solo istruzione + CTA grande -->
     <section class="prenota-book">
-      <p class="prenota-book__instructions" data-i18n="prenota.book_istruzioni">
-        Scegli il giorno e l'orario che preferisci e prenota in pochi secondi.
-      </p>
-      <a href="#gstpln_openWidget" class="prenota-book__cta">
-        <i data-lucide="calendar"></i>
-        <span data-i18n="prenota.book_cta">Prenota un tavolo</span>
-      </a>
+      <div class="prenota-book__body">
+        <p class="prenota-book__instructions">
+          <span data-i18n="prenota.book_istruzioni_pre">Scegli il giorno e l'orario che preferisci e </span><span
+            class="prenota-book__highlight" data-i18n="prenota.book_istruzioni_em">prenota</span><span
+            data-i18n="prenota.book_istruzioni_post"> in pochi secondi.</span>
+        </p>
+        <a href="#gstpln_openWidget" class="prenota-book__cta">
+          <i data-lucide="calendar"></i>
+          <span data-i18n="prenota.book_cta">Prenota un tavolo</span>
+        </a>
+      </div>
     </section>
 
     <!-- Qualche domanda — bottoni affiancati e piccoli -->
@@ -135,7 +142,10 @@
     <div class="footer__overlay" aria-hidden="true"></div>
 
     <div class="footer__content">
-      <h2 class="footer__title">Pizzeria Avalon</h2>
+      <h2 class="footer__title brand-logo">
+        <span class="brand-logo__prefix">Pizzeria</span>
+        <span class="brand-logo__name">Avalon</span>
+      </h2>
 
       <address class="footer__address">
         <div class="footer__contact-row">

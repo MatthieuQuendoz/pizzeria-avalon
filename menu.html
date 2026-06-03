@@ -35,7 +35,7 @@
 </head>
 
 
-<body>
+<body class="menu-page">
   <div class="lang-switcher" id="lang-switcher">
     <button class="lang-switcher__toggle" id="lang-toggle" aria-label="Cambia lingua">
       <span id="lang-current-flag">🇮🇹</span>
@@ -50,6 +50,10 @@
   </div>
 
   <header class="navbar">
+    <a href="index.html" class="navbar__brand brand-logo" aria-label="Pizzeria Avalon — Home">
+      <span class="brand-logo__prefix">Pizzeria</span>
+      <span class="brand-logo__name">Avalon</span>
+    </a>
     <nav aria-label="Navigazione principale" class="nav-links">
       <a href="index.html">
         <i data-lucide="house"></i>
@@ -73,29 +77,30 @@
 
   <main class="page-wrapper">
 
-    <section class="menu-header">
-      <div class="menu-header__content">
-        <h1 class="menu-header__title">
+    <section class="menu-hero">
+      <div class="menu-hero__content">
+        <div class="menu-hero__overlay" aria-hidden="true"></div>
+        <h1 class="menu-hero__title">
           <span data-i18n="menu.titolo">Il nostro</span>
           <em>Menu</em>
         </h1>
-        <p class="menu-header__description" data-i18n="menu.description">
-          Impasto a lunga maturazione con ingredienti selezionati.</p>
       </div>
     </section>
 
-
-    <p class="menu-guida" data-i18n="menu.guida">Cosa vuoi ordinare?</p>
-
-    <div class="menu-macrogruppi" id="menu-macrogruppi">
-      <button class="macrogruppo active" data-file="menu-cibo.json">
-        🍕<span data-i18n="menu.cibo">Cibo</span></button>
-      <button class="macrogruppo" data-file="menu-bevande.json">
-        🍷<span data-i18n="menu.bevande">Bevande</span></button>
-      <button class="macrogruppo" data-file="menu-dolci.json">
-        🍰<span data-i18n="menu.dolci">Dessert</span>
-      </button>
-    </div>
+    <section class="menu-picker">
+      <div class="menu-picker__body">
+        <p class="menu-picker__guida" data-i18n="menu.guida">Cosa vuoi ordinare?</p>
+        <div class="menu-macrogruppi" id="menu-macrogruppi">
+          <button class="macrogruppo active" data-file="menu-cibo.json">
+            🍕<span data-i18n="menu.cibo">Cibo</span></button>
+          <button class="macrogruppo" data-file="menu-bevande.json">
+            🍷<span data-i18n="menu.bevande">Bevande</span></button>
+          <button class="macrogruppo" data-file="menu-dolci.json">
+            🍰<span data-i18n="menu.dolci">Dessert</span>
+          </button>
+        </div>
+      </div>
+    </section>
 
     <div class="menu-tabs-wrap" id="menu-tabs-wrap">
       <div class="menu-tabs" id="menu-tabs">
@@ -126,7 +131,10 @@
     <div class="footer__overlay" aria-hidden="true"></div>
 
     <div class="footer__content">
-      <h2 class="footer__title">Pizzeria Avalon</h2>
+      <h2 class="footer__title brand-logo">
+        <span class="brand-logo__prefix">Pizzeria</span>
+        <span class="brand-logo__name">Avalon</span>
+      </h2>
 
       <address class="footer__address">
         <div class="footer__contact-row">
@@ -135,7 +143,7 @@
         </div>
         <div class="footer__contact-row">
           <i data-lucide="phone"></i>
-          <a href="tel:+390165250300"> +39 0165 250300</a>
+          <a href="tel:+390165250300">+39 0165 250300</a>
         </div>
         <div class="footer__contact-row">
           <i data-lucide="mail"></i>
@@ -155,7 +163,7 @@
       </a>
       <a href="https://www.instagram.com/pizzeriaavalon/" target="_blank" rel="noopener noreferrer"
         class="footer__social-link" aria-label="Instagram di Pizzeria Avalon">
-        <i data-lucide="camera"> </i> Instagram
+        <i data-lucide="camera"></i> Instagram
       </a>
     </div>
 

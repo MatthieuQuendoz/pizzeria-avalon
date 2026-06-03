@@ -526,7 +526,7 @@
         },
         {
           "nome": "Delizia",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/rosse/delizia.webp",
           "descrizione": {
             "it": "Passata di pomodoro, mozzarella, stracchino, bresaola, noci e parmigiano",
             "fr": "Sauce tomate, mozzarella, stracchino, bresaola, noix et parmesan",
@@ -1080,7 +1080,7 @@
         },
         {
           "nome": "Gnam gnam",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/bianche/gnamgnam.webp",
           "descrizione": {
             "it": "Mozzarella, salsa di noci, bresaola, mandorle, rucola e parmigiano",
             "fr": "Mozzarella, sauce aux noix, bresaola, amandes, roquette et parmesan",
@@ -1148,7 +1148,7 @@
         },
         {
           "nome": "Europizza",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/bianche/europizza.webp",
           "descrizione": {
             "it": "Crema di asparagi, mozzarella, asparagi, pomodorini ciliegia e gamberetti",
             "fr": "Crème d'asperges, mozzarella, asperges, tomates cerises et crevettes",
@@ -1181,7 +1181,7 @@
         },
         {
           "nome": "Settimo cielo",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/bianche/settimocielo.webp",
           "descrizione": {
             "it": "Salsa tartufata, mozzarella, gorgonzola e parmigiano",
             "fr": "Sauce truffée, mozzarella, gorgonzola et parmesan",

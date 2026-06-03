@@ -24,7 +24,7 @@ body.home {
 
 .hero {
   position: relative;
-  min-height: calc(100svh - 70px);
+  min-height: calc(100svh - 5.5rem - var(--space-8));
   /* altezza piena della viewport */
 }
 
