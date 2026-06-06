@@ -144,22 +144,6 @@
                     ]
                 },
                 {
-                    "nome": "Affogato alla cioccolata calda",
-                    "immagine": null,
-                    "descrizione": {
-                        "it": "Gelato alle creme con cioccolata calda",
-                        "fr": "Glace à la crème avec chocolat chaud",
-                        "en": "Cream ice cream with hot chocolate"
-                    },
-                    "prezzi": {
-                        "normale (5 palline)": 7.50,
-                        "piccolo (3 palline)": 4.50
-                    },
-                    "tag": [
-                        "vegetariana"
-                    ]
-                },
-                {
                     "nome": "Caffè con gelato",
                     "immagine": null,
                     "descrizione": {
@@ -308,6 +292,77 @@
                 "fr": "Glaces",
                 "en": "Ice Creams"
             },
+            "intro": {
+                "it": "Gelato di nostra produzione — gusti disponibili al banco:",
+                "fr": "Glace maison — parfums disponibles au comptoir :",
+                "en": "Homemade ice cream — flavors available at the counter:"
+            },
+            "gusti": [
+                {
+                    "nome": {
+                        "it": "Stracciatella",
+                        "fr": "Stracciatella",
+                        "en": "Stracciatella"
+                    },
+                    "tag": ["vegetariana"]
+                },
+                {
+                    "nome": {
+                        "it": "Nocciola",
+                        "fr": "Noisette",
+                        "en": "Hazelnut"
+                    },
+                    "tag": ["vegetariana"]
+                },
+                {
+                    "nome": {
+                        "it": "Fior di latte",
+                        "fr": "Fior di latte",
+                        "en": "Fior di latte"
+                    },
+                    "tag": ["vegetariana"]
+                },
+                {
+                    "nome": {
+                        "it": "Cioccolato",
+                        "fr": "Chocolat",
+                        "en": "Chocolate"
+                    },
+                    "tag": ["vegetariana"]
+                },
+                {
+                    "nome": {
+                        "it": "Crema",
+                        "fr": "Crème",
+                        "en": "Cream"
+                    },
+                    "tag": ["vegetariana"]
+                },
+                {
+                    "nome": {
+                        "it": "Pistacchio",
+                        "fr": "Pistache",
+                        "en": "Pistachio"
+                    },
+                    "tag": ["vegetariana"]
+                },
+                {
+                    "nome": {
+                        "it": "Castagna",
+                        "fr": "Châtaigne",
+                        "en": "Chestnut"
+                    },
+                    "tag": ["new", "vegetariana"]
+                },
+                {
+                    "nome": {
+                        "it": "Frutti di bosco",
+                        "fr": "Fruits des bois",
+                        "en": "Wild berries"
+                    },
+                    "tag": ["new", "vegetariana"]
+                }
+            ],
             "items": [
                 {
                     "nome": "Coppa grande",

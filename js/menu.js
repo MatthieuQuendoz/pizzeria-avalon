@@ -1,5 +1,6 @@
 let categoriaCorrente = null;
 let categorieGlobali = null;
+let menuFileCorrente = 'menu-cibo.json';
 
 const TAG_CONFIG = {
   'vegan': { emoji: '🌱', label: { it: 'Vegan', fr: 'Végane', en: 'Vegan' } },
@@ -90,6 +91,66 @@ function creaTabs(categorie) {
 
 
 
+function creaTagBadge(tag, lingua) {
+  const config = TAG_CONFIG[tag];
+  if (!config) return null;
+  const span = document.createElement('span');
+  span.classList.add('item-tag', `item-tag--${tag.replace(/\s+/g, '-')}`);
+  span.textContent = `${config.emoji} ${config.label[lingua]}`;
+  return span;
+}
+
+function creaBloccoGusti(categoria, lingua) {
+  if (!categoria.gusti?.length) return null;
+
+  const block = document.createElement('div');
+  block.classList.add('menu-gusti');
+
+  if (categoria.intro) {
+    const intro = document.createElement('p');
+    intro.classList.add('menu-gusti__intro');
+    intro.textContent = categoria.intro[lingua] || categoria.intro.it;
+    block.appendChild(intro);
+  }
+
+  const list = document.createElement('div');
+  list.classList.add('menu-gusti__list');
+
+  categoria.gusti.forEach(gusto => {
+    const chip = document.createElement('div');
+    chip.classList.add('menu-gusti__chip');
+
+    const name = document.createElement('span');
+    name.classList.add('menu-gusti__name');
+    name.textContent = gusto.nome[lingua] || gusto.nome.it;
+    chip.appendChild(name);
+
+    if (gusto.tag?.length) {
+      const tags = document.createElement('div');
+      tags.classList.add('menu-gusti__tags');
+      gusto.tag.forEach(t => {
+        const badge = creaTagBadge(t, lingua);
+        if (badge) tags.appendChild(badge);
+      });
+      chip.appendChild(tags);
+    }
+
+    list.appendChild(chip);
+  });
+
+  block.appendChild(list);
+  return block;
+}
+
+function creaTitoloCategoria(categoria, lingua) {
+  if (!categoria.intro || categoria.gusti?.length) return null;
+
+  const titolo = document.createElement('p');
+  titolo.classList.add('menu-categoria-titolo');
+  titolo.textContent = categoria.intro[lingua] || categoria.intro.it;
+  return titolo;
+}
+
 function mostraPizze(categoria) {
   categoriaCorrente = categoria;
 
@@ -97,6 +158,12 @@ function mostraPizze(categoria) {
   container.innerHTML = '';
 
   const lingua = localStorage.getItem('lingua') || 'it';
+
+  const bloccoGusti = creaBloccoGusti(categoria, lingua);
+  if (bloccoGusti) container.appendChild(bloccoGusti);
+
+  const titoloCategoria = creaTitoloCategoria(categoria, lingua);
+  if (titoloCategoria) container.appendChild(titoloCategoria);
 
   categoria.items.forEach(item => {
     const card = document.createElement('div');
@@ -109,30 +176,38 @@ function mostraPizze(categoria) {
     const tags = document.createElement('div');
     tags.classList.add('item-tags');
     item.tag.forEach(t => {
-      const config = TAG_CONFIG[t];
-      if (!config) return;
-      const span = document.createElement('span');
-      span.classList.add('item-tag', `item-tag--${t}`);
-      span.textContent = `${config.emoji} ${config.label[lingua]}`;
-      tags.appendChild(span);
+      const badge = creaTagBadge(t, lingua);
+      if (badge) tags.appendChild(badge);
     });
 
     const nome = document.createElement('h3');
     nome.classList.add('item-card__name');
     nome.textContent = item.nome;
 
+    body.appendChild(tags);
+    body.appendChild(nome);
+
+    const nota = testoNota(item, lingua);
+    if (nota) {
+      const noteEl = document.createElement('span');
+      noteEl.classList.add('item-card__note');
+      noteEl.textContent = nota;
+      body.appendChild(noteEl);
+    }
+
     const descrizione = document.createElement('p');
     descrizione.classList.add('item-card__desc');
     descrizione.textContent = item.descrizione[lingua] || item.descrizione.it;
-
-    const prezzo = document.createElement('span');
-    prezzo.classList.add('item-price');
-    prezzo.textContent = formattaPrezzo(item);
-
-    body.appendChild(tags);
-    body.appendChild(nome);
     body.appendChild(descrizione);
-    body.appendChild(prezzo);
+
+    if (item.prezzi) {
+      body.appendChild(creaListaPrezzi(item));
+    } else {
+      const prezzo = document.createElement('span');
+      prezzo.classList.add('item-price');
+      prezzo.textContent = formattaPrezzo(item);
+      body.appendChild(prezzo);
+    }
 
     // — destra: immagine —
     const media = document.createElement('div');
@@ -159,24 +234,56 @@ function mostraPizze(categoria) {
     card.appendChild(media);
     container.appendChild(card);
   });
+
+  aggiornaSliderBottom(categoria);
 }
 
+const SOGLIA_SLIDER_BOTTOM = 4;
+
+function aggiornaSliderBottom(categoria) {
+  const wrap = document.querySelector('.menu-tabs-wrap--bottom');
+  if (!wrap) return;
+  const pochi = categoria.items.length < SOGLIA_SLIDER_BOTTOM;
+  wrap.classList.toggle('is-hidden', pochi);
+}
+
+function testoNota(item, lingua) {
+  if (!item.note) return null;
+  if (typeof item.note === 'string') return item.note;
+  return item.note[lingua] || item.note.it || null;
+}
+
+function creaListaPrezzi(item) {
+  const list = document.createElement('ul');
+  list.classList.add('item-price-list');
+  Object.entries(item.prezzi).forEach(([chiave, valore]) => {
+    const row = document.createElement('li');
+    row.classList.add('item-price-row');
+    const label = document.createElement('span');
+    label.classList.add('item-price-row__label');
+    label.textContent = chiave;
+    const value = document.createElement('span');
+    value.classList.add('item-price-row__value');
+    value.textContent = `€ ${valore.toFixed(2)}`;
+    row.appendChild(label);
+    row.appendChild(value);
+    list.appendChild(row);
+  });
+  return list;
+}
 
 function formattaPrezzo(item) {
   if (item.prezzi) {
-    // ha prezzi multipli — scorri l'oggetto e costruisci una stringa
-    // hint: Object.entries(item.prezzi) restituisce array di [chiave, valore]
     return Object.entries(item.prezzi).map(([chiave, valore]) => {
       return `${chiave} € ${valore.toFixed(2)}`;
     }).join(', ');
   }
-  // prezzo singolo
   return `€ ${item.prezzo.toFixed(2)}`;
 }
 
 //se carica menu caricava il file json init cosa fa di preciso il render?
 async function init() {
-  //Questo mi sembra un passaggio suprefluo. sta rifacendo la stessa cosa di carica menu
+  menuFileCorrente = 'menu-cibo.json';
   const dati = await caricaMenu('menu-cibo.json')
   if (!dati) return;
   categorieGlobali = dati.categorie;
@@ -201,6 +308,7 @@ document.querySelectorAll('.macrogruppo').forEach(btn => {
     document.querySelectorAll('.macrogruppo').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     const file = btn.dataset.file;
+    menuFileCorrente = file;
     const dati = await caricaMenu(file);
     if (!dati) return;
     categorieGlobali = dati.categorie;

@@ -9,12 +9,17 @@
             },
             "items": [
                 {
-                    "nome": "Forst",
+                    "nome": "Bionda",
                     "immagine": null,
                     "descrizione": {
                         "it": "Birra chiara alla spina",
                         "fr": "Bière blonde à la pression",
                         "en": "Draft lager"
+                    },
+                    "note": {
+                        "it": "Forst birrificio, modello Kronen",
+                        "fr": "Brasserie Forst, modèle Kronen",
+                        "en": "Forst brewery, Kronen model"
                     },
                     "prezzi": {
                         "piccola (20cl)": 2.50,
@@ -30,6 +35,31 @@
                         "it": "Birra di frumento alla spina",
                         "fr": "Bière de blé à la pression",
                         "en": "Wheat beer on draft"
+                    },
+                    "note": {
+                        "it": "Forst birrificio",
+                        "fr": "Brasserie Forst",
+                        "en": "Forst brewery"
+                    },
+                    "prezzi": {
+                        "piccola (20cl)": 2.50,
+                        "media (40cl)": 4.00,
+                        "caraffa (1L)": 8.00
+                    },
+                    "tag": []
+                },
+                {
+                    "nome": "Rossa",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Birra rossa alla spina",
+                        "fr": "Bière rouge à la pression",
+                        "en": "Red beer on draft"
+                    },
+                    "note": {
+                        "it": "Forst birrificio",
+                        "fr": "Brasserie Forst",
+                        "en": "Forst brewery"
                     },
                     "prezzi": {
                         "piccola (20cl)": 2.50,
@@ -94,93 +124,6 @@
                     },
                     "prezzo": 4.00,
                     "note": "33cl",
-                    "tag": []
-                }
-            ]
-        },
-        {
-            "id": "birre-weihenstephaner",
-            "nome": {
-                "it": "Weihenstephaner",
-                "fr": "Weihenstephaner",
-                "en": "Weihenstephaner"
-            },
-            "items": [
-                {
-                    "nome": "Bionda Kronen",
-                    "immagine": null,
-                    "descrizione": {
-                        "it": "Birra bionda classica",
-                        "fr": "Bière blonde classique",
-                        "en": "Classic blonde beer"
-                    },
-                    "prezzi": {
-                        "30cl": 4.00,
-                        "50cl": 6.00,
-                        "1L": 10.00
-                    },
-                    "tag": []
-                },
-                {
-                    "nome": "Rossa Sixtus",
-                    "immagine": null,
-                    "descrizione": {
-                        "it": "Birra rossa",
-                        "fr": "Bière rouge",
-                        "en": "Red beer"
-                    },
-                    "prezzi": {
-                        "30cl": 4.00,
-                        "50cl": 6.00,
-                        "1L": 10.00
-                    },
-                    "tag": []
-                },
-                {
-                    "nome": "Double IPA",
-                    "immagine": null,
-                    "descrizione": {
-                        "it": "Double IPA ad alta luppolatura",
-                        "fr": "Double IPA très houblonnée",
-                        "en": "Highly hopped Double IPA"
-                    },
-                    "prezzi": {
-                        "30cl": 5.00,
-                        "50cl": 7.00,
-                        "1L": 12.00
-                    },
-                    "tag": []
-                },
-                {
-                    "nome": "Senza Glutine",
-                    "immagine": null,
-                    "descrizione": {
-                        "it": "Birra senza glutine",
-                        "fr": "Bière sans gluten",
-                        "en": "Gluten-free beer"
-                    },
-                    "prezzi": {
-                        "30cl": 4.50,
-                        "50cl": 6.50,
-                        "1L": 11.00
-                    },
-                    "tag": [
-                        "senza glutine"
-                    ]
-                },
-                {
-                    "nome": "Strong Lager",
-                    "immagine": null,
-                    "descrizione": {
-                        "it": "Lager forte e corposa",
-                        "fr": "Lager forte et corsée",
-                        "en": "Strong and full-bodied lager"
-                    },
-                    "prezzi": {
-                        "30cl": 5.00,
-                        "50cl": 7.00,
-                        "1L": 12.00
-                    },
                     "tag": []
                 }
             ]
@@ -376,7 +319,7 @@
             },
             "items": [
                 {
-                    "nome": "Morei",
+                    "nome": "Moretti Zero",
                     "immagine": null,
                     "descrizione": {
                         "it": "Devi guidare? La nostra birra analcolica.",
@@ -696,17 +639,6 @@
                 "en": "Passito Wines"
             },
             "items": [
-                {
-                    "nome": "Moscato Duchessa Lia",
-                    "immagine": null,
-                    "descrizione": {
-                        "it": "Ottimo per accompagnare dolci e dessert. Giallo paglierino, naturalmente dolce, fruttato e armonioso.",
-                        "fr": "Excellent pour accompagner desserts et sucreries. Jaune paille, naturellement doux, fruité et harmonieux.",
-                        "en": "Excellent with sweets and desserts. Straw yellow, naturally sweet, fruity and harmonious."
-                    },
-                    "prezzo": 18.00,
-                    "tag": []
-                },
                 {
                     "nome": "Ben Rye Donnafugata",
                     "immagine": null,

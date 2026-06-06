@@ -60,6 +60,17 @@
           ]
         },
         {
+          "nome": "Tonno e cipolla",
+          "immagine": "assets/menu/pizzas/rosse/tonnocipolla.webp",
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, tonno e cipolla",
+            "fr": "Sauce tomate, mozzarella, thon et oignon",
+            "en": "Tomato sauce, mozzarella, tuna and onion"
+          },
+          "prezzo": 10.0,
+          "tag": []
+        },
+        {
           "nome": "Würstel",
           "immagine": "assets/menu/pizzas/rosse/wurstel.webp",
           "descrizione": {
@@ -135,7 +146,7 @@
         },
         {
           "nome": "Funghi",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/rosse/funghi.webp",
           "descrizione": {
             "it": "Passata di pomodoro, mozzarella e funghi",
             "fr": "Sauce tomate, mozzarella et champignons",
@@ -207,7 +218,7 @@
         },
         {
           "nome": "Zucchine",
-          "immagine": "assets/menu/pizzas/rosse/zucchinie.webp",
+          "immagine": "assets/menu/pizzas/rosse/zucchine.webp",
           "descrizione": {
             "it": "Passata di pomodoro, mozzarella, zucchine e parmigiano",
             "fr": "Sauce tomate, mozzarella, courgettes et parmesan",
@@ -225,6 +236,19 @@
             "it": "Passata di pomodoro, mozzarella, stracchino e rucola",
             "fr": "Sauce tomate, mozzarella, stracchino et roquette",
             "en": "Tomato sauce, mozzarella, stracchino and rocket"
+          },
+          "prezzo": 10.0,
+          "tag": [
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "Stracchino",
+          "immagine": "assets/menu/pizzas/rosse/stracchino.webp",
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella e stracchino",
+            "fr": "Sauce tomate, mozzarella et stracchino",
+            "en": "Tomato sauce, mozzarella and stracchino"
           },
           "prezzo": 10.0,
           "tag": [
@@ -281,7 +305,7 @@
         },
         {
           "nome": "Gorgo e speck",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/rosse/gorgospeck.webp",
           "descrizione": {
             "it": "Passata di pomodoro, mozzarella, gorgonzola e speck",
             "fr": "Sauce tomate, mozzarella, gorgonzola et speck",
@@ -336,7 +360,7 @@
         },
         {
           "nome": "Misto Bosco",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/rosse/mistobosco.webp",
           "descrizione": {
             "it": "Passata di pomodoro, mozzarella e funghi misti",
             "fr": "Sauce tomate, mozzarella et champignons mélangés",
@@ -452,7 +476,7 @@
         },
         {
           "nome": "Verdure",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/rosse/verdure.webp",
           "descrizione": {
             "it": "Passata di pomodoro, mozzarella, verdure fresche e grigliate",
             "fr": "Sauce tomate, mozzarella, légumes frais et grillés",
@@ -478,7 +502,7 @@
         },
         {
           "nome": "Radicchio e pancetta",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/rosse/radicchiopancetta.webp",
           "descrizione": {
             "it": "Passata di pomodoro, mozzarella, radicchio e pancetta",
             "fr": "Sauce tomate, mozzarella, radicchio et lardons",
@@ -728,7 +752,7 @@
         },
         {
           "nome": "Maga",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/rosse/maga.webp",
           "descrizione": {
             "it": "Passata di pomodoro, mozzarella, mais e gamberetti",
             "fr": "Sauce tomate, mozzarella, maïs et crevettes",
@@ -739,7 +763,7 @@
         },
         {
           "nome": "Posillipo",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/rosse/posillipo.webp",
           "descrizione": {
             "it": "Pomodoro, mozzarella, zucchine, panna da cucina, salmone e pomodorini",
             "fr": "Tomate, mozzarella, courgettes, crème, saumon et tomates cerises",
@@ -778,6 +802,19 @@
             "it": "Mozzarella, ricotta e mele",
             "fr": "Mozzarella, ricotta et pommes",
             "en": "Mozzarella, ricotta and apples"
+          },
+          "prezzo": 10.0,
+          "tag": [
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "Pere e gorgonzola",
+          "immagine": "assets/menu/pizzas/bianche/peregorgobianca.webp",
+          "descrizione": {
+            "it": "Mozzarella, pere e gorgonzola",
+            "fr": "Mozzarella, poires et gorgonzola",
+            "en": "Mozzarella, pears and gorgonzola"
           },
           "prezzo": 10.0,
           "tag": [
@@ -825,7 +862,7 @@
         },
         {
           "nome": "Patate e porri",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/bianche/patateporri.webp",
           "descrizione": {
             "it": "Mozzarella, patate lesse, porri e ricotta",
             "fr": "Mozzarella, pommes de terre, poireaux et ricotta",
@@ -862,7 +899,7 @@
         },
         {
           "nome": "Gamberetti e mele",
-          "immagine": "assets/menu/pizzas/rosse/gamberettimele.webp",
+          "immagine": null,
           "descrizione": {
             "it": "Mozzarella, gamberetti e mele",
             "fr": "Mozzarella, crevettes et pommes",
@@ -1102,7 +1139,7 @@
         },
         {
           "nome": "Prelibata",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/bianche/prelibata.webp",
           "descrizione": {
             "it": "Crema di porcini, mozzarella, speck e rucola",
             "fr": "Crème de cèpes, mozzarella, speck et roquette",
@@ -1242,7 +1279,7 @@
         },
         {
           "nome": "Sfiziosa",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/bianche/sfiziosa.webp",
           "descrizione": {
             "it": "Mozzarella di bufala, speck, rucola e pomodorini ciliegia",
             "fr": "Mozzarella de bufflonne, speck, roquette et tomates cerises",
@@ -1259,6 +1296,11 @@
         "it": "Le Immodificabili",
         "fr": "Les Inmodifiables",
         "en": "The Unmodifiables"
+      },
+      "intro": {
+        "it": "Guai a chi osa chiedere delle modifiche!",
+        "fr": "Gare à qui ose demander des modifications !",
+        "en": "Don't even think about asking for changes!"
       },
       "items": [
         {
@@ -1294,19 +1336,6 @@
           "prezzo": 10.5,
           "tag": [
             "vegetariana"
-          ]
-        },
-        {
-          "nome": "Tag Hot",
-          "immagine": "assets/menu/pizzas/immodificabili/taghot.webp",
-          "descrizione": {
-            "it": "Passata di pomodoro, mozzarella fiordilatte, capperi, olive taggiasche e peperoncini piccanti",
-            "fr": "Sauce tomate, mozzarella fiordilatte, câpres, olives taggiasche et piments",
-            "en": "Tomato sauce, fiordilatte mozzarella, capers, taggiasca olives and hot peppers"
-          },
-          "prezzo": 10.5,
-          "tag": [
-            "piccante"
           ]
         },
         {
@@ -1368,7 +1397,7 @@
         },
         {
           "nome": "Easy Hot",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/immodificabili/easyhot.webp",
           "descrizione": {
             "it": "Passata di pomodoro, mozzarella fiordilatte, crudo, basilico e peperoncini piccanti",
             "fr": "Sauce tomate, mozzarella fiordilatte, jambon cru, basilic et piments",
@@ -1550,7 +1579,7 @@
         },
         {
           "nome": "Insalata di Mare",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/periniziare/insalatamare.webp",
           "descrizione": {
             "it": "Prodotto surgelato",
             "fr": "Produit surgelé",
@@ -1596,7 +1625,7 @@
         },
         {
           "nome": "Porchetta di Ariccia",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/periniziare/porchettafunghiparmigiano.webp",
           "descrizione": {
             "it": "Porchetta di Ariccia tradizionale",
             "fr": "Porchetta di Ariccia traditionnelle",
@@ -1678,7 +1707,7 @@
         },
         {
           "nome": "Pippo",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/bimbi/pippo.webp",
           "descrizione": {
             "it": "Passata di pomodoro, mozzarella e prosciutto cotto",
             "fr": "Sauce tomate, mozzarella et jambon cuit",
