@@ -183,7 +183,7 @@
         },
         {
           "nome": "San Marzano",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/rosse/sanmarzano.webp",
           "descrizione": {
             "it": "Passata di pomodoro, mozzarella, pomodoro fresco e basilico",
             "fr": "Sauce tomate, mozzarella, tomate fraîche et basilic",
@@ -349,7 +349,7 @@
         },
         {
           "nome": "Elisa",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/rosse/elisa.webp",
           "descrizione": {
             "it": "Passata di pomodoro, mozzarella, tonno, sedano, acciughe e peperoni",
             "fr": "Sauce tomate, mozzarella, thon, céleri, anchois et poivrons",
@@ -706,7 +706,7 @@
         },
         {
           "nome": "25 Aprile",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/rosse/25aprile.webp",
           "descrizione": {
             "it": "Passata di pomodoro, mozzarella, robiola fresca, tonno, olive e prezzemolo",
             "fr": "Sauce tomate, mozzarella, robiola fraîche, thon, olives et persil",
@@ -1410,7 +1410,7 @@
         },
         {
           "nome": "Fanciulle 309",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/immodificabili/fanciulle309.webp",
           "descrizione": {
             "it": "Passata di pomodoro, mozzarella, fagioli, cipolle, peperoni, pomodorini e patatine fritte",
             "fr": "Sauce tomate, mozzarella, haricots, oignons, poivrons, tomates cerises et frites",
@@ -1493,11 +1493,11 @@
       ]
     },
     {
-      "id": "per-iniziare",
+      "id": "fritti",
       "nome": {
-        "it": "Per iniziare",
-        "fr": "Pour commencer",
-        "en": "Starters"
+        "it": "Fritti",
+        "fr": "Fritures",
+        "en": "Fried sides"
       },
       "items": [
         {
@@ -1554,7 +1554,17 @@
           },
           "prezzo": 5.0,
           "tag": []
-        },
+        }
+      ]
+    },
+    {
+      "id": "antipasti",
+      "nome": {
+        "it": "Antipasti",
+        "fr": "Antipasti",
+        "en": "Appetizers"
+      },
+      "items": [
         {
           "nome": "Pasta della pizza fritta con crudo",
           "immagine": null,
@@ -1614,7 +1624,7 @@
         },
         {
           "nome": "Bresaola, Rucola e Grana",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/periniziare/bresaolarucolagrana.webp",
           "descrizione": {
             "it": "Bresaola, rucola fresca e grana padano",
             "fr": "Bresaola, roquette fraîche et grana padano",
@@ -1646,6 +1656,113 @@
           "tag": [
             "vegetariana"
           ]
+        }
+      ]
+    },
+    {
+      "id": "insalatone",
+      "nome": {
+        "it": "Insalatone",
+        "fr": "Salades",
+        "en": "Salads"
+      },
+      "items": [
+        {
+          "nome": "Insalata Mista",
+          "immagine": null,
+          "descrizione": {
+            "it": "Verde, radicchio, pomodori e carote",
+            "fr": "Salade verte, radicchio, tomates et carottes",
+            "en": "Green lettuce, radicchio, tomatoes and carrots"
+          },
+          "prezzo": 7.0,
+          "tag": [
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "Insalata con Mais",
+          "immagine": null,
+          "descrizione": {
+            "it": "Verde, sedano, mais e peperoni",
+            "fr": "Salade verte, céleri, maïs et poivrons",
+            "en": "Green lettuce, celery, corn and peppers"
+          },
+          "prezzo": 8.0,
+          "tag": [
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "Insalata di Olive",
+          "immagine": null,
+          "descrizione": {
+            "it": "Verde, radicchio, pomodori e olive",
+            "fr": "Salade verte, radicchio, tomates et olives",
+            "en": "Green lettuce, radicchio, tomatoes and olives"
+          },
+          "prezzo": 8.0,
+          "tag": [
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "Insalata Avalon",
+          "immagine": null,
+          "descrizione": {
+            "it": "Verde, radicchio, rucola, Fontina dop, mele, noci e pinoli",
+            "fr": "Salade verte, radicchio, roquette, Fontina dop, pommes, noix et pignons",
+            "en": "Green lettuce, radicchio, rocket, Fontina dop, apples, walnuts and pine nuts"
+          },
+          "prezzo": 9.0,
+          "tag": [
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "Insalata Pazza",
+          "immagine": null,
+          "descrizione": {
+            "it": "Verde, carote, uovo sodo, cipolle, tonno e acciughe",
+            "fr": "Salade verte, carottes, œuf dur, oignons, thon et anchois",
+            "en": "Green lettuce, carrots, hard-boiled egg, onions, tuna and anchovies"
+          },
+          "prezzo": 9.0,
+          "tag": []
+        },
+        {
+          "nome": "Insalata Esotica",
+          "immagine": null,
+          "descrizione": {
+            "it": "Verde, radicchio, gamberetti, sedano, ananas e mais",
+            "fr": "Salade verte, radicchio, crevettes, céleri, ananas et maïs",
+            "en": "Green lettuce, radicchio, shrimps, celery, pineapple and corn"
+          },
+          "prezzo": 9.0,
+          "tag": []
+        }
+      ],
+      "aggiunteIntro": {
+        "it": "Aggiunte che puoi richiedere insieme alla tua insalata",
+        "fr": "Suppléments disponibles avec votre salade",
+        "en": "Add-ons available with your salad"
+      },
+      "aggiunte": [
+        {
+          "nome": {
+            "it": "Insalata servita con pasta della pizza cotta in forno",
+            "fr": "Salade servie avec pâte à pizza cuite au four",
+            "en": "Salad served with oven-baked pizza dough"
+          },
+          "prezzo": 3.0
+        },
+        {
+          "nome": {
+            "it": "Insalata servita con pasta della pizza fritta",
+            "fr": "Salade servie avec pâte à pizza frite",
+            "en": "Salad served with fried pizza dough"
+          },
+          "prezzo": 3.0
         }
       ]
     },

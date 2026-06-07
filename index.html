@@ -6,10 +6,77 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#010100">
   <meta name="description"
-    content="Pizzeria Avalon di Jovençan. Vieni a trovarci! Siamo aperti Dal giovedì al lunedì a cena. Ti aspettiamo!">
+    content="Pizza leggera e digeribile dal 1994. Aperti gio–lun 18:00–23:00. Fraz. Etral 8, Jovençan (AO).">
 
-  <title>Pizzeria Avalon</title>
+  <title>Pizzeria Avalon — Jovençan</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <!-- SITE_URL: sostituire al deploy — https://www.pizzeriaavalon.it -->
+  <!-- Test SEO: Facebook Sharing Debugger + Google Rich Results Test (dopo deploy) -->
+  <link rel="canonical" href="https://www.pizzeriaavalon.it/">
+  <link rel="alternate" hreflang="it" href="https://www.pizzeriaavalon.it/">
+  <link rel="alternate" hreflang="fr" href="https://www.pizzeriaavalon.it/">
+  <link rel="alternate" hreflang="en" href="https://www.pizzeriaavalon.it/">
+  <link rel="alternate" hreflang="x-default" href="https://www.pizzeriaavalon.it/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Pizzeria Avalon">
+  <meta property="og:title" content="Pizzeria Avalon — Jovençan">
+  <meta property="og:description"
+    content="Pizza leggera e digeribile dal 1994. Aperti gio–lun 18:00–23:00. Fraz. Etral 8, Jovençan (AO).">
+  <meta property="og:url" content="https://www.pizzeriaavalon.it/">
+  <meta property="og:image" content="https://www.pizzeriaavalon.it/assets/images/og-image.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:locale:alternate" content="fr_FR">
+  <meta property="og:locale:alternate" content="en_US">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Pizzeria Avalon — Jovençan">
+  <meta name="twitter:description"
+    content="Pizza leggera e digeribile dal 1994. Aperti gio–lun 18:00–23:00. Fraz. Etral 8, Jovençan (AO).">
+  <meta name="twitter:image" content="https://www.pizzeriaavalon.it/assets/images/og-image.webp">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Pizzeria Avalon",
+    "url": "https://www.pizzeriaavalon.it/",
+    "image": "https://www.pizzeriaavalon.it/assets/images/og-image.webp",
+    "telephone": "+390165250300",
+    "email": "avalon.jovencan@gmail.com",
+    "servesCuisine": "Pizza",
+    "priceRange": "€€",
+    "acceptsReservations": true,
+    "menu": "https://www.pizzeriaavalon.it/menu.html",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Fraz. Etral 8",
+      "addressLocality": "Jovençan",
+      "addressRegion": "AO",
+      "postalCode": "11020",
+      "addressCountry": "IT"
+    },
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Thursday", "Friday", "Saturday", "Sunday", "Monday"],
+      "opens": "18:00",
+      "closes": "23:00"
+    }],
+    "sameAs": [
+      "https://share.google/HNjMiyA61pQeKDDMS",
+      "https://www.facebook.com/pizzeriaavalon",
+      "https://www.instagram.com/pizzeriaavalon/"
+    ],
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 45.715,
+      "longitude": 7.278
+    }
+  }
+  </script>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -129,7 +196,7 @@
 
   <section class="location content-constrain">
     <div class="location__img-wrapper">
-      <img src="assets/images/avalonDaFuori.jpg" alt="Vista esterna della Pizzeria Avalon a Jovençan"
+      <img src="assets/images/avalonDaFuori.webp" alt="Vista esterna della Pizzeria Avalon a Jovençan"
         class="location__img">
       <div class="location__img-overlay" aria-hidden="true"></div>
     </div>
@@ -198,21 +265,6 @@
         title="Privacy Policy">Privacy Policy</a>
       <a href="https://www.iubenda.com/privacy-policy/66195849/cookie-policy"
         class="iubenda-white iubenda-noiframe iubenda-embed" title="Cookie Policy">Cookie Policy</a>
-      <script type="text/javascript">
-        (function (w) {
-          function loadIubendaEmbeds() {
-            var s = document.createElement('script');
-            s.src = 'https://cdn.iubenda.com/iubenda.js';
-            s.async = true;
-            document.head.appendChild(s);
-          }
-          if ('requestIdleCallback' in w) {
-            w.requestIdleCallback(loadIubendaEmbeds, { timeout: 2000 });
-          } else {
-            w.addEventListener('load', loadIubendaEmbeds, { once: true });
-          }
-        })(window);
-      </script>
     </div>
 
     <p class="footer__text" data-i18n="footer.copyright">© 1994–2025 Pizzeria Avalon. Tutti i diritti riservati.</p>
@@ -225,16 +277,7 @@
 
 
   <script>lucide.createIcons();</script>
-
-  <!-- Cookie banner: dopo il paint per evitare scatti al caricamento -->
-  <script>
-    window.addEventListener('load', function () {
-      var s = document.createElement('script');
-      s.src = 'https://embeds.iubenda.com/widgets/1e3d3707-fe99-4f69-9752-2f4ad9fa1655.js';
-      s.async = true;
-      document.head.appendChild(s);
-    }, { once: true });
-  </script>
+  <script src="js/iubenda.js"></script>
 
   <!-- Guestplan: nessun floating button, si apre via link #gstpln_openWidget -->
   <script>

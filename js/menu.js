@@ -151,6 +151,45 @@ function creaTitoloCategoria(categoria, lingua) {
   return titolo;
 }
 
+function creaBloccoAggiunte(categoria, lingua) {
+  if (!categoria.aggiunte?.length) return null;
+
+  const block = document.createElement('div');
+  block.classList.add('menu-gusti', 'menu-aggiunte');
+
+  if (categoria.aggiunteIntro) {
+    const intro = document.createElement('p');
+    intro.classList.add('menu-gusti__intro');
+    intro.textContent = categoria.aggiunteIntro[lingua] || categoria.aggiunteIntro.it;
+    block.appendChild(intro);
+  }
+
+  const list = document.createElement('div');
+  list.classList.add('menu-gusti__list');
+
+  categoria.aggiunte.forEach(aggiunta => {
+    const chip = document.createElement('div');
+    chip.classList.add('menu-gusti__chip');
+
+    const name = document.createElement('span');
+    name.classList.add('menu-gusti__name');
+    name.textContent = aggiunta.nome[lingua] || aggiunta.nome.it;
+    chip.appendChild(name);
+
+    if (aggiunta.prezzo != null) {
+      const price = document.createElement('span');
+      price.classList.add('menu-aggiunte__price');
+      price.textContent = `€ ${aggiunta.prezzo.toFixed(2)}`;
+      chip.appendChild(price);
+    }
+
+    list.appendChild(chip);
+  });
+
+  block.appendChild(list);
+  return block;
+}
+
 function mostraPizze(categoria) {
   categoriaCorrente = categoria;
 
@@ -234,6 +273,9 @@ function mostraPizze(categoria) {
     card.appendChild(media);
     container.appendChild(card);
   });
+
+  const bloccoAggiunte = creaBloccoAggiunte(categoria, lingua);
+  if (bloccoAggiunte) container.appendChild(bloccoAggiunte);
 
   aggiornaSliderBottom(categoria);
 }

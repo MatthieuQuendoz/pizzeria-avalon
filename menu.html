@@ -5,10 +5,37 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="description"
-    content="Pizzeria Avalon di Jovençan. Vieni a trovarci! Siamo aperti Dal giovedì al lunedì a cena. Ti aspettiamo!">
+    content="Oltre 140 pizze rosse, bianche, calzoni e dolci. Impasto a lunga maturazione, ingredienti selezionati.">
 
-  <title>Menu - Pizzeria Avalon</title>
+  <title>Menu — Pizzeria Avalon</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <!-- SITE_URL: sostituire al deploy — https://www.pizzeriaavalon.it -->
+  <!-- Test SEO: Facebook Sharing Debugger + Google Rich Results Test (dopo deploy) -->
+  <link rel="canonical" href="https://www.pizzeriaavalon.it/menu.html">
+  <link rel="alternate" hreflang="it" href="https://www.pizzeriaavalon.it/menu.html">
+  <link rel="alternate" hreflang="fr" href="https://www.pizzeriaavalon.it/menu.html">
+  <link rel="alternate" hreflang="en" href="https://www.pizzeriaavalon.it/menu.html">
+  <link rel="alternate" hreflang="x-default" href="https://www.pizzeriaavalon.it/menu.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Pizzeria Avalon">
+  <meta property="og:title" content="Menu — Pizzeria Avalon">
+  <meta property="og:description"
+    content="Oltre 140 pizze rosse, bianche, calzoni e dolci. Impasto a lunga maturazione, ingredienti selezionati.">
+  <meta property="og:url" content="https://www.pizzeriaavalon.it/menu.html">
+  <meta property="og:image" content="https://www.pizzeriaavalon.it/assets/images/og-image.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:locale:alternate" content="fr_FR">
+  <meta property="og:locale:alternate" content="en_US">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Menu — Pizzeria Avalon">
+  <meta name="twitter:description"
+    content="Oltre 140 pizze rosse, bianche, calzoni e dolci. Impasto a lunga maturazione, ingredienti selezionati.">
+  <meta name="twitter:image" content="https://www.pizzeriaavalon.it/assets/images/og-image.webp">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,13 +51,6 @@
 
   <!-- lucide icon -->
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-
-  <!-- COOKIES — disabilitato qui, banner solo in index.html.
-       TODO: ripristinare quando il dominio sarà configurato nel dashboard Iubenda
-  <script type="text/javascript"
-    src="https://embeds.iubenda.com/widgets/1e3d3707-fe99-4f69-9752-2f4ad9fa1655.js"></script>
-  -->
-
 
 </head>
 
@@ -168,10 +188,10 @@
     </div>
 
     <div class="footer__legal">
-      <a href="https://www.iubenda.com/privacy-policy/66195849" target="_blank" rel="noopener noreferrer"
+      <a href="https://www.iubenda.com/privacy-policy/66195849" class="iubenda-white iubenda-noiframe iubenda-embed"
         title="Privacy Policy">Privacy Policy</a>
-      <a href="https://www.iubenda.com/privacy-policy/66195849/cookie-policy" target="_blank" rel="noopener noreferrer"
-        title="Cookie Policy">Cookie Policy</a>
+      <a href="https://www.iubenda.com/privacy-policy/66195849/cookie-policy"
+        class="iubenda-white iubenda-noiframe iubenda-embed" title="Cookie Policy">Cookie Policy</a>
     </div>
 
     <p class="footer__text" data-i18n="footer.copyright">© 1994–2025 Pizzeria Avalon. Tutti i diritti riservati.</p>
@@ -184,5 +204,6 @@
 
 
   <script>lucide.createIcons();</script>
+  <script src="js/iubenda.js"></script>
 
 </body>
