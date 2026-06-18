@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const startBtn = document.getElementById('start-btn');
   const preloadStatus = document.getElementById('preload-status');
 
-  // Preload asset gioco (bg.png) prima di permettere lo start
+  // Preload asset gioco (bg.webp) prima di permettere lo start
   let assetsReady = false;
   AvalonGame.preload().then(() => {
     assetsReady = true;
@@ -106,10 +106,58 @@ document.addEventListener('DOMContentLoaded', () => {
     if (typeof lucide !== 'undefined') lucide.createIcons();
   });
 
+  // Pulsante premio: festeggia (coriandoli) e mostra il messaggio per la cassa
+  const premioBtn = document.getElementById('premio-btn');
+  premioBtn?.addEventListener('click', () => {
+    if (premioBtn.disabled) return;
+    if (typeof AvalonAudio !== 'undefined') {
+      AvalonAudio.resume();
+      AvalonAudio.win();
+    }
+    const cassa = document.getElementById('premio-cassa');
+    if (cassa) cassa.hidden = false;
+    launchConfetti();
+  });
+
   // Render iniziale
   renderLeaderboard();
   updateHUD(0);
 });
+
+/* Coriandoli "DOM" indipendenti dal canvas: festeggiano il ritiro del premio. */
+function launchConfetti(count = 90) {
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const colors = ['#B12C16', '#D4A828', '#3F6833', '#E87020', '#FDF6EE', '#2A6818'];
+  const layer = document.createElement('div');
+  layer.setAttribute('aria-hidden', 'true');
+  layer.style.cssText =
+    'position:fixed;inset:0;pointer-events:none;z-index:9999;overflow:hidden';
+  document.body.appendChild(layer);
+
+  for (let i = 0; i < count; i++) {
+    const piece = document.createElement('div');
+    const size = 6 + Math.random() * 8;
+    piece.style.cssText =
+      `position:absolute;top:-5vh;left:${Math.random() * 100}vw;` +
+      `width:${size}px;height:${size * 0.6}px;` +
+      `background:${colors[(Math.random() * colors.length) | 0]};` +
+      `opacity:0.95;border-radius:1px`;
+    layer.appendChild(piece);
+
+    const dx = (Math.random() - 0.5) * 240;
+    const dur = 2200 + Math.random() * 1600;
+    const rot = (Math.random() - 0.5) * 1080;
+    piece.animate(
+      [
+        { transform: 'translate(0,0) rotate(0deg)', opacity: 1 },
+        { transform: `translate(${dx}px, 110vh) rotate(${rot}deg)`, opacity: 1 },
+      ],
+      { duration: dur, easing: 'cubic-bezier(.2,.6,.4,1)', delay: Math.random() * 400 }
+    );
+  }
+
+  setTimeout(() => layer.remove(), 4600);
+}
 
 // Aggiorna la leaderboard quando cambia la lingua (per il caso di chiavi tradotte)
 document.addEventListener('linguaCambiata', () => {

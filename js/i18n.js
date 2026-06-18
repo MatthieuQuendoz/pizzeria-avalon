@@ -18,7 +18,22 @@ async function caricaLingua(lingua) {
   }
 }
 
+// Traduzioni correnti accessibili dagli altri script (es. testi generati da JS).
+window.i18nData = null;
+window.t = function (chiave) {
+  let valore = window.i18nData;
+  for (const parte of String(chiave).split('.')) {
+    if (valore && typeof valore === 'object' && parte in valore) {
+      valore = valore[parte];
+    } else {
+      return null;
+    }
+  }
+  return typeof valore === 'string' ? valore : null;
+};
+
 function applicaTraduzione(dati) {
+  window.i18nData = dati;
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const chiavi = el.getAttribute('data-i18n').split('.');
     let traduzione = dati;

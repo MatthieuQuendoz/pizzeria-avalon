@@ -51,6 +51,7 @@
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/gioca.css">
 
   <!-- Lucide icons -->
@@ -191,7 +192,7 @@
     </div>
 
     <!-- Premio -->
-    <div class="gioca-premio" id="premio-card">
+    <div class="gioca-premio" id="premio-card" data-reveal>
       <div class="gioca-premio__icon">
         <i data-lucide="gift"></i>
       </div>
@@ -203,10 +204,13 @@
         <i data-lucide="lock"></i>
         <span data-i18n="gioca.premio_locked">Locked</span>
       </button>
+      <p class="gioca-premio__cassa" id="premio-cassa" data-i18n="gioca.premio_cassa" hidden>
+        Evviva! Vieni in cassa e mostra questo schermo: ti aspetta un piccolo omaggio. 🍕
+      </p>
     </div>
 
     <!-- Classifica -->
-    <div class="gioca-leaderboard">
+    <div class="gioca-leaderboard" data-reveal data-reveal-delay="1">
       <div class="gioca-leaderboard__header">
         <i data-lucide="trophy"></i>
         <h2 class="gioca-leaderboard__title" data-i18n="gioca.top_players">Top Players</h2>
@@ -227,6 +231,7 @@
         <span class="brand-logo__prefix">Pizzeria</span>
         <span class="brand-logo__name">Avalon</span>
       </h2>
+
       <address class="footer__address">
         <div class="footer__contact-row">
           <i data-lucide="map-pin"></i>
@@ -265,12 +270,22 @@
         class="iubenda-white iubenda-noiframe iubenda-embed" title="Cookie Policy">Cookie Policy</a>
     </div>
 
-    <p class="footer__text" data-i18n="footer.copyright">© 1994–2025 Pizzeria Avalon. Tutti i diritti riservati.</p>
+    <p class="footer__text" data-i18n="footer.copyright">© 1994–2026 Pizzeria Avalon. Tutti i diritti riservati.</p>
   </footer>
+
+  <!-- Leaderboard back-end (Supabase) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    // Credenziali pubbliche del progetto Supabase (vedi supabase/leaderboard.sql).
+    // La publishable key e' pensata per il client: e' protetta dalle policy RLS.
+    window.AVALON_SUPABASE_URL = "https://nhqjgtfnzxgubcengfmo.supabase.co";
+    window.AVALON_SUPABASE_ANON_KEY = "sb_publishable_m9Pemh6M8GQpYfAYSxNdiw_rCxvKyN-";
+  </script>
 
   <!-- JS -->
   <script src="js/i18n.js"></script>
   <script src="js/nav.js"></script>
+  <script src="js/reveal.js"></script>
   <script src="js/gioca-leaderboard.js"></script>
   <script src="js/gioca-game.js"></script>
   <script src="js/gioca.js"></script>

@@ -141,7 +141,7 @@
 
   <section class="hero">
     <!-- Immagine di sfondo -->
-    <img src="assets/images/hero.png" alt="Pizza dal forno a legna della Pizzeria Avalon" class="hero__img">
+    <img src="assets/images/hero.webp" alt="Pizza dal forno a legna della Pizzeria Avalon" class="hero__img">
 
     <!-- Gradiente overlay -->
     <div class="hero__overlay" aria-hidden="true"></div>
@@ -163,61 +163,64 @@
     </div>
   </section>
 
-  <section class="orari content-constrain">
-    <div class="orari__card">
-      <p class="orari__label" data-i18n="home.orari_titolo">ORARIO</p>
-      <p class="ora" data-i18n="home.orari_ore">18:00 — 23:00</p>
+  <main class="page-wrapper">
 
-      <div class="orari__divider"></div>
+    <section class="orari">
+      <div class="orari__card">
+        <p class="orari__label" data-i18n="home.orari_titolo">ORARIO</p>
+        <p class="ora" data-i18n="home.orari_ore">18:00 — 23:00</p>
 
-      <div class="orari__giorni">
-        <p class="orari__riga orari__riga--aperto">
-          <i data-lucide="check-circle"></i>
-          <span data-i18n="home.orari_aperti">Aperti dal giovedì al lunedì</span>
-        </p>
-        <p class="orari__riga orari__riga--chiuso">
-          <i data-lucide="x-circle"></i>
-          <span data-i18n="home.orari_chiusi">Chiusi martedì e mercoledì</span>
-        </p>
+        <div class="orari__divider"></div>
+
+        <div class="orari__giorni">
+          <p class="orari__riga orari__riga--aperto">
+            <i data-lucide="check-circle"></i>
+            <span data-i18n="home.orari_aperti">Aperti dal giovedì al lunedì</span>
+          </p>
+          <p class="orari__riga orari__riga--chiuso">
+            <i data-lucide="x-circle"></i>
+            <span data-i18n="home.orari_chiusi">Chiusi martedì e mercoledì</span>
+          </p>
+        </div>
+
+        <div class="orari__azioni">
+          <a href="tel:+390165250300" class="orari__btn orari__btn--chiama">
+            <i data-lucide="phone"></i>
+            <span data-i18n="home.orari_chiamaci">Chiamaci</span>
+          </a>
+          <a href="https://wa.me/393514226610" class="orari__btn orari__btn--whatsapp">
+            <i data-lucide="message-square-more"></i>
+            <span data-i18n="home.orari_whatsapp">WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="location">
+      <div class="location__img-wrapper">
+        <img src="assets/images/avalonDaFuori.webp" alt="Vista esterna della Pizzeria Avalon a Jovençan"
+          class="location__img">
+        <div class="location__img-overlay" aria-hidden="true"></div>
       </div>
 
-      <div class="orari__azioni">
-        <a href="tel:+390165250300" class="orari__btn orari__btn--chiama">
-          <i data-lucide="phone"></i>
-          <span data-i18n="home.orari_chiamaci">Chiamaci</span>
+      <div class="location__content">
+        <div class="location__header">
+          <i class="location__icon" data-lucide="map-pin"></i>
+          <p class="location__label" data-i18n="home.location_label">Dove siamo</p>
+        </div>
+
+        <h2 class="location__title" data-i18n="home.location_titolo">Fraz. Etral 8, Jovençan</h2>
+        <p class="location__subtitle" data-i18n="home.location_sottotitolo">Ci troviamo a 10 minuti da Aosta.</p>
+
+        <a href="https://maps.google.com/?q=Etral+8+Jovençan+Valle+d'Aosta" target="_blank" rel="noopener noreferrer"
+          class="btn location__btn">
+          <i data-lucide="navigation"></i>
+          <span data-i18n="home.location_maps">Apri in Google Maps</span>
         </a>
-        <a href="https://wa.me/393514226610" class="orari__btn orari__btn--whatsapp">
-          <i data-lucide="message-square-more"></i>
-          <span data-i18n="home.orari_whatsapp">WhatsApp</span>
-        </a>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="location content-constrain">
-    <div class="location__img-wrapper">
-      <img src="assets/images/avalonDaFuori.webp" alt="Vista esterna della Pizzeria Avalon a Jovençan"
-        class="location__img">
-      <div class="location__img-overlay" aria-hidden="true"></div>
-    </div>
-
-    <div class="location__content">
-      <div class="location__header">
-        <i class="location__icon" data-lucide="map-pin"></i>
-        <p class="location__label" data-i18n="home.location_label">Dove siamo</p>
-      </div>
-
-      <h2 class="location__title" data-i18n="home.location_titolo">Fraz. Etral 8, Jovençan</h2>
-      <p class="location__subtitle" data-i18n="home.location_sottotitolo">Ci troviamo a 10 minuti da Aosta.</p>
-
-
-      <a href="https://maps.google.com/?q=Etral+8+Jovençan+Valle+d'Aosta" target="_blank" rel="noopener noreferrer"
-        class="btn location__btn">
-        <i data-lucide="navigation"></i>
-        <span data-i18n="home.location_maps">Apri in Google Maps</span>
-      </a>
-    </div>
-  </section>
+  </main>
 
   <footer class="footer">
     <div class="footer__overlay" aria-hidden="true"></div>
@@ -235,7 +238,7 @@
         </div>
         <div class="footer__contact-row">
           <i data-lucide="phone"></i>
-          <a href="tel:+390165250300"> +39 0165 250300</a>
+          <a href="tel:+390165250300">+39 0165 250300</a>
         </div>
         <div class="footer__contact-row">
           <i data-lucide="mail"></i>
@@ -255,10 +258,9 @@
       </a>
       <a href="https://www.instagram.com/pizzeriaavalon/" target="_blank" rel="noopener noreferrer"
         class="footer__social-link" aria-label="Instagram di Pizzeria Avalon">
-        <i data-lucide="camera"> </i> Instagram
+        <i data-lucide="camera"></i> Instagram
       </a>
     </div>
-
 
     <div class="footer__legal">
       <a href="https://www.iubenda.com/privacy-policy/66195849" class="iubenda-white iubenda-noiframe iubenda-embed"
@@ -267,7 +269,7 @@
         class="iubenda-white iubenda-noiframe iubenda-embed" title="Cookie Policy">Cookie Policy</a>
     </div>
 
-    <p class="footer__text" data-i18n="footer.copyright">© 1994–2025 Pizzeria Avalon. Tutti i diritti riservati.</p>
+    <p class="footer__text" data-i18n="footer.copyright">© 1994–2026 Pizzeria Avalon. Tutti i diritti riservati.</p>
   </footer>
 
   <!-- JS -->

@@ -3,8 +3,7 @@
     "home": "Home",
     "menu": "Menu",
     "prenota": "Book",
-    "gioca": "Play",
-    "storia": "Our Story"
+    "gioca": "Play"
   },
   "home": {
     "eyebrow": "Since 1994 in Jovençan",
@@ -21,9 +20,7 @@
     "location_label": "Where to find us",
     "location_titolo": "Fraz. Etral 8, Jovençan",
     "location_sottotitolo": "10 minutes from Aosta.",
-    "location_maps": "Open in Google Maps",
-    "impasto_titolo": "Discover our dough",
-    "impasto_hint": "Tap to find out more"
+    "location_maps": "Open in Google Maps"
   },
   "menu": {
     "titolo": "Our",
@@ -31,7 +28,10 @@
     "cibo": "Food",
     "bevande": "Drinks",
     "dolci": "Desserts",
-    "altre_categorie": "Other categories"
+    "altre_categorie": "Other categories",
+    "filtra": "Filter",
+    "filtra_per": "Filter by",
+    "tutte": "All"
   },
   "prenota": {
     "titolo": "Come visit us",
@@ -48,14 +48,15 @@
     "titolo_em": "catcher",
     "descrizione": "Try to catch as many pizzas as you can, but watch out for the bombs!",
     "scroll_hint": "Scroll down to play",
-    "score": "Score",
-    "target": "Target",
     "premio_titolo": "The Prize",
     "premio_testo": "Reach 50 pizzas and win a little gift at the counter!",
     "premio_locked": "Locked",
+    "premio_unlocked": "Claim your gift!",
+    "premio_cassa": "Hooray! Come to the counter and show this screen: a little gift is waiting for you. 🍕",
+    "record_label": "Your record:",
     "top_players": "Top Players",
     "intro_titolo": "Ready, knight?",
-    "intro_testo": "Enter your name to appear on the leaderboard. Tap the screen to change direction.",
+    "intro_testo": "Enter your name!",
     "intro_btn": "Start playing",
     "preload": "Loading assets...",
     "victory_title": "You won!",
@@ -66,6 +67,6 @@
   "footer": {
     "indirizzo": "Fraz. Etral 8, Jovençan (AO)",
     "orari": "Thu–Mon 6:00 PM–11:00 PM",
-    "copyright": "© 1994–2025 Pizzeria Avalon. All rights reserved."
+    "copyright": "© 1994–2026 Pizzeria Avalon. All rights reserved."
   }
 }

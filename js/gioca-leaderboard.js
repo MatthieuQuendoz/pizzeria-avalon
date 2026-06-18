@@ -1,9 +1,10 @@
 /* ============================================
    PIZZERIA AVALON — Leaderboard API
-   Per ora usa localStorage. Sostituire i due metodi
-   di `leaderboardApi` con chiamate HTTP per avere
-   una classifica davvero condivisa (Firebase,
-   Supabase, endpoint custom, ecc).
+   Classifica reale e condivisa tramite Supabase.
+   Le credenziali vanno in gioca.html (window.AVALON_SUPABASE_*).
+   Setup tabella + policy: vedi supabase/leaderboard.sql.
+   Se le credenziali mancano o la rete fallisce, si usa
+   un fallback locale (localStorage) per non rompere la pagina.
    ============================================ */
 
 const LEADERBOARD_KEY = 'avalon_leaderboard_v1';
@@ -12,6 +13,7 @@ const PLAYER_BEST_KEY = 'avalon_player_best';
 const MAX_LEADERBOARD_ENTRIES = 50;
 const LEADERBOARD_DISPLAY_COUNT = 7;
 const TARGET_SCORE = 50;
+const LEADERBOARD_TABLE = 'leaderboard';
 
 const DEFAULT_LEADERBOARD = [
   { name: 'Chef Marco',    score: 124 },
@@ -22,17 +24,35 @@ const DEFAULT_LEADERBOARD = [
   { name: 'Dottor AIkido', score: 33  },
 ];
 
-const leaderboardApi = {
-  async getTopScores() {
+// — Client Supabase (creato una sola volta, se configurato) —
+let _supabaseClient = null;
+let _supabaseInit = false;
+function getSupabase() {
+  if (_supabaseInit) return _supabaseClient;
+  _supabaseInit = true;
+  const url = (window.AVALON_SUPABASE_URL || '').trim();
+  const key = (window.AVALON_SUPABASE_ANON_KEY || '').trim();
+  if (url && key && window.supabase && typeof window.supabase.createClient === 'function') {
+    try {
+      _supabaseClient = window.supabase.createClient(url, key);
+    } catch (err) {
+      console.error('Supabase non inizializzato:', err);
+    }
+  }
+  return _supabaseClient;
+}
+
+// — Fallback locale (usato solo se Supabase non è disponibile) —
+const localLeaderboard = {
+  get() {
     try {
       const raw = localStorage.getItem(LEADERBOARD_KEY);
       if (raw) return JSON.parse(raw);
     } catch (_) {}
     return [...DEFAULT_LEADERBOARD];
   },
-
-  async submitScore(name, score) {
-    const scores = await this.getTopScores();
+  add(name, score) {
+    const scores = this.get();
     scores.push({ name, score, date: Date.now() });
     scores.sort((a, b) => b.score - a.score);
     const top = scores.slice(0, MAX_LEADERBOARD_ENTRIES);
@@ -40,6 +60,42 @@ const leaderboardApi = {
       localStorage.setItem(LEADERBOARD_KEY, JSON.stringify(top));
     } catch (_) {}
     return top;
+  },
+};
+
+const leaderboardApi = {
+  async getTopScores() {
+    const sb = getSupabase();
+    if (sb) {
+      try {
+        const { data, error } = await sb
+          .from(LEADERBOARD_TABLE)
+          .select('name, score')
+          .order('score', { ascending: false })
+          .limit(MAX_LEADERBOARD_ENTRIES);
+        if (error) throw error;
+        if (Array.isArray(data)) return data;
+      } catch (err) {
+        console.error('Errore nel caricamento della classifica:', err);
+      }
+    }
+    return localLeaderboard.get();
+  },
+
+  async submitScore(name, score) {
+    const sb = getSupabase();
+    if (sb) {
+      try {
+        const { error } = await sb
+          .from(LEADERBOARD_TABLE)
+          .insert({ name, score });
+        if (error) throw error;
+        return await this.getTopScores();
+      } catch (err) {
+        console.error('Errore nel salvataggio del punteggio:', err);
+      }
+    }
+    return localLeaderboard.add(name, score);
   },
 };
 
@@ -102,7 +158,9 @@ function maybeUnlockPrize(score, target = TARGET_SCORE) {
   if (score >= target && !btn.classList.contains('gioca-premio__btn--unlocked')) {
     btn.disabled = false;
     btn.classList.add('gioca-premio__btn--unlocked');
-    btn.innerHTML = '<i data-lucide="gift"></i> Ritira il tuo omaggio!';
+    const label = (typeof window.t === 'function' && window.t('gioca.premio_unlocked')) || 'Ritira il tuo omaggio!';
+    // span con data-i18n: resta tradotto anche al cambio lingua
+    btn.innerHTML = `<i data-lucide="gift"></i> <span data-i18n="gioca.premio_unlocked">${escapeHtml(label)}</span>`;
     if (typeof lucide !== 'undefined') lucide.createIcons();
   }
 }

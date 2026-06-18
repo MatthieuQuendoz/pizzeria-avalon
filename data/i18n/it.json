@@ -3,8 +3,7 @@
     "home": "Home",
     "menu": "Menu",
     "prenota": "Prenota",
-    "gioca": "Gioca",
-    "storia": "La Storia"
+    "gioca": "Gioca"
   },
   "home": {
     "eyebrow": "Dal 1994 a Jovençan",
@@ -21,9 +20,7 @@
     "location_label": "Dove siamo",
     "location_titolo": "Fraz. Etral 8, Jovençan",
     "location_sottotitolo": "Ci troviamo a 10 minuti da Aosta.",
-    "location_maps": "Apri in Google Maps",
-    "impasto_titolo": "Scopri il nostro impasto",
-    "impasto_hint": "Tocca per scoprire"
+    "location_maps": "Apri in Google Maps"
   },
   "menu": {
     "titolo": "Il nostro",
@@ -31,7 +28,10 @@
     "cibo": "Cibo",
     "bevande": "Bevande",
     "dolci": "Dessert",
-    "altre_categorie": "Altre categorie"
+    "altre_categorie": "Altre categorie",
+    "filtra": "Filtra",
+    "filtra_per": "Filtra per",
+    "tutte": "Tutte"
   },
   "prenota": {
     "titolo": "Vieni a trovarci",
@@ -48,14 +48,15 @@
     "titolo_em": "pizze",
     "descrizione": "Cerca di prendere più pizze possibili ma mi raccomando, stai attento alle bombe!",
     "scroll_hint": "Scorri per giocare",
-    "score": "Score",
-    "target": "Target",
     "premio_titolo": "Il Premio",
     "premio_testo": "Arriva a 50 pizze e vinci un piccolo omaggio in cassa!",
     "premio_locked": "Locked",
+    "premio_unlocked": "Ritira il tuo omaggio!",
+    "premio_cassa": "Evviva! Vieni in cassa e mostra questo schermo: ti aspetta un piccolo omaggio. 🍕",
+    "record_label": "Il tuo record:",
     "top_players": "Top Players",
     "intro_titolo": "Pronto, cavaliere?",
-    "intro_testo": "Inserisci il tuo nome per apparire nella classifica. Tocca lo schermo per cambiare direzione.",
+    "intro_testo": "Inserisci il tuo nome!",
     "intro_btn": "Inizia a giocare",
     "preload": "Caricamento asset...",
     "victory_title": "Hai vinto!",
@@ -66,6 +67,6 @@
   "footer": {
     "indirizzo": "Fraz. Etral 8, Jovençan (AO)",
     "orari": "Gio–Lun 18:00–23:00",
-    "copyright": "© 1994–2025 Pizzeria Avalon. Tutti i diritti riservati."
+    "copyright": "© 1994–2026 Pizzeria Avalon. Tutti i diritti riservati."
   }
 }

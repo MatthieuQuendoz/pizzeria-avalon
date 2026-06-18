@@ -1,0 +1,109 @@
+/* ============================================
+   PIZZERIA AVALON — Animazioni condivise
+   Sistema discreto: solo opacity + transform.
+   Disattivato con prefers-reduced-motion.
+   ============================================ */
+
+/* -------- SCROLL REVEAL ----------- */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity var(--transition-slow),
+    transform var(--transition-slow);
+  will-change: opacity, transform;
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Stagger: ritardi incrementali per elementi vicini */
+[data-reveal][data-reveal-delay="1"] { transition-delay: 80ms; }
+[data-reveal][data-reveal-delay="2"] { transition-delay: 160ms; }
+[data-reveal][data-reveal-delay="3"] { transition-delay: 240ms; }
+[data-reveal][data-reveal-delay="4"] { transition-delay: 320ms; }
+[data-reveal][data-reveal-delay="5"] { transition-delay: 400ms; }
+[data-reveal][data-reveal-delay="6"] { transition-delay: 480ms; }
+
+/* -------- ENTRATA HERO (al load, puro CSS) ----------- */
+@keyframes avalon-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.hero__eyebrow,
+.hero__title,
+.hero__subtitle,
+.hero__actions {
+  opacity: 0;
+  animation: avalon-fade-up var(--transition-slow) ease both;
+}
+
+.hero__eyebrow  { animation-delay: 80ms; }
+.hero__title    { animation-delay: 200ms; }
+.hero__subtitle { animation-delay: 340ms; }
+.hero__actions  { animation-delay: 480ms; }
+
+/* -------- MICRO-INTERAZIONI ----------- */
+/* Lieve sollevamento su hover, coerente con i social link del footer. */
+.btn,
+.orari__btn,
+.location__btn {
+  transition:
+    background-color var(--transition-normal),
+    color var(--transition-normal),
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast),
+    filter var(--transition-normal);
+}
+
+@media (hover: hover) {
+  .btn:hover,
+  .orari__btn:hover,
+  .location__btn:hover {
+    transform: translateY(-2px);
+  }
+
+  .btn:active,
+  .orari__btn:active,
+  .location__btn:active {
+    transform: translateY(0);
+  }
+}
+
+/* -------- ACCESSIBILITA': riduci movimento ----------- */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .hero__eyebrow,
+  .hero__title,
+  .hero__subtitle,
+  .hero__actions {
+    opacity: 1;
+    animation: none;
+  }
+
+  .btn,
+  .orari__btn,
+  .location__btn {
+    transition: none;
+  }
+
+  .btn:hover,
+  .orari__btn:hover,
+  .location__btn:hover {
+    transform: none;
+  }
+}

@@ -592,6 +592,27 @@
   letter-spacing: 0;
 }
 
+.gioca-premio__btn--unlocked:hover {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+}
+
+.gioca-premio__cassa {
+  margin-top: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-lightGreen);
+  color: var(--color-brown);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  line-height: 1.5;
+  text-align: center;
+}
+
+.gioca-premio__cassa[hidden] {
+  display: none;
+}
+
 /* -------- CLASSIFICA ----------- */
 .gioca-leaderboard {
   background-color: var(--color-bg);
@@ -832,7 +853,7 @@
     0 12px 40px rgba(26, 16, 8, 0.22),
     0 2px 8px rgba(26, 16, 8, 0.12);
   overflow: hidden;
-  max-width: var(--gioca-content-max);
+  max-width: none;
   width: auto;
   box-sizing: border-box;
 }
@@ -982,7 +1003,7 @@
       "copy copy";
     column-gap: var(--space-10);
     row-gap: var(--space-4);
-    max-width: var(--gioca-content-max);
+    max-width: 40rem;
     margin-inline: auto;
     margin-bottom: 20px;
     padding: var(--space-10) var(--space-8);

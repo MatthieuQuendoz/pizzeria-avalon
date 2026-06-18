@@ -947,7 +947,7 @@ const AvalonGame = {
       _bgImage = new Image();
       _bgImage.onload = () => resolve();
       _bgImage.onerror = () => resolve(); // fallback se manca
-      _bgImage.src = 'assets/game/bg.png';
+      _bgImage.src = 'assets/game/bg.webp';
     });
   },
   start(playerName) {
@@ -970,7 +970,7 @@ const AvalonGame = {
     // Background image may already be loaded via preload(); fallback if not
     if (!_bgImage) {
       _bgImage = new Image();
-      _bgImage.src = 'assets/game/bg.png';
+      _bgImage.src = 'assets/game/bg.webp';
     }
 
     // Initialize animated bg elements

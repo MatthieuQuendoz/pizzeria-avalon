@@ -1,6 +1,7 @@
 let categoriaCorrente = null;
 let categorieGlobali = null;
 let menuFileCorrente = 'menu-cibo.json';
+let filtroTagCorrente = null;
 
 const TAG_CONFIG = {
   'vegan': { emoji: '🌱', label: { it: 'Vegan', fr: 'Végane', en: 'Vegan' } },
@@ -11,6 +12,12 @@ const TAG_CONFIG = {
   'locale': { emoji: '🏔️', label: { it: 'Locale', fr: 'Local', en: 'Local' } },
   'Classica': { emoji: '🎩', label: { it: 'Classica', fr: 'Classique', en: 'Classic' } },
   'new': { emoji: '✨', label: { it: 'Nuovo', fr: 'Nouveau', en: 'New' } }
+};
+
+const FILTRO_LABELS = {
+  filtra: { it: 'Filtra', fr: 'Filtrer', en: 'Filter' },
+  filtraPer: { it: 'Filtra per', fr: 'Filtrer par', en: 'Filter by' },
+  tutte: { it: 'Tutte', fr: 'Toutes', en: 'All' }
 };
 
 
@@ -81,6 +88,7 @@ function creaTabs(categorie) {
           document.getElementById('menu-tabs-wrap')
             ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
+        filtroTagCorrente = null;
         mostraPizze(categoria);
       });
 
@@ -190,6 +198,126 @@ function creaBloccoAggiunte(categoria, lingua) {
   return block;
 }
 
+function creaFiltriTag(categoria, lingua) {
+  const container = document.getElementById('menu-filtri');
+  if (!container) return;
+  container.innerHTML = '';
+  container.classList.remove('is-open');
+
+  // Tag unici presenti negli item, nell'ordine definito in TAG_CONFIG
+  const presenti = new Set();
+  categoria.items.forEach(item => {
+    (item.tag || []).forEach(t => {
+      if (TAG_CONFIG[t]) presenti.add(t);
+    });
+  });
+  const tags = Object.keys(TAG_CONFIG).filter(t => presenti.has(t));
+
+  // Meno di 2 tag: filtro non utile, nascondi tutto
+  if (tags.length < 2) {
+    container.hidden = true;
+    return;
+  }
+  container.hidden = false;
+
+  const L = (obj) => (obj && (obj[lingua] || obj.it)) || '';
+  const tagAttivo = filtroTagCorrente && TAG_CONFIG[filtroTagCorrente]
+    ? TAG_CONFIG[filtroTagCorrente]
+    : null;
+
+  // — Pulsante che apre/chiude il piccolo menu —
+  const toggle = document.createElement('button');
+  toggle.type = 'button';
+  toggle.classList.add('menu-filtri__toggle');
+  toggle.setAttribute('aria-haspopup', 'true');
+  toggle.setAttribute('aria-expanded', 'false');
+  toggle.setAttribute('aria-controls', 'menu-filtri-panel');
+  if (tagAttivo) toggle.classList.add('is-active');
+
+  const icon = document.createElement('i');
+  icon.setAttribute('data-lucide', 'sliders-horizontal');
+  icon.setAttribute('aria-hidden', 'true');
+
+  const toggleLabel = document.createElement('span');
+  toggleLabel.classList.add('menu-filtri__toggle-label');
+  toggleLabel.textContent = tagAttivo
+    ? `${tagAttivo.emoji} ${L(tagAttivo.label)}`
+    : L(FILTRO_LABELS.filtra);
+
+  const chevron = document.createElement('span');
+  chevron.classList.add('menu-filtri__chevron');
+  chevron.setAttribute('aria-hidden', 'true');
+  chevron.textContent = '▾';
+
+  toggle.append(icon, toggleLabel, chevron);
+
+  // — Pannello dropdown con i chip —
+  const panel = document.createElement('div');
+  panel.classList.add('menu-filtri__panel');
+  panel.id = 'menu-filtri-panel';
+  panel.hidden = true;
+
+  const titolo = document.createElement('p');
+  titolo.classList.add('menu-filtri__titolo');
+  titolo.textContent = L(FILTRO_LABELS.filtraPer);
+  panel.appendChild(titolo);
+
+  const lista = document.createElement('div');
+  lista.classList.add('menu-filtri__list');
+
+  const applica = (valore) => {
+    filtroTagCorrente = valore;
+    mostraPizze(categoria);
+  };
+
+  const chipTutte = document.createElement('button');
+  chipTutte.type = 'button';
+  chipTutte.classList.add('menu-filtro', 'menu-filtro--tutte');
+  if (filtroTagCorrente === null) chipTutte.classList.add('active');
+  chipTutte.textContent = L(FILTRO_LABELS.tutte);
+  chipTutte.addEventListener('click', () => applica(null));
+  lista.appendChild(chipTutte);
+
+  tags.forEach(tag => {
+    const config = TAG_CONFIG[tag];
+    const chip = document.createElement('button');
+    chip.type = 'button';
+    chip.classList.add('menu-filtro', `menu-filtro--${tag.replace(/\s+/g, '-')}`);
+    if (filtroTagCorrente === tag) chip.classList.add('active');
+    chip.textContent = `${config.emoji} ${L(config.label)}`;
+    // Toggle: riclic sullo stesso tag azzera il filtro
+    chip.addEventListener('click', () => applica(filtroTagCorrente === tag ? null : tag));
+    lista.appendChild(chip);
+  });
+
+  panel.appendChild(lista);
+
+  toggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const apri = !container.classList.contains('is-open');
+    container.classList.toggle('is-open', apri);
+    toggle.setAttribute('aria-expanded', apri ? 'true' : 'false');
+    panel.hidden = !apri;
+  });
+
+  container.append(toggle, panel);
+
+  // Rigenera l'icona Lucide appena inserita
+  if (window.lucide) lucide.createIcons();
+}
+
+// Chiude il menu filtri cliccando fuori
+document.addEventListener('click', (e) => {
+  const container = document.getElementById('menu-filtri');
+  if (!container || !container.classList.contains('is-open')) return;
+  if (container.contains(e.target)) return;
+  container.classList.remove('is-open');
+  const toggle = container.querySelector('.menu-filtri__toggle');
+  const panel = container.querySelector('.menu-filtri__panel');
+  toggle?.setAttribute('aria-expanded', 'false');
+  if (panel) panel.hidden = true;
+});
+
 function mostraPizze(categoria) {
   categoriaCorrente = categoria;
 
@@ -198,13 +326,19 @@ function mostraPizze(categoria) {
 
   const lingua = localStorage.getItem('lingua') || 'it';
 
+  creaFiltriTag(categoria, lingua);
+
   const bloccoGusti = creaBloccoGusti(categoria, lingua);
   if (bloccoGusti) container.appendChild(bloccoGusti);
 
   const titoloCategoria = creaTitoloCategoria(categoria, lingua);
   if (titoloCategoria) container.appendChild(titoloCategoria);
 
-  categoria.items.forEach(item => {
+  const items = filtroTagCorrente
+    ? categoria.items.filter(i => (i.tag || []).includes(filtroTagCorrente))
+    : categoria.items;
+
+  items.forEach(item => {
     const card = document.createElement('div');
     card.classList.add('item-card');
 
@@ -354,6 +488,7 @@ document.querySelectorAll('.macrogruppo').forEach(btn => {
     const dati = await caricaMenu(file);
     if (!dati) return;
     categorieGlobali = dati.categorie;
+    filtroTagCorrente = null;
     document.getElementById('menu-tabs').innerHTML = '';
     document.getElementById('menu-tabs-bottom').innerHTML = '';
     creaTabs(dati.categorie);

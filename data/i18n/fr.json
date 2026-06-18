@@ -3,8 +3,7 @@
     "home": "Accueil",
     "menu": "Menu",
     "prenota": "Réserver",
-    "gioca": "Jouer",
-    "storia": "Notre Histoire"
+    "gioca": "Jouer"
   },
   "home": {
     "eyebrow": "Depuis 1994 à Jovençan",
@@ -21,9 +20,7 @@
     "location_label": "Où nous trouver",
     "location_titolo": "Fraz. Etral 8, Jovençan",
     "location_sottotitolo": "À 10 minutes d'Aoste.",
-    "location_maps": "Ouvrir dans Google Maps",
-    "impasto_titolo": "Découvrez notre pâte",
-    "impasto_hint": "Touchez pour en savoir plus"
+    "location_maps": "Ouvrir dans Google Maps"
   },
   "menu": {
     "titolo": "Notre",
@@ -31,7 +28,10 @@
     "cibo": "Nourriture",
     "bevande": "Boissons",
     "dolci": "Desserts",
-    "altre_categorie": "Autres catégories"
+    "altre_categorie": "Autres catégories",
+    "filtra": "Filtrer",
+    "filtra_per": "Filtrer par",
+    "tutte": "Toutes"
   },
   "prenota": {
     "titolo": "Viens nous voir",
@@ -48,14 +48,15 @@
     "titolo_em": "pizzas",
     "descrizione": "Essayez d'attraper le plus de pizzas possible, mais attention aux bombes !",
     "scroll_hint": "Fais défiler pour jouer",
-    "score": "Score",
-    "target": "Objectif",
     "premio_titolo": "Le Prix",
     "premio_testo": "Atteignez 50 pizzas et gagnez un petit cadeau à la caisse !",
     "premio_locked": "Verrouillé",
+    "premio_unlocked": "Récupère ton cadeau !",
+    "premio_cassa": "Bravo ! Viens à la caisse et montre cet écran : un petit cadeau t'attend. 🍕",
+    "record_label": "Ton record :",
     "top_players": "Meilleurs Joueurs",
     "intro_titolo": "Prêt, chevalier ?",
-    "intro_testo": "Entrez votre nom pour apparaître dans le classement. Touchez l'écran pour changer de direction.",
+    "intro_testo": "Entrez votre nom !",
     "intro_btn": "Commencer à jouer",
     "preload": "Chargement des ressources...",
     "victory_title": "Tu as gagné !",
@@ -66,6 +67,6 @@
   "footer": {
     "indirizzo": "Fraz. Etral 8, Jovençan (AO)",
     "orari": "Jeu–Lun 18h00–23h00",
-    "copyright": "© 1994–2025 Pizzeria Avalon. Tous droits réservés."
+    "copyright": "© 1994–2026 Pizzeria Avalon. Tous droits réservés."
   }
 }

@@ -1,9 +1,24 @@
 /* --------HOME BODY -----------*/
 body.home {
-  background-color: #FFF;
+  --home-grain: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-color: var(--color-crema);
+  background-image:
+    var(--home-grain),
+    var(--home-grain),
+    linear-gradient(var(--color-crema), var(--color-crema));
+  background-size: 64px 64px, 128px 128px, auto;
+  background-repeat: repeat, repeat, no-repeat;
+  background-attachment: fixed, fixed, fixed;
+  background-blend-mode: soft-light, overlay, normal;
+  overflow-x: clip;
   /* Spinge il contenuto sotto la safe-area-top per non finire dietro la
      dynamic island (richiede viewport-fit=cover nel meta viewport). */
   padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: calc(4.25rem + env(safe-area-inset-bottom));
+}
+
+body.home .page-wrapper {
+  background-color: transparent;
 }
 
 /* Overlay nero fisso che copre solo la safe-area-top (status bar iOS).
@@ -25,55 +40,51 @@ body.home {
 .hero {
   position: relative;
   min-height: calc(100svh - 5.5rem - var(--space-8));
-  /* altezza piena della viewport */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .hero__img {
   position: absolute;
   inset: 0;
-  /* equivale a top:0; right:0; bottom:0; left:0 */
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* copre tutto senza distorcersi */
   z-index: var(--z-base);
 }
 
+/* Mobile: scurimento uniforme dell'immagine + scrim più marcato in alto (zona
+   titolo) e in basso (zona bottoni) così il testo chiaro resta leggibile,
+   mentre la pizza al centro resta ben visibile. */
 .hero__overlay {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(to bottom,
-      rgba(0, 0, 0, 0.5) 30%,
-      /* scuro in alto — badge leggibile */
-      transparent 44%
-      /* sparisce a metà */
-    ),
-    linear-gradient(to bottom,
-      transparent 30%,
-      /* inizia trasparente a metà */
-      rgba(255, 255, 255, 1) 100%
-      /* bianco in basso — bottoni */
+    linear-gradient(rgba(20, 12, 6, 0.30), rgba(20, 12, 6, 0.30)),
+    linear-gradient(
+      to bottom,
+      rgba(20, 12, 6, 0.58) 0%,
+      rgba(20, 12, 6, 0.18) 30%,
+      rgba(20, 12, 6, 0.26) 58%,
+      rgba(20, 12, 6, 0.66) 84%,
+      rgba(20, 12, 6, 0.82) 100%
     );
   z-index: var(--z-raised);
 }
 
 .hero__content {
-  position: absolute;
-  top: 33%;
-  left: 0;
-  right: 0;
+  position: relative;
   z-index: var(--z-raised);
-  color: var(--color-bg);
+  color: var(--color-crema);
   text-align: center;
-  padding: var(--space-6);
+  padding: var(--space-8) var(--space-5);
   max-width: 42rem;
   margin-inline: auto;
+  width: 100%;
 }
 
-
 .hero__eyebrow {
-  font-size: var(--text-sm);
   font-weight: var(--weight-medium);
   color: var(--color-crema);
   margin-bottom: var(--space-3);
@@ -88,29 +99,35 @@ body.home {
 
 .hero__title {
   font-family: var(--font-heading);
-  font-size: clamp(2.5rem, 10vw, var(--text-5xl));
+  font-size: clamp(2.75rem, 11vw, var(--text-5xl));
   font-weight: var(--weight-bold);
   margin-bottom: var(--space-2);
-  line-height: 1.1;
-  color: var(--color-brown);
+  line-height: 1.05;
+  color: var(--color-crema);
+  text-shadow:
+    0 2px 4px rgba(20, 12, 6, 0.9),
+    0 4px 24px rgba(20, 12, 6, 0.7);
 }
 
 .hero__title em {
-  font-size: clamp(3.5rem, 14vw, 6.5rem);
-  color: var(--color-red);
+  font-size: clamp(3.75rem, 15vw, 7rem);
+  color: #E8482C;
   font-style: italic;
+  text-shadow:
+    0 2px 6px rgba(20, 12, 6, 0.95),
+    0 0 28px rgba(232, 72, 44, 0.55);
 }
 
 .hero__subtitle {
   font-size: var(--text-base);
   font-weight: var(--weight-regular);
-  color: var(--color-brown);
-  opacity: 0.85;
-
+  color: var(--color-crema);
+  opacity: 0.92;
+  text-shadow: 0 1px 12px rgba(20, 12, 6, 0.5);
 }
 
 .hero__actions {
-  margin-top: var(--space-10);
+  margin-top: var(--space-6);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -118,24 +135,119 @@ body.home {
   flex-direction: column;
 }
 
+/* Mobile: hero a tutta pagina, titolo in alto e bottoni in fondo (sotto la
+   pizza, senza coprirla); immagine reinquadrata per mostrare la fiamma a destra. */
+@media (max-width: 767px) {
+  .hero {
+    min-height: 100svh;
+  }
+
+  .hero__img {
+    object-position: 64% center;
+  }
+
+  .hero__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: calc(env(safe-area-inset-top, 0px) + var(--space-16) + 160px);
+    padding-bottom: calc(6.5rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  .hero__actions {
+    margin-top: auto;
+    width: 100%;
+  }
+}
+
 @media (min-width: 768px) {
+  .hero {
+    min-height: calc(100svh - env(safe-area-inset-top, 0px));
+    justify-content: center;
+  }
+
+  /* Scrim laterale sul lato del testo + leggero scurimento uniforme;
+     lieve sfumatura crema in basso per fondersi con la sezione orari. */
+  .hero__overlay {
+    background:
+      linear-gradient(rgba(20, 12, 6, 0.22), rgba(20, 12, 6, 0.22)),
+      linear-gradient(
+        105deg,
+        rgba(20, 12, 6, 0.8) 0%,
+        rgba(20, 12, 6, 0.45) 38%,
+        rgba(20, 12, 6, 0.1) 64%,
+        transparent 82%
+      ),
+      linear-gradient(
+        to top,
+        var(--color-crema) 0%,
+        rgba(253, 246, 238, 0) 14%
+      );
+  }
+
+  .hero__content {
+    text-align: left;
+    max-width: 36rem;
+    margin-inline: 0;
+    padding: var(--space-12) var(--space-10);
+  }
+
+  .hero__title {
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    color: var(--color-crema);
+    text-shadow: 0 2px 18px rgba(20, 12, 6, 0.45);
+  }
+
+  .hero__title em {
+    font-size: clamp(4rem, 8vw, 7rem);
+  }
+
+  .hero__subtitle {
+    color: var(--color-crema);
+    opacity: 0.92;
+    text-shadow: 0 1px 12px rgba(20, 12, 6, 0.5);
+  }
+
   .hero__actions {
     flex-direction: row;
+    justify-content: flex-start;
     flex-wrap: wrap;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero {
+    min-height: 100svh;
+  }
+
+  .hero__content {
+    max-width: 44rem;
+    padding: var(--space-16);
+  }
+
+  .hero__title {
+    font-size: clamp(3rem, 5vw, 5rem);
+  }
+
+  .hero__title em {
+    font-size: clamp(4.5rem, 7vw, 7.5rem);
   }
 }
 
 .btn {
   width: 100%;
-  /* occupa tutto il contenitore */
   max-width: 380px;
-  /* ma non supera 350px */
   padding: var(--space-5) var(--space-6);
   border-radius: var(--radius-xl);
   font-weight: var(--weight-bold);
+}
 
-
-
+@media (min-width: 768px) {
+  .hero .btn {
+    width: auto;
+    max-width: none;
+  }
 }
 
 .btn-primary {
@@ -160,10 +272,23 @@ body.home {
   color: var(--color-bg);
 }
 
+/* Su hero scura il bottone outline diventa crema per leggibilità */
+.hero .btn-secondary {
+  color: var(--color-crema);
+  border-color: rgba(253, 246, 238, 0.7);
+  background-color: rgba(20, 12, 6, 0.18);
+}
+
+.hero .btn-secondary:hover {
+  background-color: var(--color-crema);
+  color: var(--color-brown);
+  border-color: var(--color-crema);
+}
+
 
 /* -------- ORARI -----------*/
 .orari {
-  padding: var(--space-5);
+  padding: var(--space-5) var(--space-4);
 }
 
 .orari__card {
@@ -292,12 +417,11 @@ body.home {
 
 /* -------- LOCATION ----------- */
 .location {
-  margin: 0 auto var(--space-12);
+  margin: 0 var(--space-4) var(--space-12);
   border-radius: var(--radius-xl);
   overflow: hidden;
   background-color: var(--color-bg3);
   box-shadow: var(--shadow-lg);
-  margin-bottom: var(--space-12);
 }
 
 .location__img-wrapper {
@@ -390,4 +514,207 @@ body.home {
 .location__btn svg {
   width: 1rem;
   height: 1rem;
+}
+
+/* -------- RESPONSIVE DESKTOP — orari e location ----------- */
+@media (min-width: 768px) {
+  body.home .page-wrapper {
+    max-width: 40rem;
+    margin-inline: auto;
+    padding-inline: 0;
+  }
+
+  .orari {
+    padding: var(--space-8) var(--space-4);
+  }
+}
+
+/* -------- FOOTER PREMIUM (home) ----------- */
+body.home .footer {
+  position: relative;
+  background-color: #2d1d1d;
+  background-image:
+    var(--home-grain),
+    var(--home-grain),
+    linear-gradient(#2d1d1d, #2d1d1d);
+  background-size: 64px 64px, 128px 128px, auto;
+  background-repeat: repeat, repeat, no-repeat;
+  background-attachment: fixed, fixed, fixed;
+  background-blend-mode: soft-light, overlay, normal;
+  color: var(--color-crema);
+  margin: var(--space-10) var(--space-4) 20px;
+  padding: var(--space-8) var(--space-6);
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(253, 246, 238, 0.1);
+  box-shadow:
+    0 12px 40px rgba(26, 16, 8, 0.22),
+    0 2px 8px rgba(26, 16, 8, 0.12);
+  overflow: hidden;
+  max-width: none;
+  width: auto;
+}
+
+body.home .footer__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.06) 0%, transparent 42%),
+    linear-gradient(to bottom, transparent 70%, rgba(0, 0, 0, 0.15) 100%);
+  pointer-events: none;
+}
+
+body.home .footer__content,
+body.home .footer__social,
+body.home .footer__legal,
+body.home .footer__text {
+  position: relative;
+  z-index: 1;
+}
+
+body.home .footer__title.brand-logo {
+  font-size: clamp(1.75rem, 4.5vw, 2.35rem);
+  font-weight: var(--weight-regular);
+  letter-spacing: 0;
+  margin-bottom: var(--space-5);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid rgba(253, 246, 238, 0.12);
+}
+
+body.home .footer__title.brand-logo .brand-logo__prefix {
+  color: rgba(253, 246, 238, 0.92);
+}
+
+body.home .footer__title.brand-logo .brand-logo__name {
+  color: #e8a090;
+}
+
+body.home .footer__address {
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+
+body.home .footer__contact-row {
+  gap: var(--space-3);
+  margin-bottom: 0;
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  color: rgba(253, 246, 238, 0.88);
+}
+
+body.home .footer__contact-row svg {
+  width: 1.05rem;
+  height: 1.05rem;
+  flex-shrink: 0;
+  color: #e8a090;
+  stroke-width: 1.75px;
+}
+
+body.home .footer__contact-row a {
+  color: rgba(253, 246, 238, 0.92);
+  transition: color var(--transition-fast);
+}
+
+body.home .footer__contact-row a:hover {
+  color: var(--color-bg);
+}
+
+body.home .footer__social {
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid rgba(253, 246, 238, 0.1);
+}
+
+body.home .footer__social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(253, 246, 238, 0.14);
+  background-color: rgba(255, 255, 255, 0.04);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--color-crema);
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+body.home .footer__social-link:hover {
+  background-color: rgba(177, 44, 22, 0.25);
+  border-color: rgba(232, 160, 144, 0.35);
+  transform: translateY(-1px);
+}
+
+body.home .footer__social-link svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+body.home .footer__legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-5);
+  margin-top: 0;
+  padding-top: var(--space-4);
+  border-top: 1px solid rgba(253, 246, 238, 0.1);
+  font-size: var(--text-xs);
+  letter-spacing: 0.03em;
+}
+
+body.home .footer__legal a {
+  color: rgba(253, 246, 238, 0.65);
+  transition: color var(--transition-fast);
+}
+
+body.home .footer__legal a:hover {
+  color: var(--color-crema);
+}
+
+body.home .footer__text {
+  margin-top: var(--space-4);
+  padding-top: var(--space-3);
+  font-size: var(--text-xs);
+  color: rgba(253, 246, 238, 0.45);
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+}
+
+@media (min-width: 768px) {
+  body.home .footer {
+    padding: var(--space-10) var(--space-8);
+    max-width: 40rem;
+    margin-inline: auto;
+    margin-bottom: 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  body.home .footer {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "content social"
+      "legal legal"
+      "copy copy";
+    column-gap: var(--space-10);
+    row-gap: var(--space-4);
+    padding: var(--space-10) var(--space-8);
+  }
+
+  body.home .footer__content { grid-area: content; }
+  body.home .footer__social {
+    grid-area: social;
+    align-self: start;
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  body.home .footer__legal { grid-area: legal; }
+  body.home .footer__text { grid-area: copy; }
 }
