@@ -139,7 +139,9 @@ body.home .page-wrapper {
    pizza, senza coprirla); immagine reinquadrata per mostrare la fiamma a destra. */
 @media (max-width: 767px) {
   .hero {
+    min-height: 100vh;
     min-height: 100svh;
+    min-height: 100dvh;
   }
 
   .hero__img {
