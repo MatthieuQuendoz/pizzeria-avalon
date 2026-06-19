@@ -21,7 +21,19 @@ html {
 
 /* ========SHARED===========*/
 
-
+/* Overlay fisso che copre solo la safe-area-top (status bar / dynamic island iOS).
+   Su browser senza notch env() vale 0 → overlay alto 0px, invisibile.
+   Necessario perché Chrome iOS ignora <meta name="theme-color">. */
+.status-bar-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: env(safe-area-inset-top, 0px);
+  background-color: #000000;
+  z-index: 9999;
+  pointer-events: none;
+}
 
 /* -------- LANG SWITCHER ----------- */
 .lang-switcher {
