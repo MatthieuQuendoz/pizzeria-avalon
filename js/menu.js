@@ -383,28 +383,37 @@ function mostraPizze(categoria) {
     }
 
     // — destra: immagine —
-    const media = document.createElement('div');
-    media.classList.add('item-card__media');
+    // Momentaneamente nascosta per tutta la categoria Bevande: solo testo.
+    const mostraMedia = menuFileCorrente !== 'menu-bevande.json';
 
-    if (item.immagine) {
-      const img = document.createElement('img');
-      img.src = item.immagine;
-      img.alt = item.nome;
-      img.width = 200;
-      img.height = 200;
-      img.loading = 'lazy';
-      img.decoding = 'async';
-      img.classList.add('item-card__img');
-      media.appendChild(img);
+    if (mostraMedia) {
+      const media = document.createElement('div');
+      media.classList.add('item-card__media');
+
+      if (item.immagine) {
+        const img = document.createElement('img');
+        img.src = item.immagine;
+        img.alt = item.nome;
+        img.width = 200;
+        img.height = 200;
+        img.loading = 'lazy';
+        img.decoding = 'async';
+        img.classList.add('item-card__img');
+        media.appendChild(img);
+      } else {
+        const placeholder = document.createElement('div');
+        placeholder.classList.add('item-card__placeholder');
+        placeholder.textContent = '🍕';
+        media.appendChild(placeholder);
+      }
+
+      card.appendChild(body);
+      card.appendChild(media);
     } else {
-      const placeholder = document.createElement('div');
-      placeholder.classList.add('item-card__placeholder');
-      placeholder.textContent = '🍕';
-      media.appendChild(placeholder);
+      card.classList.add('item-card--no-media');
+      card.appendChild(body);
     }
 
-    card.appendChild(body);
-    card.appendChild(media);
     container.appendChild(card);
   });
 

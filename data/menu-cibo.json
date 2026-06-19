@@ -133,7 +133,7 @@
         },
         {
           "nome": "Olive",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/rosse/olive.webp",
           "descrizione": {
             "it": "Passata di pomodoro, mozzarella e olive",
             "fr": "Sauce tomate, mozzarella et olives",
@@ -572,7 +572,7 @@
         },
         {
           "nome": "Mon petit amour",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/rosse/monpetitamour.webp",
           "descrizione": {
             "it": "Passata di pomodoro, pomodorini, mozzarella di bufala, salmone, insalata e pepe rosa",
             "fr": "Sauce tomate, tomates cerises, mozzarella de bufflonne, saumon, salade et poivre rose",
@@ -784,7 +784,7 @@
       "items": [
         {
           "nome": "Gorgo e cipolla",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/bianche/gorgocipolla.webp",
           "descrizione": {
             "it": "Mozzarella, gorgonzola e cipolle",
             "fr": "Mozzarella, gorgonzola et oignons",
@@ -836,7 +836,7 @@
         },
         {
           "nome": "Carciofi",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/bianche/carciofi.webp",
           "descrizione": {
             "it": "Crema di carciofi, mozzarella e carciofi",
             "fr": "Crème d'artichauts, mozzarella et artichauts",
@@ -1150,7 +1150,7 @@
         },
         {
           "nome": "Quattro venti",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/bianche/quattroventi.webp",
           "descrizione": {
             "it": "Mozzarella, pancetta stufata, uova sode, insalata, asparagi e parmigiano",
             "fr": "Mozzarella, lardons braisés, œufs durs, salade, asperges et parmesan",
@@ -1161,7 +1161,7 @@
         },
         {
           "nome": "Rustica valdostana",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/bianche/rusticavaldostana.webp",
           "descrizione": {
             "it": "Mozzarella, fonduta, Fontina dop e porcini",
             "fr": "Mozzarella, fondue, Fontina dop et cèpes",
@@ -1614,7 +1614,7 @@
         },
         {
           "nome": "Caprese con Bufala",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/periniziare/caprese.webp",
           "descrizione": {
             "it": "Mozzarella di bufala, pomodori e basilico",
             "fr": "Mozzarella de bufflonne, tomates et basilic",
@@ -1627,7 +1627,7 @@
         },
         {
           "nome": "Crudo e Ananas",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/periniziare/crudoeananas.webp",
           "descrizione": {
             "it": "Prosciutto crudo e ananas fresco",
             "fr": "Jambon cru et ananas frais",
@@ -1709,7 +1709,7 @@
         },
         {
           "nome": "Insalata Avalon",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/insalate/insavalon.webp",
           "descrizione": {
             "it": "Verde, radicchio, rucola, Fontina dop, mele, noci e pinoli",
             "fr": "Salade verte, radicchio, roquette, Fontina dop, pommes, noix et pignons",
@@ -1871,7 +1871,7 @@
         },
         {
           "nome": "Pluto",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/bimbi/pluto.webp",
           "descrizione": {
             "it": "Wurstel grigliato con patatine fritte e salse",
             "fr": "Saucisse grillée avec frites et sauces",
