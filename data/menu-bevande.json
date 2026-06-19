@@ -22,9 +22,9 @@
                         "en": "Forst brewery, Kronen model"
                     },
                     "prezzi": {
-                        "piccola (20cl)": 2.50,
-                        "media (40cl)": 4.00,
-                        "caraffa (1L)": 8.00
+                        "piccola (20cl)": 3.50,
+                        "media (40cl)": 6.50,
+                        "caraffa (1L)": 14.00
                     },
                     "tag": []
                 },
@@ -42,9 +42,9 @@
                         "en": "Forst brewery"
                     },
                     "prezzi": {
-                        "piccola (20cl)": 2.50,
-                        "media (40cl)": 4.00,
-                        "caraffa (1L)": 8.00
+                        "piccola (20cl)": 4.50,
+                        "media (40cl)": 8.00,
+                        "caraffa (1L)": 15.00
                     },
                     "tag": []
                 },
@@ -62,9 +62,9 @@
                         "en": "Forst brewery"
                     },
                     "prezzi": {
-                        "piccola (20cl)": 2.50,
-                        "media (40cl)": 4.00,
-                        "caraffa (1L)": 8.00
+                        "piccola (20cl)": 3.50,
+                        "media (40cl)": 6.50,
+                        "caraffa (1L)": 14.00
                     },
                     "tag": []
                 }
@@ -86,7 +86,7 @@
                         "fr": "Bière au goût décidé et puissant, tout comme la fille que vous avez rencontrée sur Tinder.",
                         "en": "A bold and assertive beer, just like the girl you met on Tinder."
                     },
-                    "prezzo": 4.00,
+                    "prezzo": 6.00,
                     "note": "33cl",
                     "tag": []
                 },
@@ -98,7 +98,7 @@
                         "fr": "Bière à la mousse persistante, de couleur intense avec des notes épicées de poivre grâce à l'ajout de 10% de riz de Vercelli.",
                         "en": "Beer with persistent foam, intense color and spiced notes of pepper thanks to 10% Vercelli rice."
                     },
-                    "prezzo": 4.00,
+                    "prezzo": 6.00,
                     "note": "33cl",
                     "tag": []
                 },
@@ -110,7 +110,7 @@
                         "fr": "Bière qui laisse un arrière-goût amer et un picotement alléchant.",
                         "en": "Beer that leaves a bitter aftertaste and a tantalizing tingle."
                     },
-                    "prezzo": 4.00,
+                    "prezzo": 6.00,
                     "note": "33cl",
                     "tag": []
                 },
@@ -122,7 +122,7 @@
                         "fr": "Bière blonde à basse fermentation, très facile à boire avec 8,5% d'alcool. Peu d'amertume, parfaite pour toute occasion.",
                         "en": "Light lager, super drinkable at 8.5% alcohol. Low bitterness, perfect for any occasion."
                     },
-                    "prezzo": 4.00,
+                    "prezzo": 6.00,
                     "note": "33cl",
                     "tag": []
                 }
@@ -144,7 +144,7 @@
                         "fr": "De seigle. Hommage au Pain Noir valdôtain avec des notes croustillantes, acidité et arômes de malts de seigle et d'orge.",
                         "en": "Rye beer. A tribute to Valdostan Black Bread with crunchy notes, acidity and aromas of rye and barley malts."
                     },
-                    "prezzo": 5.00,
+                    "prezzo": 6.00,
                     "note": "33cl",
                     "tag": []
                 },
@@ -156,7 +156,7 @@
                         "fr": "Saison ambrée et légèrement amère avec des notes de fruits mûrs, zeste d'orange et poivre.",
                         "en": "Amber Saison, slightly bitter with notes of ripe fruit, orange peel and pepper."
                     },
-                    "prezzo": 5.00,
+                    "prezzo": 6.00,
                     "note": "33cl",
                     "tag": []
                 },
@@ -168,7 +168,7 @@
                         "fr": "Pilsner raffinée qui unit des senteurs de miel, céréales et houblons allemands.",
                         "en": "Refined Pilsner combining honey, grain and German hop aromas."
                     },
-                    "prezzo": 5.00,
+                    "prezzo": 6.00,
                     "note": "33cl",
                     "tag": []
                 }
@@ -190,8 +190,11 @@
                         "fr": "Blanche jaune paille avec des notes agrumées et épicées. Harmonie de céréales et agrumes en bouche.",
                         "en": "Straw yellow blanche with citrus and spiced notes. Harmony of cereals and citrus on the palate."
                     },
-                    "prezzo": 6.00,
-                    "note": "33cl",
+                    "prezzi": {
+                        "33cl": 6.00,
+                        "75cl": 13.00,
+                        "150cl": 25.00
+                    },
                     "tag": []
                 },
                 {
@@ -214,7 +217,7 @@
                         "fr": "Bière jaune intense sans gluten. Légère note sèche du riz, équilibrée avec l'amertume du houblon italien.",
                         "en": "Intense yellow gluten-free beer. Subtle dry note from rice, balanced with Italian hop bitterness."
                     },
-                    "prezzo": 6.50,
+                    "prezzo": 6.00,
                     "note": "33cl",
                     "tag": [
                         "senza glutine"
@@ -252,8 +255,11 @@
                         "fr": "Bière ambrée avec des arômes de fruits cuits, vanille, toffee et orange. Notes de biscuit et amande.",
                         "en": "Amber beer with cooked fruit, vanilla, toffee and orange aromas. Biscuit and almond notes."
                     },
-                    "prezzo": 6.00,
-                    "note": "33cl",
+                    "prezzi": {
+                        "33cl": 6.00,
+                        "75cl": 13.00,
+                        "150cl": 25.00
+                    },
                     "tag": []
                 },
                 {
@@ -276,8 +282,11 @@
                         "fr": "Bière ambrée avec des arômes de céréale, biscuit et agrumes. Notes de fruits secs, biscuit et vanille.",
                         "en": "Amber beer with cereal, biscuit and citrus aromas. Dried fruit, biscuit and vanilla notes."
                     },
-                    "prezzo": 6.00,
-                    "note": "33cl",
+                    "prezzi": {
+                        "33cl": 6.00,
+                        "75cl": 13.00,
+                        "150cl": 25.00
+                    },
                     "tag": []
                 },
                 {
@@ -326,7 +335,7 @@
                         "fr": "Tu dois conduire? Notre bière sans alcool.",
                         "en": "Need to drive? Our non-alcoholic beer."
                     },
-                    "prezzo": 3.50,
+                    "prezzo": 6.00,
                     "note": "33cl",
                     "tag": [
                         "analcolica"
@@ -350,7 +359,7 @@
                         "fr": "Dante Rivei. Raisins nebbiolo des collines Bricco di Neive, 12 mois en fûts de chêne. Prune, fruits rouges et épices douces.",
                         "en": "Dante Rivei. Nebbiolo grapes from Bricco di Neive hills, 12 months in oak barrels. Plum, red fruits and sweet spices."
                     },
-                    "prezzo": 22.00,
+                    "prezzo": 28.00,
                     "tag": []
                 },
                 {
@@ -361,7 +370,7 @@
                         "fr": "Albino Armani. Corvina, rondinella et corvinone. Notes de fruits rouges, prune, cyclamen et légère note balsamique.",
                         "en": "Albino Armani. Corvina, rondinella and corvinone. Red fruit, plum, cyclamen and light balsamic notes."
                     },
-                    "prezzo": 22.00,
+                    "prezzo": 21.00,
                     "tag": []
                 },
                 {
@@ -372,7 +381,7 @@
                         "fr": "Vin originaire de Jovençan. Rouge rubis avec des notes de tanin, pepe nero et clou de girofle.",
                         "en": "Wine from Jovençan. Ruby red with tannin, black pepper and clove notes."
                     },
-                    "prezzo": 22.00,
+                    "prezzo": 21.00,
                     "tag": [
                         "locale"
                     ]
@@ -385,7 +394,7 @@
                         "fr": "100% Pinot Noir. Fraise et fruits des bois, tannins veloutés, finale fraîche et minérale.",
                         "en": "100% Pinot Noir. Strawberry and wild berries, velvety tannins, fresh and mineral finish."
                     },
-                    "prezzo": 28.00,
+                    "prezzo": 27.00,
                     "tag": []
                 },
                 {
@@ -396,7 +405,7 @@
                         "fr": "Blend de variétés à baie noire. Rouge frais avec tannins doux, framboise et violette. Finale intense et persistante.",
                         "en": "Blend of black grape varieties. Fresh red with soft tannins, raspberry and violet. Intense and persistent finish."
                     },
-                    "prezzo": 25.00,
+                    "prezzo": 20.00,
                     "tag": []
                 },
                 {

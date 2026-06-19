@@ -16,7 +16,7 @@
             "fr": "Sauce tomate et mozzarella",
             "en": "Tomato sauce and mozzarella"
           },
-          "prezzo": 7.0,
+          "prezzo": 7.5,
           "tag": [
             "Classica"
           ]
@@ -311,7 +311,7 @@
             "fr": "Sauce tomate, mozzarella, gorgonzola et speck",
             "en": "Tomato sauce, mozzarella, gorgonzola and speck"
           },
-          "prezzo": 10.0,
+          "prezzo": 10.5,
           "tag": []
         },
         {
@@ -355,7 +355,7 @@
             "fr": "Sauce tomate, mozzarella, thon, céleri, anchois et poivrons",
             "en": "Tomato sauce, mozzarella, tuna, celery, anchovies and peppers"
           },
-          "prezzo": 10.0,
+          "prezzo": 10.5,
           "tag": []
         },
         {
@@ -366,7 +366,7 @@
             "fr": "Sauce tomate, mozzarella et champignons mélangés",
             "en": "Tomato sauce, mozzarella and mixed mushrooms"
           },
-          "prezzo": 10.0,
+          "prezzo": 10.5,
           "tag": [
             "vegetariana"
           ]
@@ -390,7 +390,7 @@
             "fr": "Sauce tomate, mozzarella et jambon cru",
             "en": "Tomato sauce, mozzarella and cured ham"
           },
-          "prezzo": 10.0,
+          "prezzo": 10.5,
           "tag": []
         },
         {
@@ -425,7 +425,7 @@
             "fr": "Sauce tomate, mozzarella, aubergines, gorgonzola, saucisse et champignons crus",
             "en": "Tomato sauce, mozzarella, eggplant, gorgonzola, sausage and raw champignon mushrooms"
           },
-          "prezzo": 11.0,
+          "prezzo": 11.5,
           "tag": []
         },
         {
@@ -436,7 +436,7 @@
             "fr": "Sauce tomate, mozzarella, gorgonzola, stracchino et fontina",
             "en": "Tomato sauce, mozzarella, gorgonzola, stracchino and fontina"
           },
-          "prezzo": 10.0,
+          "prezzo": 10.5,
           "tag": [
             "vegetariana"
           ]
@@ -449,7 +449,7 @@
             "fr": "Sauce tomate, mozzarella, champignons mélangés, saucisse et scamorza",
             "en": "Tomato sauce, mozzarella, mixed mushrooms, sausage and scamorza"
           },
-          "prezzo": 11.0,
+          "prezzo": 11.5,
           "tag": []
         },
         {
@@ -460,7 +460,7 @@
             "fr": "Sauce tomate, mozzarella, jambon cru, roquette et parmesan",
             "en": "Tomato sauce, mozzarella, cured ham, rocket and parmesan"
           },
-          "prezzo": 10.5,
+          "prezzo": 12.5,
           "tag": []
         },
         {
@@ -482,7 +482,7 @@
             "fr": "Sauce tomate, mozzarella, légumes frais et grillés",
             "en": "Tomato sauce, mozzarella, fresh and grilled vegetables"
           },
-          "prezzo": 11.0,
+          "prezzo": 11.5,
           "tag": [
             "vegetariana"
           ]
@@ -495,7 +495,7 @@
             "fr": "Sauce tomate, mozzarella, salade mixte",
             "en": "Tomato sauce, mozzarella, mixed salad"
           },
-          "prezzo": 11.0,
+          "prezzo": 11.5,
           "tag": [
             "vegetariana"
           ]
@@ -532,7 +532,7 @@
             "fr": "Sauce tomate, mozzarella de bufflonne, tomates cerises et basilic",
             "en": "Tomato sauce, buffalo mozzarella, cherry tomatoes and basil"
           },
-          "prezzo": 11.0,
+          "prezzo": 11.5,
           "tag": [
             "vegetariana"
           ]
@@ -545,7 +545,7 @@
             "fr": "Sauce tomate, mozzarella, jambon, cèpes, asperges, saucisse, œuf et parmesan",
             "en": "Tomato sauce, mozzarella, ham, porcini, asparagus, sausage, egg and parmesan"
           },
-          "prezzo": 13.0,
+          "prezzo": 12.5,
           "tag": []
         },
         {
@@ -556,7 +556,7 @@
             "fr": "Sauce tomate, mozzarella, stracchino, bresaola, noix et parmesan",
             "en": "Tomato sauce, mozzarella, stracchino, bresaola, walnuts and parmesan"
           },
-          "prezzo": 13.0,
+          "prezzo": 12.5,
           "tag": []
         },
         {
@@ -567,7 +567,7 @@
             "fr": "Sauce tomate, mozzarella, jambon, champignons, olives, saucisse et salami",
             "en": "Tomato sauce, mozzarella, ham, mushrooms, olives, sausage and salami"
           },
-          "prezzo": 13.0,
+          "prezzo": 12.5,
           "tag": []
         },
         {
@@ -578,7 +578,7 @@
             "fr": "Sauce tomate, tomates cerises, mozzarella de bufflonne, saumon, salade et poivre rose",
             "en": "Tomato sauce, cherry tomatoes, buffalo mozzarella, salmon, salad and pink pepper"
           },
-          "prezzo": 13.0,
+          "prezzo": 12.5,
           "tag": []
         },
         {
@@ -589,7 +589,7 @@
             "fr": "Sauce tomate, mozzarella, sauce truffée, jambon, fontina dop, poivrons et salami",
             "en": "Tomato sauce, mozzarella, truffle sauce, ham, fontina dop, peppers and salami"
           },
-          "prezzo": 13.0,
+          "prezzo": 12.5,
           "tag": []
         },
         {
@@ -600,7 +600,7 @@
             "fr": "Sauce tomate, mozzarella, gorgonzola, salami, frites et oignon",
             "en": "Tomato sauce, mozzarella, gorgonzola, salami, fries and onion"
           },
-          "prezzo": 11.0,
+          "prezzo": 12.5,
           "tag": []
         },
         {
@@ -611,7 +611,7 @@
             "fr": "Sauce tomate, mozzarella, haricots, saucisse, oignon et parmesan",
             "en": "Tomato sauce, mozzarella, beans, sausage, onion and parmesan"
           },
-          "prezzo": 13.0,
+          "prezzo": 11.5,
           "tag": []
         },
         {
@@ -622,7 +622,7 @@
             "fr": "Sauce tomate, mozzarella, spianata, haricots, oignons, œuf et parmesan",
             "en": "Tomato sauce, mozzarella, spianata, beans, onions, egg and parmesan"
           },
-          "prezzo": 11.0,
+          "prezzo": 12.0,
           "tag": []
         },
         {
@@ -633,7 +633,7 @@
             "fr": "Sauce tomate, mozzarella et fruits de mer",
             "en": "Tomato sauce, mozzarella and seafood"
           },
-          "prezzo": 11.0,
+          "prezzo": 11.5,
           "tag": []
         },
         {
@@ -666,7 +666,7 @@
             "fr": "Sauce tomate, mozzarella, cèpes et Porchetta di Ariccia",
             "en": "Tomato sauce, mozzarella, porcini and Porchetta di Ariccia"
           },
-          "prezzo": 11.0,
+          "prezzo": 11.5,
           "tag": []
         },
         {
@@ -690,7 +690,7 @@
             "fr": "Sauce tomate, mozzarella, fontina dop, cèpes, crème et parmesan",
             "en": "Tomato sauce, mozzarella, fontina dop, porcini, cream and parmesan"
           },
-          "prezzo": 11.0,
+          "prezzo": 11.5,
           "tag": []
         },
         {
@@ -701,7 +701,7 @@
             "fr": "Sauce tomate, mozzarella, câpres, anchois, échalote et vinaigre balsamique",
             "en": "Tomato sauce, mozzarella, capers, anchovies, shallot and balsamic vinegar"
           },
-          "prezzo": 11.0,
+          "prezzo": 11.5,
           "tag": []
         },
         {
@@ -842,7 +842,7 @@
             "fr": "Crème d'artichauts, mozzarella et artichauts",
             "en": "Artichoke cream, mozzarella and artichokes"
           },
-          "prezzo": 10.0,
+          "prezzo": 10.5,
           "tag": [
             "vegetariana"
           ]
@@ -855,7 +855,7 @@
             "fr": "Crème d'asperges, mozzarella et asperges",
             "en": "Asparagus cream, mozzarella and asparagus"
           },
-          "prezzo": 10.0,
+          "prezzo": 10.5,
           "tag": [
             "vegetariana"
           ]
@@ -868,7 +868,7 @@
             "fr": "Mozzarella, pommes de terre, poireaux et ricotta",
             "en": "Mozzarella, boiled potatoes, leeks and ricotta"
           },
-          "prezzo": 10.0,
+          "prezzo": 10.5,
           "tag": [
             "vegetariana"
           ]
@@ -881,7 +881,7 @@
             "fr": "Mozzarella, pommes de terre, cèpes et ricotta",
             "en": "Mozzarella, boiled potatoes, porcini and ricotta"
           },
-          "prezzo": 10.0,
+          "prezzo": 10.5,
           "tag": [
             "vegetariana"
           ]
@@ -894,7 +894,7 @@
             "fr": "Mozzarella, anchois et raisins secs",
             "en": "Mozzarella, anchovies and raisins"
           },
-          "prezzo": 10.0,
+          "prezzo": 10.5,
           "tag": []
         },
         {
@@ -905,7 +905,7 @@
             "fr": "Mozzarella, crevettes et pommes",
             "en": "Mozzarella, shrimps and apples"
           },
-          "prezzo": 10.0,
+          "prezzo": 10.5,
           "tag": []
         },
         {
@@ -916,7 +916,7 @@
             "fr": "Mozzarella, pesto, ricotta et parmesan",
             "en": "Mozzarella, pesto, ricotta and parmesan"
           },
-          "prezzo": 10.0,
+          "prezzo": 10.5,
           "tag": [
             "vegetariana"
           ]
@@ -929,7 +929,7 @@
             "fr": "Mozzarella, crème, champignons frais et parmesan",
             "en": "Mozzarella, cream, fresh mushrooms and parmesan"
           },
-          "prezzo": 10.0,
+          "prezzo": 10.5,
           "tag": [
             "vegetariana"
           ]
@@ -942,7 +942,7 @@
             "fr": "Mozzarella, gorgonzola, stracchino et poivrons",
             "en": "Mozzarella, gorgonzola, stracchino and peppers"
           },
-          "prezzo": 11.0,
+          "prezzo": 11.5,
           "tag": [
             "vegetariana"
           ]
@@ -955,7 +955,7 @@
             "fr": "Mozzarella, gorgonzola, miel et noix",
             "en": "Mozzarella, gorgonzola, honey and walnuts"
           },
-          "prezzo": 10.0,
+          "prezzo": 10.5,
           "tag": [
             "vegetariana"
           ]
@@ -968,7 +968,7 @@
             "fr": "Mozzarella, citron, ananas, ricotta et artichauts",
             "en": "Mozzarella, lemon, pineapple, ricotta and artichokes"
           },
-          "prezzo": 10.0,
+          "prezzo": 10.5,
           "tag": [
             "vegetariana"
           ]
@@ -981,7 +981,7 @@
             "fr": "Mozzarella, saumon et salade",
             "en": "Mozzarella, salmon and salad"
           },
-          "prezzo": 10.0,
+          "prezzo": 10.5,
           "tag": []
         },
         {
@@ -992,20 +992,20 @@
             "fr": "Mozzarella, gorgonzola, stracchino, parmesan, noix et radicchio après cuisson",
             "en": "Mozzarella, gorgonzola, stracchino, parmesan, walnuts and radicchio after baking"
           },
-          "prezzo": 11.0,
+          "prezzo": 11.5,
           "tag": [
             "vegetariana"
           ]
         },
         {
           "nome": "Della nonna",
-          "immagine": "assets/menu/pizzas/bianche/delnonno.webp",
+          "immagine": null,
           "descrizione": {
             "it": "Mozzarella, stracchino, patate lesse, tonno e erbetta cipollina",
             "fr": "Mozzarella, stracchino, pommes de terre, thon et ciboulette",
             "en": "Mozzarella, stracchino, boiled potatoes, tuna and chives"
           },
-          "prezzo": 11.0,
+          "prezzo": 11.5,
           "tag": []
         },
         {
@@ -1016,7 +1016,7 @@
             "fr": "Crème de cèpes, mozzarella et cèpes",
             "en": "Porcini cream, mozzarella and porcini"
           },
-          "prezzo": 11.0,
+          "prezzo": 11.5,
           "tag": [
             "vegetariana"
           ]
@@ -1029,7 +1029,7 @@
             "fr": "Mozzarella, tomates cerises, saucisse et champignons",
             "en": "Mozzarella, cherry tomatoes, sausage and mushrooms"
           },
-          "prezzo": 10.0,
+          "prezzo": 10.5,
           "tag": []
         },
         {
@@ -1040,7 +1040,7 @@
             "fr": "Pesto, mozzarella, tomates cerises, stracchino, origan et parmesan",
             "en": "Pesto, mozzarella, cherry tomatoes, stracchino, oregano and parmesan"
           },
-          "prezzo": 11.0,
+          "prezzo": 11.5,
           "tag": [
             "vegetariana"
           ]
@@ -1053,7 +1053,7 @@
             "fr": "Crème d'asperges ou d'artichauts, mozzarella, légumes frais et grillés",
             "en": "Asparagus or artichoke cream, mozzarella, fresh and grilled vegetables"
           },
-          "prezzo": 13.0,
+          "prezzo": 12.0,
           "tag": [
             "vegetariana"
           ]
@@ -1079,7 +1079,7 @@
             "fr": "Mozzarella, miel, gorgonzola, pommes, jambon cru et parmesan",
             "en": "Mozzarella, honey, gorgonzola, apples, cured ham and parmesan"
           },
-          "prezzo": 11.0,
+          "prezzo": 12.5,
           "tag": []
         },
         {
@@ -1112,7 +1112,7 @@
             "fr": "Mozzarella, tomates cerises, lardons braisés, oignon rouge, roquette et parmesan",
             "en": "Mozzarella, cherry tomatoes, braised bacon, red onion, rocket and parmesan"
           },
-          "prezzo": 11.0,
+          "prezzo": 11.5,
           "tag": []
         },
         {
@@ -1123,7 +1123,7 @@
             "fr": "Mozzarella, sauce aux noix, bresaola, amandes, roquette et parmesan",
             "en": "Mozzarella, walnut sauce, bresaola, almonds, rocket and parmesan"
           },
-          "prezzo": 11.0,
+          "prezzo": 11.5,
           "tag": []
         },
         {
@@ -1134,7 +1134,7 @@
             "fr": "Mozzarella, pommes de terre, lardons braisés, saucisse et romarin",
             "en": "Mozzarella, boiled potatoes, braised bacon, sausage and rosemary"
           },
-          "prezzo": 11.0,
+          "prezzo": 11.5,
           "tag": []
         },
         {
@@ -1145,7 +1145,7 @@
             "fr": "Crème de cèpes, mozzarella, speck et roquette",
             "en": "Porcini cream, mozzarella, speck and rocket"
           },
-          "prezzo": 11.0,
+          "prezzo": 11.5,
           "tag": []
         },
         {
@@ -1156,7 +1156,7 @@
             "fr": "Mozzarella, lardons braisés, œufs durs, salade, asperges et parmesan",
             "en": "Mozzarella, braised bacon, hard-boiled eggs, salad, asparagus and parmesan"
           },
-          "prezzo": 11.0,
+          "prezzo": 11.5,
           "tag": []
         },
         {
@@ -1167,7 +1167,7 @@
             "fr": "Mozzarella, fondue, Fontina dop et cèpes",
             "en": "Mozzarella, fondue, Fontina dop and porcini"
           },
-          "prezzo": 13.0,
+          "prezzo": 11.5,
           "tag": [
             "vegetariana"
           ]
@@ -1180,7 +1180,7 @@
             "fr": "Mozzarella, fondue, Fontina dop, noix et jambon cru",
             "en": "Mozzarella, fondue, Fontina dop, walnuts and cured ham"
           },
-          "prezzo": 13.0,
+          "prezzo": 12.0,
           "tag": []
         },
         {
@@ -1191,7 +1191,7 @@
             "fr": "Crème d'asperges, mozzarella, asperges, tomates cerises et crevettes",
             "en": "Asparagus cream, mozzarella, asparagus, cherry tomatoes and shrimps"
           },
-          "prezzo": 13.0,
+          "prezzo": 11.5,
           "tag": []
         },
         {
@@ -1202,7 +1202,7 @@
             "fr": "Mozzarella, ricotta, épinards, lardons braisés, raisins secs, pignons et parmesan",
             "en": "Mozzarella, ricotta, spinach, braised bacon, raisins, pine nuts and parmesan"
           },
-          "prezzo": 11.0,
+          "prezzo": 11.5,
           "tag": []
         },
         {
@@ -1213,7 +1213,7 @@
             "fr": "Crème d'asperges, speck, mozzarella, crème, asperges, poivre rose et salade",
             "en": "Asparagus cream, speck, mozzarella, cream, asparagus, pink pepper and salad"
           },
-          "prezzo": 11.0,
+          "prezzo": 11.5,
           "tag": []
         },
         {
@@ -1224,7 +1224,7 @@
             "fr": "Sauce truffée, mozzarella, gorgonzola et parmesan",
             "en": "Truffle sauce, mozzarella, gorgonzola and parmesan"
           },
-          "prezzo": 11.0,
+          "prezzo": 11.5,
           "tag": [
             "vegetariana"
           ]
@@ -1237,7 +1237,7 @@
             "fr": "Sauce truffée, mozzarella et cèpes",
             "en": "Truffle sauce, mozzarella and porcini"
           },
-          "prezzo": 11.0,
+          "prezzo": 11.5,
           "tag": [
             "vegetariana"
           ]
@@ -1250,7 +1250,7 @@
             "fr": "Sauce truffée, mozzarella, cèpes et pommes de terre",
             "en": "Truffle sauce, mozzarella, porcini and boiled potatoes"
           },
-          "prezzo": 11.0,
+          "prezzo": 11.5,
           "tag": [
             "vegetariana"
           ]
@@ -1263,7 +1263,7 @@
             "fr": "Sauce truffée, mozzarella, mascarpone et saucisse",
             "en": "Truffle sauce, mozzarella, mascarpone and sausage"
           },
-          "prezzo": 11.0,
+          "prezzo": 11.5,
           "tag": []
         },
         {
@@ -1274,7 +1274,7 @@
             "fr": "Sauce truffée, mozzarella, bresaola et parmesan",
             "en": "Truffle sauce, mozzarella, bresaola and parmesan"
           },
-          "prezzo": 11.0,
+          "prezzo": 11.5,
           "tag": []
         },
         {
@@ -1285,7 +1285,7 @@
             "fr": "Mozzarella de bufflonne, speck, roquette et tomates cerises",
             "en": "Buffalo mozzarella, speck, rocket and cherry tomatoes"
           },
-          "prezzo": 13.0,
+          "prezzo": 12.5,
           "tag": []
         }
       ]
@@ -1311,7 +1311,7 @@
             "fr": "Sauce tomate, Porchetta di Ariccia et parmesan",
             "en": "Tomato sauce, Porchetta di Ariccia and parmesan"
           },
-          "prezzo": 9.0,
+          "prezzo": 9.5,
           "tag": []
         },
         {
@@ -1339,6 +1339,20 @@
           ]
         },
         {
+          "nome": "Tag Hot",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella fiordilatte, capperi, olive taggiasche e peperoncini piccanti",
+            "fr": "Sauce tomate, mozzarella fiordilatte, câpres, olives taggiasche et piments",
+            "en": "Tomato sauce, fiordilatte mozzarella, capers, taggiasca olives and hot peppers"
+          },
+          "prezzo": 11,
+          "tag": [
+            "piccante",
+            "vegetariana"
+          ]
+        },
+        {
           "nome": "Petroliere",
           "immagine": null,
           "descrizione": {
@@ -1357,7 +1371,7 @@
             "fr": "Sauce tomate, haricots, oignon, poivrons, maïs, mozzarella et piment",
             "en": "Tomato sauce, beans, onion, peppers, corn, mozzarella and hot pepper"
           },
-          "prezzo": 10.5,
+          "prezzo": 11.5,
           "tag": [
             "piccante"
           ]
@@ -1381,7 +1395,7 @@
             "fr": "Mozzarella fiordilatte, jambon cuit, fontina dop, pommes de terre et saucisse",
             "en": "Fiordilatte mozzarella, cooked ham, fontina dop, boiled potatoes and sausage"
           },
-          "prezzo": 11.0,
+          "prezzo": 11.5,
           "tag": []
         },
         {
@@ -1392,7 +1406,7 @@
             "fr": "Sauce tomate, mozzarella fiordilatte, jambon cru et basilic",
             "en": "Tomato sauce, fiordilatte mozzarella, cured ham and basil"
           },
-          "prezzo": 11.0,
+          "prezzo": 11.5,
           "tag": []
         },
         {
@@ -1403,7 +1417,7 @@
             "fr": "Sauce tomate, mozzarella fiordilatte, jambon cru, basilic et piments",
             "en": "Tomato sauce, fiordilatte mozzarella, cured ham, basil and hot peppers"
           },
-          "prezzo": 11.0,
+          "prezzo": 12.0,
           "tag": [
             "piccante"
           ]
@@ -1416,7 +1430,7 @@
             "fr": "Sauce tomate, mozzarella, haricots, oignons, poivrons, tomates cerises et frites",
             "en": "Tomato sauce, mozzarella, beans, onions, peppers, cherry tomatoes and fries"
           },
-          "prezzo": 13.0,
+          "prezzo": 12.5,
           "tag": []
         },
         {
@@ -1438,7 +1452,7 @@
             "fr": "Sauce tomate, mozzarella, crème, haricots, oignons, salami épicé, gorgonzola et champignons",
             "en": "Tomato sauce, mozzarella, cream, beans, onions, spicy salami, gorgonzola and mushrooms"
           },
-          "prezzo": 13.0,
+          "prezzo": 12.5,
           "tag": [
             "piccante"
           ]
@@ -1595,7 +1609,7 @@
             "fr": "Produit surgelé",
             "en": "Frozen product"
           },
-          "prezzo": 12.0,
+          "prezzo": 10.0,
           "tag": []
         },
         {
@@ -1606,7 +1620,7 @@
             "fr": "Mozzarella de bufflonne, tomates et basilic",
             "en": "Buffalo mozzarella, tomatoes and basil"
           },
-          "prezzo": 12.0,
+          "prezzo": 10.0,
           "tag": [
             "vegetariana"
           ]
@@ -1637,25 +1651,12 @@
           "nome": "Porchetta di Ariccia",
           "immagine": "assets/menu/pizzas/periniziare/porchettafunghiparmigiano.webp",
           "descrizione": {
-            "it": "Porchetta di Ariccia tradizionale",
-            "fr": "Porchetta di Ariccia traditionnelle",
-            "en": "Traditional Porchetta di Ariccia"
+            "it": "Porchetta di Ariccia tradizionale con Funghi, parmigiano e sedano",
+            "fr": "Porchetta di Ariccia traditionnelle avec champignons, parmesan et céleri",
+            "en": "Traditional Porchetta di Ariccia with mushrooms, parmesan and celery"
           },
           "prezzo": 12.0,
           "tag": []
-        },
-        {
-          "nome": "Funghi, parmigiano e sedano",
-          "immagine": null,
-          "descrizione": {
-            "it": "Funghi freschi, parmigiano e sedano",
-            "fr": "Champignons frais, parmesan et céleri",
-            "en": "Fresh mushrooms, parmesan and celery"
-          },
-          "prezzo": 12.0,
-          "tag": [
-            "vegetariana"
-          ]
         }
       ]
     },
@@ -1808,7 +1809,7 @@
             "fr": "Sauce tomate, mozzarella et saucisse",
             "en": "Tomato sauce, mozzarella and sausage"
           },
-          "prezzo": 6.0,
+          "prezzo": 6.5,
           "tag": []
         },
         {
@@ -1819,7 +1820,7 @@
             "fr": "Sauce tomate, mozzarella, saucisse et frites",
             "en": "Tomato sauce, mozzarella, sausage and fries"
           },
-          "prezzo": 7.0,
+          "prezzo": 7.5,
           "tag": []
         },
         {
@@ -1830,7 +1831,7 @@
             "fr": "Sauce tomate, mozzarella et jambon cuit",
             "en": "Tomato sauce, mozzarella and cooked ham"
           },
-          "prezzo": 6.0,
+          "prezzo": 6.5,
           "tag": []
         },
         {
@@ -1841,7 +1842,7 @@
             "fr": "Sauce tomate, mozzarella et olives",
             "en": "Tomato sauce, mozzarella and olives"
           },
-          "prezzo": 6.0,
+          "prezzo": 6.5,
           "tag": [
             "vegetariana"
           ]
@@ -1854,7 +1855,7 @@
             "fr": "Mozzarella, jambon cuit et champignons",
             "en": "Mozzarella, cooked ham and mushrooms"
           },
-          "prezzo": 7.0,
+          "prezzo": 7.5,
           "tag": []
         },
         {
@@ -1865,7 +1866,7 @@
             "fr": "Escalope milanaise avec frites et sauces",
             "en": "Milanese cutlet with fries and sauces"
           },
-          "prezzo": 8.0,
+          "prezzo": 8.5,
           "tag": []
         },
         {
@@ -1876,7 +1877,7 @@
             "fr": "Saucisse grillée avec frites et sauces",
             "en": "Grilled sausage with fries and sauces"
           },
-          "prezzo": 8.0,
+          "prezzo": 8.5,
           "tag": []
         }
       ]
