@@ -11,28 +11,11 @@ body.home {
   background-attachment: fixed, fixed, fixed;
   background-blend-mode: soft-light, overlay, normal;
   overflow-x: clip;
-  /* Spinge il contenuto sotto la safe-area-top per non finire dietro la
-     dynamic island (richiede viewport-fit=cover nel meta viewport). */
-  padding-top: env(safe-area-inset-top, 0px);
   padding-bottom: calc(4.25rem + env(safe-area-inset-bottom));
 }
 
 body.home .page-wrapper {
   background-color: transparent;
-}
-
-/* Overlay nero fisso che copre solo la safe-area-top (status bar iOS).
-   Su browser senza notch env() vale 0 → overlay alto 0px, invisibile.
-   Necessario perché Chrome iOS ignora <meta name="theme-color">. */
-.status-bar-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: env(safe-area-inset-top, 0px);
-  background-color: #010100;
-  z-index: 9999;
-  pointer-events: none;
 }
 
 /* --------HERO -----------*/
