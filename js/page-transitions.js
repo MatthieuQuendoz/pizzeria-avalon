@@ -8,7 +8,9 @@
   const PAGES = ['index.html', 'menu.html', 'prenota.html', 'gioca.html'];
   const FLAG = 'avalon-page-transition';
   const DIR_KEY = 'avalon-page-dir';
-  const SAFETY_TIMEOUT = 650;
+  const EXIT_MS = 300;
+  const NAV_AT_MS = Math.round(EXIT_MS * 0.7);
+  const ENTER_SAFETY_MS = EXIT_MS + 80;
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -36,11 +38,11 @@
     document.documentElement.setAttribute('data-page-dir', dir);
     sessionStorage.setItem(DIR_KEY, dir);
     if (dir === 'back') {
-      document.documentElement.style.setProperty('--page-out-x', '40px');
-      document.documentElement.style.setProperty('--page-in-x', '-40px');
+      document.documentElement.style.setProperty('--page-out-x', '24px');
+      document.documentElement.style.setProperty('--page-in-x', '-24px');
     } else {
-      document.documentElement.style.setProperty('--page-out-x', '-40px');
-      document.documentElement.style.setProperty('--page-in-x', '40px');
+      document.documentElement.style.setProperty('--page-out-x', '-24px');
+      document.documentElement.style.setProperty('--page-in-x', '24px');
     }
   }
 
@@ -54,7 +56,7 @@
     });
   }
 
-  function afterTransition(callback) {
+  function afterTransition(callback, safetyMs) {
     const targets = slideTargets();
     if (!targets.length) {
       callback();
@@ -68,10 +70,17 @@
       callback();
     };
 
-    targets.forEach((el) => {
-      el.addEventListener('transitionend', finish, { once: true });
-    });
-    setTimeout(finish, SAFETY_TIMEOUT);
+    targets[0].addEventListener('transitionend', finish, { once: true });
+    setTimeout(finish, safetyMs);
+  }
+
+  function prefetchPage(href) {
+    if (!href || document.querySelector('link[data-prefetch="' + href + '"]')) return;
+    const link = document.createElement('link');
+    link.rel = 'prefetch';
+    link.href = href;
+    link.setAttribute('data-prefetch', href);
+    document.head.appendChild(link);
   }
 
   /* -------- ENTRATA: slide + fade al load ----------- */
@@ -90,8 +99,11 @@
           document.documentElement.removeAttribute('data-page-dir');
           document.documentElement.style.removeProperty('--page-out-x');
           document.documentElement.style.removeProperty('--page-in-x');
-          slideTargets().forEach((el) => el.classList.remove('page-slide-target'));
-        });
+          slideTargets().forEach((el) => {
+            el.classList.remove('page-slide-target');
+            el.style.removeProperty('will-change');
+          });
+        }, ENTER_SAFETY_MS);
       });
     };
 
@@ -114,6 +126,9 @@
       const file = hrefFile(href);
       if (!PAGES.includes(file) || file === current) return;
 
+      link.addEventListener('mouseenter', () => prefetchPage(href), { passive: true });
+      link.addEventListener('focusin', () => prefetchPage(href));
+
       link.addEventListener('click', (e) => {
         if (e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) {
           return;
@@ -130,12 +145,10 @@
         sessionStorage.setItem(FLAG, '1');
 
         requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            document.body.classList.add('page-is-leaving');
-            afterTransition(() => {
-              window.location.href = href;
-            });
-          });
+          document.body.classList.add('page-is-leaving');
+          setTimeout(() => {
+            window.location.href = href;
+          }, NAV_AT_MS);
         });
       });
     });

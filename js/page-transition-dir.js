@@ -6,8 +6,8 @@
   if (dir === 'forward' || dir === 'back') {
     root.setAttribute('data-page-dir', dir);
     if (dir === 'back') {
-      root.style.setProperty('--page-out-x', '40px');
-      root.style.setProperty('--page-in-x', '-40px');
+      root.style.setProperty('--page-out-x', '24px');
+      root.style.setProperty('--page-in-x', '-24px');
     }
     sessionStorage.removeItem('avalon-page-dir');
   } else {

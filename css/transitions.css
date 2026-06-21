@@ -7,15 +7,15 @@
    ============================================ */
 
 :root {
-  --page-transition-duration: 550ms;
-  --page-transition-easing: cubic-bezier(0.22, 1, 0.36, 1);
-  --page-out-x: -40px;
-  --page-in-x: 40px;
+  --page-transition-duration: 300ms;
+  --page-transition-easing: cubic-bezier(0.32, 0.72, 0, 1);
+  --page-out-x: -24px;
+  --page-in-x: 24px;
 }
 
 html[data-page-dir="back"] {
-  --page-out-x: 40px;
-  --page-in-x: -40px;
+  --page-out-x: 24px;
+  --page-in-x: -24px;
 }
 
 /* -------- VIEW TRANSITIONS API: solo chrome persistente ----------- */
@@ -51,13 +51,18 @@ html.page-await-enter .page-wrapper,
 html.page-await-enter body > .hero,
 html.page-await-enter body > .footer {
   opacity: 0;
-  transform: translateX(var(--page-in-x));
+  transform: translate3d(var(--page-in-x), 0, 0);
 }
 
 /* -------- SLIDE JS (uscita + entrata) ----------- */
+body.page-is-leaving .page-slide-target,
+body.page-is-entering.page-enter-active .page-slide-target {
+  will-change: opacity, transform;
+}
+
 body.page-is-leaving .page-slide-target {
   opacity: 0;
-  transform: translateX(var(--page-out-x));
+  transform: translate3d(var(--page-out-x), 0, 0);
   transition:
     opacity var(--page-transition-duration) var(--page-transition-easing),
     transform var(--page-transition-duration) var(--page-transition-easing);
@@ -65,15 +70,25 @@ body.page-is-leaving .page-slide-target {
 
 body.page-is-entering .page-slide-target {
   opacity: 0;
-  transform: translateX(var(--page-in-x));
+  transform: translate3d(var(--page-in-x), 0, 0);
 }
 
 body.page-is-entering.page-enter-active .page-slide-target {
   opacity: 1;
-  transform: translateX(0);
+  transform: translate3d(0, 0, 0);
   transition:
     opacity var(--page-transition-duration) var(--page-transition-easing),
     transform var(--page-transition-duration) var(--page-transition-easing);
+}
+
+/* Evita doppia animazione hero (stagger CSS) durante l'entrata pagina */
+body.page-is-entering .hero__eyebrow,
+body.page-is-entering .hero__title,
+body.page-is-entering .hero__subtitle,
+body.page-is-entering .hero__actions {
+  animation: none;
+  opacity: 1;
+  transform: none;
 }
 
 /* -------- ACCESSIBILITA': riduci movimento ----------- */
