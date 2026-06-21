@@ -1,7 +1,6 @@
 /* ============================================
    PIZZERIA AVALON — Transizioni tra pagine
-   Slide orizzontale direzionale + fade (JS).
-   VTA cross-document solo per chrome persistente.
+   Slide orizzontale direzionale (JS). VTA cross-document disattivata.
    Direzione via data-page-dir + variabili CSS.
    Disattivato con prefers-reduced-motion.
    ============================================ */
@@ -9,18 +8,35 @@
 :root {
   --page-transition-duration: 300ms;
   --page-transition-easing: cubic-bezier(0.32, 0.72, 0, 1);
-  --page-out-x: -24px;
-  --page-in-x: 24px;
+  --page-out-x: -20px;
+  --page-in-x: 20px;
+}
+
+/* Mobile: solo transform (no fade), movimento più corto e leggermente più lento */
+@media (max-width: 768px) {
+  :root {
+    --page-transition-duration: 360ms;
+    --page-transition-easing: cubic-bezier(0.25, 0.46, 0.2, 1);
+    --page-out-x: -14px;
+    --page-in-x: 14px;
+  }
+
+  html[data-page-dir="back"] {
+    --page-out-x: 14px;
+    --page-in-x: -14px;
+  }
 }
 
 html[data-page-dir="back"] {
-  --page-out-x: 24px;
-  --page-in-x: -24px;
+  --page-out-x: 20px;
+  --page-in-x: -20px;
 }
 
-/* -------- VIEW TRANSITIONS API: solo chrome persistente ----------- */
+/* -------- VIEW TRANSITIONS API: disattivata su cross-document ----------- */
+/* La slide direzionale è gestita da page-transitions.js; navigation:auto
+   su mobile Chrome si sovrappone e produce doppia animazione scattosa. */
 @view-transition {
-  navigation: auto;
+  navigation: none;
 }
 
 .navbar        { view-transition-name: avalon-navbar; }
@@ -50,42 +66,71 @@ html[data-page-dir="back"] {
 html.page-await-enter .page-wrapper,
 html.page-await-enter body > .hero,
 html.page-await-enter body > .footer {
-  opacity: 0;
   transform: translate3d(var(--page-in-x), 0, 0);
 }
 
 /* -------- SLIDE JS (uscita + entrata) ----------- */
 body.page-is-leaving .page-slide-target,
 body.page-is-entering.page-enter-active .page-slide-target {
-  will-change: opacity, transform;
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 body.page-is-leaving .page-slide-target {
-  opacity: 0;
   transform: translate3d(var(--page-out-x), 0, 0);
-  transition:
-    opacity var(--page-transition-duration) var(--page-transition-easing),
-    transform var(--page-transition-duration) var(--page-transition-easing);
+  transition: transform var(--page-transition-duration) var(--page-transition-easing);
 }
 
 body.page-is-entering .page-slide-target {
-  opacity: 0;
   transform: translate3d(var(--page-in-x), 0, 0);
 }
 
 body.page-is-entering.page-enter-active .page-slide-target {
-  opacity: 1;
   transform: translate3d(0, 0, 0);
-  transition:
-    opacity var(--page-transition-duration) var(--page-transition-easing),
-    transform var(--page-transition-duration) var(--page-transition-easing);
+  transition: transform var(--page-transition-duration) var(--page-transition-easing);
+}
+
+/* Desktop: aggiunge un leggero fade oltre allo slide */
+@media (min-width: 769px) {
+  html.page-await-enter .page-wrapper,
+  html.page-await-enter body > .hero,
+  html.page-await-enter body > .footer {
+    opacity: 0;
+  }
+
+  body.page-is-leaving .page-slide-target,
+  body.page-is-entering.page-enter-active .page-slide-target {
+    will-change: opacity, transform;
+  }
+
+  body.page-is-leaving .page-slide-target {
+    opacity: 0;
+    transition:
+      opacity var(--page-transition-duration) var(--page-transition-easing),
+      transform var(--page-transition-duration) var(--page-transition-easing);
+  }
+
+  body.page-is-entering .page-slide-target {
+    opacity: 0;
+  }
+
+  body.page-is-entering.page-enter-active .page-slide-target {
+    opacity: 1;
+    transition:
+      opacity var(--page-transition-duration) var(--page-transition-easing),
+      transform var(--page-transition-duration) var(--page-transition-easing);
+  }
 }
 
 /* Evita doppia animazione hero (stagger CSS) durante l'entrata pagina */
 body.page-is-entering .hero__eyebrow,
 body.page-is-entering .hero__title,
 body.page-is-entering .hero__subtitle,
-body.page-is-entering .hero__actions {
+body.page-is-entering .hero__actions,
+html.page-await-enter .hero__eyebrow,
+html.page-await-enter .hero__title,
+html.page-await-enter .hero__subtitle,
+html.page-await-enter .hero__actions {
   animation: none;
   opacity: 1;
   transform: none;

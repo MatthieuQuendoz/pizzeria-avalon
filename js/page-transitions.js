@@ -8,9 +8,21 @@
   const PAGES = ['index.html', 'menu.html', 'prenota.html', 'gioca.html'];
   const FLAG = 'avalon-page-transition';
   const DIR_KEY = 'avalon-page-dir';
-  const EXIT_MS = 300;
-  const NAV_AT_MS = Math.round(EXIT_MS * 0.7);
-  const ENTER_SAFETY_MS = EXIT_MS + 80;
+  function transitionMs() {
+    const raw = getComputedStyle(document.documentElement)
+      .getPropertyValue('--page-transition-duration')
+      .trim();
+    const n = parseFloat(raw);
+    return Number.isFinite(n) ? n : 300;
+  }
+
+  function navAtMs() {
+    return Math.round(transitionMs() * 0.85);
+  }
+
+  function enterSafetyMs() {
+    return transitionMs() + 80;
+  }
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -37,13 +49,6 @@
   function setDirection(dir) {
     document.documentElement.setAttribute('data-page-dir', dir);
     sessionStorage.setItem(DIR_KEY, dir);
-    if (dir === 'back') {
-      document.documentElement.style.setProperty('--page-out-x', '24px');
-      document.documentElement.style.setProperty('--page-in-x', '-24px');
-    } else {
-      document.documentElement.style.setProperty('--page-out-x', '-24px');
-      document.documentElement.style.setProperty('--page-in-x', '24px');
-    }
   }
 
   function slideTargets() {
@@ -89,21 +94,23 @@
 
     const reveal = () => {
       markSlideTargets();
-      document.documentElement.classList.remove('page-await-enter');
+      // Entrata prima di rimuovere page-await-enter: evita flash e doppia animazione.
       document.body.classList.add('page-is-entering');
+      document.documentElement.classList.remove('page-await-enter');
 
+      // Doppio rAF: il browser applica lo stato iniziale prima della transizione.
       requestAnimationFrame(() => {
-        document.body.classList.add('page-enter-active');
-        afterTransition(() => {
-          document.body.classList.remove('page-is-entering', 'page-enter-active');
-          document.documentElement.removeAttribute('data-page-dir');
-          document.documentElement.style.removeProperty('--page-out-x');
-          document.documentElement.style.removeProperty('--page-in-x');
-          slideTargets().forEach((el) => {
-            el.classList.remove('page-slide-target');
-            el.style.removeProperty('will-change');
-          });
-        }, ENTER_SAFETY_MS);
+        requestAnimationFrame(() => {
+          document.body.classList.add('page-enter-active');
+          afterTransition(() => {
+            document.body.classList.remove('page-is-entering', 'page-enter-active');
+            document.documentElement.removeAttribute('data-page-dir');
+            slideTargets().forEach((el) => {
+              el.classList.remove('page-slide-target');
+              el.style.removeProperty('will-change');
+            });
+          }, enterSafetyMs());
+        });
       });
     };
 
@@ -148,7 +155,7 @@
           document.body.classList.add('page-is-leaving');
           setTimeout(() => {
             window.location.href = href;
-          }, NAV_AT_MS);
+          }, navAtMs());
         });
       });
     });

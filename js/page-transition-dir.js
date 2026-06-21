@@ -5,18 +5,17 @@
 
   if (dir === 'forward' || dir === 'back') {
     root.setAttribute('data-page-dir', dir);
-    if (dir === 'back') {
-      root.style.setProperty('--page-out-x', '24px');
-      root.style.setProperty('--page-in-x', '-24px');
-    }
     sessionStorage.removeItem('avalon-page-dir');
   } else {
     root.removeAttribute('data-page-dir');
-    root.style.removeProperty('--page-out-x');
-    root.style.removeProperty('--page-in-x');
   }
 
   if (sessionStorage.getItem('avalon-page-transition')) {
     root.classList.add('page-await-enter');
+  }
+
+  /* Hero home: intro già vista in questa sessione → niente fade-up al ritorno */
+  if (sessionStorage.getItem('avalon-hero-intro')) {
+    root.classList.add('hero-intro-done');
   }
 })();

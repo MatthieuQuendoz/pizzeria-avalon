@@ -39,19 +39,20 @@
   }
 }
 
-.hero__eyebrow,
-.hero__title,
-.hero__subtitle,
-.hero__actions {
+/* Solo al primo accesso alla home nella sessione (classe su html via page-transition-dir.js) */
+html:not(.hero-intro-done) body.home .hero__eyebrow,
+html:not(.hero-intro-done) body.home .hero__title,
+html:not(.hero-intro-done) body.home .hero__subtitle,
+html:not(.hero-intro-done) body.home .hero__actions {
   opacity: 0;
   /* Durata esplicita: --transition-slow include già "ease" (per transition), non va in animation. */
   animation: avalon-fade-up 400ms ease both;
 }
 
-.hero__eyebrow  { animation-delay: 80ms; }
-.hero__title    { animation-delay: 200ms; }
-.hero__subtitle { animation-delay: 340ms; }
-.hero__actions  { animation-delay: 480ms; }
+html:not(.hero-intro-done) body.home .hero__eyebrow  { animation-delay: 80ms; }
+html:not(.hero-intro-done) body.home .hero__title    { animation-delay: 200ms; }
+html:not(.hero-intro-done) body.home .hero__subtitle { animation-delay: 340ms; }
+html:not(.hero-intro-done) body.home .hero__actions  { animation-delay: 480ms; }
 
 /* Respiro sul CTA prenotazione (hero home + card prenota) */
 @keyframes avalon-cta-breathe {
