@@ -69,5 +69,11 @@
     "orari": "Gio–Lun 18:00–23:00",
     "piva": "P.IVA 01217190071",
     "copyright": "© 1994–2026 Pizzeria Avalon. Tutti i diritti riservati."
+  },
+  "error404": {
+    "titolo": "Pagina non trovata",
+    "descrizione": "La pagina che cerchi non esiste o è stata spostata.",
+    "cta_home": "Torna alla Home",
+    "cta_menu": "Vai al Menu"
   }
 }

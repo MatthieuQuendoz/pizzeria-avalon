@@ -56,10 +56,10 @@
   }
 
   function markSlideTargets() {
-    const homeRoot = document.querySelector('body.home > .page-slide-root');
+    const homeRoot = document.querySelector('.page-slide-root');
     if (homeRoot) {
       homeRoot.classList.add('page-slide-target');
-      const footer = document.querySelector('body.home > .footer');
+      const footer = document.querySelector('body > .footer');
       if (footer) footer.classList.add('page-slide-target');
       return;
     }
@@ -134,7 +134,10 @@
     if (reduceMotion) return;
 
     const current = currentPageFile();
-    const links = document.querySelectorAll('.navbar a[href]');
+    const linkSelector = current === 'index.html'
+      ? '.navbar a[href], .hero__actions a[href]'
+      : '.navbar a[href]';
+    const links = document.querySelectorAll(linkSelector);
 
     links.forEach((link) => {
       const href = link.getAttribute('href') || '';

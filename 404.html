@@ -3,61 +3,32 @@
 
 <head>
   <meta charset="UTF-8">
+  <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#000000">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="description"
-    content="Oltre 140 pizze rosse, bianche, calzoni e dolci. Impasto a lunga maturazione, ingredienti selezionati.">
+  <meta name="robots" content="noindex, follow">
+  <meta name="description" content="Pagina non trovata. Torna alla home della Pizzeria Avalon a Jovençan.">
 
-  <title>Menu — Pizzeria Avalon</title>
+  <title>Pagina non trovata — Pizzeria Avalon</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
-  <!-- SITE_URL: https://pizzeriaavalon.it (dominio finale, senza www) -->
-  <!-- Test SEO: Facebook Sharing Debugger + Google Rich Results Test (dopo deploy) -->
-  <link rel="canonical" href="https://pizzeriaavalon.it/menu.html">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Pizzeria Avalon">
-  <meta property="og:title" content="Menu — Pizzeria Avalon">
-  <meta property="og:description"
-    content="Oltre 140 pizze rosse, bianche, calzoni e dolci. Impasto a lunga maturazione, ingredienti selezionati.">
-  <meta property="og:url" content="https://pizzeriaavalon.it/menu.html">
-  <meta property="og:image" content="https://pizzeriaavalon.it/assets/images/og-image.webp">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:locale" content="it_IT">
-  <meta property="og:locale:alternate" content="fr_FR">
-  <meta property="og:locale:alternate" content="en_US">
-
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Menu — Pizzeria Avalon">
-  <meta name="twitter:description"
-    content="Oltre 140 pizze rosse, bianche, calzoni e dolci. Impasto a lunga maturazione, ingredienti selezionati.">
-  <meta name="twitter:image" content="https://pizzeriaavalon.it/assets/images/og-image.webp">
-
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,100..900;1,100..900&family=Epilogue:ital,wght@0,100..900;1,100..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap"
     rel="stylesheet">
-  <!-- Direzione transizione pagina (prima del paint) -->
-  <script src="js/page-transition-dir.js"></script>
+
   <script src="js/viewport-stable.js"></script>
-  <!-- CSS -->
+
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/transitions.css">
   <link rel="stylesheet" href="css/responsive.css">
-  <link rel="stylesheet" href="css/menu.css">
+  <link rel="stylesheet" href="css/404.css">
 
-  <!-- lucide icon -->
   <script src="https://unpkg.com/lucide@0.577.0/dist/umd/lucide.min.js"></script>
-
 </head>
 
-
-<body class="menu-page">
+<body class="error404-page">
 
   <div class="status-bar-bg" aria-hidden="true"></div>
 
@@ -99,61 +70,24 @@
     </nav>
   </header>
 
-
-  <main class="page-wrapper">
-
-    <section class="menu-hero">
-      <div class="menu-hero__content">
-        <div class="menu-hero__overlay" aria-hidden="true"></div>
-        <h1 class="menu-hero__title">
-          <span data-i18n="menu.titolo">Il nostro</span>
-          <em>Menu</em>
-        </h1>
-      </div>
-    </section>
-
-    <section class="menu-picker">
-      <div class="menu-picker__body">
-        <p class="menu-picker__guida" data-i18n="menu.guida">Cosa vuoi ordinare?</p>
-        <div class="menu-macrogruppi" id="menu-macrogruppi">
-          <button class="macrogruppo active" data-file="menu-cibo.json">
-            🍕<span data-i18n="menu.cibo">Cibo</span></button>
-          <button class="macrogruppo" data-file="menu-bevande.json">
-            🍷<span data-i18n="menu.bevande">Bevande</span></button>
-          <button class="macrogruppo" data-file="menu-dolci.json">
-            🍰<span data-i18n="menu.dolci">Dessert</span>
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <div class="menu-tabs-wrap" id="menu-tabs-wrap">
-      <div class="menu-tabs" id="menu-tabs">
-        <!-- i tab delle categorie — generati da JS -->
-      </div>
-      <div class="menu-tabs-indicator" aria-hidden="true">
-        <div class="menu-tabs-indicator__thumb" id="menu-tabs-thumb"></div>
+  <main class="error-page">
+    <div class="error-page__content">
+      <p class="error-page__code" aria-hidden="true">404</p>
+      <h1 class="error-page__title" data-i18n="error404.titolo">Pagina non trovata</h1>
+      <p class="error-page__text" data-i18n="error404.descrizione">
+        La pagina che cerchi non esiste o è stata spostata.
+      </p>
+      <div class="error-page__actions">
+        <a href="index.html" class="btn btn-primary">
+          <i data-lucide="house"></i>
+          <span data-i18n="error404.cta_home">Torna alla Home</span>
+        </a>
+        <a href="menu.html" class="btn btn-secondary">
+          <i data-lucide="book-open"></i>
+          <span data-i18n="error404.cta_menu">Vai al Menu</span>
+        </a>
       </div>
     </div>
-
-    <div class="menu-filtri" id="menu-filtri" hidden>
-      <!-- pulsante + pannello filtri — generati da JS -->
-    </div>
-
-    <div class="menu-lista" id="menu-lista">
-      <!-- le card delle pizze — generate da JS -->
-    </div>
-
-    <div class="menu-tabs-wrap menu-tabs-wrap--bottom">
-      <p class="menu-tabs-eyebrow" data-i18n="menu.altre_categorie">Altre categorie</p>
-      <div class="menu-tabs" id="menu-tabs-bottom">
-        <!-- tab in fondo — popolato da JS -->
-      </div>
-      <div class="menu-tabs-indicator" aria-hidden="true">
-        <div class="menu-tabs-indicator__thumb" id="menu-tabs-bottom-thumb"></div>
-      </div>
-    </div>
-
   </main>
 
   <footer class="footer">
@@ -209,14 +143,11 @@
     </div>
   </footer>
 
-  <!-- JS -->
   <script src="js/i18n.js"></script>
-  <script src="js/page-transitions.js"></script>
   <script src="js/nav.js"></script>
-  <script src="js/menu.js"></script>
-
-
   <script>lucide.createIcons();</script>
   <script src="js/iubenda.js"></script>
 
 </body>
+
+</html>

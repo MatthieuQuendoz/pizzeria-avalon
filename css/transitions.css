@@ -91,35 +91,12 @@ body.page-is-entering.page-enter-active .page-slide-target {
   transition: transform var(--page-transition-duration) var(--page-transition-easing);
 }
 
-/* Home: hero+main in un blocco — inverti asse X per allinearsi alle altre pagine */
-html.page-await-enter body.home .page-slide-root,
-html.page-await-enter body.home > .footer {
-  transform: translate3d(calc(-1 * var(--page-in-x)), 0, 0);
-}
-
-body.home.page-is-leaving .page-slide-target {
-  transform: translate3d(calc(-1 * var(--page-out-x)), 0, 0);
-}
-
-body.home.page-is-entering .page-slide-target {
-  transform: translate3d(calc(-1 * var(--page-in-x)), 0, 0);
-}
-
-body.home.page-is-entering.page-enter-active .page-slide-target {
-  transform: translate3d(0, 0, 0);
-}
-
 /* Desktop: aggiunge un leggero fade oltre allo slide */
 @media (min-width: 769px) {
   html.page-await-enter .page-slide-root,
   html.page-await-enter .page-wrapper,
   html.page-await-enter body > .hero,
   html.page-await-enter body > .footer {
-    opacity: 0;
-  }
-
-  html.page-await-enter body.home .page-slide-root,
-  html.page-await-enter body.home > .footer {
     opacity: 0;
   }
 

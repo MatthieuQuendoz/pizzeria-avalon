@@ -69,5 +69,11 @@
     "orari": "Thu–Mon 6:00 PM–11:00 PM",
     "piva": "VAT No. 01217190071",
     "copyright": "© 1994–2026 Pizzeria Avalon. All rights reserved."
+  },
+  "error404": {
+    "titolo": "Page not found",
+    "descrizione": "The page you're looking for doesn't exist or has been moved.",
+    "cta_home": "Back to Home",
+    "cta_menu": "Go to Menu"
   }
 }

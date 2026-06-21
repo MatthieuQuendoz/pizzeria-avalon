@@ -69,5 +69,11 @@
     "orari": "Jeu–Lun 18h00–23h00",
     "piva": "N° TVA 01217190071",
     "copyright": "© 1994–2026 Pizzeria Avalon. Tous droits réservés."
+  },
+  "error404": {
+    "titolo": "Page introuvable",
+    "descrizione": "La page que vous cherchez n'existe pas ou a été déplacée.",
+    "cta_home": "Retour à l'accueil",
+    "cta_menu": "Voir le Menu"
   }
 }
