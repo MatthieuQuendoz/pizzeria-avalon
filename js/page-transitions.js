@@ -56,6 +56,14 @@
   }
 
   function markSlideTargets() {
+    const homeRoot = document.querySelector('body.home > .page-slide-root');
+    if (homeRoot) {
+      homeRoot.classList.add('page-slide-target');
+      const footer = document.querySelector('body.home > .footer');
+      if (footer) footer.classList.add('page-slide-target');
+      return;
+    }
+
     document.querySelectorAll('.page-wrapper, body > .hero, body > .footer').forEach((el) => {
       el.classList.add('page-slide-target');
     });

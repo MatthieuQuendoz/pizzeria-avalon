@@ -138,6 +138,7 @@ html:not(.hero-intro-done) body.home .hero__actions  { animation-delay: 480ms; }
   body.page-is-leaving .page-slide-target,
   body.page-is-entering .page-slide-target,
   body.page-is-entering.page-enter-active .page-slide-target,
+  html.page-await-enter .page-slide-root,
   html.page-await-enter .page-wrapper,
   html.page-await-enter body > .hero,
   html.page-await-enter body > .footer {
