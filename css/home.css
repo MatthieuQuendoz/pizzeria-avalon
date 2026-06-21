@@ -8,10 +8,16 @@ body.home {
     linear-gradient(var(--color-crema), var(--color-crema));
   background-size: 64px 64px, 128px 128px, auto;
   background-repeat: repeat, repeat, no-repeat;
-  background-attachment: fixed, fixed, fixed;
+  background-attachment: scroll, scroll, scroll;
   background-blend-mode: soft-light, overlay, normal;
   overflow-x: clip;
   padding-bottom: calc(4.25rem + env(safe-area-inset-bottom));
+}
+
+@media (min-width: 768px) {
+  body.home {
+    background-attachment: fixed, fixed, fixed;
+  }
 }
 
 body.home .page-wrapper {
@@ -122,9 +128,8 @@ body.home .page-wrapper {
    pizza, senza coprirla); immagine reinquadrata per mostrare la fiamma a destra. */
 @media (max-width: 767px) {
   .hero {
-    min-height: 100vh;
+    /* svh = viewport piccolo (barra indirizzi visibile): non si ridimensiona allo scroll */
     min-height: 100svh;
-    min-height: 100dvh;
   }
 
   .hero__img {

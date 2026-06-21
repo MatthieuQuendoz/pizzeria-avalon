@@ -83,6 +83,9 @@
   --container-max: min(100%, 480px);
   --container-pad:   var(--space-5);
 
+  /* --- Viewport mobile (barra indirizzi) --- */
+  --browser-chrome-bottom: 0px;
+
   /* --- Z-index --- */
   --z-base:    0;
   --z-raised:  10;
