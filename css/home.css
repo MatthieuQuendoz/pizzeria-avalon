@@ -208,7 +208,7 @@ body.home .page-wrapper {
 
   .hero__content {
     max-width: 44rem;
-    padding: var(--space-16);
+    padding: calc(var(--nav-height-desktop) + var(--space-12)) var(--space-16) var(--space-16);
   }
 
   .hero__title {
@@ -218,6 +218,12 @@ body.home .page-wrapper {
   .hero__title em {
     font-size: clamp(4.5rem, 7vw, 7.5rem);
   }
+}
+
+/* Lang switcher leggibile sull'hero scuro */
+body.home .lang-switcher__toggle {
+  background-color: var(--color-bg);
+  box-shadow: var(--shadow-md);
 }
 
 .btn {

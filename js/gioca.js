@@ -17,17 +17,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const href = link.getAttribute('href') || '';
     if (!href || href.includes('gioca.html')) return;
 
+    // Stop immediato di loop e audio prima di lasciare la pagina.
+    // La navigazione vera e propria e' gestita dal browser (View Transitions
+    // native) o da page-transitions.js (fallback slide + fade).
     link.addEventListener('pointerdown', () => {
       if (typeof AvalonGame !== 'undefined' && AvalonGame.isRunning()) {
         AvalonGame.stopForNavigation();
       }
-    }, { capture: true });
-
-    link.addEventListener('click', (e) => {
-      if (typeof AvalonGame === 'undefined' || !AvalonGame.isRunning()) return;
-      e.preventDefault();
-      AvalonGame.stopForNavigation();
-      window.location.href = href;
     }, { capture: true });
   });
 

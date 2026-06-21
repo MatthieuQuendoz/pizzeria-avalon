@@ -126,7 +126,7 @@ Sostituire `"immagine": null` con il percorso relativo:
 Le immagini devono essere ottimizzate (jpg/webp, max 200-300 KB, ~600×400px).
 
 ### Tag disponibili
-`vegan`, `vegetariana`, `piccante`, `immodificabile`, `senza glutine`, `locale`, `Classica`, `new`
+`vegan`, `vegetariana`, `piccante`, `immodificabile`, `senza glutine`, `locale`, `Classica`, `new`, `dedicata`, `mangioni`
 
 ---
 

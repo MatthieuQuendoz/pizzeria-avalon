@@ -7,6 +7,8 @@
 }
 
 .menu-page {
+  --menu-card-width: calc(var(--layout-mobile-max) - 4 * var(--space-5));
+  --menu-content-width: var(--menu-card-width);
   position: relative;
   background-color: var(--color-crema);
   background-image:
@@ -232,13 +234,23 @@
     padding-bottom: 0;
   }
 
+  .menu-hero {
+    max-width: var(--hero-max-width);
+    width: calc(100% - 2 * var(--space-4));
+    margin-inline: auto;
+  }
+
   .menu-hero__content {
     padding-top: calc(10px + var(--nav-height-desktop) + var(--space-6) + env(safe-area-inset-top, 0px));
+    min-height: clamp(360px, 38vh, 460px);
+    max-height: 480px;
+    border-radius: var(--radius-xl);
   }
 
   .menu-hero__content::before,
   .menu-hero__overlay {
     top: 0;
+    border-radius: inherit;
   }
 
   .menu-tabs-wrap {
@@ -381,42 +393,47 @@
   will-change: transform, width;
 }
 
+@media (min-width: 900px) {
+  .menu-page {
+    --menu-content-width: calc(2 * var(--menu-card-width) + var(--space-5));
+  }
+}
+
 /* ------ FILTRI TAG (menu a comparsa) ----------*/
 .menu-filtri {
   position: relative;
   display: flex;
   justify-content: flex-end;
-  padding: 0 var(--space-5) var(--space-4);
-  max-width: var(--container-max);
+  width: var(--menu-content-width);
+  max-width: calc(100% - 2 * var(--space-5));
   margin-inline: auto;
+  padding: 0 0 var(--space-4);
 }
 
 .menu-filtri[hidden] {
   display: none;
 }
 
-/* pulsante che apre il menu */
+/* pulsante che apre il menu — stile lang switcher */
 .menu-filtri__toggle {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
-  padding: var(--space-2) var(--space-4);
+  gap: var(--space-1);
+  padding: var(--space-2) var(--space-3);
   border-radius: var(--radius-full);
-  background-color: var(--color-lightRed);
-  border: 1px solid transparent;
+  background-color: var(--color-bg);
+  border: 1px solid rgba(45, 29, 29, 0.15);
   color: var(--color-brown);
-  font-family: var(--font-body);
+  font-family: var(--font-heading2);
   font-size: var(--text-sm);
   font-weight: var(--weight-medium);
   cursor: pointer;
-  transition:
-    background-color var(--transition-fast),
-    color var(--transition-fast),
-    box-shadow var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition-fast);
 }
 
 .menu-filtri__toggle:hover {
-  background-color: #FFE3DF;
+  box-shadow: var(--shadow-md);
 }
 
 .menu-filtri__toggle svg {
@@ -427,16 +444,17 @@
 }
 
 .menu-filtri__toggle.is-active {
-  background-color: var(--color-red);
-  color: var(--color-bg);
+  border-color: rgba(177, 44, 22, 0.35);
+  color: var(--color-red);
   font-weight: var(--weight-bold);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-md);
 }
 
 .menu-filtri__chevron {
-  font-size: 0.7em;
+  font-size: 0.65rem;
   line-height: 1;
   transition: transform var(--transition-fast);
+  display: inline-block;
 }
 
 .menu-filtri.is-open .menu-filtri__chevron {
@@ -446,15 +464,17 @@
 /* pannello dropdown */
 .menu-filtri__panel {
   position: absolute;
-  top: calc(100% - var(--space-2));
-  right: var(--space-5);
+  top: calc(100% + var(--space-2));
+  right: 0;
   z-index: 5;
-  width: min(18rem, calc(100vw - 2 * var(--space-5)));
-  padding: var(--space-4);
+  box-sizing: border-box;
+  width: min(15rem, calc(100vw - 2 * var(--space-5)));
+  padding: var(--space-2);
   background-color: var(--color-bg);
-  border: 1px solid rgba(45, 29, 29, 0.08);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(45, 29, 29, 0.10);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
   animation: menu-filtri-in 0.16s ease;
 }
 
@@ -468,7 +488,8 @@
 }
 
 .menu-filtri__titolo {
-  margin: 0 0 var(--space-3);
+  margin: 0;
+  padding: var(--space-2) var(--space-3) var(--space-1);
   font-family: var(--font-heading2);
   font-size: var(--text-xs);
   font-weight: var(--weight-bold);
@@ -478,35 +499,31 @@
 }
 
 .menu-filtri__list {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-2);
-}
-
-/* "Tutte" occupa l'intera riga in cima, come reset ben distinto */
-.menu-filtro--tutte {
-  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
 }
 
 .menu-filtro {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
+  justify-content: flex-start;
+  gap: var(--space-2);
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
   padding: var(--space-2) var(--space-3);
-  border-radius: var(--radius-full);
-  background-color: var(--color-bg2);
-  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  background: none;
+  border: none;
   color: var(--color-brown);
-  font-family: var(--font-body);
+  font-family: var(--font-heading2);
   font-size: var(--text-sm);
   font-weight: var(--weight-medium);
-  white-space: nowrap;
+  white-space: normal;
+  text-align: left;
   cursor: pointer;
-  transition:
-    background-color var(--transition-fast),
-    color var(--transition-fast),
-    box-shadow var(--transition-fast);
+  transition: background-color var(--transition-fast);
 }
 
 .menu-filtro:hover {
@@ -514,26 +531,13 @@
 }
 
 .menu-filtro.active {
-  background-color: var(--color-red);
-  color: var(--color-bg);
+  background-color: var(--color-lightRed);
+  color: var(--color-red);
   font-weight: var(--weight-bold);
-  box-shadow: var(--shadow-sm);
-}
-
-@media (min-width: 768px) {
-  .menu-filtri {
-    padding-inline: var(--container-pad);
-  }
-
-  .menu-filtri__panel {
-    right: var(--container-pad);
-  }
 }
 
 /* ------ LISTA + CARDS ----------*/
 .menu-lista {
-  /* Larghezza fissa come su mobile (480px container − padding wrapper + lista) */
-  --menu-card-width: calc(var(--layout-mobile-max) - 4 * var(--space-5));
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -790,6 +794,8 @@
 .item-tag--immodificabile { background-color: #F3E5F5; color: #6A1B9A; }
 .item-tag--Classica     { background-color: #F0E6D4; color: var(--color-brown); }
 .item-tag--new          { background-color: #E8F4E8; color: #2D6A4F; }
+.item-tag--dedicata     { background-color: #FCE4EC; color: #C2185B; }
+.item-tag--mangioni     { background-color: #FFF3E0; color: #E65100; }
 
 /* immagine destra — spacer che riserva metà pizza */
 .item-card__media {

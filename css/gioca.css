@@ -128,13 +128,34 @@
   }
 
   .gioca-hero {
-    height: clamp(560px, 85vh, 960px);
-    padding-top: calc(10px + var(--nav-height-desktop) + var(--space-12) + env(safe-area-inset-top, 0px));
+    max-width: var(--hero-max-width);
+    width: calc(100% - 2 * var(--space-4));
+    margin-inline: auto;
+    height: clamp(620px, 68vh, 820px);
+    padding-top: calc(10px + var(--nav-height-desktop) + var(--space-10) + env(safe-area-inset-top, 0px));
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+  }
+
+  .gioca-hero__bg-link {
+    width: 100%;
+    left: 0;
+    transform: none;
+    border-radius: inherit;
   }
 
   .gioca-hero__bg-link,
   .gioca-hero::after {
     top: 0;
+  }
+
+  .gioca-hero__bg img {
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .gioca-hero__bomb-deco {
+    width: 80px;
   }
 }
 

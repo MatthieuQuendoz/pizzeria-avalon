@@ -82,7 +82,6 @@
   --layout-mobile-max: 480px; /* larghezza di riferimento card menu (mobile) */
   --container-max: min(100%, 480px);
   --container-pad:   var(--space-5);
-  --nav-height-desktop: 4rem;
 
   /* --- Z-index --- */
   --z-base:    0;
@@ -102,6 +101,12 @@
 @media (min-width: 1024px) {
   :root {
     --container-max: 960px;
+    --hero-max-width: min(56rem, calc(100% - 2 * var(--space-6)));
+    --header-bar-max: var(--hero-max-width);
+    --header-bar-top: calc(var(--space-5) + env(safe-area-inset-top, 0px));
+    --lang-switcher-width: 6.25rem;
+    --lang-switcher-slot: var(--lang-switcher-width);
+    --nav-height-desktop: 3.5rem;
   }
 }
 

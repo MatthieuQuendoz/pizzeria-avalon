@@ -8,9 +8,18 @@
 create table if not exists public.leaderboard (
   id          bigint generated always as identity primary key,
   name        text not null check (char_length(name) between 1 and 20),
-  score       integer not null check (score >= 0 and score <= 10000),
+  score       integer not null constraint leaderboard_score_check check (score >= 0 and score <= 100),
   created_at  timestamptz not null default now()
 );
+
+-- ── Pulizia + migrazione ─────────────────────────────────────────
+-- Rimuove i punteggi impossibili (es. TuoNome / SpoWin con 9999) e,
+-- su tabelle gia esistenti, aggiorna il vincolo a max 100 punti.
+delete from public.leaderboard where score > 100;
+
+alter table public.leaderboard drop constraint if exists leaderboard_score_check;
+alter table public.leaderboard
+  add constraint leaderboard_score_check check (score >= 0 and score <= 100);
 
 -- Indice per ordinare velocemente i punteggi piu alti
 create index if not exists leaderboard_score_idx
@@ -32,7 +41,7 @@ create policy "leaderboard_public_insert"
   with check (
     char_length(name) between 1 and 20
     and score >= 0
-    and score <= 10000
+    and score <= 100
   );
 
 -- Nota sicurezza: con la sola anon key chiunque puo inviare un punteggio.

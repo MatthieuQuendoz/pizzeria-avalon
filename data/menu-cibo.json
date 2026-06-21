@@ -18,7 +18,8 @@
           },
           "prezzo": 7.5,
           "tag": [
-            "Classica"
+            "Classica",
+            "vegetariana"
           ]
         },
         {
@@ -90,7 +91,9 @@
             "en": "Tomato sauce, mozzarella and anchovies"
           },
           "prezzo": 9.0,
-          "tag": []
+          "tag": [
+            "Classica"
+          ]
         },
         {
           "nome": "Indiana",
@@ -203,7 +206,9 @@
             "en": "Tomato sauce, mozzarella, capers and anchovies"
           },
           "prezzo": 10.0,
-          "tag": []
+          "tag": [
+            "Classica"
+          ]
         },
         {
           "nome": "Prosciutto e funghi",
@@ -214,7 +219,9 @@
             "en": "Tomato sauce, mozzarella, ham and mushrooms"
           },
           "prezzo": 10.0,
-          "tag": []
+          "tag": [
+            "Classica"
+          ]
         },
         {
           "nome": "Zucchine",
@@ -260,8 +267,19 @@
           "immagine": "assets/menu/pizzas/rosse/wurstelpatatine.webp",
           "descrizione": {
             "it": "Passata di pomodoro, mozzarella, patate lesse e würstel",
-            "fr": "Sauce tomate, mozzarella, pommes de terre et saucisse",
+            "fr": "Sauce tomate, mozzarella, pommes de terre cuites et saucisse",
             "en": "Tomato sauce, mozzarella, boiled potatoes and sausage"
+          },
+          "prezzo": 10.0,
+          "tag": []
+        },
+        {
+          "nome": "Patate e wurstel",
+          "immagine": null,
+          "descrizione": {
+            "it": "Passata di pomodoro, mozzarella, patate crude e würstel",
+            "fr": "Sauce tomate, mozzarella, pommes de terre crues et saucisse",
+            "en": "Tomato sauce, mozzarella, raw potatoes and sausage"
           },
           "prezzo": 10.0,
           "tag": []
@@ -301,7 +319,9 @@
             "en": "Tomato sauce, mozzarella, cooked ham and fontina"
           },
           "prezzo": 10.0,
-          "tag": []
+          "tag": [
+            "locale"
+          ]
         },
         {
           "nome": "Gorgo e speck",
@@ -323,7 +343,9 @@
             "en": "Tomato sauce, mozzarella, ham, mushrooms, artichokes and asparagus"
           },
           "prezzo": 11.0,
-          "tag": []
+          "tag": [
+            "Classica"
+          ]
         },
         {
           "nome": "J & P",
@@ -334,7 +356,9 @@
             "en": "Tomato sauce, mozzarella, ham, mushrooms, olives, peppers and artichokes"
           },
           "prezzo": 11.0,
-          "tag": []
+          "tag": [
+            "dedicata"
+          ]
         },
         {
           "nome": "Tropicale",
@@ -356,7 +380,9 @@
             "en": "Tomato sauce, mozzarella, tuna, celery, anchovies and peppers"
           },
           "prezzo": 10.5,
-          "tag": []
+          "tag": [
+            "dedicata"
+          ]
         },
         {
           "nome": "Misto Bosco",
@@ -426,7 +452,9 @@
             "en": "Tomato sauce, mozzarella, eggplant, gorgonzola, sausage and raw champignon mushrooms"
           },
           "prezzo": 11.5,
-          "tag": []
+          "tag": [
+            "locale"
+          ]
         },
         {
           "nome": "Formaggi",
@@ -438,7 +466,8 @@
           },
           "prezzo": 10.5,
           "tag": [
-            "vegetariana"
+            "vegetariana",
+            "locale"
           ]
         },
         {
@@ -472,7 +501,9 @@
             "en": "Tomato sauce, mozzarella, ham, mushrooms, anchovies and artichokes"
           },
           "prezzo": 11.0,
-          "tag": []
+          "tag": [
+            "Classica"
+          ]
         },
         {
           "nome": "Verdure",
@@ -539,14 +570,16 @@
         },
         {
           "nome": "Per mangioni",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/rosse/mangioni.webp",
           "descrizione": {
             "it": "Passata di pomodoro, mozzarella, prosciutto cotto, porcini, asparagi, salsiccetta, uovo e parmigiano",
             "fr": "Sauce tomate, mozzarella, jambon, cèpes, asperges, saucisse, œuf et parmesan",
             "en": "Tomato sauce, mozzarella, ham, porcini, asparagus, sausage, egg and parmesan"
           },
           "prezzo": 12.5,
-          "tag": []
+          "tag": [
+            "mangioni"
+          ]
         },
         {
           "nome": "Delizia",
@@ -568,7 +601,9 @@
             "en": "Tomato sauce, mozzarella, ham, mushrooms, olives, sausage and salami"
           },
           "prezzo": 12.5,
-          "tag": []
+          "tag": [
+            "mangioni"
+          ]
         },
         {
           "nome": "Mon petit amour",
@@ -590,7 +625,9 @@
             "en": "Tomato sauce, mozzarella, truffle sauce, ham, fontina dop, peppers and salami"
           },
           "prezzo": 12.5,
-          "tag": []
+          "tag": [
+            "mangioni"
+          ]
         },
         {
           "nome": "Dietetica",
@@ -601,7 +638,9 @@
             "en": "Tomato sauce, mozzarella, gorgonzola, salami, fries and onion"
           },
           "prezzo": 12.5,
-          "tag": []
+          "tag": [
+            "mangioni"
+          ]
         },
         {
           "nome": "Terence Hill",
@@ -623,7 +662,9 @@
             "en": "Tomato sauce, mozzarella, spianata, beans, onions, egg and parmesan"
           },
           "prezzo": 12.0,
-          "tag": []
+          "tag": [
+            "mangioni"
+          ]
         },
         {
           "nome": "Frutti di mare",
@@ -656,11 +697,13 @@
             "en": "Tomato sauce, mozzarella, eggplant, sausage, gorgonzola and mushrooms"
           },
           "prezzo": 11.0,
-          "tag": []
+          "tag": [
+            "locale"
+          ]
         },
         {
           "nome": "Por & Por",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/rosse/porpor.webp",
           "descrizione": {
             "it": "Passata di pomodoro, mozzarella, porcini e Porchetta di Ariccia",
             "fr": "Sauce tomate, mozzarella, cèpes et Porchetta di Ariccia",
@@ -691,7 +734,9 @@
             "en": "Tomato sauce, mozzarella, fontina dop, porcini, cream and parmesan"
           },
           "prezzo": 11.5,
-          "tag": []
+          "tag": [
+            "mangioni"
+          ]
         },
         {
           "nome": "All'aceto balsamico",
@@ -736,7 +781,8 @@
           },
           "prezzo": 11.0,
           "tag": [
-            "vegetariana"
+            "vegetariana",
+            "dedicata"
           ]
         },
         {
@@ -748,7 +794,10 @@
             "en": "Tomato sauce, mozzarella, rebletzen, sausage, boiled potatoes and walnuts"
           },
           "prezzo": 11.0,
-          "tag": []
+          "tag": [
+            "locale",
+            "dedicata"
+          ]
         },
         {
           "nome": "Maga",
@@ -770,7 +819,14 @@
             "en": "Tomato, mozzarella, zucchini, cream, salmon and cherry tomatoes"
           },
           "prezzo": 11.0,
-          "tag": []
+          "note": {
+            "it": "Dedicata a Rocco Schiavone",
+            "fr": "Dédiée à Rocco Schiavone",
+            "en": "Dedicated to Rocco Schiavone"
+          },
+          "tag": [
+            "dedicata"
+          ]
         }
       ]
     },
@@ -910,7 +966,7 @@
         },
         {
           "nome": "Genovese",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/bianche/genovese.webp",
           "descrizione": {
             "it": "Mozzarella, pesto, ricotta e parmigiano",
             "fr": "Mozzarella, pesto, ricotta et parmesan",
@@ -957,7 +1013,8 @@
           },
           "prezzo": 10.5,
           "tag": [
-            "vegetariana"
+            "vegetariana",
+            "dedicata"
           ]
         },
         {
@@ -1080,18 +1137,22 @@
             "en": "Mozzarella, honey, gorgonzola, apples, cured ham and parmesan"
           },
           "prezzo": 12.5,
-          "tag": []
+          "tag": [
+            "dedicata"
+          ]
         },
         {
           "nome": "D'autunno",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/bianche/autunno.webp",
           "descrizione": {
             "it": "Mozzarella, Lardo di Arnad, castagne e miele",
             "fr": "Mozzarella, Lardo di Arnad, châtaignes et miel",
             "en": "Mozzarella, Lardo di Arnad, chestnuts and honey"
           },
           "prezzo": 11.0,
-          "tag": []
+          "tag": [
+            "locale"
+          ]
         },
         {
           "nome": "Peccato originale",
@@ -1135,7 +1196,9 @@
             "en": "Mozzarella, boiled potatoes, braised bacon, sausage and rosemary"
           },
           "prezzo": 11.5,
-          "tag": []
+          "tag": [
+            "dedicata"
+          ]
         },
         {
           "nome": "Prelibata",
@@ -1169,7 +1232,8 @@
           },
           "prezzo": 11.5,
           "tag": [
-            "vegetariana"
+            "vegetariana",
+            "locale"
           ]
         },
         {
@@ -1181,7 +1245,9 @@
             "en": "Mozzarella, fondue, Fontina dop, walnuts and cured ham"
           },
           "prezzo": 12.0,
-          "tag": []
+          "tag": [
+            "locale"
+          ]
         },
         {
           "nome": "Europizza",
@@ -1312,7 +1378,9 @@
             "en": "Tomato sauce, Porchetta di Ariccia and parmesan"
           },
           "prezzo": 9.5,
-          "tag": []
+          "tag": [
+            "dedicata"
+          ]
         },
         {
           "nome": "Super Mario",
@@ -1340,7 +1408,7 @@
         },
         {
           "nome": "Tag Hot",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/immodificabili/taghot.webp",
           "descrizione": {
             "it": "Passata di pomodoro, mozzarella fiordilatte, capperi, olive taggiasche e peperoncini piccanti",
             "fr": "Sauce tomate, mozzarella fiordilatte, câpres, olives taggiasche et piments",
@@ -1361,7 +1429,9 @@
             "en": "Tomato sauce, gorgonzola, stracchino, garlic, salami and capers"
           },
           "prezzo": 10.5,
-          "tag": []
+          "tag": [
+            "dedicata"
+          ]
         },
         {
           "nome": "Messicana",
@@ -1396,7 +1466,9 @@
             "en": "Fiordilatte mozzarella, cooked ham, fontina dop, boiled potatoes and sausage"
           },
           "prezzo": 11.5,
-          "tag": []
+          "tag": [
+            "dedicata"
+          ]
         },
         {
           "nome": "Easy",
@@ -1442,7 +1514,9 @@
             "en": "Cream, speck, mozzarella, burrata, radicchio, walnuts and basil"
           },
           "prezzo": 13.5,
-          "tag": []
+          "tag": [
+            "dedicata"
+          ]
         },
         {
           "nome": "Proloco",
@@ -1454,7 +1528,9 @@
           },
           "prezzo": 12.5,
           "tag": [
-            "piccante"
+            "piccante",
+            "dedicata",
+            "mangioni"
           ]
         }
       ]
@@ -1516,7 +1592,7 @@
       "items": [
         {
           "nome": "Olive all'ascolana",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/fritti/oliveascolana.webp",
           "descrizione": {
             "it": "10 pezzi — prodotto surgelato",
             "fr": "10 pièces — produit surgelé",
@@ -1627,7 +1703,7 @@
         },
         {
           "nome": "Crudo e Ananas",
-          "immagine": "assets/menu/pizzas/periniziare/crudoeananas.webp",
+          "immagine": "assets/menu/pizzas/periniziare/crudoananas.webp",
           "descrizione": {
             "it": "Prosciutto crudo e ananas fresco",
             "fr": "Jambon cru et ananas frais",
@@ -1683,7 +1759,7 @@
         },
         {
           "nome": "Insalata con Mais",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/insalate/insmais.webp",
           "descrizione": {
             "it": "Verde, sedano, mais e peperoni",
             "fr": "Salade verte, céleri, maïs et poivrons",
@@ -1860,7 +1936,7 @@
         },
         {
           "nome": "Zio Paperone",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/bimbi/ziopaperone.webp",
           "descrizione": {
             "it": "Cotoletta alla milanese con patatine fritte e salse",
             "fr": "Escalope milanaise avec frites et sauces",

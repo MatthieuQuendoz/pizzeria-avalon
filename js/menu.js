@@ -11,7 +11,9 @@ const TAG_CONFIG = {
   'senza glutine': { emoji: '🌾', label: { it: 'Senza glutine', fr: 'Sans gluten', en: 'Gluten-free' } },
   'locale': { emoji: '🏔️', label: { it: 'Locale', fr: 'Local', en: 'Local' } },
   'Classica': { emoji: '🎩', label: { it: 'Classica', fr: 'Classique', en: 'Classic' } },
-  'new': { emoji: '✨', label: { it: 'Nuovo', fr: 'Nouveau', en: 'New' } }
+  'new': { emoji: '✨', label: { it: 'Nuovo', fr: 'Nouveau', en: 'New' } },
+  'dedicata': { emoji: '❤️', label: { it: 'Dedicata a...', fr: 'Dédiée à...', en: 'Dedicated to...' } },
+  'mangioni': { emoji: '😋', label: { it: 'Da mangioni', fr: 'Pour gros mangeurs', en: 'For big eaters' } }
 };
 
 const FILTRO_LABELS = {
@@ -47,6 +49,50 @@ function aggiornaIndicatore(wrap) {
   thumb.style.transform = `translateX(${progress * maxLeft}px)`;
 }
 
+// Scroll verticale animato con ease-in-out cubico (più affidabile dello
+// scroll nativo su WebKit/iOS e con easing controllabile).
+let scrollRafId = 0;
+function scrollVerticaleFluido(targetY, durata = 550) {
+  if (scrollRafId) cancelAnimationFrame(scrollRafId);
+
+  const maxY = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+  const destino = Math.min(Math.max(0, targetY), maxY);
+  const partenza = window.scrollY || window.pageYOffset;
+  const delta = destino - partenza;
+
+  if (Math.abs(delta) < 1) {
+    window.scrollTo(0, destino);
+    return;
+  }
+
+  const inizio = performance.now();
+  const easeInOut = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+
+  const step = (now) => {
+    const t = Math.min(1, (now - inizio) / durata);
+    window.scrollTo(0, partenza + delta * easeInOut(t));
+    if (t < 1) {
+      scrollRafId = requestAnimationFrame(step);
+    } else {
+      scrollRafId = 0;
+    }
+  };
+
+  scrollRafId = requestAnimationFrame(step);
+}
+
+// Offset da sottrarre al target di scroll: altezza della navbar fissa in alto
+// (layout desktop). Su mobile la navbar è ancorata in basso, quindi 0.
+function offsetScrollTop() {
+  const navbar = document.querySelector('.navbar');
+  if (!navbar) return 0;
+  const stile = getComputedStyle(navbar);
+  if (stile.position !== 'fixed') return 0;
+  // Navbar in alto solo quando il suo bordo superiore è vicino a 0.
+  if (navbar.getBoundingClientRect().top > 80) return 0;
+  return navbar.offsetHeight + 16;
+}
+
 //Questa funziona prende i dati da menu.json
 async function caricaMenu(file) {
   try {
@@ -80,16 +126,32 @@ function creaTabs(categorie) {
         // Sincronizza active su tutti i tab (top + bottom) con lo stesso indice
         document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
         document.querySelectorAll(`.menu-tab[data-tab-index="${index}"]`).forEach(t => t.classList.add('active'));
-        // Scroll in-view del tab corrispondente nella barra superiore
-        const topTab = document.querySelector(`#menu-tabs .menu-tab[data-tab-index="${index}"]`);
-        topTab?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-        // Se il click viene dallo slider in fondo, riporta la pagina in cima alla lista
-        if (tab.closest('#menu-tabs-bottom')) {
-          document.getElementById('menu-tabs-wrap')
-            ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        // Centra orizzontalmente il tab corrispondente nella barra superiore
+        // (solo asse X: così non interferisce con lo scroll verticale).
+        const topTabs = document.getElementById('menu-tabs');
+        const topTab = topTabs?.querySelector(`.menu-tab[data-tab-index="${index}"]`);
+        if (topTabs && topTab) {
+          const left = topTab.offsetLeft + topTab.offsetWidth / 2 - topTabs.clientWidth / 2;
+          topTabs.scrollTo({ left, behavior: 'smooth' });
         }
+
+        const daSliderBottom = !!tab.closest('#menu-tabs-bottom');
+
+        // Prima renderizza la nuova lista, poi (dopo il layout) calcola il
+        // target e scrolla: evita di puntare a una posizione della lista vecchia.
         filtroTagCorrente = null;
         mostraPizze(categoria);
+
+        if (daSliderBottom) {
+          requestAnimationFrame(() => requestAnimationFrame(() => {
+            const wrap = document.getElementById('menu-tabs-wrap');
+            if (!wrap) return;
+            const targetY = (window.scrollY || window.pageYOffset)
+              + wrap.getBoundingClientRect().top - offsetScrollTop();
+            scrollVerticaleFluido(targetY);
+          }));
+        }
       });
 
       container.appendChild(tab);

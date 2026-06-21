@@ -13,10 +13,20 @@ const PLAYER_BEST_KEY = 'avalon_player_best';
 const MAX_LEADERBOARD_ENTRIES = 50;
 const LEADERBOARD_DISPLAY_COUNT = 7;
 const TARGET_SCORE = 50;
+const MAX_SCORE = 100;
 const LEADERBOARD_TABLE = 'leaderboard';
 
+// Normalizza un punteggio entro i limiti consentiti (0–100).
+// Difesa lato client: punteggi piu alti sono impossibili nel gioco
+// e indicano manomissioni (vedi vincolo SQL in supabase/leaderboard.sql).
+function sanitizeScore(score) {
+  const n = Math.round(Number(score));
+  if (!Number.isFinite(n)) return 0;
+  return Math.max(0, Math.min(MAX_SCORE, n));
+}
+
 const DEFAULT_LEADERBOARD = [
-  { name: 'Chef Marco',    score: 124 },
+  { name: 'Chef Marco',    score: 99  },
   { name: 'PizzaQueen_92', score: 98  },
   { name: 'BasilLover',    score: 87  },
   { name: 'Ruucola',       score: 70  },
@@ -52,8 +62,8 @@ const localLeaderboard = {
     return [...DEFAULT_LEADERBOARD];
   },
   add(name, score) {
-    const scores = this.get();
-    scores.push({ name, score, date: Date.now() });
+    const scores = this.get().filter(e => e.score <= MAX_SCORE);
+    scores.push({ name, score: sanitizeScore(score), date: Date.now() });
     scores.sort((a, b) => b.score - a.score);
     const top = scores.slice(0, MAX_LEADERBOARD_ENTRIES);
     try {
@@ -74,28 +84,31 @@ const leaderboardApi = {
           .order('score', { ascending: false })
           .limit(MAX_LEADERBOARD_ENTRIES);
         if (error) throw error;
-        if (Array.isArray(data)) return data;
+        // Difesa lato client: nasconde eventuali punteggi impossibili
+        // ancora presenti nel DB (es. inviati prima del fix del vincolo).
+        if (Array.isArray(data)) return data.filter(e => Number(e.score) <= MAX_SCORE);
       } catch (err) {
         console.error('Errore nel caricamento della classifica:', err);
       }
     }
-    return localLeaderboard.get();
+    return localLeaderboard.get().filter(e => e.score <= MAX_SCORE);
   },
 
   async submitScore(name, score) {
+    const safeScore = sanitizeScore(score);
     const sb = getSupabase();
     if (sb) {
       try {
         const { error } = await sb
           .from(LEADERBOARD_TABLE)
-          .insert({ name, score });
+          .insert({ name, score: safeScore });
         if (error) throw error;
         return await this.getTopScores();
       } catch (err) {
         console.error('Errore nel salvataggio del punteggio:', err);
       }
     }
-    return localLeaderboard.add(name, score);
+    return localLeaderboard.add(name, safeScore);
   },
 };
 

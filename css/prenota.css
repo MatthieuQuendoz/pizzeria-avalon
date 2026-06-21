@@ -198,30 +198,12 @@
   box-shadow: 0 10px 28px rgba(177, 44, 22, 0.35);
   transition: transform var(--transition-fast), box-shadow var(--transition-fast),
     background-color var(--transition-normal);
-  animation: prenota-cta-breathe 3.2s ease-in-out infinite;
 }
 
 .prenota-book__cta::after {
   content: '→';
   margin-left: var(--space-1);
   font-weight: var(--weight-bold);
-}
-
-@keyframes prenota-cta-breathe {
-  0%,
-  100% {
-    box-shadow: 0 10px 28px rgba(177, 44, 22, 0.35);
-  }
-
-  50% {
-    box-shadow: 0 14px 36px rgba(177, 44, 22, 0.48);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .prenota-book__cta {
-    animation: none;
-  }
 }
 
 .prenota-book__cta svg {
@@ -474,13 +456,23 @@
     padding-bottom: 0;
   }
 
+  .prenota-hero {
+    max-width: var(--hero-max-width);
+    width: calc(100% - 2 * var(--space-4));
+    margin-inline: auto;
+  }
+
   .prenota-hero__content {
     padding-top: calc(10px + var(--nav-height-desktop) + var(--space-6) + env(safe-area-inset-top, 0px));
+    min-height: clamp(360px, 38vh, 460px);
+    max-height: 480px;
+    border-radius: var(--radius-xl);
   }
 
   .prenota-hero__content::before,
   .prenota-hero__overlay {
     top: 0;
+    border-radius: inherit;
   }
 }
 

@@ -86,10 +86,14 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,100..900;1,100..900&family=Epilogue:ital,wght@0,100..900;1,100..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap"
     rel="stylesheet">
+  <!-- Direzione transizione pagina (prima del paint) -->
+  <script src="js/page-transition-dir.js"></script>
   <!-- CSS -->
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/transitions.css">
   <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/home.css">
 
   <!-- lucide icon -->
@@ -167,7 +171,7 @@
 
   <main class="page-wrapper">
 
-    <section class="orari">
+    <section class="orari" data-reveal>
       <div class="orari__card">
         <p class="orari__label" data-i18n="home.orari_titolo">ORARIO</p>
         <p class="ora" data-i18n="home.orari_ore">18:00 — 23:00</p>
@@ -198,7 +202,7 @@
       </div>
     </section>
 
-    <section class="location">
+    <section class="location" data-reveal>
       <div class="location__img-wrapper">
         <img src="assets/images/avalonDaFuori.webp" alt="Vista esterna della Pizzeria Avalon a Jovençan"
           class="location__img">
@@ -276,7 +280,9 @@
 
   <!-- JS -->
   <script src="js/i18n.js"></script>
+  <script src="js/page-transitions.js"></script>
   <script src="js/nav.js"></script>
+  <script src="js/reveal.js"></script>
   <script src="js/home.js"></script>
 
 

@@ -1,0 +1,97 @@
+/* ============================================
+   PIZZERIA AVALON — Transizioni tra pagine
+   Slide orizzontale direzionale + fade (JS).
+   VTA cross-document solo per chrome persistente.
+   Direzione via data-page-dir + variabili CSS.
+   Disattivato con prefers-reduced-motion.
+   ============================================ */
+
+:root {
+  --page-transition-duration: 550ms;
+  --page-transition-easing: cubic-bezier(0.22, 1, 0.36, 1);
+  --page-out-x: -40px;
+  --page-in-x: 40px;
+}
+
+html[data-page-dir="back"] {
+  --page-out-x: 40px;
+  --page-in-x: -40px;
+}
+
+/* -------- VIEW TRANSITIONS API: solo chrome persistente ----------- */
+@view-transition {
+  navigation: auto;
+}
+
+.navbar        { view-transition-name: avalon-navbar; }
+.lang-switcher { view-transition-name: avalon-lang; }
+.status-bar-bg { view-transition-name: avalon-statusbar; }
+
+/* Il contenuto scorre via JS; root non deve crossfadare sopra l'animazione. */
+::view-transition-group(root) {
+  animation: none;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+}
+
+::view-transition-old(avalon-navbar),
+::view-transition-new(avalon-navbar),
+::view-transition-old(avalon-lang),
+::view-transition-new(avalon-lang),
+::view-transition-old(avalon-statusbar),
+::view-transition-new(avalon-statusbar) {
+  animation: none;
+}
+
+/* Stato iniziale entrata (prima che page-transitions.js carichi) */
+html.page-await-enter .page-wrapper,
+html.page-await-enter body > .hero,
+html.page-await-enter body > .footer {
+  opacity: 0;
+  transform: translateX(var(--page-in-x));
+}
+
+/* -------- SLIDE JS (uscita + entrata) ----------- */
+body.page-is-leaving .page-slide-target {
+  opacity: 0;
+  transform: translateX(var(--page-out-x));
+  transition:
+    opacity var(--page-transition-duration) var(--page-transition-easing),
+    transform var(--page-transition-duration) var(--page-transition-easing);
+}
+
+body.page-is-entering .page-slide-target {
+  opacity: 0;
+  transform: translateX(var(--page-in-x));
+}
+
+body.page-is-entering.page-enter-active .page-slide-target {
+  opacity: 1;
+  transform: translateX(0);
+  transition:
+    opacity var(--page-transition-duration) var(--page-transition-easing),
+    transform var(--page-transition-duration) var(--page-transition-easing);
+}
+
+/* -------- ACCESSIBILITA': riduci movimento ----------- */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+
+  body.page-is-leaving .page-slide-target,
+  body.page-is-entering .page-slide-target,
+  body.page-is-entering.page-enter-active .page-slide-target,
+  html.page-await-enter .page-wrapper,
+  html.page-await-enter body > .hero,
+  html.page-await-enter body > .footer {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
