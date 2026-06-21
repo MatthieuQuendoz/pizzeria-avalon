@@ -891,7 +891,7 @@
 .gioca-page .footer__content,
 .gioca-page .footer__social,
 .gioca-page .footer__legal,
-.gioca-page .footer__text {
+.gioca-page .footer__copy {
   position: relative;
   z-index: 1;
 }
@@ -1048,7 +1048,7 @@
     grid-area: legal;
   }
 
-  .gioca-page .footer__text {
+  .gioca-page .footer__copy {
     grid-area: copy;
   }
 }

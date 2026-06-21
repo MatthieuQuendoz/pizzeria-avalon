@@ -161,7 +161,7 @@
     grid-area: legal;
   }
 
-  .footer__text {
+  .footer__copy {
     grid-area: copy;
   }
 }

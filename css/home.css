@@ -562,7 +562,7 @@ body.home .footer__overlay {
 body.home .footer__content,
 body.home .footer__social,
 body.home .footer__legal,
-body.home .footer__text {
+body.home .footer__copy {
   position: relative;
   z-index: 1;
 }
@@ -712,5 +712,5 @@ body.home .footer__text {
     align-items: flex-end;
   }
   body.home .footer__legal { grid-area: legal; }
-  body.home .footer__text { grid-area: copy; }
+  body.home .footer__copy { grid-area: copy; }
 }

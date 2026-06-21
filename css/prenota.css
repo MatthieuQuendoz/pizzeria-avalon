@@ -544,7 +544,7 @@
 .prenota-page .footer__content,
 .prenota-page .footer__social,
 .prenota-page .footer__legal,
-.prenota-page .footer__text {
+.prenota-page .footer__copy {
   position: relative;
   z-index: 1;
 }
@@ -701,7 +701,7 @@
     grid-area: legal;
   }
 
-  .prenota-page .footer__text {
+  .prenota-page .footer__copy {
     grid-area: copy;
   }
 }

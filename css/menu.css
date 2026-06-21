@@ -898,7 +898,7 @@
 .menu-page .footer__content,
 .menu-page .footer__social,
 .menu-page .footer__legal,
-.menu-page .footer__text {
+.menu-page .footer__copy {
   position: relative;
   z-index: 1;
 }
@@ -1055,7 +1055,7 @@
     grid-area: legal;
   }
 
-  .menu-page .footer__text {
+  .menu-page .footer__copy {
     grid-area: copy;
   }
 }
