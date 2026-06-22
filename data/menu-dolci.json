@@ -28,7 +28,7 @@
                 },
                 {
                     "nome": "Mele",
-                    "immagine": "assets/menu/dolci/pizzedolci/mele.webp",
+                    "immagine": null,
                     "descrizione": {
                         "it": "Pizza con fette di mele e amaretto con zucchero a velo e panna al centro",
                         "fr": "Pizza aux tranches de pommes et amaretto avec sucre glace et crème au centre",
@@ -41,7 +41,7 @@
                 },
                 {
                     "nome": "Mele e cannella",
-                    "immagine": null,
+                    "immagine": "assets/menu/dolci/pizzedolci/mele.webp",
                     "descrizione": {
                         "it": "Pizza con fette di mele, amaretto e cannella con zucchero a velo e panna al centro",
                         "fr": "Pizza aux tranches de pommes, amaretto et cannelle avec sucre glace et crème au centre",
@@ -291,7 +291,7 @@
                         "fr": "Stracciatella",
                         "en": "Stracciatella"
                     },
-                    "tag": ["vegetariana"]
+                    "tag": []
                 },
                 {
                     "nome": {
@@ -299,7 +299,7 @@
                         "fr": "Noisette",
                         "en": "Hazelnut"
                     },
-                    "tag": ["vegetariana"]
+                    "tag": []
                 },
                 {
                     "nome": {
@@ -307,7 +307,7 @@
                         "fr": "Fior di latte",
                         "en": "Fior di latte"
                     },
-                    "tag": ["vegetariana"]
+                    "tag": []
                 },
                 {
                     "nome": {
@@ -315,15 +315,7 @@
                         "fr": "Chocolat",
                         "en": "Chocolate"
                     },
-                    "tag": ["vegetariana"]
-                },
-                {
-                    "nome": {
-                        "it": "Crema",
-                        "fr": "Crème",
-                        "en": "Cream"
-                    },
-                    "tag": ["vegetariana"]
+                    "tag": []
                 },
                 {
                     "nome": {
@@ -331,23 +323,23 @@
                         "fr": "Pistache",
                         "en": "Pistachio"
                     },
-                    "tag": ["vegetariana"]
+                    "tag": []
                 },
                 {
                     "nome": {
-                        "it": "Castagna",
-                        "fr": "Châtaigne",
-                        "en": "Chestnut"
+                        "it": "Pesca",
+                        "fr": "Pêche",
+                        "en": "Peach"
                     },
-                    "tag": ["new", "vegetariana"]
+                    "tag": ["new", "senza lattosio"]
                 },
                 {
                     "nome": {
-                        "it": "Frutti di bosco",
-                        "fr": "Fruits des bois",
-                        "en": "Wild berries"
+                        "it": "Fragola",
+                        "fr": "Fraise",
+                        "en": "Strawberry"
                     },
-                    "tag": ["new", "vegetariana"]
+                    "tag": ["senza lattosio"]
                 }
             ],
             "items": [
