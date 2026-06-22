@@ -352,6 +352,21 @@
             },
             "items": [
                 {
+                    "nome": "Barbera",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Vino rosso della casa",
+                        "fr": "Vin rouge de la maison",
+                        "en": "House red wine"
+                    },
+                    "prezzi": {
+                        "0.25L": 5.00,
+                        "0.5L": 8.00,
+                        "1L": 14.00
+                    },
+                    "tag": []
+                },
+                {
                     "nome": "Nebbiolo",
                     "immagine": null,
                     "descrizione": {
@@ -416,10 +431,7 @@
                         "fr": "Bouquet riche de prunes et framboises avec des notes de chocolat blanc. Acidité et tannins doux.",
                         "en": "Rich bouquet of plums and raspberries with white chocolate notes. Acidity and soft tannins."
                     },
-                    "prezzi": {
-                        "bottiglia": 18.00,
-                        "calice": 3.50
-                    },
+                    "prezzo": 20.00,
                     "tag": []
                 },
                 {
@@ -431,8 +443,8 @@
                         "en": "Valdostan Petit Rouge. Ruby red with fresh red fruit aromas and spiced notes. Fresh and lively."
                     },
                     "prezzi": {
-                        "bottiglia": 18.00,
-                        "calice": 3.50
+                        "bottiglia": 20.00,
+                        "calice": 4.00
                     },
                     "tag": [
                         "locale"
@@ -449,6 +461,21 @@
             },
             "items": [
                 {
+                    "nome": "Chardonnay",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Vino bianco della casa leggermente frizzante",
+                        "fr": "Vin blanc de la maison légèrement pétillant",
+                        "en": "Slightly sparkling house white wine"
+                    },
+                    "prezzi": {
+                        "0.25L": 5.00,
+                        "0.5L": 8.00,
+                        "1L": 14.00
+                    },
+                    "tag": []
+                },
+                {
                     "nome": "Chardonnay Les Crêtes",
                     "immagine": null,
                     "descrizione": {
@@ -456,7 +483,7 @@
                         "fr": "100% Chardonnay. Profil doux, savoureux et minéral avec des notes de banane et prune.",
                         "en": "100% Chardonnay. Soft, savory and mineral profile with banana and plum notes."
                     },
-                    "prezzo": 26.00,
+                    "prezzo": 27.00,
                     "tag": []
                 },
                 {
@@ -467,7 +494,7 @@
                         "fr": "100% Petite Arvine. Verticalité, fraîcheur et bouquet agrumé avec des notes de jasmin, pivoine et cèdre.",
                         "en": "100% Petite Arvine. Verticality, freshness and citrus bouquet with jasmine, peony and cedar notes."
                     },
-                    "prezzo": 26.00,
+                    "prezzo": 21.00,
                     "tag": [
                         "locale"
                     ]
@@ -480,7 +507,7 @@
                         "fr": "Fattoria Nannì. 100% Verdicchio. Senteurs de fruits, fleurs et agrumes. Frais avec une agréable saveur.",
                         "en": "Fattoria Nannì. 100% Verdicchio. Fruit, flower and citrus aromas. Fresh with pleasant savory taste."
                     },
-                    "prezzo": 27.00,
+                    "prezzo": 28.00,
                     "tag": []
                 },
                 {
@@ -491,7 +518,7 @@
                         "fr": "Conte Marrone. 100% Arneis. Acacia, agrumes, pomme verte et minéraux. Frais et savoureux.",
                         "en": "Conte Marrone. 100% Arneis. Acacia, citrus, green apple and minerals. Fresh and savory."
                     },
-                    "prezzo": 25.00,
+                    "prezzo": 26.00,
                     "tag": []
                 },
                 {
@@ -502,7 +529,7 @@
                         "fr": "100% Pinot Grigio. Fruits jaunes mûrs, notes florales délicates. Acidité et saveur agréables.",
                         "en": "100% Pinot Grigio. Ripe yellow fruits, delicate floral notes. Pleasant acidity and savory taste."
                     },
-                    "prezzo": 18.00,
+                    "prezzo": 20.00,
                     "tag": []
                 },
                 {
@@ -514,8 +541,8 @@
                         "en": "Clear fruity and floral notes, aromas of ripe bananas, peaches, acacia flowers and elderberry."
                     },
                     "prezzi": {
-                        "bottiglia": 18.00,
-                        "calice": 3.50
+                        "bottiglia": 20.00,
+                        "calice": 4.00
                     },
                     "tag": []
                 },
@@ -597,9 +624,20 @@
                         "en": "Straw yellow with fine perlage, delicate floral essences. Soft and velvety on the palate."
                     },
                     "prezzi": {
-                        "bottiglia": 18.00,
-                        "calice": 3.50
+                        "bottiglia": 20.00,
+                        "calice": 4.00
                     },
+                    "tag": []
+                },
+                {
+                    "nome": "Moscato Duchessa Lia",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Moscato dolce fruttato ideale con dessert e fine pasto",
+                        "fr": "Moscato doux et fruité, idéal avec desserts et en fin de repas",
+                        "en": "Sweet, fruity moscato, ideal with desserts and after dinner"
+                    },
+                    "prezzo": 20.00,
                     "tag": []
                 }
             ]
@@ -620,7 +658,7 @@
                         "fr": "100% Petit Rouge. Profil délicat et floral avec des arômes de fraise, cassis, melon et pêche blanche.",
                         "en": "100% Petit Rouge. Delicate and floral profile with strawberry, blackcurrant, melon and white peach aromas."
                     },
-                    "prezzo": 22.00,
+                    "prezzo": 26.00,
                     "tag": [
                         "locale"
                     ]
@@ -656,47 +694,7 @@
                         "fr": "Passito di Pantelleria DOC 0,375L. Ambre brillant avec des senteurs d'abricots frais et d'oranges confites.",
                         "en": "Passito di Pantelleria DOC 0.375L. Brilliant amber with fresh apricot and candied orange aromas."
                     },
-                    "prezzo": 28.00,
-                    "tag": []
-                }
-            ]
-        },
-        {
-            "id": "vini-sfusi",
-            "nome": {
-                "it": "Vini Sfusi",
-                "fr": "Vins en Carafe",
-                "en": "House Wines"
-            },
-            "items": [
-                {
-                    "nome": "Barbera Rosso",
-                    "immagine": null,
-                    "descrizione": {
-                        "it": "Vino rosso della casa",
-                        "fr": "Vin rouge de la maison",
-                        "en": "House red wine"
-                    },
-                    "prezzi": {
-                        "0.25L": 3.00,
-                        "0.5L": 5.00,
-                        "1L": 9.00
-                    },
-                    "tag": []
-                },
-                {
-                    "nome": "Chardonnay Bianco",
-                    "immagine": null,
-                    "descrizione": {
-                        "it": "Vino bianco della casa",
-                        "fr": "Vin blanc de la maison",
-                        "en": "House white wine"
-                    },
-                    "prezzi": {
-                        "0.25L": 3.00,
-                        "0.5L": 5.00,
-                        "1L": 9.00
-                    },
+                    "prezzo": 42.00,
                     "tag": []
                 }
             ]
@@ -859,7 +857,7 @@
                         "fr": "20cl",
                         "en": "20cl"
                     },
-                    "prezzo": 2.50,
+                    "prezzo": 3.00,
                     "tag": []
                 },
                 {
@@ -870,7 +868,7 @@
                         "fr": "20cl",
                         "en": "20cl"
                     },
-                    "prezzo": 2.50,
+                    "prezzo": 3.00,
                     "tag": []
                 },
                 {
@@ -881,7 +879,7 @@
                         "fr": "20cl",
                         "en": "20cl"
                     },
-                    "prezzo": 2.50,
+                    "prezzo": 3.00,
                     "tag": []
                 },
                 {
@@ -892,7 +890,7 @@
                         "fr": "20cl",
                         "en": "20cl"
                     },
-                    "prezzo": 2.50,
+                    "prezzo": 3.00,
                     "tag": []
                 },
                 {
@@ -903,7 +901,7 @@
                         "fr": "20cl",
                         "en": "20cl"
                     },
-                    "prezzo": 2.50,
+                    "prezzo": 3.00,
                     "tag": []
                 },
                 {
@@ -914,7 +912,7 @@
                         "fr": "33cl — produit local",
                         "en": "33cl — local product"
                     },
-                    "prezzo": 3.00,
+                    "prezzo": 5.00,
                     "tag": [
                         "locale"
                     ]
@@ -976,7 +974,7 @@
                         "fr": "Verre",
                         "en": "Glass"
                     },
-                    "prezzo": 3.50,
+                    "prezzo": 4.00,
                     "tag": []
                 },
                 {
@@ -987,7 +985,7 @@
                         "fr": "Aperol, Prosecco et soda",
                         "en": "Aperol, Prosecco and soda"
                     },
-                    "prezzo": 6.00,
+                    "prezzo": 5.00,
                     "tag": []
                 },
                 {
@@ -998,7 +996,7 @@
                         "fr": "Campari, Prosecco et soda",
                         "en": "Campari, Prosecco and soda"
                     },
-                    "prezzo": 6.00,
+                    "prezzo": 5.00,
                     "tag": []
                 },
                 {
@@ -1009,7 +1007,7 @@
                         "fr": "Prosecco, sirop de sureau, menthe et soda",
                         "en": "Prosecco, elderflower syrup, mint and soda"
                     },
-                    "prezzo": 6.00,
+                    "prezzo": 5.00,
                     "tag": []
                 },
                 {
@@ -1020,7 +1018,7 @@
                         "fr": "Café espresso",
                         "en": "Espresso"
                     },
-                    "prezzo": 1.50,
+                    "prezzo": 1.20,
                     "tag": []
                 },
                 {
@@ -1053,7 +1051,7 @@
                         "fr": "Café au ginseng",
                         "en": "Ginseng coffee"
                     },
-                    "prezzo": 2.00,
+                    "prezzo": 1.50,
                     "tag": []
                 },
                 {
@@ -1064,7 +1062,7 @@
                         "fr": "Café avec liqueur au choix",
                         "en": "Espresso with liqueur of choice"
                     },
-                    "prezzo": 2.50,
+                    "prezzo": 1.50,
                     "tag": []
                 },
                 {
@@ -1075,7 +1073,7 @@
                         "fr": "Cappuccino",
                         "en": "Cappuccino"
                     },
-                    "prezzo": 2.00,
+                    "prezzo": 2.50,
                     "tag": []
                 },
                 {
@@ -1086,7 +1084,7 @@
                         "fr": "Thé chaud",
                         "en": "Hot tea"
                     },
-                    "prezzo": 2.00,
+                    "prezzo": 2.50,
                     "tag": []
                 },
                 {
@@ -1097,7 +1095,18 @@
                         "fr": "Tisane au choix",
                         "en": "Herbal tea of choice"
                     },
-                    "prezzo": 2.00,
+                    "prezzo": 2.50,
+                    "tag": []
+                },
+                {
+                    "nome": "Liquore",
+                    "immagine": null,
+                    "descrizione": {
+                        "it": "Liquore a scelta",
+                        "fr": "Liqueur au choix",
+                        "en": "Liqueur of choice"
+                    },
+                    "prezzo": 3.00,
                     "tag": []
                 }
             ]
