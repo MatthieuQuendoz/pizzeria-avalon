@@ -84,7 +84,7 @@
         },
         {
           "nome": "Romana",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/rosse/romana.webp",
           "descrizione": {
             "it": "Passata di pomodoro, mozzarella e acciughe",
             "fr": "Sauce tomate, mozzarella et anchois",
@@ -263,23 +263,25 @@
           ]
         },
         {
-          "nome": "Patate e wurstel",
+          "nome": "Patatine e wurstel",
           "immagine": "assets/menu/pizzas/rosse/wurstelpatatine.webp",
           "descrizione": {
-            "it": "Passata di pomodoro, mozzarella, patate lesse e würstel",
-            "fr": "Sauce tomate, mozzarella, pommes de terre cuites et saucisse",
-            "en": "Tomato sauce, mozzarella, boiled potatoes and sausage"
+            "it": "Passata di pomodoro, mozzarella, patatine fritte e würstel",
+            "fr": "Sauce tomate, mozzarella, frites et saucisse",
+            "en": "Tomato sauce, mozzarella, fries and sausage"
           },
           "prezzo": 10.0,
-          "tag": []
+          "tag": [
+            "popular"
+          ]
         },
         {
           "nome": "Patate e wurstel",
           "immagine": null,
           "descrizione": {
-            "it": "Passata di pomodoro, mozzarella, patate crude e würstel",
-            "fr": "Sauce tomate, mozzarella, pommes de terre crues et saucisse",
-            "en": "Tomato sauce, mozzarella, raw potatoes and sausage"
+            "it": "Passata di pomodoro, mozzarella, patate lesse e würstel",
+            "fr": "Sauce tomate, mozzarella, pommes de terre cuites et saucisse",
+            "en": "Tomato sauce, mozzarella, boiled potatoes and sausage"
           },
           "prezzo": 10.0,
           "tag": []
@@ -453,6 +455,7 @@
           },
           "prezzo": 11.5,
           "tag": [
+            "popular",
             "locale"
           ]
         },
@@ -490,11 +493,13 @@
             "en": "Tomato sauce, mozzarella, cured ham, rocket and parmesan"
           },
           "prezzo": 12.5,
-          "tag": []
+          "tag": [
+            "popular"
+          ]
         },
         {
           "nome": "Capricciosa",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/rosse/capricciosa.webp",
           "descrizione": {
             "it": "Passata di pomodoro, mozzarella, prosciutto, funghi, acciughe e carciofi",
             "fr": "Sauce tomate, mozzarella, jambon, champignons, anchois et artichauts",
@@ -565,6 +570,7 @@
           },
           "prezzo": 11.5,
           "tag": [
+            "popular",
             "vegetariana"
           ]
         },
@@ -590,7 +596,9 @@
             "en": "Tomato sauce, mozzarella, stracchino, bresaola, walnuts and parmesan"
           },
           "prezzo": 12.5,
-          "tag": []
+          "tag": [
+            "popular"
+          ]
         },
         {
           "nome": "Della casa",
@@ -602,6 +610,7 @@
           },
           "prezzo": 12.5,
           "tag": [
+            "piccante",
             "mangioni"
           ]
         },
@@ -639,6 +648,7 @@
           },
           "prezzo": 12.5,
           "tag": [
+            "piccante",
             "mangioni"
           ]
         },
@@ -651,7 +661,9 @@
             "en": "Tomato sauce, mozzarella, beans, sausage, onion and parmesan"
           },
           "prezzo": 11.5,
-          "tag": []
+          "tag": [
+            "popular"
+          ]
         },
         {
           "nome": "Bud Spencer",
@@ -663,6 +675,7 @@
           },
           "prezzo": 12.0,
           "tag": [
+            "piccante",
             "mangioni"
           ]
         },
@@ -1019,7 +1032,7 @@
         },
         {
           "nome": "Al limone",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/bianche/limone.webp",
           "descrizione": {
             "it": "Mozzarella, limone, ananas, ricotta e carciofi",
             "fr": "Mozzarella, citron, ananas, ricotta et artichauts",
@@ -1056,7 +1069,7 @@
         },
         {
           "nome": "Della nonna",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/bianche/dellanonna.webp",
           "descrizione": {
             "it": "Mozzarella, stracchino, patate lesse, tonno e erbetta cipollina",
             "fr": "Mozzarella, stracchino, pommes de terre, thon et ciboulette",
@@ -1103,12 +1116,25 @@
           ]
         },
         {
-          "nome": "Verdure con crema",
+          "nome": "Verdure con crema di asparagi",
           "immagine": "assets/menu/pizzas/bianche/verdurecremaasparagi.webp",
           "descrizione": {
-            "it": "Crema di asparagi o di carciofi, mozzarella, verdure fresche e grigliate",
-            "fr": "Crème d'asperges ou d'artichauts, mozzarella, légumes frais et grillés",
-            "en": "Asparagus or artichoke cream, mozzarella, fresh and grilled vegetables"
+            "it": "Crema di asparagi, mozzarella, verdure fresche e grigliate",
+            "fr": "Crème d'asperges, mozzarella, légumes frais et grillés",
+            "en": "Asparagus cream, mozzarella, fresh and grilled vegetables"
+          },
+          "prezzo": 12.0,
+          "tag": [
+            "vegetariana"
+          ]
+        },
+        {
+          "nome": "Verdure con crema di carciofi",
+          "immagine": "assets/menu/pizzas/bianche/verdcremacarciofi.webp",
+          "descrizione": {
+            "it": "Crema di carciofi, mozzarella, verdure fresche e grigliate",
+            "fr": "Crème d'artichauts, mozzarella, légumes frais et grillés",
+            "en": "Artichoke cream, mozzarella, fresh and grilled vegetables"
           },
           "prezzo": 12.0,
           "tag": [
@@ -1583,6 +1609,75 @@
       ]
     },
     {
+      "id": "piadine",
+      "nome": {
+        "it": "Piadine",
+        "fr": "Piadines",
+        "en": "Piadinas"
+      },
+      "items": [
+        {
+          "nome": "Rosmarino",
+          "immagine": "assets/menu/pizzas/piadine/piadina rosmarino.webp",
+          "descrizione": {
+            "it": "Rosmarino",
+            "fr": "Romarin",
+            "en": "Rosemary"
+          },
+          "prezzo": 5.0,
+          "tag": [
+            "vegan"
+          ]
+        },
+        {
+          "nome": "Iris di Ciaccino",
+          "immagine": null,
+          "descrizione": {
+            "it": "Sesamo, origano e rosmarino",
+            "fr": "Sésame, origan et romarin",
+            "en": "Sesame, oregano and rosemary"
+          },
+          "prezzo": 5.0,
+          "tag": [
+            "vegan"
+          ]
+        },
+        {
+          "nome": "Crudo",
+          "immagine": null,
+          "descrizione": {
+            "it": "Prosciutto crudo",
+            "fr": "Jambon cru",
+            "en": "Cured ham"
+          },
+          "prezzo": 7.5,
+          "tag": []
+        },
+        {
+          "nome": "Speck",
+          "immagine": null,
+          "descrizione": {
+            "it": "Speck",
+            "fr": "Speck",
+            "en": "Speck"
+          },
+          "prezzo": 7.5,
+          "tag": []
+        },
+        {
+          "nome": "Porchetta",
+          "immagine": null,
+          "descrizione": {
+            "it": "Porchetta",
+            "fr": "Porchetta",
+            "en": "Porchetta"
+          },
+          "prezzo": 7.5,
+          "tag": []
+        }
+      ]
+    },
+    {
       "id": "fritti",
       "nome": {
         "it": "Fritti",
@@ -1603,7 +1698,7 @@
         },
         {
           "nome": "Anelli di cipolla",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/fritti/anellicipolla.webp",
           "descrizione": {
             "it": "10 pezzi — prodotto surgelato",
             "fr": "10 pièces — produit surgelé",
@@ -1746,7 +1841,7 @@
       "items": [
         {
           "nome": "Insalata Mista",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/insalate/ins.mista.webp",
           "descrizione": {
             "it": "Verde, radicchio, pomodori e carote",
             "fr": "Salade verte, radicchio, tomates et carottes",
@@ -1879,7 +1974,7 @@
         },
         {
           "nome": "Paperino",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/bimbi/paperino.webp",
           "descrizione": {
             "it": "Passata di pomodoro, mozzarella e wurstel",
             "fr": "Sauce tomate, mozzarella et saucisse",
@@ -1890,7 +1985,7 @@
         },
         {
           "nome": "Paperino con patatine",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/bimbi/paperinoconpatatine.webp",
           "descrizione": {
             "it": "Passata di pomodoro, mozzarella, wurstel e patatine fritte",
             "fr": "Sauce tomate, mozzarella, saucisse et frites",
@@ -1925,7 +2020,7 @@
         },
         {
           "nome": "Lo squalo (mini calzone)",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/bimbi/squalo.webp",
           "descrizione": {
             "it": "Mozzarella, prosciutto cotto e funghi",
             "fr": "Mozzarella, jambon cuit et champignons",
