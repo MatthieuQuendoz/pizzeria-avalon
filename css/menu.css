@@ -790,12 +790,14 @@
 .item-tag--piccante     { background-color: #FBE9E7; color: #BF360C; }
 .item-tag--vegetariana  { background-color: #F1F8E9; color: #558B2F; }
 .item-tag--senza-glutine { background-color: #FFF8E1; color: #F57F17; }
+.item-tag--senza-lattosio { background-color: #E8EAF6; color: #3949AB; }
 .item-tag--locale       { background-color: #E3F2FD; color: #1565C0; }
 .item-tag--immodificabile { background-color: #F3E5F5; color: #6A1B9A; }
 .item-tag--Classica     { background-color: #F0E6D4; color: var(--color-brown); }
 .item-tag--new          { background-color: #E8F4E8; color: #2D6A4F; }
 .item-tag--dedicata     { background-color: #FCE4EC; color: #C2185B; }
 .item-tag--mangioni     { background-color: #FFF3E0; color: #E65100; }
+.item-tag--popular      { background-color: #FFF8E7; color: #D97706; }
 
 /* immagine destra — spacer che riserva metà pizza */
 .item-card__media {

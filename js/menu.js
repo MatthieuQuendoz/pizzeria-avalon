@@ -9,11 +9,13 @@ const TAG_CONFIG = {
   'piccante': { emoji: '🌶️', label: { it: 'Piccante', fr: 'Épicé', en: 'Spicy' } },
   'immodificabile': { emoji: '🔒', label: { it: 'Immodificabile', fr: 'Fixe', en: 'Fixed' } },
   'senza glutine': { emoji: '🌾', label: { it: 'Senza glutine', fr: 'Sans gluten', en: 'Gluten-free' } },
+  'senza lattosio': { emoji: '🥛', label: { it: 'Senza lattosio', fr: 'Sans lactose', en: 'Lactose-free' } },
   'locale': { emoji: '🏔️', label: { it: 'Locale', fr: 'Local', en: 'Local' } },
   'Classica': { emoji: '🎩', label: { it: 'Classica', fr: 'Classique', en: 'Classic' } },
   'new': { emoji: '✨', label: { it: 'Nuovo', fr: 'Nouveau', en: 'New' } },
   'dedicata': { emoji: '❤️', label: { it: 'Dedicata a...', fr: 'Dédiée à...', en: 'Dedicated to...' } },
-  'mangioni': { emoji: '😋', label: { it: 'Da mangioni', fr: 'Pour gros mangeurs', en: 'For big eaters' } }
+  'mangioni': { emoji: '😋', label: { it: 'Da mangioni', fr: 'Pour gros mangeurs', en: 'For big eaters' } },
+  'popular': { emoji: '⭐', label: { it: 'Popolare', fr: 'Populaire', en: 'Popular' } }
 };
 
 const FILTRO_LABELS = {
