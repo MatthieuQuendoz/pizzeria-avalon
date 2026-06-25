@@ -5,7 +5,7 @@
    View Transitions API nativa + fallback JS.
    ============================================ */
 (function () {
-  const PAGES = ['index.html', 'menu.html', 'prenota.html', 'gioca.html'];
+  const PAGES = ['index', 'menu', 'prenota', 'gioca'];
   const FLAG = 'avalon-page-transition';
   const DIR_KEY = 'avalon-page-dir';
   function transitionMs() {
@@ -27,16 +27,19 @@
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function currentPageFile() {
-    const parts = window.location.pathname.split('/').filter(Boolean);
-    const last = parts[parts.length - 1];
-    if (!last || !last.includes('.')) return 'index.html';
-    return last;
+    return pageKey(window.location.pathname);
   }
 
   function hrefFile(href) {
-    const path = (href || '').split('?')[0].split('#')[0];
-    const file = path.split('/').filter(Boolean).pop();
-    return file || 'index.html';
+    return pageKey((href || '').split('?')[0].split('#')[0]);
+  }
+
+  // Normalizza path o href in una chiave pagina senza estensione.
+  // "/" o "/index.html" -> "index"; "/menu" o "/menu.html" -> "menu".
+  function pageKey(path) {
+    const last = (path || '').split('/').filter(Boolean).pop() || '';
+    const file = last.replace(/\.html$/i, '');
+    return file || 'index';
   }
 
   function navDirection(from, to) {
@@ -134,7 +137,7 @@
     if (reduceMotion) return;
 
     const current = currentPageFile();
-    const linkSelector = current === 'index.html'
+    const linkSelector = current === 'index'
       ? '.navbar a[href], .hero__actions a[href]'
       : '.navbar a[href]';
     const links = document.querySelectorAll(linkSelector);

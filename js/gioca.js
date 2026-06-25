@@ -15,7 +15,7 @@ function hideVictoryModal() {
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.nav-links a[href]').forEach((link) => {
     const href = link.getAttribute('href') || '';
-    if (!href || href.includes('gioca.html')) return;
+    if (!href || /\/?gioca(\.html)?$/.test(href.split('?')[0].split('#')[0])) return;
 
     // Stop immediato di loop e audio prima di lasciare la pagina.
     // La navigazione vera e propria e' gestita dal browser (View Transitions

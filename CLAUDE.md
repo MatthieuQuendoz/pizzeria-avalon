@@ -6,8 +6,9 @@
 
 - 4 pagine HTML statiche: `index.html`, `menu.html`, `prenota.html`, `gioca.html`
 - Nessun `package.json`, `node_modules`, bundler o transpiler
-- Deploy: qualsiasi hosting statico (Netlify, Vercel, GitHub Pages, FTP)
-- Per testare in locale: `python3 -m http.server 8000` dalla root del progetto
+- Deploy: **Vercel** (hosting statico), dominio `pizzeriaavalon.it`
+- **URL puliti attivi** (`vercel.json` → `cleanUrls: true`): le pagine si raggiungono come `/menu`, `/prenota`, `/gioca` (Vercel fa il rewrite da `menu.html` e redirect 308 da `/menu.html` → `/menu`). I link interni usano percorsi assoluti senza estensione (`/`, `/menu`, ...).
+- Per testare in locale usa **`vercel dev`** (emula i clean URL e il `vercel.json`). NOTA: `python3 -m http.server 8000` mostra solo le pagine aperte come file `.html` diretti, ma NON risolve i link `/menu` perché non applica il rewrite di Vercel.
 
 ---
 

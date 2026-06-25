@@ -12,15 +12,18 @@
   });
 
   function currentPageFile() {
-    const parts = window.location.pathname.split('/').filter(Boolean);
-    const last = parts[parts.length - 1];
-    if (!last || !last.includes('.')) return 'index.html';
-    return last;
+    return pageKey(window.location.pathname);
   }
 
   function hrefFile(href) {
-    const path = (href || '').split('?')[0].split('#')[0];
-    const file = path.split('/').filter(Boolean).pop();
-    return file || 'index.html';
+    return pageKey((href || '').split('?')[0].split('#')[0]);
+  }
+
+  // Normalizza path o href in una chiave pagina senza estensione.
+  // "/" o "/index.html" -> "index"; "/menu" o "/menu.html" -> "menu".
+  function pageKey(path) {
+    const last = (path || '').split('/').filter(Boolean).pop() || '';
+    const file = last.replace(/\.html$/i, '');
+    return file || 'index';
   }
 })();
