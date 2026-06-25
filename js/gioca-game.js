@@ -674,6 +674,7 @@ let _smokePuffs = [], _smokeTimer = 0;
 let _knight = { x: 80, speed: INITIAL_KNIGHT_SPEED, movingRight: true, state: 'idle', stateTimer: 0 };
 let _objects = [], _spawnTimer = INITIAL_SPAWN_DELAY, _spawnDelay = INITIAL_SPAWN_DELAY, _bombChance = 0.30, _combo = 0;
 let _score = 0, _isGameOver = false, _hasCelebrated = false, _showPanel = false;
+let _scoreSubmitted = false;
 let _isRecord = false, _prevBest = 0, _playerName = 'Giocatore';
 let _particles = [], _ftexts = [];
 let _retryZone = null, _retryHover = false;
@@ -847,6 +848,21 @@ function catchPizza(obj, idx) {
   }
 }
 
+// ─── SALVATAGGIO PUNTEGGIO ─────────────────────
+// Registra record personale e invia il punteggio alla classifica.
+// Chiamato sia alla morte (bomba) sia quando si vince e si termina dalla
+// schermata vittoria. La guardia evita doppi invii dello stesso punteggio.
+function finalizeScore() {
+  if (_scoreSubmitted) return;
+  _scoreSubmitted = true;
+  const pb = typeof getPlayerBest === 'function' ? getPlayerBest() : 0;
+  _prevBest = pb; _isRecord = _score > pb;
+  if (_isRecord && typeof savePlayerBest === 'function') savePlayerBest(_score);
+  if (typeof leaderboardApi !== 'undefined')
+    leaderboardApi.submitScore(_playerName, _score)
+      .then(() => { if (typeof renderLeaderboard === 'function') renderLeaderboard(); });
+}
+
 // ─── HIT BOMB ──────────────────────────────────
 function hitBomb(obj) {
   spawnBombParticles(obj.x, obj.y);
@@ -856,12 +872,7 @@ function hitBomb(obj) {
   _objects.forEach(o => { o.vy = 0; o.vx = 0; o.vr = 0; });
   _knight.state = 'hit'; _knight.stateTimer = 9999;
 
-  const pb = typeof getPlayerBest === 'function' ? getPlayerBest() : 0;
-  _prevBest = pb; _isRecord = _score > pb;
-  if (_isRecord && typeof savePlayerBest === 'function') savePlayerBest(_score);
-  if (typeof leaderboardApi !== 'undefined')
-    leaderboardApi.submitScore(_playerName, _score)
-      .then(() => { if (typeof renderLeaderboard === 'function') renderLeaderboard(); });
+  finalizeScore();
   if (_gameOverPanelTimer) clearTimeout(_gameOverPanelTimer);
   _gameOverPanelTimer = setTimeout(() => {
     _gameOverPanelTimer = null;
@@ -932,6 +943,7 @@ function restartGame() {
   _objects = []; _spawnTimer = INITIAL_SPAWN_DELAY; _spawnDelay = INITIAL_SPAWN_DELAY;
   _bombChance = 0.30; _combo = 0; _score = 0;
   _isGameOver = false; _hasCelebrated = false; _showPanel = false;
+  _scoreSubmitted = false;
   _isVictoryPaused = false; _confetti = []; _confettiBurstTimer = 0;
   _retryZone = null; _retryHover = false;
   _particles = []; _ftexts = []; _shakeDur = 0;
@@ -1000,6 +1012,7 @@ const AvalonGame = {
     _isVictoryPaused = false;
     _isGameOver = true;
     _showPanel = true;
+    finalizeScore();
   },
   isRunning() {
     return _gameRunning;
