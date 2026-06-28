@@ -892,7 +892,7 @@
         },
         {
           "nome": "Delicata",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/bianche/delicata.webp",
           "descrizione": {
             "it": "Mozzarella, taleggio e noci",
             "fr": "Mozzarella, taleggio et noix",
@@ -1397,7 +1397,7 @@
       "items": [
         {
           "nome": "Mario",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/immodificabili/mario.webp",
           "descrizione": {
             "it": "Passata di pomodoro, Porchetta di Ariccia e parmigiano",
             "fr": "Sauce tomate, Porchetta di Ariccia et parmesan",
@@ -1731,7 +1731,7 @@
         },
         {
           "nome": "Rosti",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/fritti/rosti.webp",
           "descrizione": {
             "it": "4 pezzi — prodotto surgelato",
             "fr": "4 pièces — produit surgelé",
@@ -1867,7 +1867,7 @@
         },
         {
           "nome": "Insalata di Olive",
-          "immagine": null,
+          "immagine": "assets/menu/pizzas/insalate/insolive.webp",
           "descrizione": {
             "it": "Verde, radicchio, pomodori e olive",
             "fr": "Salade verte, radicchio, tomates et olives",

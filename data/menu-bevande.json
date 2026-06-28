@@ -42,8 +42,8 @@
                         "en": "Forst brewery"
                     },
                     "prezzi": {
-                        "piccola (20cl)": 4.50,
-                        "media (40cl)": 8.00,
+                        "piccola (30cl)": 4.50,
+                        "media (50cl)": 8.00,
                         "caraffa (1L)": 15.00
                     },
                     "tag": []

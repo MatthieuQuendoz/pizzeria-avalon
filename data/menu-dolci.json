@@ -113,7 +113,7 @@
             "items": [
                 {
                     "nome": "Affogato al caffè",
-                    "immagine": null,
+                    "immagine": "assets/menu/dolci/affogati/aff pic.webp",
                     "descrizione": {
                         "it": "Gelato alle creme con caffè",
                         "fr": "Glace à la crème avec café",
@@ -220,7 +220,7 @@
                 },
                 {
                     "nome": "Coppa alla Nocciola",
-                    "immagine": null,
+                    "immagine": "assets/menu/dolci/gelati/c.nocciola.webp",
                     "descrizione": {
                         "it": "Gelato alla nocciola con nocciole intere, granella di nocciole e panna montata",
                         "fr": "Glace à la noisette avec noisettes entières, éclats de noisettes et crème chantilly",
@@ -358,7 +358,7 @@
                 },
                 {
                     "nome": "Coppa piccola",
-                    "immagine": null,
+                    "immagine": "assets/menu/dolci/gelati/coppiccola.webp",
                     "descrizione": {
                         "it": "Due gusti a scelta — gelato di nostra produzione",
                         "fr": "Deux parfums au choix — glace de notre production",
