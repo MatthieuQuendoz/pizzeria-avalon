@@ -1,130 +1,37 @@
-/* ============================================
-   PIZZERIA AVALON — Transizioni tra pagine
-   Slide orizzontale direzionale (JS). VTA cross-document disattivata.
-   Direzione via data-page-dir + variabili CSS.
-   Disattivato con prefers-reduced-motion.
-   ============================================ */
-
+/* Avalon: one brief arrival animation for internal page navigation. */
 :root {
-  --page-transition-duration: 300ms;
-  --page-transition-easing: cubic-bezier(0.32, 0.72, 0, 1);
-  --page-out-x: -20px;
-  --page-in-x: 20px;
+  --page-transition-duration: var(--motion-page-duration);
+  --page-transition-easing: var(--motion-ease-out);
+  --page-in-x: 8px;
 }
 
-/* Mobile: solo transform (no fade), movimento più corto e leggermente più lento */
+html[data-page-dir="back"] { --page-in-x: -8px; }
+
 @media (max-width: 768px) {
-  :root {
-    --page-transition-duration: 360ms;
-    --page-transition-easing: cubic-bezier(0.25, 0.46, 0.2, 1);
-    --page-out-x: -14px;
-    --page-in-x: 14px;
-  }
-
-  html[data-page-dir="back"] {
-    --page-out-x: 14px;
-    --page-in-x: -14px;
-  }
+  :root { --page-in-x: 6px; }
+  html[data-page-dir="back"] { --page-in-x: -6px; }
 }
 
-html[data-page-dir="back"] {
-  --page-out-x: 20px;
-  --page-in-x: -20px;
-}
+/* The JavaScript arrival is the only cross-document transition. */
+@view-transition { navigation: none; }
 
-/* -------- VIEW TRANSITIONS API: disattivata su cross-document ----------- */
-/* La slide direzionale è gestita da page-transitions.js; navigation:auto
-   su mobile Chrome si sovrappone e produce doppia animazione scattosa. */
-@view-transition {
-  navigation: none;
-}
-
-.navbar        { view-transition-name: avalon-navbar; }
-.lang-switcher { view-transition-name: avalon-lang; }
-.status-bar-bg { view-transition-name: avalon-statusbar; }
-
-/* Il contenuto scorre via JS; root non deve crossfadare sopra l'animazione. */
-::view-transition-group(root) {
-  animation: none;
-}
-
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation: none;
-}
-
-::view-transition-old(avalon-navbar),
-::view-transition-new(avalon-navbar),
-::view-transition-old(avalon-lang),
-::view-transition-new(avalon-lang),
-::view-transition-old(avalon-statusbar),
-::view-transition-new(avalon-statusbar) {
-  animation: none;
-}
-
-/* Stato iniziale entrata (prima che page-transitions.js carichi) */
 html.page-await-enter .page-slide-root,
 html.page-await-enter .page-wrapper,
 html.page-await-enter body > .hero,
-html.page-await-enter body > .footer {
-  transform: translate3d(var(--page-in-x), 0, 0);
-}
-
-/* -------- SLIDE JS (uscita + entrata) ----------- */
-body.page-is-leaving .page-slide-target,
-body.page-is-entering.page-enter-active .page-slide-target {
-  will-change: transform;
-  backface-visibility: hidden;
-}
-
-body.page-is-leaving .page-slide-target {
-  transform: translate3d(var(--page-out-x), 0, 0);
-  transition: transform var(--page-transition-duration) var(--page-transition-easing);
-}
-
+html.page-await-enter body > .footer,
 body.page-is-entering .page-slide-target {
+  opacity: .92;
   transform: translate3d(var(--page-in-x), 0, 0);
 }
 
 body.page-is-entering.page-enter-active .page-slide-target {
+  opacity: 1;
   transform: translate3d(0, 0, 0);
-  transition: transform var(--page-transition-duration) var(--page-transition-easing);
+  transition: opacity var(--page-transition-duration) var(--page-transition-easing),
+              transform var(--page-transition-duration) var(--page-transition-easing);
 }
 
-/* Desktop: aggiunge un leggero fade oltre allo slide */
-@media (min-width: 769px) {
-  html.page-await-enter .page-slide-root,
-  html.page-await-enter .page-wrapper,
-  html.page-await-enter body > .hero,
-  html.page-await-enter body > .footer {
-    opacity: 0;
-  }
-
-  body.page-is-leaving .page-slide-target,
-  body.page-is-entering.page-enter-active .page-slide-target {
-    will-change: opacity, transform;
-  }
-
-  body.page-is-leaving .page-slide-target {
-    opacity: 0;
-    transition:
-      opacity var(--page-transition-duration) var(--page-transition-easing),
-      transform var(--page-transition-duration) var(--page-transition-easing);
-  }
-
-  body.page-is-entering .page-slide-target {
-    opacity: 0;
-  }
-
-  body.page-is-entering.page-enter-active .page-slide-target {
-    opacity: 1;
-    transition:
-      opacity var(--page-transition-duration) var(--page-transition-easing),
-      transform var(--page-transition-duration) var(--page-transition-easing);
-  }
-}
-
-/* Evita doppia animazione hero (stagger CSS) durante l'entrata pagina */
+/* Avoid a second hero intro after navigation to the home page. */
 body.page-is-entering .hero__eyebrow,
 body.page-is-entering .hero__title,
 body.page-is-entering .hero__subtitle,
@@ -138,21 +45,13 @@ html.page-await-enter .hero__actions {
   transform: none;
 }
 
-/* -------- ACCESSIBILITA': riduci movimento ----------- */
 @media (prefers-reduced-motion: reduce) {
-  ::view-transition-group(*),
-  ::view-transition-old(*),
-  ::view-transition-new(*) {
-    animation: none !important;
-  }
-
-  body.page-is-leaving .page-slide-target,
-  body.page-is-entering .page-slide-target,
-  body.page-is-entering.page-enter-active .page-slide-target,
   html.page-await-enter .page-slide-root,
   html.page-await-enter .page-wrapper,
   html.page-await-enter body > .hero,
-  html.page-await-enter body > .footer {
+  html.page-await-enter body > .footer,
+  body.page-is-entering .page-slide-target,
+  body.page-is-entering.page-enter-active .page-slide-target {
     opacity: 1;
     transform: none;
     transition: none;

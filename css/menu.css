@@ -202,7 +202,7 @@
   font-weight: var(--weight-medium);
   font-family: var(--font-body);
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: background-color var(--motion-control-duration) ease, color var(--motion-control-duration) ease, border-color var(--motion-control-duration) ease;
 }
 
 .macrogruppo.active {
@@ -311,11 +311,10 @@
     );
   }
 
-  .menu-tabs-indicator {
-    margin-inline: 0;
-    max-width: 24rem;
-    margin-left: auto;
-    margin-right: auto;
+  .menu-tabs-wrap .menu-tabs-indicator {
+    width: min(100%, var(--menu-content-width));
+    max-width: none;
+    margin: var(--space-2) auto 0;
   }
 
   .menu-tabs-wrap.is-not-scrollable .menu-tabs-indicator {
@@ -502,8 +501,13 @@
   animation: menu-filtri-in 0.16s ease;
 }
 
-.menu-filtri__panel[hidden] {
-  display: none;
+.menu-filtri__panel[hidden] { display: none; }
+.menu-filtri__panel.is-closing { animation: menu-filtri-out 130ms ease-in both; }
+@keyframes menu-filtri-out {
+  to { opacity: 0; transform: translateY(-4px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .menu-filtri__panel, .menu-filtri__panel.is-closing { animation: none; }
 }
 
 @keyframes menu-filtri-in {
@@ -699,22 +703,13 @@
   padding: var(--space-4) 0 var(--space-4) var(--space-4);
   position: relative;
   min-height: 130px;
-  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
 }
 
 .item-card--no-media {
   padding-right: var(--space-4);
 }
 
-.item-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-xl);
-}
 
-.item-card:hover .item-card__img,
-.item-card:hover .item-card__placeholder {
-  transform: translateY(-6px);
-}
 
 /* corpo sinistro */
 .item-card__body {
@@ -838,13 +833,9 @@
   top: 50%;
   right: -25px;
   transform: translateY(calc(-50% + 25px));
-  transition: transform var(--transition-normal);
   display: block;
 }
 
-.item-card:hover .item-card__img {
-  transform: translateY(calc(-50% + 21px));
-}
 
 .item-card__placeholder {
   position: absolute;
@@ -865,11 +856,23 @@
   top: 50%;
   right: -25px;
   transform: translateY(calc(-50% + 25px));
-  transition: transform var(--transition-normal);
 }
 
-.item-card:hover .item-card__placeholder {
-  transform: translateY(calc(-50% + 21px));
+
+/* Animate at most six cards as they enter the viewport after a category change. */
+.item-card.menu-card-pending { opacity: 0; transform: translateY(8px); }
+.item-card.menu-card-entering {
+  animation: menu-card-enter 190ms var(--motion-ease-out) both;
+  animation-delay: var(--menu-enter-delay, 0ms);
+}
+@keyframes menu-card-enter {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .item-card.menu-card-pending { opacity: 1; transform: none; }
+  .item-card.menu-card-entering { animation: none; }
+  .menu-tabs-indicator__thumb, .menu-filtri__chevron { transition: none; }
 }
 
 /* -------- SLIDER A FONDO PAGINA ----------- */

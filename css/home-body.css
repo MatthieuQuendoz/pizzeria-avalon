@@ -50,19 +50,19 @@ body.home .orari__btn:hover { transform: translateY(-2px); box-shadow: 0 7px 0 v
 .home-section-intro, .location__story { font-family: var(--font-heading2); font-size: 15px; line-height: 1.7; font-weight: 500; color: var(--color-lightBrown); }
 .home-selection-aside { display: flex; align-items: center; justify-content: center; gap: 20px; }
 .home-stamp { flex-shrink: 0; display: grid; place-content: center; width: 100px; height: 100px; border: 2px solid var(--color-red); border-radius: 50%; color: var(--color-red); font-family: var(--font-heading); font-size: 16px; font-weight: 900; text-align: center; padding: 14px; line-height: 1.2; transform: rotate(10deg); outline: 1px dashed var(--color-red); outline-offset: -8px; }
-.home-stamp[data-reveal] { opacity: 0; transform: translateY(12px) rotate(10deg); transition: opacity 650ms ease, transform 650ms ease; }
+.home-stamp[data-reveal] { opacity: 0; transform: translateY(12px) rotate(10deg); transition: opacity var(--motion-reveal-duration) var(--motion-ease-out), transform var(--motion-reveal-duration) var(--motion-ease-out); }
 .home-stamp[data-reveal].is-visible { opacity: 1; transform: rotate(10deg); }
 .home-pizzas:not([hidden]) {
   display: grid; grid-auto-flow: column; grid-auto-columns: 100%; gap: 20px;
   overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory;
-  scrollbar-width: none; padding: 10px 0 18px;
+  scrollbar-width: none; scroll-snap-stop: normal; padding: 10px 0 18px;
 }
 .home-pizzas::-webkit-scrollbar { display: none; }
 .home-pizza {
   position: relative; display: grid; grid-template-columns: minmax(0, 1fr) 50%;
   min-width: 0; min-height: 0; background: white; border: 1px solid #2d1d1d14;
   border-radius: 32px; overflow: hidden; padding: 12px;
-  box-shadow: 0 6px 0 #e7d7c7; scroll-snap-align: start; scroll-snap-stop: always;
+  box-shadow: 0 6px 0 #e7d7c7; scroll-snap-align: start; scroll-snap-stop: normal;
   transition: transform 220ms ease, box-shadow 220ms ease;
 }
 .home-pizza__body { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; min-width: 0; }

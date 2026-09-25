@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* Coriandoli "DOM" indipendenti dal canvas: festeggiano il ritiro del premio. */
-function launchConfetti(count = 90) {
+function launchConfetti(count = 40) {
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const colors = ['#B12C16', '#D4A828', '#3F6833', '#E87020', '#FDF6EE', '#2A6818'];
   const layer = document.createElement('div');
@@ -159,7 +159,7 @@ function launchConfetti(count = 90) {
     layer.appendChild(piece);
 
     const dx = (Math.random() - 0.5) * 240;
-    const dur = 2200 + Math.random() * 1600;
+    const dur = 1800 + Math.random() * 600;
     const rot = (Math.random() - 0.5) * 1080;
     piece.animate(
       [
@@ -170,7 +170,7 @@ function launchConfetti(count = 90) {
     );
   }
 
-  setTimeout(() => layer.remove(), 4600);
+  setTimeout(() => layer.remove(), 3000);
 }
 
 // Aggiorna la leaderboard quando cambia la lingua (per il caso di chiavi tradotte)

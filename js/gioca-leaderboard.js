@@ -180,7 +180,7 @@ function updateHUD(score, target = TARGET_SCORE) {
 
   if (scoreEl) scoreEl.textContent = score;
   if (targetEl) targetEl.textContent = target;
-  if (progressFill) progressFill.style.width = Math.min(100, Math.round((score / target) * 100)) + '%';
+  if (progressFill) progressFill.style.transform = `scaleX(${Math.min(1, Math.max(0, score / target))})`;
   if (progressBar) progressBar.setAttribute('aria-valuenow', score);
 
   updatePrizeState(score, target);

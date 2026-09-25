@@ -80,35 +80,40 @@ function aggiornaIndicatore(wrap) {
   thumb.style.transform = `translateX(${progress * maxLeft}px)`;
 }
 
-// Scroll verticale animato con ease-in-out cubico (più affidabile dello
-// scroll nativo su WebKit/iOS e con easing controllabile).
+// Short guided return from the bottom category bar. User input always wins.
 let scrollRafId = 0;
-function scrollVerticaleFluido(targetY, durata = 550) {
+let scrollAbort = null;
+function interrompiScrollGuidato() {
   if (scrollRafId) cancelAnimationFrame(scrollRafId);
-
+  scrollRafId = 0;
+  scrollAbort?.abort();
+  scrollAbort = null;
+}
+function scrollVerticaleFluido(targetY, durata = 350) {
+  interrompiScrollGuidato();
   const maxY = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
   const destino = Math.min(Math.max(0, targetY), maxY);
   const partenza = window.scrollY || window.pageYOffset;
   const delta = destino - partenza;
-
-  if (Math.abs(delta) < 1) {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches || Math.abs(delta) < 1) {
     window.scrollTo(0, destino);
     return;
   }
 
-  const inizio = performance.now();
-  const easeInOut = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
-
-  const step = (now) => {
-    const t = Math.min(1, (now - inizio) / durata);
-    window.scrollTo(0, partenza + delta * easeInOut(t));
-    if (t < 1) {
-      scrollRafId = requestAnimationFrame(step);
-    } else {
-      scrollRafId = 0;
-    }
+  const controller = new AbortController();
+  scrollAbort = controller;
+  for (const type of ['wheel', 'touchstart', 'keydown', 'pointerdown']) {
+    window.addEventListener(type, interrompiScrollGuidato,
+      { passive: true, signal: controller.signal });
+  }
+  const start = performance.now();
+  const easeOut = t => 1 - Math.pow(1 - t, 3);
+  const step = now => {
+    const t = Math.min(1, (now - start) / durata);
+    window.scrollTo(0, partenza + delta * easeOut(t));
+    if (t < 1) scrollRafId = requestAnimationFrame(step);
+    else interrompiScrollGuidato();
   };
-
   scrollRafId = requestAnimationFrame(step);
 }
 
@@ -199,7 +204,7 @@ function creaTabs(categorie) {
         const topTab = topTabs?.querySelector(`.menu-tab[data-tab-index="${index}"]`);
         if (topTabs && topTab) {
           const left = topTab.offsetLeft + topTab.offsetWidth / 2 - topTabs.clientWidth / 2;
-          topTabs.scrollTo({ left, behavior: 'smooth' });
+          topTabs.scrollTo({ left, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
         }
 
         const daSliderBottom = !!tab.closest('#menu-tabs-bottom');
@@ -421,19 +426,39 @@ function creaFiltriTag(categoria, lingua) {
 
   panel.appendChild(lista);
 
-  toggle.addEventListener('click', (e) => {
-    e.stopPropagation();
-    const apri = !container.classList.contains('is-open');
-    container.classList.toggle('is-open', apri);
-    toggle.setAttribute('aria-expanded', apri ? 'true' : 'false');
-    panel.hidden = !apri;
-  });
-
-  container.onkeydown = (e) => {
-    if (e.key !== 'Escape' || !container.classList.contains('is-open')) return;
+  let closeTimer = 0;
+  const closePanel = () => {
+    clearTimeout(closeTimer);
     container.classList.remove('is-open');
     toggle.setAttribute('aria-expanded', 'false');
-    panel.hidden = true;
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      panel.hidden = true;
+      return;
+    }
+    panel.classList.add('is-closing');
+    closeTimer = setTimeout(() => {
+      if (!container.classList.contains('is-open')) panel.hidden = true;
+      panel.classList.remove('is-closing');
+    }, 130);
+  };
+
+  toggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (container.classList.contains('is-open')) {
+      closePanel();
+    } else {
+      clearTimeout(closeTimer);
+      panel.classList.remove('is-closing');
+      panel.hidden = false;
+      container.classList.add('is-open');
+      toggle.setAttribute('aria-expanded', 'true');
+    }
+  });
+
+  container.addEventListener('close-filter', closePanel);
+  container.onkeydown = (e) => {
+    if (e.key !== 'Escape' || !container.classList.contains('is-open')) return;
+    closePanel();
     toggle.focus();
   };
 
@@ -448,15 +473,14 @@ document.addEventListener('click', (e) => {
   const container = document.getElementById('menu-filtri');
   if (!container || !container.classList.contains('is-open')) return;
   if (container.contains(e.target)) return;
-  container.classList.remove('is-open');
-  const toggle = container.querySelector('.menu-filtri__toggle');
-  const panel = container.querySelector('.menu-filtri__panel');
-  toggle?.setAttribute('aria-expanded', 'false');
-  if (panel) panel.hidden = true;
+  container.dispatchEvent(new Event('close-filter'));
 });
 
+let menuCardObserver = null;
 function mostraPizze(categoria) {
   categoriaCorrente = categoria;
+  menuCardObserver?.disconnect();
+  menuCardObserver = null;
 
   const container = document.getElementById('menu-lista');
   container.innerHTML = '';
@@ -557,6 +581,26 @@ function mostraPizze(categoria) {
 
   const bloccoAggiunte = creaBloccoAggiunte(categoria, lingua);
   if (bloccoAggiunte) container.appendChild(bloccoAggiunte);
+
+  // Only the first six cards enter; the rest of a long menu stay immediately readable.
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+    const firstCards = [...container.querySelectorAll('.item-card')].slice(0, 6);
+    firstCards.forEach((card, index) => {
+      card.classList.add('menu-card-pending');
+      card.style.setProperty('--menu-enter-delay', `${(index % 2) * 40}ms`);
+    });
+    menuCardObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const card = entry.target;
+        card.classList.remove('menu-card-pending');
+        card.classList.add('menu-card-entering');
+        card.addEventListener('animationend', () => card.classList.remove('menu-card-entering'), { once: true });
+        observer.unobserve(card);
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
+    firstCards.forEach(card => menuCardObserver.observe(card));
+  }
 
   aggiornaSliderBottom(categoria);
 }

@@ -77,7 +77,14 @@
   --shadow-lg:  0 12px 32px rgba(26,16,8,.12), 0 4px 8px rgba(26,16,8,.06);
   --shadow-xl:  0 24px 48px rgba(26,16,8,.15), 0 8px 16px rgba(26,16,8,.08);
 
-  /* --- Transizioni --- */
+  /* --- Motion Avalon --- */
+  --motion-ease-out: cubic-bezier(.22, 1, .36, 1);
+  --motion-page-duration: 240ms;
+  --motion-reveal-duration: 420ms;
+  --motion-image-duration: 380ms;
+  --motion-control-duration: 170ms;
+
+  /* --- Transizioni esistenti --- */
   --transition-fast:   150ms ease;
   --transition-normal: 250ms ease;
   --transition-slow:   400ms ease;

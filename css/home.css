@@ -11,7 +11,7 @@ body.home {
   background-attachment: scroll, scroll, scroll;
   background-blend-mode: soft-light, overlay, normal;
   overflow-x: clip;
-  padding-bottom: calc(4.25rem + env(safe-area-inset-bottom));
+  padding-bottom: 0;
 }
 
 @media (min-width: 768px) {

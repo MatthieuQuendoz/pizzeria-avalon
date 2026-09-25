@@ -1,183 +1,78 @@
-/* ============================================
-   PIZZERIA AVALON — Transizioni tra pagine
-   Slide orizzontale direzionale + fade al cambio pagina.
-   Direzione basata sull'ordine navbar (avanti / indietro).
-   View Transitions API nativa + fallback JS.
-   ============================================ */
+/* Internal navigation: immediate departure, one short arrival animation. */
 (function () {
   const PAGES = ['index', 'menu', 'prenota', 'gioca'];
   const FLAG = 'avalon-page-transition';
   const DIR_KEY = 'avalon-page-dir';
-  function transitionMs() {
-    const raw = getComputedStyle(document.documentElement)
-      .getPropertyValue('--page-transition-duration')
-      .trim();
-    const n = parseFloat(raw);
-    return Number.isFinite(n) ? n : 300;
-  }
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-  function navAtMs() {
-    return Math.round(transitionMs() * 0.85);
-  }
-
-  function enterSafetyMs() {
-    return transitionMs() + 80;
-  }
-
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  function currentPageFile() {
-    return pageKey(window.location.pathname);
-  }
-
-  function hrefFile(href) {
-    return pageKey((href || '').split('?')[0].split('#')[0]);
-  }
-
-  // Normalizza path o href in una chiave pagina senza estensione.
-  // "/" o "/index.html" -> "index"; "/menu" o "/menu.html" -> "menu".
   function pageKey(path) {
     const last = (path || '').split('/').filter(Boolean).pop() || '';
-    const file = last.replace(/\.html$/i, '');
-    return file || 'index';
-  }
-
-  function navDirection(from, to) {
-    const fromIdx = PAGES.indexOf(from);
-    const toIdx = PAGES.indexOf(to);
-    if (fromIdx === -1 || toIdx === -1 || fromIdx === toIdx) return 'forward';
-    return toIdx > fromIdx ? 'forward' : 'back';
-  }
-
-  function setDirection(dir) {
-    document.documentElement.setAttribute('data-page-dir', dir);
-    sessionStorage.setItem(DIR_KEY, dir);
-  }
-
-  function slideTargets() {
-    return document.querySelectorAll('.page-slide-target');
+    return last.replace(/\.html$/i, '') || 'index';
   }
 
   function markSlideTargets() {
     const homeRoot = document.querySelector('.page-slide-root');
     if (homeRoot) {
       homeRoot.classList.add('page-slide-target');
-      const footer = document.querySelector('body > .footer');
-      if (footer) footer.classList.add('page-slide-target');
-      return;
+      document.querySelector('body > .footer')?.classList.add('page-slide-target');
+    } else {
+      document.querySelectorAll('.page-wrapper, body > .hero, body > .footer')
+        .forEach(el => el.classList.add('page-slide-target'));
     }
-
-    document.querySelectorAll('.page-wrapper, body > .hero, body > .footer').forEach((el) => {
-      el.classList.add('page-slide-target');
-    });
   }
 
-  function afterTransition(callback, safetyMs) {
-    const targets = slideTargets();
-    if (!targets.length) {
-      callback();
-      return;
-    }
-
-    let done = false;
-    const finish = () => {
-      if (done) return;
-      done = true;
-      callback();
-    };
-
-    targets[0].addEventListener('transitionend', finish, { once: true });
-    setTimeout(finish, safetyMs);
+  function transitionMs() {
+    const raw = getComputedStyle(document.documentElement)
+      .getPropertyValue('--page-transition-duration').trim();
+    return Number.parseFloat(raw) || 240;
   }
 
-  function prefetchPage(href) {
-    if (!href || document.querySelector('link[data-prefetch="' + href + '"]')) return;
-    const link = document.createElement('link');
-    link.rel = 'prefetch';
-    link.href = href;
-    link.setAttribute('data-prefetch', href);
-    document.head.appendChild(link);
-  }
-
-  /* -------- ENTRATA: slide + fade al load ----------- */
-  if (!reduceMotion && sessionStorage.getItem(FLAG)) {
+  if (!reduceMotion.matches && sessionStorage.getItem(FLAG)) {
     sessionStorage.removeItem(FLAG);
-
-    const reveal = () => {
+    const enter = () => {
       markSlideTargets();
-      // Entrata prima di rimuovere page-await-enter: evita flash e doppia animazione.
       document.body.classList.add('page-is-entering');
       document.documentElement.classList.remove('page-await-enter');
-
-      // Doppio rAF: il browser applica lo stato iniziale prima della transizione.
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          document.body.classList.add('page-enter-active');
-          afterTransition(() => {
-            document.body.classList.remove('page-is-entering', 'page-enter-active');
-            document.documentElement.removeAttribute('data-page-dir');
-            slideTargets().forEach((el) => {
-              el.classList.remove('page-slide-target');
-              el.style.removeProperty('will-change');
-            });
-          }, enterSafetyMs());
-        });
-      });
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        document.body.classList.add('page-enter-active');
+        let finished = false;
+        const finish = () => {
+          if (finished) return;
+          finished = true;
+          document.body.classList.remove('page-is-entering', 'page-enter-active');
+          document.documentElement.removeAttribute('data-page-dir');
+          document.querySelectorAll('.page-slide-target')
+            .forEach(el => el.classList.remove('page-slide-target'));
+        };
+        const target = document.querySelector('.page-slide-target');
+        target?.addEventListener('transitionend', finish, { once: true });
+        setTimeout(finish, transitionMs() + 100);
+      }));
     };
-
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', reveal, { once: true });
+      document.addEventListener('DOMContentLoaded', enter, { once: true });
     } else {
-      reveal();
+      enter();
     }
   }
 
-  /* -------- NAVIGAZIONE: direzione + uscita animata ----------- */
-  function setupNav() {
-    if (reduceMotion) return;
+  // A delegated handler also covers links created later and links outside the navbar.
+  document.addEventListener('click', event => {
+    if (reduceMotion.matches || event.defaultPrevented || event.button !== 0 ||
+        event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const link = event.target.closest?.('a[href]');
+    if (!link || link.hasAttribute('download') || (link.target && link.target !== '_self')) return;
+    const url = new URL(link.href, window.location.href);
+    if (url.origin !== window.location.origin) return;
+    const from = pageKey(window.location.pathname);
+    const to = pageKey(url.pathname);
+    if (!PAGES.includes(to) || to === from) return;
 
-    const current = currentPageFile();
-    const linkSelector = current === 'index'
-      ? '.navbar a[href], .hero__actions a[href]'
-      : '.navbar a[href]';
-    const links = document.querySelectorAll(linkSelector);
-
-    links.forEach((link) => {
-      const href = link.getAttribute('href') || '';
-      const file = hrefFile(href);
-      if (!PAGES.includes(file) || file === current) return;
-
-      link.addEventListener('mouseenter', () => prefetchPage(href), { passive: true });
-      link.addEventListener('focusin', () => prefetchPage(href));
-
-      link.addEventListener('click', (e) => {
-        if (e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) {
-          return;
-        }
-
-        if (typeof AvalonGame !== 'undefined' && AvalonGame.isRunning()) {
-          AvalonGame.stopForNavigation();
-        }
-
-        setDirection(navDirection(current, file));
-
-        e.preventDefault();
-        markSlideTargets();
-        sessionStorage.setItem(FLAG, '1');
-
-        requestAnimationFrame(() => {
-          document.body.classList.add('page-is-leaving');
-          setTimeout(() => {
-            window.location.href = href;
-          }, navAtMs());
-        });
-      });
-    });
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setupNav, { once: true });
-  } else {
-    setupNav();
-  }
+    if (typeof AvalonGame !== 'undefined' && AvalonGame.isRunning()) {
+      AvalonGame.stopForNavigation();
+    }
+    sessionStorage.setItem(DIR_KEY, PAGES.indexOf(to) > PAGES.indexOf(from) ? 'forward' : 'back');
+    sessionStorage.setItem(FLAG, '1');
+    // Let the browser follow the link immediately, including keyboard activation.
+  });
 })();
