@@ -25,15 +25,6 @@ function sanitizeScore(score) {
   return Math.max(0, Math.min(MAX_SCORE, n));
 }
 
-const DEFAULT_LEADERBOARD = [
-  { name: 'Chef Marco',    score: 99  },
-  { name: 'PizzaQueen_92', score: 98  },
-  { name: 'BasilLover',    score: 87  },
-  { name: 'Ruucola',       score: 70  },
-  { name: 'Anacardi',      score: 46  },
-  { name: 'Dottor AIkido', score: 33  },
-];
-
 // — Client Supabase (creato una sola volta, se configurato) —
 let _supabaseClient = null;
 let _supabaseInit = false;
@@ -57,9 +48,17 @@ const localLeaderboard = {
   get() {
     try {
       const raw = localStorage.getItem(LEADERBOARD_KEY);
-      if (raw) return JSON.parse(raw);
+      if (raw) {
+        const stored = JSON.parse(raw);
+        if (Array.isArray(stored)) {
+          // Le vecchie voci dimostrative non avevano una data: non mostrarle
+          // come punteggi ottenuti da giocatori reali in modalità locale.
+          return stored.filter(entry => entry && typeof entry.name === 'string'
+            && Number.isFinite(Number(entry.score)) && Number.isFinite(entry.date));
+        }
+      }
     } catch (_) {}
-    return [...DEFAULT_LEADERBOARD];
+    return [];
   },
   add(name, score) {
     const scores = this.get().filter(e => e.score <= MAX_SCORE);
@@ -74,8 +73,10 @@ const localLeaderboard = {
 };
 
 const leaderboardApi = {
+  lastSource: 'local',
+  localOnly: false,
   async getTopScores() {
-    const sb = getSupabase();
+    const sb = this.localOnly ? null : getSupabase();
     if (sb) {
       try {
         const { data, error } = await sb
@@ -86,11 +87,15 @@ const leaderboardApi = {
         if (error) throw error;
         // Difesa lato client: nasconde eventuali punteggi impossibili
         // ancora presenti nel DB (es. inviati prima del fix del vincolo).
-        if (Array.isArray(data)) return data.filter(e => Number(e.score) <= MAX_SCORE);
+        if (Array.isArray(data)) {
+          this.lastSource = 'remote';
+          return data.filter(e => Number(e.score) <= MAX_SCORE);
+        }
       } catch (err) {
         console.error('Errore nel caricamento della classifica:', err);
       }
     }
+    this.lastSource = 'local';
     return localLeaderboard.get().filter(e => e.score <= MAX_SCORE);
   },
 
@@ -106,6 +111,7 @@ const leaderboardApi = {
         return await this.getTopScores();
       } catch (err) {
         console.error('Errore nel salvataggio del punteggio:', err);
+        this.localOnly = true;
       }
     }
     return localLeaderboard.add(name, safeScore);
@@ -138,6 +144,21 @@ async function renderLeaderboard() {
   const list = document.getElementById('leaderboard-list');
   if (!list) return;
   const board = await leaderboardApi.getTopScores();
+  const status = document.getElementById('leaderboard-status');
+  if (status) {
+    const labels = {
+      it: 'Classifica temporaneamente locale: il punteggio è visibile solo su questo dispositivo.',
+      fr: 'Classement temporairement local : le score est visible uniquement sur cet appareil.',
+      en: 'Leaderboard temporarily local: your score is visible only on this device.',
+    };
+    status.hidden = leaderboardApi.lastSource !== 'local';
+    status.textContent = labels[document.documentElement.lang] || labels.it;
+  }
+  if (!board.length) {
+    const empty = (typeof window.t === 'function' && window.t('gioca.leaderboard_empty')) || 'Nessun punteggio disponibile.';
+    list.innerHTML = `<li class="leaderboard-item leaderboard-item--empty">${escapeHtml(empty)}</li>`;
+    return;
+  }
   list.innerHTML = board.slice(0, LEADERBOARD_DISPLAY_COUNT).map((entry, i) => {
     const rank = i + 1;
     const rankClass = rank <= 3 ? ` leaderboard-item__rank--${rank}` : '';
@@ -162,18 +183,28 @@ function updateHUD(score, target = TARGET_SCORE) {
   if (progressFill) progressFill.style.width = Math.min(100, Math.round((score / target) * 100)) + '%';
   if (progressBar) progressBar.setAttribute('aria-valuenow', score);
 
-  maybeUnlockPrize(score, target);
+  updatePrizeState(score, target);
 }
 
-function maybeUnlockPrize(score, target = TARGET_SCORE) {
+function updatePrizeState(score, target = TARGET_SCORE) {
   const btn = document.getElementById('premio-btn');
   if (!btn) return;
-  if (score >= target && !btn.classList.contains('gioca-premio__btn--unlocked')) {
+  const unlocked = score >= target;
+  const wasUnlocked = btn.classList.contains('gioca-premio__btn--unlocked');
+  if (unlocked && !wasUnlocked) {
     btn.disabled = false;
     btn.classList.add('gioca-premio__btn--unlocked');
     const label = (typeof window.t === 'function' && window.t('gioca.premio_unlocked')) || 'Ritira il tuo omaggio!';
     // span con data-i18n: resta tradotto anche al cambio lingua
     btn.innerHTML = `<i data-lucide="gift"></i> <span data-i18n="gioca.premio_unlocked">${escapeHtml(label)}</span>`;
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+  } else if (!unlocked && wasUnlocked) {
+    btn.disabled = true;
+    btn.classList.remove('gioca-premio__btn--unlocked');
+    const label = (typeof window.t === 'function' && window.t('gioca.premio_locked')) || 'Bloccato';
+    btn.innerHTML = `<i data-lucide="lock"></i> <span data-i18n="gioca.premio_locked">${escapeHtml(label)}</span>`;
+    const message = document.getElementById('premio-cassa');
+    if (message) message.hidden = true;
     if (typeof lucide !== 'undefined') lucide.createIcons();
   }
 }

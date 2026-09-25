@@ -91,6 +91,8 @@
   <link rel="stylesheet" href="css/responsive.css">
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/home-body.css?v=3">
+  <link rel="stylesheet" href="css/site-theme.css?v=3">
 
   <!-- lucide icon -->
   <script src="https://unpkg.com/lucide@0.577.0/dist/umd/lucide.min.js"></script>
@@ -100,19 +102,6 @@
 <body class="home">
 
   <div class="status-bar-bg" aria-hidden="true"></div>
-
-  <div class="lang-switcher" id="lang-switcher">
-    <button class="lang-switcher__toggle" id="lang-toggle" aria-label="Cambia lingua">
-      <span id="lang-current-flag">🇮🇹</span>
-      <span id="lang-current-code">IT</span>
-      <span class="lang-switcher__chevron">▾</span>
-    </button>
-    <div class="lang-switcher__dropdown" id="lang-dropdown">
-      <button class="lang-option" data-lang="it">🇮🇹 Italiano</button>
-      <button class="lang-option" data-lang="fr">🇫🇷 Français</button>
-      <button class="lang-option" data-lang="en">🇬🇧 English</button>
-    </div>
-  </div>
 
   <header class="navbar">
     <a href="/" class="navbar__brand brand-logo" aria-label="Pizzeria Avalon — Home">
@@ -137,6 +126,18 @@
         <span data-i18n="navbar.gioca">Gioca</span>
       </a>
     </nav>
+    <div class="lang-switcher" id="lang-switcher">
+      <button class="lang-switcher__toggle" id="lang-toggle" aria-label="Cambia lingua">
+        <span id="lang-current-flag">🇮🇹</span>
+        <span id="lang-current-code">IT</span>
+        <span class="lang-switcher__chevron">▾</span>
+      </button>
+      <div class="lang-switcher__dropdown" id="lang-dropdown">
+        <button class="lang-option" data-lang="it">🇮🇹 Italiano</button>
+        <button class="lang-option" data-lang="fr">🇫🇷 Français</button>
+        <button class="lang-option" data-lang="en">🇬🇧 English</button>
+      </div>
+    </div>
   </header>
 
 
@@ -144,7 +145,7 @@
   <div class="page-slide-root">
   <section class="hero">
     <!-- Immagine di sfondo -->
-    <img src="assets/images/hero.webp" alt="Pizza dal forno a legna della Pizzeria Avalon" class="hero__img">
+    <img src="assets/images/newHero.webp" alt="Pizza dal forno a legna della Pizzeria Avalon" class="hero__img">
 
     <!-- Gradiente overlay -->
     <div class="hero__overlay" aria-hidden="true"></div>
@@ -160,18 +161,20 @@
       </p>
 
       <div class="hero__actions">
-        <a href="/menu" class="btn btn-secondary" data-i18n="home.cta_menu">Scopri il Menu</a>
-        <a href="#gstpln_openWidget" class="btn btn-primary" data-i18n="home.cta_prenota">Prenota Ora →</a>
+        <a href="/menu" class="btn btn-primary" data-i18n="home.cta_menu">Scopri il Menu</a>
+        <a href="#gstpln_openWidget" class="btn btn-secondary" data-i18n="home.cta_prenota">Prenota Ora →</a>
       </div>
     </div>
   </section>
 
   <main class="page-wrapper">
 
-    <section class="orari" data-reveal>
+    <section class="orari" aria-label="Orari e contatti">
       <div class="orari__card">
+        <div class="orari__time">
         <p class="orari__label" data-i18n="home.orari_titolo">ORARIO</p>
         <p class="ora" data-i18n="home.orari_ore">18:00 — 23:00</p>
+        </div>
 
         <div class="orari__divider"></div>
 
@@ -199,10 +202,29 @@
       </div>
     </section>
 
-    <section class="location" data-reveal>
+    <section class="home-selection" aria-labelledby="selection-title">
+      <div class="home-section-heading">
+        <div>
+          <p class="home-kicker" data-i18n="home.selection_label">Un assaggio di Avalon</p>
+          <h2 id="selection-title" data-i18n="home.selection_title">La voglia di pizza comincia qui.</h2>
+        </div>
+        <div class="home-selection-aside">
+          <span class="home-stamp" data-i18n="home.eyebrow" data-reveal>Dal 1994 a Jovençan</span>
+        </div>
+      </div>
+      <div class="home-pizzas" id="home-pizzas" role="region" aria-labelledby="selection-title" tabindex="0" hidden></div>
+      <div class="home-carousel-controls" id="home-carousel-controls" hidden>
+        <button type="button" id="pizza-prev" aria-label="Pizza precedente" aria-controls="home-pizzas"><span aria-hidden="true">←</span></button>
+        <p class="home-carousel-status"><span data-i18n="home.carousel_hint">Scorri e trova la tua</span><span id="pizza-position" aria-live="polite" aria-atomic="true">1 / 3</span></p>
+        <button type="button" id="pizza-next" aria-label="Pizza successiva" aria-controls="home-pizzas"><span aria-hidden="true">→</span></button>
+      </div>
+      <div class="home-menu-action"><a class="home-menu-link" href="/menu"><span data-i18n="home.selection_cta">Scopri tutte le pizze</span><span aria-hidden="true">↗</span></a></div>
+    </section>
+
+    <section class="location">
       <div class="location__img-wrapper">
         <img src="assets/images/avalonDaFuori.webp" alt="Vista esterna della Pizzeria Avalon a Jovençan"
-          class="location__img">
+          class="location__img" loading="lazy" decoding="async" width="1200" height="800">
         <div class="location__img-overlay" aria-hidden="true"></div>
       </div>
 
@@ -214,11 +236,44 @@
 
         <h2 class="location__title" data-i18n="home.location_titolo">Fraz. Etral 8, Jovençan</h2>
         <p class="location__subtitle" data-i18n="home.location_sottotitolo">Ci troviamo a 10 minuti da Aosta.</p>
+        <p class="location__story" data-i18n="home.location_story">Una serata a Jovençan, una pizza da condividere e il piacere di stare insieme. Ti aspettiamo qui, dal 1994.</p>
 
         <a href="https://maps.google.com/?q=Etral+8+Jovençan+Valle+d'Aosta" target="_blank" rel="noopener noreferrer"
           class="btn location__btn">
           <i data-lucide="navigation"></i>
           <span data-i18n="home.location_maps">Apri in Google Maps</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="home-social" aria-labelledby="social-title">
+      <div class="home-social__intro">
+        <p class="home-kicker" data-i18n="home.social_label">Fuori dal forno</p>
+        <h2 id="social-title" data-i18n="home.social_title">La vita di Avalon, anche sui social.</h2>
+        <p data-i18n="home.social_text">Nuove pizze, momenti in pizzeria e tutte le novità: seguici su Instagram e Facebook.</p>
+      </div>
+      <div class="home-social__links">
+        <a href="https://www.instagram.com/pizzeriaavalon/" target="_blank" rel="noopener noreferrer" aria-label="Instagram di Pizzeria Avalon">
+          <i data-lucide="instagram" aria-hidden="true"></i>
+          <span>Instagram</span>
+          <span class="home-social__arrow" aria-hidden="true">↗</span>
+        </a>
+        <a href="https://www.facebook.com/pizzeriaavalonjovencan" target="_blank" rel="noopener noreferrer" aria-label="Facebook di Pizzeria Avalon">
+          <i data-lucide="facebook" aria-hidden="true"></i>
+          <span>Facebook</span>
+          <span class="home-social__arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="home-invitation" aria-labelledby="invitation-title">
+      <div>
+        <p class="home-kicker" data-i18n="home.invitation_label">Ci vediamo a tavola</p>
+        <h2 id="invitation-title" data-i18n="home.invitation_title">Stasera, pizza?</h2>
+        <p data-i18n="home.invitation_text">Scegli la compagnia. Al resto pensiamo noi.</p>
+        <a href="#gstpln_openWidget" class="home-menu-link">
+          <span data-i18n="prenota.book_cta">Prenota un tavolo</span>
+          <span aria-hidden="true">↗</span>
         </a>
       </div>
     </section>
@@ -280,7 +335,7 @@
   </footer>
 
   <!-- JS -->
-  <script src="js/i18n.js"></script>
+  <script src="js/i18n.js?v=4"></script>
   <script src="js/avviso.js"></script>
   <script src="js/page-transitions.js"></script>
   <script src="js/nav.js"></script>
@@ -288,7 +343,7 @@
   <script src="js/home.js"></script>
 
 
-  <script>lucide.createIcons();</script>
+  <script>window.lucide?.createIcons();</script>
   <script src="js/iubenda.js"></script>
 
   <!-- Guestplan: nessun floating button, si apre via link #gstpln_openWidget -->
@@ -296,6 +351,16 @@
     (function (g, s, t, p, l, n) {
       g["_gstpln"] = {};
       (l = s.createElement(t)), (n = s.getElementsByTagName(t)[0]);
+      l.onerror = function () {
+        s.querySelectorAll('a[href="#gstpln_openWidget"]').forEach(function (link) {
+          link.href = 'tel:+390165250300';
+          var label = link.querySelector('[data-i18n]') || (link.hasAttribute('data-i18n') ? link : null);
+          if (label) {
+            label.dataset.i18n = 'home.cta_call';
+            label.textContent = (g.t && g.t('home.cta_call')) || 'Chiama per prenotare';
+          }
+        });
+      };
       l.async = 1; l.src = p; n.parentNode.insertBefore(l, n);
     })(window, document, "script", "https://cdn.guestplan.com/widget.js");
     _gstpln.accessKey = "c04fdf69efddaa09950f532db39a37d97f39cc51";

@@ -12,6 +12,22 @@ function hideVictoryModal() {
   if (m) m.hidden = true;
 }
 
+const GAME_LABELS = {
+  it: { name: 'Il tuo nome', area: 'Area di gioco', direction: 'Cambia direzione con Invio o Spazio', audio: 'Attiva o disattiva audio', scroll: 'Scorri per giocare' },
+  fr: { name: 'Votre nom', area: 'Zone de jeu', direction: 'Changer de direction avec Entrée ou Espace', audio: 'Activer ou désactiver le son', scroll: 'Faites défiler pour jouer' },
+  en: { name: 'Your name', area: 'Game area', direction: 'Change direction with Enter or Space', audio: 'Turn sound on or off', scroll: 'Scroll down to play' },
+};
+
+function updateGameLabels() {
+  const labels = GAME_LABELS[document.documentElement.lang] || GAME_LABELS.it;
+  const name = document.getElementById('player-name');
+  if (name) { name.placeholder = labels.name; name.setAttribute('aria-label', labels.name); }
+  document.getElementById('game-container')?.setAttribute('aria-label', labels.area);
+  document.querySelector('#game-container canvas')?.setAttribute('aria-label', labels.direction);
+  document.getElementById('mute-btn')?.setAttribute('aria-label', labels.audio);
+  document.querySelectorAll('a[href="#game-container"]').forEach(link => link.setAttribute('aria-label', labels.scroll));
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.nav-links a[href]').forEach((link) => {
     const href = link.getAttribute('href') || '';
@@ -74,6 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
     AvalonAudio.unlock();
     intro.classList.add('gioca-intro--hidden');
     AvalonGame.start(name);
+    updateGameLabels();
     updateHUD(0);
   });
 
@@ -118,6 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Render iniziale
   renderLeaderboard();
   updateHUD(0);
+  updateGameLabels();
 });
 
 /* Coriandoli "DOM" indipendenti dal canvas: festeggiano il ritiro del premio. */
@@ -158,4 +176,7 @@ function launchConfetti(count = 90) {
 // Aggiorna la leaderboard quando cambia la lingua (per il caso di chiavi tradotte)
 document.addEventListener('linguaCambiata', () => {
   renderLeaderboard();
+  updateGameLabels();
 });
+
+window.addEventListener('pageshow', updateGameLabels);

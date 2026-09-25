@@ -620,6 +620,7 @@ function rrect(ctx, x, y, w, h, r) {
 
 // ─── DRAW: GAME OVER PANEL ─────────────────────
 function drawGameOverPanel(ctx, score, isRecord, prevBest) {
+  const label = (key, fallback) => (typeof window.t === 'function' && window.t(`gioca.${key}`)) || fallback;
   ctx.fillStyle = 'rgba(0,0,0,0.58)'; ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
 
   const pw = 300, ph = isRecord ? 344 : 300;
@@ -629,19 +630,19 @@ function drawGameOverPanel(ctx, score, isRecord, prevBest) {
   ctx.strokeStyle = '#B12C16'; ctx.lineWidth = 3; ctx.stroke();
 
   ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-  ctx.font = "bold italic 32px 'Aleo',serif"; ctx.fillStyle = '#2D1D1D';
-  ctx.fillText('Game Over', CANVAS_W / 2, py + 48);
+  ctx.font = `bold italic ${score >= MAX_SCORE ? 26 : 32}px 'Aleo',serif`; ctx.fillStyle = '#2D1D1D';
+  ctx.fillText(score >= MAX_SCORE ? label('complete', 'Partita completata!') : label('game_over', 'Fine partita'), CANVAS_W / 2, py + 48);
 
   ctx.font = "22px 'Aleo',serif"; ctx.fillStyle = '#5A413C';
-  ctx.fillText(`Punteggio: ${score}`, CANVAS_W / 2, py + 92);
+  ctx.fillText(`${label('score', 'Punteggio')}: ${score}`, CANVAS_W / 2, py + 92);
 
   let ty = py + 136;
   if (isRecord) {
     ctx.font = "bold 18px 'Aleo',serif"; ctx.fillStyle = '#B12C16';
-    ctx.fillText('🏆 Nuovo record!', CANVAS_W / 2, ty); ty += 38;
+    ctx.fillText(`🏆 ${label('new_record', 'Nuovo record!')}`, CANVAS_W / 2, ty); ty += 38;
   } else if (prevBest > 0) {
     ctx.font = "15px 'Aleo',serif"; ctx.fillStyle = '#8A7A68';
-    ctx.fillText(`Il tuo record: ${prevBest}`, CANVAS_W / 2, ty); ty += 38;
+    ctx.fillText(`${label('record_label', 'Il tuo record:')} ${prevBest}`, CANVAS_W / 2, ty); ty += 38;
   }
 
   // Retry button
@@ -649,7 +650,7 @@ function drawGameOverPanel(ctx, score, isRecord, prevBest) {
   ctx.fillStyle = _retryHover ? '#D64A32' : '#B12C16';
   rrect(ctx, bX, bY - bH / 2, bW, bH, 26); ctx.fill();
   ctx.font = "bold 20px 'Aleo',serif"; ctx.fillStyle = '#FFFFFF';
-  ctx.fillText('Riprova', CANVAS_W / 2, bY);
+  ctx.fillText(label('retry', 'Riprova'), CANVAS_W / 2, bY);
 
   _retryZone = { x: bX, y: bY - bH / 2, w: bW, h: bH };
 }
@@ -661,7 +662,7 @@ function drawHint(ctx, timer) {
   ctx.fillStyle = '#B12C16'; rrect(ctx, CANVAS_W / 2 - 130, CANVAS_H / 2 - 56, 260, 52, 26); ctx.fill();
   ctx.font = "bold 15px 'Aleo',serif"; ctx.fillStyle = '#FFFFFF';
   ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-  ctx.fillText('Tocca per cambiare direzione!', CANVAS_W / 2, CANVAS_H / 2 - 30);
+  ctx.fillText((typeof window.t === 'function' && window.t('gioca.direction_hint')) || 'Tocca per cambiare direzione!', CANVAS_W / 2, CANVAS_H / 2 - 30);
   ctx.restore();
 }
 
@@ -759,7 +760,7 @@ function gameLoop(ts) {
       if (obj.type === 'pizza') drawPizza(_ctx, obj.x, obj.y, obj.variant, obj.rot, false);
       else drawBomb(_ctx, obj.x, obj.y, ts);
     });
-    drawKnight(_ctx, _knight.x, 'hit', ts, _knight.movingRight);
+    drawKnight(_ctx, _knight.x, _knight.state, ts, _knight.movingRight);
     updateAndDrawParticles(_ctx, dt);
     updateAndDrawTexts(_ctx, dt);
     if (_showPanel) drawGameOverPanel(_ctx, _score, _isRecord, _prevBest);
@@ -804,7 +805,10 @@ function updateObjects(dt) {
     const catchY = GROUND_Y - KNIGHT_DH * 0.5;
     const dx = obj.x - _knight.x, dy = obj.y - catchY;
     if (dx * dx + dy * dy < (obj.type === 'pizza' ? 48 : 40) ** 2) {
-      if (obj.type === 'pizza') { catchPizza(obj, i); }
+      if (obj.type === 'pizza') {
+        catchPizza(obj, i);
+        if (_isGameOver || _isVictoryPaused) return;
+      }
       else { hitBomb(obj); return; }
     }
   }
@@ -846,6 +850,11 @@ function catchPizza(obj, idx) {
     spawnConfetti(80);
     if (typeof showVictoryModal === 'function') showVictoryModal();
   }
+  if (_score >= MAX_SCORE) {
+    _isGameOver = true;
+    _showPanel = true;
+    finalizeScore();
+  }
 }
 
 // ─── SALVATAGGIO PUNTEGGIO ─────────────────────
@@ -886,6 +895,7 @@ function removeInput(canvas) {
   canvas.removeEventListener('click', _inputHandlers.click);
   canvas.removeEventListener('touchstart', _inputHandlers.touchstart);
   canvas.removeEventListener('mousemove', _inputHandlers.mousemove);
+  canvas.removeEventListener('keydown', _inputHandlers.keydown);
   _inputHandlers = null;
 }
 
@@ -931,10 +941,22 @@ function initInput(canvas) {
       const r = canvas.getBoundingClientRect();
       onMove(e.clientX - r.left, e.clientY - r.top);
     },
+    keydown(e) {
+      if (e.key !== ' ' && e.key !== 'Enter') return;
+      e.preventDefault();
+      if (!_gameRunning || _isVictoryPaused) return;
+      if (_isGameOver && _showPanel) {
+        AvalonAudio.click();
+        restartGame();
+      } else if (!_isGameOver) {
+        onTap(0, 0);
+      }
+    },
   };
   canvas.addEventListener('click', _inputHandlers.click);
   canvas.addEventListener('touchstart', _inputHandlers.touchstart, { passive: false });
   canvas.addEventListener('mousemove', _inputHandlers.mousemove);
+  canvas.addEventListener('keydown', _inputHandlers.keydown);
 }
 
 // ─── RESTART ───────────────────────────────────
@@ -974,6 +996,9 @@ const AvalonGame = {
       _canvas = document.createElement('canvas');
       _canvas.width = CANVAS_W; _canvas.height = CANVAS_H;
       _canvas.style.display = 'block';
+      _canvas.tabIndex = 0;
+      _canvas.setAttribute('role', 'button');
+      _canvas.setAttribute('aria-label', 'Cambia direzione con Invio o Spazio');
       container.appendChild(_canvas);
       initInput(_canvas);
     }
@@ -994,6 +1019,7 @@ const AvalonGame = {
     _smokeTimer = 0;
 
     restartGame();
+    _canvas.focus({ preventScroll: true });
 
     // Hint on first play per session
     if (!sessionStorage.getItem('avalonHintShown')) {

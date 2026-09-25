@@ -2,6 +2,9 @@ let categoriaCorrente = null;
 let categorieGlobali = null;
 let menuFileCorrente = 'menu-cibo.json';
 let filtroTagCorrente = null;
+let menuRequestId = 0;
+let menuStatus = null;
+let retryMenu = null;
 
 const TAG_CONFIG = {
   'vegan': { emoji: '🌱', label: { it: 'Vegan', fr: 'Végane', en: 'Vegan' } },
@@ -23,6 +26,32 @@ const FILTRO_LABELS = {
   filtraPer: { it: 'Filtra per', fr: 'Filtrer par', en: 'Filter by' },
   tutte: { it: 'Tutte', fr: 'Toutes', en: 'All' }
 };
+
+const PRICE_LABELS = {
+  'piccola (20cl)': { it: 'piccola (20 cl)', fr: 'petite (20 cl)', en: 'small (20 cl)' },
+  'piccola (30cl)': { it: 'piccola (30 cl)', fr: 'petite (30 cl)', en: 'small (30 cl)' },
+  'media (40cl)': { it: 'media (40 cl)', fr: 'moyenne (40 cl)', en: 'medium (40 cl)' },
+  'media (50cl)': { it: 'media (50 cl)', fr: 'moyenne (50 cl)', en: 'medium (50 cl)' },
+  'caraffa (1L)': { it: 'caraffa (1 l)', fr: 'carafe (1 l)', en: 'jug (1 l)' },
+  bottiglia: { it: 'bottiglia', fr: 'bouteille', en: 'bottle' },
+  calice: { it: 'calice', fr: 'verre', en: 'glass' },
+  'normale (5 palline)': { it: 'normale (5 palline)', fr: 'normale (5 boules)', en: 'regular (5 scoops)' },
+  'piccolo (3 palline)': { it: 'piccolo (3 palline)', fr: 'petite (3 boules)', en: 'small (3 scoops)' },
+  normale: { it: 'normale', fr: 'normale', en: 'regular' },
+  mini: { it: 'mini', fr: 'mini', en: 'mini' },
+};
+
+function linguaMenu() {
+  return document.documentElement.lang || 'it';
+}
+
+function etichettaPrezzo(chiave) {
+  return PRICE_LABELS[chiave]?.[linguaMenu()] || chiave;
+}
+
+function euro(valore) {
+  return new Intl.NumberFormat(linguaMenu(), { style: 'currency', currency: 'EUR' }).format(valore);
+}
 
 
 // Aggiorna larghezza e posizione del "thumb" dell'indicatore di scroll
@@ -99,13 +128,43 @@ function offsetScrollTop() {
 async function caricaMenu(file) {
   try {
     const response = await fetch('data/' + file);
+    if (!response.ok) throw new Error(`Menu HTTP ${response.status}`);
     const dati = await response.json();
+    if (!Array.isArray(dati?.categorie) || !dati.categorie.length) throw new Error('Menu senza categorie');
     return dati;
   } catch (error) {
     console.error('Errore nel caricamento del file:', error);
     return null;
   }
 }
+
+const MENU_STATUS_LABELS = {
+  loading: { it: 'Caricamento menu…', fr: 'Chargement du menu…', en: 'Loading menu…' },
+  error: { it: 'Non riusciamo a caricare il menu. Riprova.', fr: 'Impossible de charger le menu. Réessayez.', en: 'We could not load the menu. Please try again.' },
+  retry: { it: 'Riprova', fr: 'Réessayer', en: 'Try again' },
+};
+
+function aggiornaStatoMenu() {
+  const box = document.getElementById('menu-status');
+  const message = document.getElementById('menu-status-text');
+  const retry = document.getElementById('menu-retry');
+  if (!box || !message || !retry) return;
+  box.hidden = !menuStatus;
+  if (!menuStatus) return;
+  const lingua = document.documentElement.lang || 'it';
+  message.textContent = MENU_STATUS_LABELS[menuStatus][lingua] || MENU_STATUS_LABELS[menuStatus].it;
+  retry.hidden = menuStatus !== 'error';
+  retry.textContent = MENU_STATUS_LABELS.retry[lingua] || MENU_STATUS_LABELS.retry.it;
+  box.setAttribute('role', menuStatus === 'error' ? 'alert' : 'status');
+}
+
+function mostraStatoMenu(status, retry) {
+  menuStatus = status;
+  retryMenu = retry || null;
+  aggiornaStatoMenu();
+}
+
+document.getElementById('menu-retry')?.addEventListener('click', () => retryMenu?.());
 
 
 function creaTabs(categorie) {
@@ -121,13 +180,18 @@ function creaTabs(categorie) {
       const tab = document.createElement('button');
       tab.classList.add('menu-tab');
       tab.dataset.tabIndex = index;
-      if (index === 0) tab.classList.add('active');
+      const selected = categoriaCorrente === categoria || (!categoriaCorrente && index === 0);
+      tab.classList.toggle('active', selected);
+      tab.setAttribute('aria-pressed', selected ? 'true' : 'false');
       tab.textContent = categoria.nome[lingua] || categoria.nome.it;
 
       tab.addEventListener('click', () => {
         // Sincronizza active su tutti i tab (top + bottom) con lo stesso indice
-        document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
-        document.querySelectorAll(`.menu-tab[data-tab-index="${index}"]`).forEach(t => t.classList.add('active'));
+        document.querySelectorAll('.menu-tab').forEach(t => {
+          const active = t.dataset.tabIndex === String(index);
+          t.classList.toggle('active', active);
+          t.setAttribute('aria-pressed', active ? 'true' : 'false');
+        });
 
         // Centra orizzontalmente il tab corrispondente nella barra superiore
         // (solo asse X: così non interferisce con lo scroll verticale).
@@ -251,7 +315,7 @@ function creaBloccoAggiunte(categoria, lingua) {
     if (aggiunta.prezzo != null) {
       const price = document.createElement('span');
       price.classList.add('menu-aggiunte__price');
-      price.textContent = `€ ${aggiunta.prezzo.toFixed(2)}`;
+      price.textContent = euro(aggiunta.prezzo);
       chip.appendChild(price);
     }
 
@@ -293,7 +357,6 @@ function creaFiltriTag(categoria, lingua) {
   const toggle = document.createElement('button');
   toggle.type = 'button';
   toggle.classList.add('menu-filtri__toggle');
-  toggle.setAttribute('aria-haspopup', 'true');
   toggle.setAttribute('aria-expanded', 'false');
   toggle.setAttribute('aria-controls', 'menu-filtri-panel');
   if (tagAttivo) toggle.classList.add('is-active');
@@ -338,6 +401,7 @@ function creaFiltriTag(categoria, lingua) {
   chipTutte.type = 'button';
   chipTutte.classList.add('menu-filtro', 'menu-filtro--tutte');
   if (filtroTagCorrente === null) chipTutte.classList.add('active');
+  chipTutte.setAttribute('aria-pressed', filtroTagCorrente === null ? 'true' : 'false');
   chipTutte.textContent = L(FILTRO_LABELS.tutte);
   chipTutte.addEventListener('click', () => applica(null));
   lista.appendChild(chipTutte);
@@ -348,6 +412,7 @@ function creaFiltriTag(categoria, lingua) {
     chip.type = 'button';
     chip.classList.add('menu-filtro', `menu-filtro--${tag.replace(/\s+/g, '-')}`);
     if (filtroTagCorrente === tag) chip.classList.add('active');
+    chip.setAttribute('aria-pressed', filtroTagCorrente === tag ? 'true' : 'false');
     chip.textContent = `${config.emoji} ${L(config.label)}`;
     // Toggle: riclic sullo stesso tag azzera il filtro
     chip.addEventListener('click', () => applica(filtroTagCorrente === tag ? null : tag));
@@ -363,6 +428,14 @@ function creaFiltriTag(categoria, lingua) {
     toggle.setAttribute('aria-expanded', apri ? 'true' : 'false');
     panel.hidden = !apri;
   });
+
+  container.onkeydown = (e) => {
+    if (e.key !== 'Escape' || !container.classList.contains('is-open')) return;
+    container.classList.remove('is-open');
+    toggle.setAttribute('aria-expanded', 'false');
+    panel.hidden = true;
+    toggle.focus();
+  };
 
   container.append(toggle, panel);
 
@@ -467,7 +540,8 @@ function mostraPizze(categoria) {
       } else {
         const placeholder = document.createElement('div');
         placeholder.classList.add('item-card__placeholder');
-        placeholder.textContent = '🍕';
+        placeholder.setAttribute('aria-hidden', 'true');
+        placeholder.textContent = { it: 'Foto in arrivo', fr: 'Photo à venir', en: 'Photo coming soon' }[lingua] || 'Foto in arrivo';
         media.appendChild(placeholder);
       }
 
@@ -510,10 +584,10 @@ function creaListaPrezzi(item) {
     row.classList.add('item-price-row');
     const label = document.createElement('span');
     label.classList.add('item-price-row__label');
-    label.textContent = chiave;
+    label.textContent = etichettaPrezzo(chiave);
     const value = document.createElement('span');
     value.classList.add('item-price-row__value');
-    value.textContent = `€ ${valore.toFixed(2)}`;
+    value.textContent = euro(valore);
     row.appendChild(label);
     row.appendChild(value);
     list.appendChild(row);
@@ -524,25 +598,52 @@ function creaListaPrezzi(item) {
 function formattaPrezzo(item) {
   if (item.prezzi) {
     return Object.entries(item.prezzi).map(([chiave, valore]) => {
-      return `${chiave} € ${valore.toFixed(2)}`;
+      return `${etichettaPrezzo(chiave)} ${euro(valore)}`;
     }).join(', ');
   }
-  return `€ ${item.prezzo.toFixed(2)}`;
+  return euro(item.prezzo);
 }
 
-//se carica menu caricava il file json init cosa fa di preciso il render?
-async function init() {
-  menuFileCorrente = 'menu-cibo.json';
-  const dati = await caricaMenu('menu-cibo.json')
-  if (!dati) return;
+async function selezionaMacrogruppo(file, btn) {
+  const requestId = ++menuRequestId;
+  document.querySelectorAll('.macrogruppo').forEach(b => b.classList.toggle('is-loading', b === btn));
+  mostraStatoMenu('loading');
+  const dati = await caricaMenu(file);
+  if (requestId !== menuRequestId) return;
+  document.querySelectorAll('.macrogruppo').forEach(b => {
+    b.classList.remove('is-loading');
+    b.classList.toggle('active', !!dati && b === btn);
+    b.setAttribute('aria-pressed', !!dati && b === btn ? 'true' : 'false');
+  });
+  if (!dati) {
+    const previous = document.querySelector(`.macrogruppo[data-file="${menuFileCorrente}"]`);
+    if (categorieGlobali && previous) {
+      previous.classList.add('active');
+      previous.setAttribute('aria-pressed', 'true');
+    }
+    mostraStatoMenu('error', () => selezionaMacrogruppo(file, btn));
+    return;
+  }
+  menuFileCorrente = file;
   categorieGlobali = dati.categorie;
+  filtroTagCorrente = null;
+  categoriaCorrente = dati.categorie[0];
+  document.getElementById('menu-tabs').replaceChildren();
+  document.getElementById('menu-tabs-bottom').replaceChildren();
   creaTabs(dati.categorie);
   mostraPizze(dati.categorie[0]);
   aggiornaIndicatore();
+  mostraStatoMenu(null);
+}
+
+function init() {
+  const btn = document.querySelector('.macrogruppo[data-file="menu-cibo.json"]');
+  selezionaMacrogruppo('menu-cibo.json', btn);
 }
 
 // fuori da init
 document.addEventListener('linguaCambiata', () => {
+  aggiornaStatoMenu();
   if (categorieGlobali) {
     document.getElementById('menu-tabs').innerHTML = '';
     document.getElementById('menu-tabs-bottom').innerHTML = '';
@@ -553,21 +654,7 @@ document.addEventListener('linguaCambiata', () => {
 });
 
 document.querySelectorAll('.macrogruppo').forEach(btn => {
-  btn.addEventListener('click', async () => {
-    document.querySelectorAll('.macrogruppo').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const file = btn.dataset.file;
-    menuFileCorrente = file;
-    const dati = await caricaMenu(file);
-    if (!dati) return;
-    categorieGlobali = dati.categorie;
-    filtroTagCorrente = null;
-    document.getElementById('menu-tabs').innerHTML = '';
-    document.getElementById('menu-tabs-bottom').innerHTML = '';
-    creaTabs(dati.categorie);
-    mostraPizze(dati.categorie[0]);
-    aggiornaIndicatore();
-  });
+  btn.addEventListener('click', () => selezionaMacrogruppo(btn.dataset.file, btn));
 });
 
 // Listener per gli indicatori di scroll (top + bottom), una sola volta

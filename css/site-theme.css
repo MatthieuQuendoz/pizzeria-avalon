@@ -1,0 +1,460 @@
+/* Elementi visivi condivisi da tutte le pagine Avalon. Caricato dopo il CSS di pagina. */
+:root {
+  --site-paper: var(--surface-paper);
+  --site-ink: var(--ink-strong);
+  --site-sand: var(--surface-sand);
+  --site-outline: var(--border-strong);
+}
+
+body {
+  color: var(--site-ink);
+  background-color: var(--site-paper);
+}
+
+/* La barra resta in basso su mobile e fa posto al selettore lingua. */
+.navbar {
+  justify-content: space-between;
+  gap: 4px;
+  padding-inline: 10px;
+}
+.navbar .nav-links {
+  flex: 1;
+  width: auto;
+  min-width: 0;
+}
+.navbar .nav-links a { min-width: 0; }
+.navbar .lang-switcher {
+  position: relative;
+  inset: auto;
+  z-index: auto;
+  flex: 0 0 auto;
+}
+.navbar .lang-switcher__toggle {
+  min-width: 0;
+  height: auto;
+  padding: 8px 4px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: var(--site-ink);
+}
+.navbar .lang-switcher__dropdown {
+  top: auto;
+  bottom: calc(100% + var(--space-2));
+  z-index: calc(var(--z-nav) + 1);
+}
+
+/* Un solo footer per tutte le pagine. */
+.footer {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 64px clamp(24px, 7vw, 112px) 48px;
+  border: 0;
+  border-radius: 0;
+  background: var(--site-ink);
+  box-shadow: none;
+  color: var(--site-paper);
+}
+.footer__overlay { display: none; }
+.footer__content, .footer__social, .footer__legal, .footer__copy {
+  position: relative;
+  z-index: 1;
+}
+.footer__title.brand-logo {
+  width: 100%;
+  margin-bottom: var(--space-5);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid rgba(253, 246, 238, .14);
+  font-size: clamp(1.75rem, 4.5vw, 2.35rem);
+}
+.footer__title.brand-logo .brand-logo__prefix { color: var(--site-paper); }
+.footer__title.brand-logo .brand-logo__name { color: #e8a090; }
+.footer__address {
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+.footer__contact-row {
+  gap: var(--space-3);
+  margin-bottom: 0;
+  color: #ead6c8;
+  line-height: 1.5;
+}
+.footer__contact-row svg {
+  width: 1.05rem;
+  height: 1.05rem;
+  flex-shrink: 0;
+  color: #e8a090;
+}
+.footer__contact-row a { color: var(--site-paper); }
+.footer__contact-row a:hover { color: #e8a090; }
+.footer__social {
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid rgba(253, 246, 238, .14);
+}
+.footer__social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid rgba(253, 246, 238, .2);
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, .04);
+  color: var(--site-paper);
+  font-family: var(--font-heading2);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+}
+.footer__social-link:hover { background: rgba(177, 44, 22, .25); }
+.footer__social-link svg { width: 1rem; height: 1rem; }
+.footer__legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-5);
+  margin-top: 0;
+  padding-top: var(--space-4);
+  border-top: 1px solid rgba(253, 246, 238, .14);
+}
+.footer__legal a { color: #d6c9bd; }
+.footer__legal a:hover { color: var(--site-paper); }
+.footer__copy { margin-top: var(--space-4); }
+.footer__text {
+  color: #c7b9ad;
+  font-size: var(--text-xs);
+  line-height: 1.5;
+}
+
+/* Identità comune delle sezioni e delle azioni interne. */
+.menu-picker, .prenota-book, .domande, .gioca-intro__card,
+.gioca-leaderboard, .gioca-premio {
+  border: 1px solid var(--site-outline);
+  border-radius: 30px;
+  box-shadow: var(--shadow-stamp);
+}
+.menu-picker, .prenota-book, .domande { background: var(--site-sand); }
+.menu-picker__guida, .prenota-book__instructions {
+  color: var(--site-ink);
+  font-family: var(--font-heading2);
+  font-weight: 700;
+}
+.menu-macrogruppi {
+  gap: 8px;
+  padding: 8px;
+  background: var(--site-paper);
+  border: 1px solid var(--site-outline);
+}
+.macrogruppo {
+  min-height: 48px;
+  font-family: var(--font-heading2);
+  font-weight: 800;
+}
+.macrogruppo.active {
+  background: var(--color-red);
+  color: var(--site-paper);
+  box-shadow: 0 3px 0 var(--site-ink);
+}
+.menu-tab {
+  border: 1px solid var(--site-outline);
+  background: var(--site-paper);
+  color: var(--site-ink);
+  font-family: var(--font-heading2);
+  font-weight: 800;
+}
+.menu-tab.active {
+  background: var(--color-red);
+  border-color: var(--site-ink);
+  color: var(--site-paper);
+  box-shadow: 0 4px 0 var(--site-ink);
+}
+.menu-filtri__toggle {
+  border: 2px solid var(--site-outline);
+  background: var(--site-paper);
+  box-shadow: 0 4px 0 var(--site-ink);
+  font-weight: 800;
+}
+.item-card {
+  border: 1px solid rgba(45, 29, 29, .18);
+  background: #fff;
+  box-shadow: 0 6px 0 #e7d7c7;
+}
+.item-card:hover { box-shadow: 0 10px 0 #e7d7c7; }
+.item-card__name {
+  color: var(--site-ink);
+  font-weight: 900;
+}
+.item-price, .item-price-row__value { font-weight: 900; }
+.menu-gusti__chip {
+  border: 1px solid rgba(45, 29, 29, .18);
+  background: var(--site-paper);
+}
+
+.prenota-book__cta, .domande__btn,
+.gioca-intro__btn, .victory-btn--primary,
+.error-page .btn-primary {
+  border: 2px solid var(--site-ink);
+  border-radius: var(--radius-full);
+  box-shadow: 0 5px 0 var(--site-ink);
+  font-family: var(--font-heading2);
+  font-weight: 900;
+}
+.prenota-book__cta:hover, .domande__btn:hover,
+.gioca-intro__btn:not(:disabled):hover, .victory-btn--primary:hover,
+.error-page .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 7px 0 var(--site-ink);
+}
+.domande__btn--tel { background: var(--site-paper); color: var(--site-ink); }
+.domande__btn--tel svg { color: var(--color-red); }
+.domande__btn--wa { background: var(--color-green); }
+body.home .orari__btn--whatsapp {
+  background: var(--color-green);
+  color: var(--site-paper);
+}
+body.home .orari__btn--whatsapp svg { color: var(--site-paper); }
+.domande__title { color: var(--site-ink); }
+.prenota-page .location {
+  overflow: hidden;
+  display: grid;
+  border: 1px solid var(--site-ink);
+  border-radius: 32px;
+  background: var(--site-ink);
+  box-shadow: var(--shadow-stamp);
+}
+.prenota-page .location__img-wrapper { height: 100%; min-height: 300px; }
+.prenota-page .location__img-overlay { display: none; }
+.prenota-page .location__content {
+  margin: 0;
+  padding: clamp(28px, 4vw, 54px);
+  gap: 20px;
+  justify-content: center;
+  background: var(--site-ink);
+}
+.prenota-page .location__label, .prenota-page .location__icon { color: #e8a090; }
+.prenota-page .location__label {
+  font-family: var(--font-heading2);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .13em;
+}
+.prenota-page .location__title {
+  color: var(--site-paper);
+  font-size: clamp(36px, 4vw, 56px);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -.035em;
+}
+.prenota-page .location__subtitle { color: #bdedaa; font-size: 18px; font-weight: 700; }
+.prenota-page .location__story { color: #ead6c8; font-size: 14px; }
+.prenota-page .location__label, .prenota-page .location__icon { color: #e8a090; }
+.prenota-page .location__btn {
+  width: auto;
+  margin-top: 8px;
+  padding: 16px 22px;
+  font-family: var(--font-heading2);
+  font-size: 13px;
+  font-weight: 800;
+}
+.prenota-page .location__btn {
+  border: 2px solid var(--site-paper);
+  border-radius: var(--radius-full);
+  box-shadow: 0 5px 0 #140c06;
+}
+
+@media (min-width: 768px) {
+  .prenota-page .location { grid-template-columns: 1.1fr 1fr; }
+}
+
+.gioca-intro__card, .gioca-leaderboard, .gioca-premio { background: var(--site-paper); }
+.gioca-intro__title, .gioca-leaderboard__title {
+  color: var(--site-ink);
+  font-weight: 900;
+}
+.gioca-intro__input {
+  border: 2px solid var(--site-outline);
+  border-radius: 14px;
+}
+.error-page {
+  background: var(--site-paper);
+}
+.error-page__code {
+  color: var(--color-red);
+  font-weight: 900;
+  letter-spacing: -.06em;
+}
+.error-page__title {
+  color: var(--site-ink);
+  font-weight: 900;
+}
+.error-page .btn-secondary {
+  border: 2px solid var(--site-ink);
+  border-radius: var(--radius-full);
+  color: var(--site-ink);
+  box-shadow: 0 5px 0 var(--site-ink);
+}
+
+/* Fotografie e titoli rimangono propri di ogni pagina. */
+.menu-hero__title, .prenota-hero__title {
+  margin-bottom: 0;
+  transform: none;
+}
+.menu-hero__title span, .prenota-hero__title span {
+  font-size: clamp(1rem, 3vw, 1.4rem);
+  font-family: var(--font-heading2);
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.menu-hero__title em, .prenota-hero__title em {
+  width: auto;
+  font-size: clamp(2.6rem, 10vw, 6.5rem);
+  font-weight: 900;
+  line-height: .92;
+  letter-spacing: -.045em;
+  text-transform: none;
+  white-space: normal;
+  color: #e8482c;
+}
+.menu-hero__title em::after, .prenota-hero__title em::after { display: none; }
+.gioca-hero__title { font-weight: 900; letter-spacing: -.045em; }
+
+a:focus-visible, button:focus-visible, input:focus-visible,
+.menu-tabs:focus-visible {
+  outline: 3px solid var(--color-red);
+  outline-offset: 4px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .item-card, .menu-tab, .macrogruppo, .prenota-book__cta,
+  .domande__btn, .footer__social-link { transition: none; }
+}
+@media (max-width: 420px) {
+  .macrogruppo {
+    padding-inline: 4px;
+    font-size: .75rem;
+    white-space: nowrap;
+  }
+  body.home .orari__card { padding-inline: 18px; }
+  body.home .orari__time,
+  body.home .orari__giorni,
+  body.home .orari__azioni { min-width: 0; }
+  body.home .ora {
+    font-size: clamp(1.75rem, 8vw, 2.5rem);
+    white-space: nowrap;
+  }
+}
+@media (max-width: 767px) {
+  body.prenota-page .prenota-hero__title {
+    transform: translateY(-1.25rem);
+  }
+}
+@media (max-width: 359px) {
+  body.home .orari__azioni {
+    display: grid;
+    width: 100%;
+    grid-template-columns: minmax(0, 1fr);
+  }
+  body.home .orari__btn { width: 100%; }
+}
+@media (min-width: 768px) {
+  .footer {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas: "content social" "legal legal" "copy copy";
+    gap: var(--space-4) var(--space-10);
+  }
+  .footer__content { grid-area: content; }
+  .footer__social {
+    grid-area: social;
+    align-self: start;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+  }
+  .footer__legal { grid-area: legal; }
+  .footer__copy { grid-area: copy; }
+}
+@media (min-width: 1024px) {
+  body.menu-page, body.prenota-page, body.gioca-page { padding-top: 0; }
+  .navbar {
+    top: var(--header-bar-top);
+    bottom: auto;
+    left: 50%;
+    right: auto;
+    width: min(52rem, calc(100% - 2 * var(--space-4)));
+    transform: translateX(-50%);
+    justify-content: space-between;
+    padding-inline: var(--space-5);
+  }
+  body.home .navbar { width: min(60rem, calc(100% - 2 * var(--space-4))); }
+  .navbar .nav-links {
+    flex: 1;
+    justify-content: center;
+    gap: clamp(12px, 2vw, 24px);
+  }
+  .navbar .nav-links a {
+    position: relative;
+    padding-block: var(--space-3);
+    font-weight: 800;
+  }
+  .navbar .nav-links a.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 3px;
+    border-radius: var(--radius-full);
+    background: var(--color-red);
+  }
+  .navbar .nav-links svg { display: none; }
+  .navbar .lang-switcher__toggle {
+    padding-inline: 8px;
+    font-weight: 800;
+  }
+  .navbar .lang-switcher__dropdown {
+    top: calc(100% + var(--space-2));
+    bottom: auto;
+  }
+  body.home .navbar, body.menu-page .navbar,
+  body.prenota-page .navbar, body.gioca-page .navbar {
+    background: transparent;
+    box-shadow: none;
+  }
+  body.home .navbar .nav-links a,
+  body.menu-page .navbar .nav-links a,
+  body.prenota-page .navbar .nav-links a,
+  body.gioca-page .navbar .nav-links a,
+  body.home .navbar .brand-logo__prefix,
+  body.menu-page .navbar .brand-logo__prefix,
+  body.prenota-page .navbar .brand-logo__prefix,
+  body.gioca-page .navbar .brand-logo__prefix,
+  body.home .navbar .lang-switcher__toggle,
+  body.menu-page .navbar .lang-switcher__toggle,
+  body.prenota-page .navbar .lang-switcher__toggle,
+  body.gioca-page .navbar .lang-switcher__toggle { color: var(--site-paper); }
+  body.site-scrolled .navbar {
+    background: var(--site-paper);
+    box-shadow: 0 4px 0 rgba(45, 29, 29, .18);
+  }
+  body.site-scrolled .navbar .nav-links a,
+  body.site-scrolled .navbar .brand-logo__prefix,
+  body.site-scrolled .navbar .lang-switcher__toggle { color: var(--site-ink); }
+  body.site-scrolled .navbar .nav-links a.active { color: var(--color-red); }
+  /* L'illustrazione del gioco è chiara nella parte alta. */
+  body.gioca-page .navbar .nav-links a,
+  body.gioca-page .navbar .brand-logo__prefix,
+  body.gioca-page .navbar .lang-switcher__toggle { color: var(--site-ink); }
+  body.error404-page .navbar {
+    background: var(--site-paper);
+    box-shadow: 0 4px 0 rgba(45, 29, 29, .18);
+  }
+}

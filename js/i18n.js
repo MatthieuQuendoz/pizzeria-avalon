@@ -6,10 +6,13 @@ const LINGUE_INFO = {
   fr: { flag: '🇫🇷', label: 'Français' },
   en: { flag: '🇬🇧', label: 'English' }
 };
+const SWITCHER_LABELS = { it: 'Cambia lingua', fr: 'Changer de langue', en: 'Change language' };
+let languageRequestId = 0;
 
 async function caricaLingua(lingua) {
   try {
     const response = await fetch('data/i18n/' + lingua + '.json');
+    if (!response.ok) throw new Error(`Lingua HTTP ${response.status}`);
     const dati = await response.json();
     return dati;
   } catch (error) {
@@ -34,19 +37,28 @@ window.t = function (chiave) {
 
 function applicaTraduzione(dati) {
   window.i18nData = dati;
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const chiavi = el.getAttribute('data-i18n').split('.');
+  function valore(chiave) {
+    const chiavi = chiave.split('.');
     let traduzione = dati;
     for (const chiave of chiavi) {
       if (traduzione[chiave]) {
         traduzione = traduzione[chiave];
       } else {
-        traduzione = null;
-        break;
+        return null;
       }
     }
-    if (traduzione) {
-      el.textContent = traduzione;
+    return typeof traduzione === 'string' ? traduzione : null;
+  }
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const translated = valore(el.getAttribute('data-i18n'));
+    if (translated) el.textContent = translated;
+  });
+  document.querySelectorAll('[data-i18n-placeholder], [data-i18n-aria-label]').forEach(el => {
+    for (const [attribute, key] of [['placeholder', 'data-i18n-placeholder'], ['aria-label', 'data-i18n-aria-label']]) {
+      const translationKey = el.getAttribute(key);
+      if (!translationKey) continue;
+      const translated = valore(translationKey);
+      if (translated) el.setAttribute(attribute, translated);
     }
   });
 }
@@ -69,21 +81,25 @@ function aggiornaSwitcher(lingua) {
   const codeEl = document.getElementById('lang-current-code');
   if (flagEl) flagEl.textContent = info.flag;
   if (codeEl) codeEl.textContent = lingua.toUpperCase();
+  document.getElementById('lang-toggle')?.setAttribute('aria-label', SWITCHER_LABELS[lingua]);
 
   document.querySelectorAll('.lang-option').forEach(btn => {
-    btn.classList.toggle('lang-option--active', btn.dataset.lang === lingua);
+    const active = btn.dataset.lang === lingua;
+    btn.classList.toggle('lang-option--active', active);
+    btn.setAttribute('aria-pressed', active ? 'true' : 'false');
   });
 }
 
 function chiudiDropdown() {
   document.getElementById('lang-switcher')?.classList.remove('lang-switcher--open');
-  //                                      ↑
-  //                         "se esiste, continua — altrimenti fermati"
+  document.getElementById('lang-toggle')?.setAttribute('aria-expanded', 'false');
 }
 
 async function cambiaLingua(lingua) {
   if (!LINGUE_SUPPORTATE.includes(lingua)) return;
+  const requestId = ++languageRequestId;
   const dati = await caricaLingua(lingua);
+  if (requestId !== languageRequestId) return;
   if (!dati) return;
   applicaTraduzione(dati);
   document.getElementById('html-root').setAttribute('lang', lingua);
@@ -107,12 +123,21 @@ async function init() {
   const toggle = document.getElementById('lang-toggle');
   const switcher = document.getElementById('lang-switcher');
 
+  toggle?.setAttribute('aria-controls', 'lang-dropdown');
+  toggle?.setAttribute('aria-expanded', 'false');
+
   toggle?.addEventListener('click', (e) => {
     e.stopPropagation();
-    switcher.classList.toggle('lang-switcher--open');
+    const open = switcher.classList.toggle('lang-switcher--open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
   });
 
   document.addEventListener('click', chiudiDropdown);
+  switcher?.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape' || !switcher.classList.contains('lang-switcher--open')) return;
+    chiudiDropdown();
+    toggle.focus();
+  });
 
   document.querySelectorAll('.lang-option').forEach(btn => {
     btn.addEventListener('click', (e) => {

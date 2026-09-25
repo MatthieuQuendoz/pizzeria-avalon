@@ -5,6 +5,13 @@
 
 :root {
 
+  /* Avalon 2026: superfici e contorni condivisi */
+  --surface-paper: #FDF6EE;
+  --surface-sand: #EAD8C8;
+  --ink-strong: #2D1D1D;
+  --border-strong: #4B3430;
+  --shadow-stamp: 0 6px 0 #D8BDA8;
+
   /* --- Primary --- */
   --color-red:        #B12C16;   
   --color-green:      #3F6833;   

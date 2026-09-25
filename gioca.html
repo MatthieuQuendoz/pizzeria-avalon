@@ -54,7 +54,8 @@
   <link rel="stylesheet" href="css/transitions.css">
   <link rel="stylesheet" href="css/responsive.css">
   <link rel="stylesheet" href="css/animations.css">
-  <link rel="stylesheet" href="css/gioca.css">
+  <link rel="stylesheet" href="css/gioca.css?v=4">
+  <link rel="stylesheet" href="css/site-theme.css?v=3">
 
   <!-- Lucide icons -->
   <script src="https://unpkg.com/lucide@0.577.0/dist/umd/lucide.min.js"></script>
@@ -63,20 +64,6 @@
 <body class="gioca-page">
 
   <div class="status-bar-bg" aria-hidden="true"></div>
-
-  <!-- Lang switcher -->
-  <div class="lang-switcher" id="lang-switcher">
-    <button class="lang-switcher__toggle" id="lang-toggle" aria-label="Cambia lingua">
-      <span id="lang-current-flag">🇮🇹</span>
-      <span id="lang-current-code">IT</span>
-      <span class="lang-switcher__chevron">▾</span>
-    </button>
-    <div class="lang-switcher__dropdown" id="lang-dropdown">
-      <button class="lang-option" data-lang="it">🇮🇹 Italiano</button>
-      <button class="lang-option" data-lang="fr">🇫🇷 Français</button>
-      <button class="lang-option" data-lang="en">🇬🇧 English</button>
-    </div>
-  </div>
 
   <!-- Navbar -->
   <header class="navbar">
@@ -102,13 +89,25 @@
         <span data-i18n="navbar.gioca">Gioca</span>
       </a>
     </nav>
+    <div class="lang-switcher" id="lang-switcher">
+      <button class="lang-switcher__toggle" id="lang-toggle" aria-label="Cambia lingua">
+        <span id="lang-current-flag">🇮🇹</span>
+        <span id="lang-current-code">IT</span>
+        <span class="lang-switcher__chevron">▾</span>
+      </button>
+      <div class="lang-switcher__dropdown" id="lang-dropdown">
+        <button class="lang-option" data-lang="it">🇮🇹 Italiano</button>
+        <button class="lang-option" data-lang="fr">🇫🇷 Français</button>
+        <button class="lang-option" data-lang="en">🇬🇧 English</button>
+      </div>
+    </div>
   </header>
 
   <main class="page-wrapper">
 
     <!-- Hero -->
     <section class="gioca-hero">
-      <a href="#game-container" class="gioca-hero__bg-link" aria-label="Scorri per giocare">
+      <a href="#game-container" class="gioca-hero__bg-link" aria-label="Scorri per giocare" data-i18n-aria-label="gioca.scroll_hint">
         <picture class="gioca-hero__bg" aria-hidden="true">
           <source media="(min-width: 768px)" srcset="assets/game/hero_bg_hor.webp" type="image/webp">
           <img src="assets/game/hero_bg_ver.webp" alt="" decoding="async" fetchpriority="high">
@@ -128,14 +127,14 @@
     </section>
 
     <!-- Indicatore di scroll (nella zona bianca sotto la hero) -->
-    <a href="#game-container" class="gioca-hero__scroll" aria-label="Scorri per giocare">
+    <a href="#game-container" class="gioca-hero__scroll" aria-label="Scorri per giocare" data-i18n-aria-label="gioca.scroll_hint">
       <span class="gioca-hero__scroll-text" data-i18n="gioca.scroll_hint">Scorri per giocare</span>
       <i data-lucide="chevron-down" class="gioca-hero__scroll-arrow"></i>
     </a>
 
     <!-- Canvas di gioco -->
     <div class="gioca-canvas-wrap">
-      <div id="game-container" aria-label="Area di gioco"></div>
+      <div id="game-container" aria-label="Area di gioco" data-i18n-aria-label="gioca.game_area"></div>
 
       <!-- Overlay inserimento nome -->
       <div class="gioca-intro" id="gioca-intro">
@@ -145,10 +144,10 @@
           </div>
           <h2 class="gioca-intro__title" data-i18n="gioca.intro_titolo">Pronto, cavaliere?</h2>
           <p class="gioca-intro__text" data-i18n="gioca.intro_testo">
-            Inserisci il tuo nome per apparire nella classifica. Tocca lo schermo per cambiare direzione.
+            Inserisci il tuo nome. Tocca o fai clic per cambiare direzione; da tastiera usa Invio o Spazio.
           </p>
           <input type="text" class="gioca-intro__input" id="player-name" maxlength="15" autocomplete="off"
-            placeholder="Il tuo nome">
+            placeholder="Il tuo nome" aria-label="Il tuo nome" data-i18n-placeholder="gioca.player_name" data-i18n-aria-label="gioca.player_name">
           <div class="gioca-intro__record" id="intro-record" hidden>
             <i data-lucide="trophy"></i>
             <span data-i18n="gioca.record_label">Il tuo record:</span>
@@ -190,7 +189,7 @@
         </div>
         <span class="gioca-hud__progress-label">/ <strong id="target-value">50</strong></span>
       </div>
-      <button class="gioca-mute-btn" id="mute-btn" aria-label="Attiva/disattiva audio">
+      <button class="gioca-mute-btn" id="mute-btn" aria-label="Attiva o disattiva audio" data-i18n-aria-label="gioca.mute_audio">
         <i data-lucide="volume-2" id="mute-icon"></i>
       </button>
     </div>
@@ -206,10 +205,10 @@
       </p>
       <button class="gioca-premio__btn" id="premio-btn" disabled>
         <i data-lucide="lock"></i>
-        <span data-i18n="gioca.premio_locked">Locked</span>
+        <span data-i18n="gioca.premio_locked">Bloccato</span>
       </button>
       <p class="gioca-premio__cassa" id="premio-cassa" data-i18n="gioca.premio_cassa" hidden>
-        Evviva! Vieni in cassa e mostra questo schermo: ti aspetta un piccolo omaggio. 🍕
+        Evviva! Mostra questo schermo in cassa: il personale verificherà il tuo omaggio. 🍕
       </p>
     </div>
 
@@ -222,6 +221,7 @@
       <ol class="gioca-leaderboard__list" id="leaderboard-list">
         <!-- popolato da gioca.js -->
       </ol>
+      <p class="gioca-leaderboard__status" id="leaderboard-status" role="status" hidden></p>
     </div>
 
   </main>
@@ -281,7 +281,7 @@
   </footer>
 
   <!-- Leaderboard back-end (Supabase) -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.1"></script>
   <script>
     // Credenziali pubbliche del progetto Supabase (vedi supabase/leaderboard.sql).
     // La publishable key e' pensata per il client: e' protetta dalle policy RLS.
@@ -290,16 +290,16 @@
   </script>
 
   <!-- JS -->
-  <script src="js/i18n.js"></script>
+  <script src="js/i18n.js?v=4"></script>
   <script src="js/avviso.js"></script>
   <script src="js/page-transitions.js"></script>
   <script src="js/nav.js"></script>
   <script src="js/reveal.js"></script>
-  <script src="js/gioca-leaderboard.js"></script>
-  <script src="js/gioca-game.js"></script>
-  <script src="js/gioca.js"></script>
+  <script src="js/gioca-leaderboard.js?v=3"></script>
+  <script src="js/gioca-game.js?v=4"></script>
+  <script src="js/gioca.js?v=4"></script>
 
-  <script>lucide.createIcons();</script>
+  <script>window.lucide?.createIcons();</script>
   <script src="js/iubenda.js"></script>
 
 </body>

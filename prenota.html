@@ -51,6 +51,7 @@
   <link rel="stylesheet" href="css/responsive.css">
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/prenota.css">
+  <link rel="stylesheet" href="css/site-theme.css?v=3">
 
   <!-- Lucide icons -->
   <script src="https://unpkg.com/lucide@0.577.0/dist/umd/lucide.min.js"></script>
@@ -59,19 +60,6 @@
 <body class="prenota-page">
 
   <div class="status-bar-bg" aria-hidden="true"></div>
-
-  <div class="lang-switcher" id="lang-switcher">
-    <button class="lang-switcher__toggle" id="lang-toggle" aria-label="Cambia lingua">
-      <span id="lang-current-flag">🇮🇹</span>
-      <span id="lang-current-code">IT</span>
-      <span class="lang-switcher__chevron">▾</span>
-    </button>
-    <div class="lang-switcher__dropdown" id="lang-dropdown">
-      <button class="lang-option" data-lang="it">🇮🇹 Italiano</button>
-      <button class="lang-option" data-lang="fr">🇫🇷 Français</button>
-      <button class="lang-option" data-lang="en">🇬🇧 English</button>
-    </div>
-  </div>
 
   <header class="navbar">
     <a href="/" class="navbar__brand brand-logo" aria-label="Pizzeria Avalon — Home">
@@ -96,6 +84,18 @@
         <span data-i18n="navbar.gioca">Gioca</span>
       </a>
     </nav>
+    <div class="lang-switcher" id="lang-switcher">
+      <button class="lang-switcher__toggle" id="lang-toggle" aria-label="Cambia lingua">
+        <span id="lang-current-flag">🇮🇹</span>
+        <span id="lang-current-code">IT</span>
+        <span class="lang-switcher__chevron">▾</span>
+      </button>
+      <div class="lang-switcher__dropdown" id="lang-dropdown">
+        <button class="lang-option" data-lang="it">🇮🇹 Italiano</button>
+        <button class="lang-option" data-lang="fr">🇫🇷 Français</button>
+        <button class="lang-option" data-lang="en">🇬🇧 English</button>
+      </div>
+    </div>
   </header>
 
   <main class="page-wrapper">
@@ -140,10 +140,10 @@
     </section>
 
     <!-- Location -->
-    <section class="location" data-reveal>
+    <section class="location">
       <div class="location__img-wrapper">
         <img src="assets/images/avalonDaFuori.webp" alt="Vista esterna della Pizzeria Avalon a Jovençan"
-          class="location__img">
+          class="location__img" loading="lazy" decoding="async" width="1200" height="800">
         <div class="location__img-overlay" aria-hidden="true"></div>
       </div>
 
@@ -154,6 +154,7 @@
         </div>
         <h2 class="location__title" data-i18n="home.location_titolo">Fraz. Etral 8, Jovençan</h2>
         <p class="location__subtitle" data-i18n="home.location_sottotitolo">Ci troviamo a 10 minuti da Aosta.</p>
+        <p class="location__story" data-i18n="home.location_story">Una serata a Jovençan, una pizza da condividere e il piacere di stare insieme. Ti aspettiamo qui, dal 1994.</p>
         <a href="https://maps.google.com/?q=Etral+8+Jovençan+Valle+d'Aosta" target="_blank" rel="noopener noreferrer"
           class="btn location__btn">
           <i data-lucide="navigation"></i>
@@ -218,14 +219,14 @@
   </footer>
 
   <!-- JS -->
-  <script src="js/i18n.js"></script>
+  <script src="js/i18n.js?v=4"></script>
   <script src="js/avviso.js"></script>
   <script src="js/page-transitions.js"></script>
   <script src="js/nav.js"></script>
   <script src="js/reveal.js"></script>
   <script src="js/prenota.js"></script>
 
-  <script>lucide.createIcons();</script>
+  <script>window.lucide?.createIcons();</script>
   <script src="js/iubenda.js"></script>
 
   <!-- Guestplan: nessun floating button, si apre via link #gstpln_openWidget -->
@@ -233,6 +234,16 @@
     (function (g, s, t, p, l, n) {
       g["_gstpln"] = {};
       (l = s.createElement(t)), (n = s.getElementsByTagName(t)[0]);
+      l.onerror = function () {
+        s.querySelectorAll('a[href="#gstpln_openWidget"]').forEach(function (link) {
+          link.href = 'tel:+390165250300';
+          var label = link.querySelector('[data-i18n]');
+          if (label) {
+            label.dataset.i18n = 'prenota.book_call';
+            label.textContent = (g.t && g.t('prenota.book_call')) || 'Chiama per prenotare';
+          }
+        });
+      };
       l.async = 1; l.src = p; n.parentNode.insertBefore(l, n);
     })(window, document, "script", "https://cdn.guestplan.com/widget.js");
     _gstpln.accessKey = "c04fdf69efddaa09950f532db39a37d97f39cc51";
