@@ -1,20 +1,11 @@
-/* Ripristina o resetta la direzione di navigazione prima del paint. */
+/* Set cross-page state before the browser paints the destination. */
 (function () {
-  var dir = sessionStorage.getItem('avalon-page-dir');
   var root = document.documentElement;
-
-  if (dir === 'forward' || dir === 'back') {
-    root.setAttribute('data-page-dir', dir);
-    sessionStorage.removeItem('avalon-page-dir');
-  } else {
-    root.removeAttribute('data-page-dir');
-  }
-
   if (sessionStorage.getItem('avalon-page-transition')) {
     root.classList.add('page-await-enter');
+    /* Do not leave a blank destination if a later script fails. */
+    setTimeout(function () { root.classList.remove('page-await-enter'); }, 2000);
   }
-
-  /* Hero home: intro già vista in questa sessione → niente fade-up al ritorno */
   if (sessionStorage.getItem('avalon-hero-intro')) {
     root.classList.add('hero-intro-done');
   }

@@ -1,37 +1,30 @@
-/* Avalon: one brief arrival animation for internal page navigation. */
+/* A restrained cross-page dissolve. */
 :root {
-  --page-transition-duration: var(--motion-page-duration);
-  --page-transition-easing: var(--motion-ease-out);
-  --page-in-x: 8px;
+  --page-fade-duration: 160ms;
+  --page-fade-easing: ease-in-out;
 }
 
-html[data-page-dir="back"] { --page-in-x: -8px; }
+html { background: #fdf6ee; }
 
-@media (max-width: 768px) {
-  :root { --page-in-x: 6px; }
-  html[data-page-dir="back"] { --page-in-x: -6px; }
+html.page-await-enter body {
+  opacity: 0;
 }
 
-/* The JavaScript arrival is the only cross-document transition. */
-@view-transition { navigation: none; }
-
-html.page-await-enter .page-slide-root,
-html.page-await-enter .page-wrapper,
-html.page-await-enter body > .hero,
-html.page-await-enter body > .footer,
-body.page-is-entering .page-slide-target {
-  opacity: .92;
-  transform: translate3d(var(--page-in-x), 0, 0);
+body.page-is-leaving {
+  opacity: 0;
+  transition: opacity var(--page-fade-duration) ease-in;
 }
 
-body.page-is-entering.page-enter-active .page-slide-target {
+body.page-is-entering {
+  opacity: 0;
+  transition: opacity var(--page-fade-duration) ease-out;
+}
+
+body.page-is-entering.page-enter-active {
   opacity: 1;
-  transform: translate3d(0, 0, 0);
-  transition: opacity var(--page-transition-duration) var(--page-transition-easing),
-              transform var(--page-transition-duration) var(--page-transition-easing);
 }
 
-/* Avoid a second hero intro after navigation to the home page. */
+/* Returning to Home should not restart its separate hero intro. */
 body.page-is-entering .hero__eyebrow,
 body.page-is-entering .hero__title,
 body.page-is-entering .hero__subtitle,
@@ -46,14 +39,11 @@ html.page-await-enter .hero__actions {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html.page-await-enter .page-slide-root,
-  html.page-await-enter .page-wrapper,
-  html.page-await-enter body > .hero,
-  html.page-await-enter body > .footer,
-  body.page-is-entering .page-slide-target,
-  body.page-is-entering.page-enter-active .page-slide-target {
+  html.page-await-enter body,
+  body.page-is-leaving,
+  body.page-is-entering,
+  body.page-is-entering.page-enter-active {
     opacity: 1;
-    transform: none;
     transition: none;
   }
 }
